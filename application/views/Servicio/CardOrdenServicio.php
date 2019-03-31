@@ -240,7 +240,7 @@
                                         <th>Costo</th>
                                         <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tabla">
                                         
                                     </tbody>
                                     
@@ -252,7 +252,7 @@
                             <button type="submit" class="btn btn-warning mr-1" name="action" value="cancelar">
                                 <i class="icon-cross2"></i> Cancelar
                             </button>
-                            <button type="submit" class="btn btn-primary mr-1" name="action" value='GuardarEntrada'>
+                            <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
                                 <i class="icon-check2"></i>Guardar Entrada
                             </button>
                             
@@ -269,3 +269,175 @@
             </div>
         </div>
 </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function()
+    {
+        CargarClientes();
+        FechaActual();
+        CargarProducto();
+    });
+
+    $("#btnAgregarSubProducto").click(function()
+    {
+        CargarTabla();
+    });
+
+    $("#cliente").change(function()
+    {
+        CargarDatosClientes($(this).val());
+    });
+
+    $(function()
+    {
+        $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
+    });
+    
+    
+    function valorFila()
+    {
+        $('#tabla tr').each(function() {
+            var id = $(this).find(".id").text();
+            var producto = $(this).find(".producto").text();
+            var codigo = $(this).find(".codigo").text();
+            var nombre = $(this).find(".nombre").text();
+            var nLote = $(this).find(".nLote").text();
+            var fCaducidad =  $(this).find(".fCaducidad").text();
+            var cantidad = $(this).find(".cantidad").text();
+            var costo = $(this).find(".codigo").text();
+
+
+            datos = {"id":id,"producto":producto,"codigo":codigo,"nombre":nombre,"nLote":nLote,
+                "fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo             
+            };
+        
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/Insertar_ajax',
+                data:datos, 
+                success:function(resp)
+                {
+
+                }
+            });
+
+            //alert(id+producto+codigo+nombre+nLote+fCaducidad+cantidad+costo);
+        });
+    }
+
+    function remover()
+    {
+        $(this).parents("tr").remove();
+    }
+
+    function CargarClientes()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',    
+            success:function(resp)
+            {
+                $("#cliente").html(resp) 
+            }
+        });
+    }
+
+
+    $("#Productos").change(function(){
+        //alert($(this).val());
+        //valorFila();
+    });
+
+    function CargarProducto()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarProducto',    
+            success:function(resp)
+            {
+                $("#Productos").html(resp) 
+            }
+        });
+    }
+
+    function CargarTabla()
+    {        
+        //var num = document.getElementById("productos").value;
+        //var combo = document.getElementById("productos");
+        //var producto =  combo.options[combo.selectedIndex].text;
+        var codigo = document.getElementById("CodigoSubProducto").value;
+        var nombre = document.getElementById("DescripcionSubProducto").value;
+        var nLote = document.getElementById("LoteSubProducto").value;
+        var fCaducidad = document.getElementById("CaducidadSubProducto").value;
+        var cantidad = document.getElementById("CantidadSubProducto").value;
+        var costo = document.getElementById("CostoSubProducto").value;
+
+        datos = {"codigo":codigo,"nombre":nombre,"nLote":nLote,"fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo};
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/LlenarTabla',    
+            data:datos,
+            success:function(resp)
+            {
+                if(resp != '')
+                {
+                    $("#tabla").append(resp);
+                    Limpiar();
+                }else
+                    alert("Comprete la informacion");
+            }
+        });
+    }
+
+    function Limpiar()
+    {
+        document.getElementById("CodigoSubProducto").value = "";
+        document.getElementById("DescripcionSubProducto").value = "";
+        document.getElementById("LoteSubProducto").value = "";
+        document.getElementById("CaducidadSubProducto").value = "";
+        document.getElementById("CantidadSubProducto").value = "";
+        document.getElementById("CostoSubProducto").value = "";
+    }
+
+    function FechaActual()
+    {
+        
+        var fecha = new Date(); 
+        var mes = fecha.getMonth()+1; 
+        var dia = fecha.getDate(); 
+        var ano = fecha.getFullYear();
+        if(dia<10)
+            dia='0'+dia;
+        if(mes<10)
+            mes='0'+mes 
+        document.getElementById('FechaReciboIntec').value=ano+"-"+mes+"-"+dia;
+        document.getElementById('FechaEnvioLaboratorio').value=ano+"-"+mes+"-"+dia;
+        document.getElementById('FechaReciboLaboratorio').value=ano+"-"+mes+"-"+dia;
+    }
+
+    function CargarDatosClientes(id)
+    {
+        datos = {"id":id};
+    
+        $.ajax
+        ({            
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDataClientes_ajax',
+            dataType: 'json',
+            data:datos, 
+            success:function(resp)
+            {
+                $('#NombreProveedor').val(resp[0].NombreContacto);
+                $("#DireccionCliente").val(resp[0].Domicilio); 
+                $("#compania").val(resp[0].NombreCompania);
+                $("#emailProveedor").val(resp[0].Correo);
+            }
+        });
+    }
+</script>
