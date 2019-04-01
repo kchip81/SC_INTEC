@@ -4,9 +4,9 @@
 		<!-- Invoice Company Details -->
 		<div id="invoice-company-details" class="row">
 			<div class="col-md-6 col-sm-12 text-xs-center text-md-left">
-				<img src="../../app-assets/images/logo/SigueMEDLogo.png" alt="company logo" class=""/>
+				<img src="../../app-assets/images/logo/robust-80x80.png" alt="company logo" class=""/>
 				<ul class="px-0 list-unstyled">
-					<li class="text-bold-800">Clínica SiguéMed</li>
+					<li class="text-bold-800">INTEC</li>
 					<li>4025 Oak Avenue,</li>
 					<li>Melbourne,</li>
 					<li>Florida 32940,</li>
