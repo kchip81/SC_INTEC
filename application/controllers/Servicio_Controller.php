@@ -77,6 +77,8 @@ class Servicio_Controller extends CI_Controller {
 
     public function LlenarTabla()
     {
+        $id = $_POST['id'];
+        $producto = $_POST['producto'];
         $codigo = $_POST['codigo'];
         $nombre = $_POST['nombre'];
         $nLote = $_POST['nLote'];
@@ -87,8 +89,8 @@ class Servicio_Controller extends CI_Controller {
         {
             echo '
             <tr>
-            <td class="id">12</td>
-            <td class="producto">producto</td>
+            <td class="id">'.$id.'</td>
+            <td class="producto">'.$producto.'</td>
             <td class="codigo">'.$codigo.'</td>
             <td class="nombre">'.$nombre.'</td>
             <td class="nLote">'.$nLote.'</td>

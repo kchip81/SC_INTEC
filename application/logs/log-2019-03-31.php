@@ -644,3 +644,516 @@ DEBUG - 2019-03-31 08:24:54 --> UTF-8 Support Enabled
 DEBUG - 2019-03-31 08:24:54 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2019-03-31 08:24:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2019-03-31 08:24:54 --> Total execution time: 0.1330
+DEBUG - 2019-03-31 08:36:11 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:11 --> No URI present. Default controller set.
+DEBUG - 2019-03-31 08:36:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:11 --> Total execution time: 0.1211
+DEBUG - 2019-03-31 08:36:13 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:13 --> Total execution time: 0.1570
+DEBUG - 2019-03-31 08:36:16 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:16 --> Total execution time: 0.1216
+DEBUG - 2019-03-31 08:36:16 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:16 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:17 --> Total execution time: 0.1578
+DEBUG - 2019-03-31 08:36:17 --> Total execution time: 0.1955
+DEBUG - 2019-03-31 08:36:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:19 --> Total execution time: 0.1091
+DEBUG - 2019-03-31 08:36:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:33 --> Total execution time: 0.1396
+DEBUG - 2019-03-31 08:36:45 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:36:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:36:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:36:45 --> Total execution time: 0.1176
+DEBUG - 2019-03-31 08:44:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:02 --> Total execution time: 0.3290
+DEBUG - 2019-03-31 08:44:03 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:03 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:04 --> Total execution time: 0.3402
+DEBUG - 2019-03-31 08:44:04 --> Total execution time: 0.3651
+DEBUG - 2019-03-31 08:44:13 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:13 --> Total execution time: 0.1475
+DEBUG - 2019-03-31 08:44:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:33 --> Total execution time: 0.1487
+DEBUG - 2019-03-31 08:44:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:34 --> Total execution time: 0.1753
+DEBUG - 2019-03-31 08:44:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:34 --> Total execution time: 0.2283
+DEBUG - 2019-03-31 08:44:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:58 --> Total execution time: 0.1295
+DEBUG - 2019-03-31 08:44:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:44:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:44:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:44:59 --> Total execution time: 0.2019
+DEBUG - 2019-03-31 08:44:59 --> Total execution time: 0.2321
+DEBUG - 2019-03-31 08:45:18 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:18 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:18 --> Total execution time: 0.1113
+DEBUG - 2019-03-31 08:45:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:19 --> Total execution time: 0.1586
+DEBUG - 2019-03-31 08:45:19 --> Total execution time: 0.1819
+DEBUG - 2019-03-31 08:45:28 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:29 --> No URI present. Default controller set.
+DEBUG - 2019-03-31 08:45:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:29 --> Total execution time: 0.1007
+DEBUG - 2019-03-31 08:45:31 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:31 --> Total execution time: 0.1213
+DEBUG - 2019-03-31 08:45:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:33 --> Total execution time: 0.1260
+DEBUG - 2019-03-31 08:45:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:34 --> Total execution time: 0.1863
+DEBUG - 2019-03-31 08:45:34 --> Total execution time: 0.2126
+DEBUG - 2019-03-31 08:45:36 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:36 --> Total execution time: 0.1248
+DEBUG - 2019-03-31 08:45:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:57 --> Total execution time: 0.1234
+DEBUG - 2019-03-31 08:45:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:45:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:45:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:45:58 --> Total execution time: 0.2071
+DEBUG - 2019-03-31 08:45:58 --> Total execution time: 0.2196
+DEBUG - 2019-03-31 08:46:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:46:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:46:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:46:04 --> Total execution time: 0.1363
+DEBUG - 2019-03-31 08:46:40 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:46:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:46:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:46:40 --> Total execution time: 0.1460
+DEBUG - 2019-03-31 08:46:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:46:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:46:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:46:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:46:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:46:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:46:41 --> Total execution time: 0.2087
+DEBUG - 2019-03-31 08:46:41 --> Total execution time: 0.2244
+DEBUG - 2019-03-31 08:47:37 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:47:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:47:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:47:37 --> Total execution time: 0.1602
+DEBUG - 2019-03-31 08:47:38 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:47:38 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:47:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:47:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:47:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:47:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:47:38 --> Total execution time: 0.1934
+DEBUG - 2019-03-31 08:47:38 --> Total execution time: 0.2089
+DEBUG - 2019-03-31 08:49:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:04 --> Total execution time: 0.1627
+DEBUG - 2019-03-31 08:49:05 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:05 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:05 --> Total execution time: 0.1895
+DEBUG - 2019-03-31 08:49:05 --> Total execution time: 0.2108
+DEBUG - 2019-03-31 08:49:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:35 --> Total execution time: 0.1845
+DEBUG - 2019-03-31 08:49:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:36 --> Total execution time: 0.2209
+DEBUG - 2019-03-31 08:49:36 --> Total execution time: 0.2399
+DEBUG - 2019-03-31 08:49:46 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:49:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:49:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:49:46 --> Total execution time: 0.1135
+DEBUG - 2019-03-31 08:51:39 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:51:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:51:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:51:39 --> Total execution time: 0.1618
+DEBUG - 2019-03-31 08:51:39 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:51:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:51:39 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:51:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:51:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:51:40 --> Total execution time: 0.1959
+DEBUG - 2019-03-31 08:51:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:51:40 --> Total execution time: 0.2257
+DEBUG - 2019-03-31 08:51:54 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:51:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:51:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:51:54 --> Total execution time: 0.1527
+DEBUG - 2019-03-31 08:51:54 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:51:54 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:51:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:51:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:51:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:51:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:51:54 --> Total execution time: 0.2010
+DEBUG - 2019-03-31 08:51:54 --> Total execution time: 0.2051
+DEBUG - 2019-03-31 08:53:09 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:09 --> Total execution time: 0.1303
+DEBUG - 2019-03-31 08:53:10 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:10 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:10 --> Total execution time: 0.2497
+DEBUG - 2019-03-31 08:53:10 --> Total execution time: 0.2491
+DEBUG - 2019-03-31 08:53:16 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:16 --> Total execution time: 0.1179
+DEBUG - 2019-03-31 08:53:37 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:37 --> Total execution time: 0.1232
+DEBUG - 2019-03-31 08:53:38 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:38 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:53:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:53:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:38 --> Total execution time: 0.1925
+DEBUG - 2019-03-31 08:53:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:53:38 --> Total execution time: 0.2287
+DEBUG - 2019-03-31 08:55:12 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:12 --> Total execution time: 0.1585
+DEBUG - 2019-03-31 08:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:13 --> Total execution time: 0.1505
+DEBUG - 2019-03-31 08:55:13 --> Total execution time: 0.1890
+DEBUG - 2019-03-31 08:55:17 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:17 --> Total execution time: 0.1264
+DEBUG - 2019-03-31 08:55:32 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:33 --> Total execution time: 0.1218
+DEBUG - 2019-03-31 08:55:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:33 --> Total execution time: 0.1732
+DEBUG - 2019-03-31 08:55:33 --> Total execution time: 0.1989
+DEBUG - 2019-03-31 08:55:37 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:55:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:55:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:55:38 --> Total execution time: 0.1188
+DEBUG - 2019-03-31 08:56:13 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:13 --> Total execution time: 0.1352
+DEBUG - 2019-03-31 08:56:14 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:14 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:14 --> Total execution time: 0.1604
+DEBUG - 2019-03-31 08:56:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:14 --> Total execution time: 0.2022
+DEBUG - 2019-03-31 08:56:17 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:17 --> Total execution time: 0.1242
+DEBUG - 2019-03-31 08:56:32 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:32 --> Total execution time: 0.1166
+DEBUG - 2019-03-31 08:56:43 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:44 --> Total execution time: 0.1675
+DEBUG - 2019-03-31 08:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:44 --> Total execution time: 0.1878
+DEBUG - 2019-03-31 08:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:44 --> Total execution time: 0.2235
+DEBUG - 2019-03-31 08:56:49 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:56:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:56:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:56:49 --> Total execution time: 0.1688
+DEBUG - 2019-03-31 08:57:38 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:57:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:57:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:57:38 --> Total execution time: 0.1259
+DEBUG - 2019-03-31 08:57:39 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:57:39 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:57:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:57:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:57:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:57:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:57:39 --> Total execution time: 0.1842
+DEBUG - 2019-03-31 08:57:39 --> Total execution time: 0.1953
+DEBUG - 2019-03-31 08:57:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:57:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:57:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:57:41 --> Total execution time: 0.1298
+DEBUG - 2019-03-31 08:59:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:59:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:59:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:59:08 --> Total execution time: 0.1999
+DEBUG - 2019-03-31 08:59:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:59:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:59:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:59:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:59:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:59:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:59:09 --> Total execution time: 0.2334
+DEBUG - 2019-03-31 08:59:09 --> Total execution time: 0.2664
+DEBUG - 2019-03-31 08:59:11 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:59:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:59:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:59:11 --> Total execution time: 0.1466
+DEBUG - 2019-03-31 08:59:16 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 08:59:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 08:59:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 08:59:16 --> Total execution time: 0.1547
+DEBUG - 2019-03-31 09:00:21 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:22 --> Total execution time: 0.1824
+DEBUG - 2019-03-31 09:00:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:22 --> Total execution time: 0.2337
+DEBUG - 2019-03-31 09:00:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:22 --> Total execution time: 0.2643
+DEBUG - 2019-03-31 09:00:28 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:28 --> Total execution time: 0.1080
+DEBUG - 2019-03-31 09:00:40 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:40 --> Total execution time: 0.1526
+DEBUG - 2019-03-31 09:00:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:41 --> Total execution time: 0.2379
+DEBUG - 2019-03-31 09:00:41 --> Total execution time: 0.2615
+DEBUG - 2019-03-31 09:00:45 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:00:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:00:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:00:45 --> Total execution time: 0.1079
+DEBUG - 2019-03-31 09:02:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:29 --> Total execution time: 0.1795
+DEBUG - 2019-03-31 09:02:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:30 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:30 --> Total execution time: 0.2108
+DEBUG - 2019-03-31 09:02:30 --> Total execution time: 0.2288
+DEBUG - 2019-03-31 09:02:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:33 --> Total execution time: 0.1339
+DEBUG - 2019-03-31 09:02:46 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:46 --> Total execution time: 0.1153
+DEBUG - 2019-03-31 09:02:47 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:47 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:47 --> Total execution time: 0.1663
+DEBUG - 2019-03-31 09:02:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:47 --> Total execution time: 0.1957
+DEBUG - 2019-03-31 09:02:50 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:02:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:02:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:02:50 --> Total execution time: 0.1193
+DEBUG - 2019-03-31 09:04:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:04:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:04:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:04:34 --> Total execution time: 0.2507
+DEBUG - 2019-03-31 09:04:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:04:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:04:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:04:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:04:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:04:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:04:35 --> Total execution time: 0.1576
+DEBUG - 2019-03-31 09:04:35 --> Total execution time: 0.1829
+DEBUG - 2019-03-31 09:04:38 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:04:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:04:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:04:38 --> Total execution time: 0.1539
+DEBUG - 2019-03-31 09:06:05 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:06 --> Total execution time: 0.1511
+DEBUG - 2019-03-31 09:06:06 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:06 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:07 --> Total execution time: 0.2011
+DEBUG - 2019-03-31 09:06:07 --> Total execution time: 0.2335
+DEBUG - 2019-03-31 09:06:10 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:11 --> Total execution time: 0.1318
+DEBUG - 2019-03-31 09:06:53 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:53 --> Total execution time: 0.1671
+DEBUG - 2019-03-31 09:06:54 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:54 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:06:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:06:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:06:54 --> Total execution time: 0.2023
+DEBUG - 2019-03-31 09:06:54 --> Total execution time: 0.2324
+DEBUG - 2019-03-31 09:07:00 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:07:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:07:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:07:00 --> Total execution time: 0.1395
+DEBUG - 2019-03-31 09:07:40 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:07:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:07:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:07:40 --> Total execution time: 0.1564
+DEBUG - 2019-03-31 09:07:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:07:41 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:07:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:07:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:07:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:07:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:07:41 --> Total execution time: 0.2223
+DEBUG - 2019-03-31 09:07:41 --> Total execution time: 0.2514
+DEBUG - 2019-03-31 09:07:45 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:07:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:07:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:07:45 --> Total execution time: 0.1219
+DEBUG - 2019-03-31 09:08:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:08:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:08:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:08:22 --> Total execution time: 0.1943
+DEBUG - 2019-03-31 09:08:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:08:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:08:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:08:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:08:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:08:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:08:22 --> Total execution time: 0.1781
+DEBUG - 2019-03-31 09:08:22 --> Total execution time: 0.1895
+DEBUG - 2019-03-31 09:09:30 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:09:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:09:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:09:30 --> Total execution time: 0.1191
+DEBUG - 2019-03-31 09:09:30 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:09:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:09:30 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:09:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:09:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:09:30 --> Total execution time: 0.1764
+DEBUG - 2019-03-31 09:09:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:09:30 --> Total execution time: 0.2495
+DEBUG - 2019-03-31 09:09:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:09:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:09:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:09:35 --> Total execution time: 0.1053
+DEBUG - 2019-03-31 09:11:31 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:11:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:11:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:11:31 --> Total execution time: 0.1498
+DEBUG - 2019-03-31 09:11:31 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:11:31 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:11:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:11:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:11:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:11:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:11:31 --> Total execution time: 0.2461
+DEBUG - 2019-03-31 09:11:31 --> Total execution time: 0.2660
+DEBUG - 2019-03-31 09:11:43 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:11:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:11:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:11:43 --> Total execution time: 0.1286
+DEBUG - 2019-03-31 09:11:55 --> UTF-8 Support Enabled
+DEBUG - 2019-03-31 09:11:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-31 09:11:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-31 09:11:56 --> Total execution time: 0.1186

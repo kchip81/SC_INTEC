@@ -346,11 +346,11 @@
         });
     }
 
-
+/*
     $("#Productos").change(function(){
         //alert($(this).val());
         //valorFila();
-    });
+    });*/
 
     function CargarProducto()
     {
@@ -366,18 +366,19 @@
     }
 
     function CargarTabla()
-    {        
-        //var num = document.getElementById("productos").value;
-        //var combo = document.getElementById("productos");
-        //var producto =  combo.options[combo.selectedIndex].text;
+    {   
+
+        var id = $("#Productos").val();
+        var num = document.getElementById("Productos");
+        var producto =  num.options[num.selectedIndex].text;
         var codigo = document.getElementById("CodigoSubProducto").value;
         var nombre = document.getElementById("DescripcionSubProducto").value;
         var nLote = document.getElementById("LoteSubProducto").value;
         var fCaducidad = document.getElementById("CaducidadSubProducto").value;
         var cantidad = document.getElementById("CantidadSubProducto").value;
         var costo = document.getElementById("CostoSubProducto").value;
-
-        datos = {"codigo":codigo,"nombre":nombre,"nLote":nLote,"fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo};
+ 
+        datos = {"id":id,"producto":producto,"codigo":codigo,"nombre":nombre,"nLote":nLote,"fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo};
         $.ajax
         ({
             type:'post',
