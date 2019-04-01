@@ -30,16 +30,16 @@ class Clientes_Model extends CI_Model{
         return $query->result_array();
     } 
 
-    public function Insertar()
+    public function Insertar($IdProducto,$NomProducto,$Codigo,$NoLote,$fCaducidad,$cantidad,$costo,$IdCliente)
     {
-        /*$this->db->select($this->table.'.*');
-        $this->db->from($this->table);
-        $this->db->where($this->table.".IdCliente = '$idCliente'");
-        
-        $query = $this->db->get();
 
-        return $query->result_array();
-        */
+        $data = array('IdProducto' => $IdProducto,'NomProducto' => $NomProducto,'Codigo' => $Codigo,'NoLote' => $NoLote
+        ,'fCaducidad' => $fCaducidad,'Cantidad' => $cantidad,'Costo' => $costo,'IdCliente' => $IdCliente);
+
+        return $this->db->insert('complemento_orden_servicio',$data);
+        //$this->db->insect_id();
+
+        
     } 
 
 }

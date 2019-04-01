@@ -290,12 +290,32 @@
         CargarDatosClientes($(this).val());
     });
 
+    $('#GuardarEntrada').click(function()
+    {
+        valorFila();
+        removerTabla();
+
+        $.ajax
+        ({
+            url:'<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF',    
+            success:function(resp)
+            {
+                
+            }
+        });
+    });
+
     $(function()
     {
         $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
     });
     
-    
+    function removerTabla()
+    {
+        $("#tabla tr").remove();
+    }
+
+
     function valorFila()
     {
         $('#tabla tr').each(function() {
@@ -306,13 +326,13 @@
             var nLote = $(this).find(".nLote").text();
             var fCaducidad =  $(this).find(".fCaducidad").text();
             var cantidad = $(this).find(".cantidad").text();
-            var costo = $(this).find(".codigo").text();
-
+            var costo = $(this).find(".codigo").text();            
+            var cliente = $('#cliente').val();
 
             datos = {"id":id,"producto":producto,"codigo":codigo,"nombre":nombre,"nLote":nLote,
-                "fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo             
+                "fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo ,"cliente":cliente           
             };
-        
+               
             $.ajax
             ({            
                 type:'post',
@@ -320,12 +340,11 @@
                 data:datos, 
                 success:function(resp)
                 {
-
+                     
                 }
             });
-
-            //alert(id+producto+codigo+nombre+nLote+fCaducidad+cantidad+costo);
         });
+
     }
 
     function remover()
@@ -346,10 +365,9 @@
         });
     }
 
-/*
-    $("#Productos").change(function(){
+    /*$("#Productos").change(function(){
         //alert($(this).val());
-        //valorFila();
+        valorFila();
     });*/
 
     function CargarProducto()

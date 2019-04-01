@@ -34,9 +34,19 @@ class Servicio_Controller extends CI_Controller {
     
     public function CrearNuevaOrden()
     {
+        /*$action = $this->input->post('action');
+
+        if ($action ='GuardarEntrada')
+        {
+            echo '<script>alert("Guardar Orden");</script>';
+            //GUARDAR ,ORDEN DE SERVICIO
+        }*/
         
     }
+    public function CrearOrdenPDF()
+    {
 
+    }
     
     public function ConsultarClientes_ajax()
     {
@@ -85,7 +95,7 @@ class Servicio_Controller extends CI_Controller {
         $fCaducidad = $_POST['fCaducidad'];
         $cantidad = $_POST['cantidad'];
         $costo = $_POST['costo'];
-        if($codigo != '' && $nombre != '' && $nLote != '' && $fCaducidad != '' && $cantidad != '' && $costo != '')
+        if($id != '' && $producto != '' &&$codigo != '' && $nombre != '' && $nLote != '' && $fCaducidad != '' && $cantidad != '' && $costo != '')
         {
             echo '
             <tr>
@@ -111,9 +121,10 @@ class Servicio_Controller extends CI_Controller {
         $fCaducidad = $_POST['fCaducidad'];
         $cantidad = $_POST['cantidad'];
         $costo = $_POST['costo'];
+        $Cliente = $_POST['cliente'];
 
-        // $Clientes = $this->Clientes_Model->Insertar;     
-
+        $Clientes = $this->Clientes_Model->Insertar($id,$producto,$codigo,$nLote,$fCaducidad,$cantidad,$costo,$Cliente );       
+    
     }
     //put your code here
 }
