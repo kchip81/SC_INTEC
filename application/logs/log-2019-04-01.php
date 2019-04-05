@@ -1322,3 +1322,176 @@ DEBUG - 2019-04-01 22:41:16 --> Session: "sess_save_path" is empty; using "sessi
 DEBUG - 2019-04-01 22:41:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 ERROR - 2019-04-01 22:41:16 --> Query error: Cannot add or update a child row: a foreign key constraint fails (`bd_intec`.`complemento_orden_servicio`, CONSTRAINT `complemento_orden_servicio_ibfk_1` FOREIGN KEY (`IdProducto`) REFERENCES `equipo` (`idequipo`)) - Invalid query: INSERT INTO `complemento_orden_servicio` (`IdProducto`, `NomProducto`, `Codigo`, `NoLote`, `fCaducidad`, `Cantidad`, `Costo`, `IdCliente`) VALUES ('0', 'producto0', '2121', '351', '2019-10-09', '445', '2121', '2')
 DEBUG - 2019-04-01 22:41:16 --> Total execution time: 0.2619
+DEBUG - 2019-04-01 22:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 22:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 22:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 22:55:13 --> Total execution time: 0.1515
+DEBUG - 2019-04-01 22:55:23 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 22:55:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 22:55:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 22:55:24 --> Total execution time: 0.0920
+DEBUG - 2019-04-01 22:57:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 22:57:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 22:57:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 22:57:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 22:57:14 --> Total execution time: 0.2344
+DEBUG - 2019-04-01 22:57:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 22:57:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 22:57:14 --> Total execution time: 0.2705
+DEBUG - 2019-04-01 22:57:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 22:57:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 22:57:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 22:57:36 --> Total execution time: 0.0992
+DEBUG - 2019-04-01 23:02:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:02:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:02:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: id C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 117
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: producto C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 118
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: codigo C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 119
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: nLote C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 120
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: fCaducidad C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 121
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: cantidad C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 122
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: costo C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 123
+ERROR - 2019-04-01 23:02:21 --> Severity: Notice --> Undefined index: cliente C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 124
+DEBUG - 2019-04-01 23:02:21 --> Total execution time: 0.3032
+DEBUG - 2019-04-01 23:02:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:02:52 --> No URI present. Default controller set.
+DEBUG - 2019-04-01 23:02:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:02:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 23:02:52 --> Total execution time: 0.1248
+DEBUG - 2019-04-01 23:10:28 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:10:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:10:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 23:10:29 --> Total execution time: 0.3218
+DEBUG - 2019-04-01 23:11:31 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:11:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:11:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:11:32 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:11:32 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:13:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:13:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:13:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 23:13:41 --> Total execution time: 0.1281
+DEBUG - 2019-04-01 23:13:42 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:13:42 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:13:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:13:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:13:42 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 23:13:42 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-01 23:13:42 --> Total execution time: 0.2823
+DEBUG - 2019-04-01 23:13:42 --> Total execution time: 0.3316
+DEBUG - 2019-04-01 23:13:46 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:13:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:13:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:13:46 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:13:46 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:13:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:13:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:13:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:13:53 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:13:53 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:13:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:13:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:13:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:13:56 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:13:56 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:22:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:22:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:22:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:22:57 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:22:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:22:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:22:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:22:57 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:22:58 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:22:58 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:23:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:23:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:23:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:23:04 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:23:04 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:23:04 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:23:05 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:23:05 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:23:05 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:23:05 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:23:05 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:23:05 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:23:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:23:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:23:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:23:52 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:23:52 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:23:52 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:23:52 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:23:52 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:23:53 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:23:53 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:23:53 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:23:53 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:23:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:23:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:23:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:23:56 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:23:56 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:23:56 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:23:56 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:23:57 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:23:57 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:23:57 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:23:57 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:23:57 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
+DEBUG - 2019-04-01 23:26:20 --> UTF-8 Support Enabled
+DEBUG - 2019-04-01 23:26:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-01 23:26:20 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1283
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Cannot assign an empty string to a string offset C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1288
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Illegal string offset 'ID' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Illegal string offset 'LANG' C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\classes\cssmgr.php 1336
+ERROR - 2019-04-01 23:26:20 --> Severity: 8192 --> The each() function is deprecated. This message will be suppressed on further calls C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 9666
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 8298
+ERROR - 2019-04-01 23:26:20 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_Intec\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_Intec\application\libraries\mpdf\mpdf.php 1707
