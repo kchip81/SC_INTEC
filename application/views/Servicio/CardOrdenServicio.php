@@ -340,8 +340,7 @@
 
     $('#GuardarEntrada').click(function()
     {
-        //valorFila();
-        removerTabla();
+        valorOrden();
 
         $.ajax
         ({
@@ -364,35 +363,63 @@
     }
 
 
-    function valorFila()
+    function valorFila(idOrden)
     {
         $('#tabla tr').each(function() {
             var id = $(this).find(".id").text();
-            var producto = $(this).find(".producto").text();
-            var codigo = $(this).find(".codigo").text();
-            var nombre = $(this).find(".nombre").text();
-            var nLote = $(this).find(".nLote").text();
-            var fCaducidad =  $(this).find(".fCaducidad").text();
-            var cantidad = $(this).find(".cantidad").text();
-            var costo = $(this).find(".codigo").text();            
-            var cliente = $('#cliente').val();
 
-            datos = {"id":id,"producto":producto,"codigo":codigo,"nombre":nombre,"nLote":nLote,
-                "fCaducidad":fCaducidad,"cantidad":cantidad,"costo":costo ,"cliente":cliente           
-            };
-               
+            datos = {"idequipo":id,"idOrden":idOrden};
             $.ajax
             ({            
                 type:'post',
-                url:'<?php echo site_url();?>/Servicio_Controller/Insertar_ajax',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenEquipo',
                 data:datos, 
                 success:function(resp)
                 {
-                     
+                    removerTabla();
+                    PDF(idOrden);
                 }
             });
         });
+    }
 
+    function valorOrden()
+    {        
+        var select = document.getElementById("cliente");
+        var cliente = select.value; 
+        var fecha =$("#FechaReciboIntec").val();
+        var FechaEnvio =$("#FechaEnvioLaboratorio").val();
+        var FechaRecibo =$("#FechaReciboLaboratorio").val();
+        var Observaciones =$("#ObservacionesServicio").val();
+
+        datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
+
+        $.ajax
+        ({            
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio',
+            data:datos, 
+            success:function(resp)
+            {
+                var id = resp;
+                valorFila(id);
+            }
+        });
+    }
+
+    function PDF(idOrden)
+    {
+        datos={"idOrden":idOrden};
+
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF', 
+            data:datos,    
+            success:function(resp)
+            {
+            }
+        });
     }
 
     function remover()

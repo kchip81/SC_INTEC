@@ -31,15 +31,6 @@ class Clientes_Model extends CI_Model{
         return $query->result_array();
     } 
 
-    public function Insertar($IdProducto,$NomProducto,$Codigo,$NoLote,$fCaducidad,$cantidad,$costo,$IdCliente)
-    {
-        $data = array('IdProducto' => $IdProducto,'NomProducto' => $NomProducto,'Codigo' => $Codigo,'NoLote' => $NoLote
-        ,'fCaducidad' => $fCaducidad,'Cantidad' => $cantidad,'Costo' => $costo,'IdCliente' => $IdCliente);
-
-        return $this->db->insert('complemento_orden_servicio',$data);        
-    } 
-
-
     public function InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente)
     {
         $data = array('Descripcion' => $Descripcion,'Marca' => $Marca,'Modelo' => $Modelo,'NumService' => $NumService
@@ -47,8 +38,25 @@ class Clientes_Model extends CI_Model{
 
         return $this->db->insert('equipo',$data);        
     } 
+    
+    public function InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones)
+    {
+        $data = array('IdCliente' => $IdCliente,'Fecha' => $Fecha,"FechaEnvio" => $FechaEnvio,
+                "FechaRecibo" => $FechaRecibo,"Observaciones" => $Observaciones);
 
+        $this->db->insert('orden_servicio',$data); 
+        
+        $insertId = $this->db->insert_id();
+        return $insertId;
+    }
 
+    public function InsertarOrdenEquipo($IdEquipo,$IdOrden)
+    {
+        $data = array('IdEquipo' => $IdEquipo,'IdOrden' => $IdOrden);
+        $this->db->insert('equipo_orden',$data);  
+        $insertId = $this->db->insert_id();
+        return $insertId;  
+    }
 
     public function ConsultarEquipo($peticion)
     {
@@ -58,6 +66,37 @@ class Clientes_Model extends CI_Model{
         
         $query = $this->db->get();
 
+        return $query->result_array();
+    }
+
+    public function ConsultarOrden($id)
+    {
+        $this->db->select('*');
+        $this->db->from('equipo');
+        $this->db->join('equipo_orden', ' equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
+        $this->db->where('equipo_orden.IdOrden',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function ConsultarOrdenCliente($id)
+    {
+        $this->db->select('*');
+        $this->db->from('cliente');
+        $this->db->join('orden_servicio', 'orden_servicio.IdCliente = cliente.IdCliente','INNER');
+        $this->db->where('orden_servicio.IdOrden',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function ConsultarOrdenId()
+    {
+        $this->db->select('IdOrden');
+        $this->db->from('orden_servicio');
+        $this->db->order_by('IdOrden', 'DESC');
+        $this->db->limit(1);
+
+        $query = $this->db->get();
         return $query->result_array();
     }
 }

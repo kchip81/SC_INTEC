@@ -60,8 +60,15 @@ class Servicio_Controller extends CI_Controller {
     {
         $this->load->library('M_pdf');
 
-        $peticion = "2";
-        $Cliente = $this->Clientes_Model->ConsultarDataClientes($peticion);
+        $idOrden = $this->Clientes_Model->ConsultarOrdenId();
+        
+        foreach($idOrden as $I)
+        {$id = $I['IdOrden'];}
+        
+        $Registro = $this->Clientes_Model->ConsultarOrden($id); 
+        $Clientes = $this->Clientes_Model->ConsultarOrdenCliente($id);
+        
+        $i = 1;
 
         $hoy = date("dmyhis");
 
@@ -167,35 +174,55 @@ class Servicio_Controller extends CI_Controller {
             </header>
             ';
 
-            $table = '
-              <table>
-                <thead>
+            foreach($Clientes as $cliente)
+            {
+              $table = '
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="4">Datos del Informe cliente</th> 
+                    <tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <td style="width:150px">Contacto</td>
+                    <td colspan="3">'.$cliente['NombreContacto'].'</td>
                   <tr>
-                    <th colspan="2">Datos del Informe cliente</th> 
+                  <tr>
+                    <td style="width:150px">Compañia</td>
+                    <td colspan="3">'.$cliente['NombreCompania'].'</td>
+                  <tr>
+                  <tr>
+                    <td style="width:150px">Domicilio del Informe</td>
+                    <td colspan="3">'.$cliente['Domicilio'].'</td>
+                  <tr>
+                  <tr>
+                    <td style="width:150px">Correo Contacto</td>
+                    <td colspan="3">'.$cliente['Correo'].'</td>
+                    <tr>
+                  </tbody>
+                  <thead>
+                  <tr>
+                    <th colspan="4">Especificaciones de Servicio</th> 
                   <tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td style="width:150px">Contacto</td>
-                    <td></td>
+                    <td>Fecha de Recibo en Intec:</td>
+                    <td>'.$cliente['Fecha'].'</td>
+                    <td>Fecha de envio al Laboratorio:</td>
+                    <td>'.$cliente['FechaEnvio'].'</td>
                   <tr>
                   <tr>
-                    <td style="width:150px">Compañia</td>
-                    <td></td>
-                  <tr>
-                  <tr>
-                    <td style="width:150px">Domicilio del Informe</td>
-                    <td></td>
-                  <tr>
-                  <tr>
-                    <td style="width:150px">Correo Contacto</td>
-                    <td></td>
-                  <tr>
+                    <td style="width:150px">Fecha de recivido del Laboratorio:</td>
+                    <td>'.$cliente['FechaRecibo'].'</td>
+                    <td style="width:150px">Observaciones:</td>
+                    <td>'.$cliente['Observaciones'].'</td>
+                  <tr>                  
                 </tbody>
-              </table> 
-              '; 
-              $table2 ='
-              <table>
+              
+                </table> 
+                <table>
                 <thead>
                   <tr>
                     <th>Partida</th>
@@ -209,21 +236,28 @@ class Servicio_Controller extends CI_Controller {
                   </tr>
                 </thead>
                 <tbody>
+                ';
+           }
+                foreach($Registro as $registro)
+                {
+                  $table2 .='
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>'.$i.'</td>
+                    <td>'.$registro['Descripcion'].'</td>
+                    <td>'.$registro['Marca'].'</td>
+                    <td>'.$registro['Modelo'].'</td>
+                    <td>'.$registro['NumService'].'</td>
+                    <td>'.$registro['ClaveId'].'</td>
+                    <td>'.$registro['AlcanceMedicion'].'</td>
+                    <td>'.$registro['DivisionMedicion'].'</td>
                   </tr>
+                    ';
+                    $i++;
+                  }
+            $table3 ='
                   
                 </tbody>
               </table>
-              ';
-              $table3 ='
               <table >
                   <thead>
                     <tr>
@@ -339,15 +373,6 @@ class Servicio_Controller extends CI_Controller {
 
     public function Insertar_ajax()
     {
-
-      /*<td class="numser">'.$numser.'</td>
-            <td class="producto">'.$producto.'</td>
-            <td class="codigo">'.$codigo.'</td>
-            <td class="nombre">'.$nombre.'</td>
-            <td class="nLote">'.$nLote.'</td>
-            <td class="fCaducidad">'.$fCaducidad.'</td>
-            <td class="cantidad">'.$cantidad.'</td>
-            <td class="costo">$'.$costo.'</td>*/
         $id = $_POST['id'];
         $producto = $_POST['producto'];
         $codigo = $_POST['codigo'];
@@ -359,6 +384,29 @@ class Servicio_Controller extends CI_Controller {
 
         $Clientes = $this->Clientes_Model->Insertar($id,$producto,$codigo,$nLote,$fCaducidad,$cantidad,$costo,$Cliente );       
     
+    }
+
+    
+    public function InsertarOrdenServicio()
+    {
+      $IdCliente = $_POST['cliente'];
+      $Fecha = $_POST['fecha'];
+      $FechaEnvio = $_POST['FechaEnvio'];
+      $FechaRecibo = $_POST['FechaRecibo'];
+      $Observaciones = $_POST['Observaciones'];      
+
+      $Clientes = $this->Clientes_Model->InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones);       
+
+      echo $Clientes;
+
+    }
+
+    public function InsertarOrdenEquipo()
+    {
+      $IdEquipo = $_POST['idequipo'];
+      $IdOrden = $_POST['idOrden'];
+
+      $Clientes = $this->Clientes_Model->InsertarOrdenEquipo($IdEquipo,$IdOrden); 
     }
     //put your code here
 }
