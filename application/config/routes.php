@@ -57,6 +57,7 @@ $route['default_controller'] = 'Login_Controller/Cargar_Login';
 
 //Servicio
 $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
+$route['Servicio/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcio';
 //$route['default_controller'] = 'Ccalendar';
 $route['NotaMedica/ElaborarNota/(.+)'] = 'NotaMedica_Controller/Load_ElaborarNotaMedica/$1';
 $route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';

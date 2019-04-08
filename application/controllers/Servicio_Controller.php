@@ -33,6 +33,15 @@ class Servicio_Controller extends CI_Controller {
         $this->load->view('templates/FormFooter',$data); 
         $this->load->view('templates/FooterContainer');
     }
+
+    public function Load_ConsultarOrdenServcio()
+    {
+        $data['title'] = 'Consultas de Ordenes de Servicio';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardOrdenServicioAbierto');
+        $this->load->view('templates/FooterContainer');
+    }
     
     public function CrearNuevaOrden()
     {

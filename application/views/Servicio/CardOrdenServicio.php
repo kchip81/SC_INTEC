@@ -411,15 +411,16 @@
     {
         datos={"idOrden":idOrden};
 
-        $.ajax
+        location.href ="<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF";
+        /*$.ajax
         ({
-            type:'post',
+            //type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF', 
-            data:datos,    
+           // data:datos,    
             success:function(resp)
             {
             }
-        });
+        });*/
     }
 
     function remover()

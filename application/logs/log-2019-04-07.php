@@ -1058,3 +1058,465 @@ DEBUG - 2019-04-07 07:48:44 --> Session: "sess_save_path" is empty; using "sessi
 DEBUG - 2019-04-07 07:48:44 --> M_pdf class already loaded. Second attempt ignored.
 ERROR - 2019-04-07 07:48:44 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
 DEBUG - 2019-04-07 07:48:45 --> Total execution time: 0.8203
+DEBUG - 2019-04-07 18:12:18 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:12:18 --> No URI present. Default controller set.
+DEBUG - 2019-04-07 18:12:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:12:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:12:19 --> Total execution time: 1.4857
+DEBUG - 2019-04-07 18:17:47 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:17:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:17:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:17:48 --> Total execution time: 0.1869
+DEBUG - 2019-04-07 18:17:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:17:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:17:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:17:53 --> Total execution time: 1.5602
+DEBUG - 2019-04-07 18:17:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:17:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:17:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:17:54 --> Total execution time: 0.5016
+DEBUG - 2019-04-07 18:17:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:17:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:17:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:17:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:17:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:17:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:17:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:17:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:17:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-07 18:17:58 --> Query error: Cannot add or update a child row: a foreign key constraint fails (`bd_intec`.`orden_servicio`, CONSTRAINT `orden_servicio_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`idcliente`)) - Invalid query: INSERT INTO `orden_servicio` (`IdCliente`, `Fecha`, `FechaEnvio`, `FechaRecibo`, `Observaciones`) VALUES ('', '2019-04-07', '2019-04-07', '2019-04-07', '')
+DEBUG - 2019-04-07 18:17:58 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 18:17:58 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 18:18:00 --> Total execution time: 2.1578
+DEBUG - 2019-04-07 18:18:00 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 18:18:00 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 18:18:00 --> Total execution time: 3.0036
+DEBUG - 2019-04-07 18:18:15 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:18:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:18:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:18:16 --> Total execution time: 0.4154
+DEBUG - 2019-04-07 18:18:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:18:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:18:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:18:17 --> Total execution time: 0.3546
+DEBUG - 2019-04-07 18:19:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:02 --> Total execution time: 0.3259
+DEBUG - 2019-04-07 18:19:15 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:15 --> Total execution time: 0.3243
+DEBUG - 2019-04-07 18:19:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:17 --> Total execution time: 0.3391
+DEBUG - 2019-04-07 18:19:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:20 --> Total execution time: 0.4569
+DEBUG - 2019-04-07 18:19:20 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:20 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:20 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 18:19:20 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 18:19:20 --> Total execution time: 1.1343
+DEBUG - 2019-04-07 18:19:21 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 18:19:21 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 18:19:21 --> Total execution time: 1.6879
+DEBUG - 2019-04-07 18:19:21 --> Total execution time: 1.7315
+DEBUG - 2019-04-07 18:19:28 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 18:19:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 18:19:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 18:19:29 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 18:19:29 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 18:19:29 --> Total execution time: 0.7190
+DEBUG - 2019-04-07 20:16:45 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:16:45 --> No URI present. Default controller set.
+DEBUG - 2019-04-07 20:16:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:16:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:16:45 --> Total execution time: 0.1605
+DEBUG - 2019-04-07 20:16:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:16:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:16:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:16:48 --> Total execution time: 0.2547
+DEBUG - 2019-04-07 20:16:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:16:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:16:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:16:54 --> Total execution time: 0.3580
+DEBUG - 2019-04-07 20:16:55 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:16:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:16:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:16:55 --> Total execution time: 0.3495
+DEBUG - 2019-04-07 20:16:58 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:16:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:16:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:16:58 --> Total execution time: 0.3416
+DEBUG - 2019-04-07 20:17:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:12 --> Total execution time: 0.3244
+DEBUG - 2019-04-07 20:17:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:14 --> Total execution time: 0.4298
+DEBUG - 2019-04-07 20:17:17 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:18 --> Total execution time: 0.3709
+DEBUG - 2019-04-07 20:17:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:20 --> Total execution time: 0.4222
+DEBUG - 2019-04-07 20:17:24 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:24 --> Total execution time: 0.3567
+DEBUG - 2019-04-07 20:17:25 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:25 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:25 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:26 --> Total execution time: 0.5065
+DEBUG - 2019-04-07 20:17:26 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:26 --> Total execution time: 0.6748
+DEBUG - 2019-04-07 20:17:26 --> Total execution time: 0.7612
+DEBUG - 2019-04-07 20:17:26 --> Total execution time: 0.7375
+DEBUG - 2019-04-07 20:17:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:33 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 20:17:33 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 20:17:33 --> Total execution time: 0.8645
+DEBUG - 2019-04-07 20:17:33 --> Total execution time: 1.1734
+DEBUG - 2019-04-07 20:17:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:34 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:34 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:34 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:34 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:34 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 20:17:34 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 20:17:34 --> Total execution time: 1.8997
+DEBUG - 2019-04-07 20:17:35 --> Total execution time: 1.0977
+DEBUG - 2019-04-07 20:17:35 --> Total execution time: 1.4156
+DEBUG - 2019-04-07 20:17:35 --> Total execution time: 1.7219
+DEBUG - 2019-04-07 20:17:35 --> Total execution time: 1.9929
+DEBUG - 2019-04-07 20:17:36 --> Total execution time: 2.2603
+DEBUG - 2019-04-07 20:17:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:17:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:17:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:17:40 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 20:17:40 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 20:17:40 --> Total execution time: 0.8213
+DEBUG - 2019-04-07 20:18:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 20:18:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 20:18:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 20:18:01 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 20:18:01 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 20:18:01 --> Total execution time: 0.7446
+DEBUG - 2019-04-07 22:31:55 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:31:55 --> No URI present. Default controller set.
+DEBUG - 2019-04-07 22:31:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:31:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:31:55 --> Total execution time: 0.1504
+DEBUG - 2019-04-07 22:31:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:31:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:31:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:31:57 --> Total execution time: 0.1770
+DEBUG - 2019-04-07 22:32:00 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:00 --> Total execution time: 0.3943
+DEBUG - 2019-04-07 22:32:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:01 --> Total execution time: 0.4201
+DEBUG - 2019-04-07 22:32:03 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:04 --> Total execution time: 0.3927
+DEBUG - 2019-04-07 22:32:22 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:22 --> Total execution time: 0.2643
+DEBUG - 2019-04-07 22:32:24 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:24 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:24 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:24 --> Total execution time: 0.3880
+DEBUG - 2019-04-07 22:32:24 --> Total execution time: 0.3943
+DEBUG - 2019-04-07 22:32:30 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:31 --> Total execution time: 0.3420
+DEBUG - 2019-04-07 22:32:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:33 --> Total execution time: 0.4785
+DEBUG - 2019-04-07 22:32:33 --> Total execution time: 0.6207
+DEBUG - 2019-04-07 22:32:33 --> Total execution time: 0.5984
+DEBUG - 2019-04-07 22:32:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:32:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:32:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:32:42 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:32:42 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:32:42 --> Total execution time: 1.1385
+DEBUG - 2019-04-07 22:32:42 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:32:42 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:32:43 --> Total execution time: 1.9480
+DEBUG - 2019-04-07 22:32:43 --> Total execution time: 2.3796
+DEBUG - 2019-04-07 22:36:10 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:36:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:36:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:36:10 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:36:10 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:36:11 --> Total execution time: 0.7122
+DEBUG - 2019-04-07 22:36:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:36:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:36:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:36:16 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:36:16 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:36:17 --> Total execution time: 0.7062
+DEBUG - 2019-04-07 22:36:58 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:36:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:36:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:36:59 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:36:59 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:36:59 --> Total execution time: 0.7259
+DEBUG - 2019-04-07 22:37:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:37:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:37:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:37:33 --> Total execution time: 0.3838
+DEBUG - 2019-04-07 22:37:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:37:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:37:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:37:33 --> Total execution time: 0.3352
+DEBUG - 2019-04-07 22:37:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:37:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:37:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:37:39 --> Total execution time: 0.2909
+DEBUG - 2019-04-07 22:37:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:37:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:37:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:37:55 --> Total execution time: 0.4646
+DEBUG - 2019-04-07 22:37:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:37:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:37:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:37:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:37:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:37:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:37:56 --> Total execution time: 0.3755
+DEBUG - 2019-04-07 22:37:56 --> Total execution time: 0.4022
+DEBUG - 2019-04-07 22:38:15 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:38:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:38:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:38:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:38:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:38:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:38:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:38:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:38:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:38:16 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:38:16 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:38:16 --> Total execution time: 0.8653
+DEBUG - 2019-04-07 22:38:17 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:38:17 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:38:17 --> Total execution time: 1.4364
+DEBUG - 2019-04-07 22:38:17 --> Total execution time: 1.8465
+DEBUG - 2019-04-07 22:38:23 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:38:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:38:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:38:24 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:38:24 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:38:24 --> Total execution time: 0.7053
+DEBUG - 2019-04-07 22:38:35 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:38:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:38:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:38:35 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:38:35 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:38:35 --> Total execution time: 0.7531
+DEBUG - 2019-04-07 22:39:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:39:57 --> No URI present. Default controller set.
+DEBUG - 2019-04-07 22:39:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:39:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:39:57 --> Total execution time: 0.1649
+DEBUG - 2019-04-07 22:39:59 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:39:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:00 --> Total execution time: 0.2220
+DEBUG - 2019-04-07 22:40:02 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:02 --> Total execution time: 0.3647
+DEBUG - 2019-04-07 22:40:03 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:03 --> Total execution time: 0.4017
+DEBUG - 2019-04-07 22:40:06 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:06 --> Total execution time: 0.3853
+DEBUG - 2019-04-07 22:40:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:16 --> Total execution time: 0.6127
+DEBUG - 2019-04-07 22:40:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:17 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:17 --> Total execution time: 0.8558
+DEBUG - 2019-04-07 22:40:17 --> Total execution time: 0.9512
+DEBUG - 2019-04-07 22:40:17 --> Total execution time: 1.1544
+DEBUG - 2019-04-07 22:40:18 --> Total execution time: 1.3006
+DEBUG - 2019-04-07 22:40:18 --> Total execution time: 1.2758
+DEBUG - 2019-04-07 22:40:18 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:18 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:18 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:18 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:18 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:19 --> Total execution time: 0.6299
+DEBUG - 2019-04-07 22:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:19 --> Total execution time: 0.9654
+DEBUG - 2019-04-07 22:40:19 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:20 --> Total execution time: 1.0955
+DEBUG - 2019-04-07 22:40:20 --> Total execution time: 1.2767
+DEBUG - 2019-04-07 22:40:20 --> Total execution time: 1.4688
+DEBUG - 2019-04-07 22:40:20 --> Total execution time: 1.6222
+DEBUG - 2019-04-07 22:40:21 --> Total execution time: 1.7479
+DEBUG - 2019-04-07 22:40:21 --> Total execution time: 1.7328
+DEBUG - 2019-04-07 22:40:38 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:38 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:38 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:39 --> Total execution time: 0.4437
+DEBUG - 2019-04-07 22:40:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:39 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:39 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 295
+DEBUG - 2019-04-07 22:40:40 --> Total execution time: 1.4530
+DEBUG - 2019-04-07 22:40:40 --> Total execution time: 1.1677
+DEBUG - 2019-04-07 22:40:40 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:40 --> Total execution time: 1.4319
+DEBUG - 2019-04-07 22:40:40 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:40 --> Total execution time: 1.6064
+DEBUG - 2019-04-07 22:40:40 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:41 --> Total execution time: 1.8583
+DEBUG - 2019-04-07 22:40:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:41 --> Total execution time: 2.1283
+DEBUG - 2019-04-07 22:40:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:41 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:41 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:40:42 --> Total execution time: 1.8768
+DEBUG - 2019-04-07 22:40:42 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:42 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:40:43 --> Total execution time: 2.5366
+DEBUG - 2019-04-07 22:40:43 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:43 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:40:44 --> Total execution time: 3.3499
+DEBUG - 2019-04-07 22:40:44 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:44 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:40:45 --> Total execution time: 4.1012
+DEBUG - 2019-04-07 22:40:45 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:45 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:40:45 --> UTF-8 Support Enabled
+DEBUG - 2019-04-07 22:40:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-07 22:40:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-07 22:40:45 --> Total execution time: 4.6342
+DEBUG - 2019-04-07 22:40:46 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-07 22:40:46 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_Intec\application\controllers\Servicio_Controller.php 252
+DEBUG - 2019-04-07 22:40:46 --> Total execution time: 1.0533

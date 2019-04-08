@@ -212,7 +212,7 @@
             <ul class="menu-content">
               <li><a href="<?php echo site_url('Servicio/NuevaOrden');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Crear Orden de Servicio</a>
               </li>
-              <li><a href="#" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
+              <li><a href="<?php echo site_url('Servicio/ConsultarOrden');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
               </li>
               <li><a href="#" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Historial</a>
               </li>
