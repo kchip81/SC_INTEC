@@ -25,33 +25,17 @@
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
-                                        <th>ID Producto</th>
-                                        <th>Descripcion del Equipo</th>
-                                        <th>Marca</th>
-                                        <th>Modelo</th>
-                                        <th>No. Serie</th>
-                                        <th>Clavé de Identificación</th>
-                                        <th>Alcance de Medicion</th>
-                                        <th>División Minima</th>
-                                        <th>Eliminar</th>
+                                        <th>No. Orden</th>
+                                        <th>Cliente</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Fecha Fin Estimada</th>
+                                        <th>Fecha Fin Real</th>
+                                        <th>Observaciones</th>
                                     </thead>
                                     <tbody id="tabla">
                                         
                                     </tbody>
-                                </table>
-                                
-                            
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn btn-warning mr-1" name="action" value="cancelar">
-                                <i class="icon-cross2"></i> Cancelar
-                            </button>
-                            <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
-                                <i class="icon-check2"></i>Guardar Entrada
-                            </button>
-                            
-                                
-                                
+                                </table>                                                                                    
                         </div>
                                 
                             
@@ -66,5 +50,23 @@
 
 
 <script type="text/javascript">
+
+    $(document).ready(function()
+    {
+        CargarDatos();
+    });
+
+    function CargarDatos()
+    {
+        $.ajax
+        ({
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDatosOrdenes',    
+            success:function(resp)
+            {
+                $("#tabla").html(resp);
+            }
+        });
+    }
+
 
 </script>

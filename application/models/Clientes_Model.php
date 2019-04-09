@@ -99,4 +99,14 @@ class Clientes_Model extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function ConsultarOrdenServicio()
+    {
+        $this->db->select('IdOrden,Fecha,FechaEnvio,FechaRecibo,NombreCompania,Observaciones');
+        $this->db->from('cliente');
+        $this->db->join('orden_servicio', 'orden_servicio.IdCliente = cliente.IdCliente','INNER');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }

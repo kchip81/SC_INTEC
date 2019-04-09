@@ -493,8 +493,6 @@
         if(mes<10)
             mes='0'+mes 
         document.getElementById('FechaReciboIntec').value=ano+"-"+mes+"-"+dia;
-        document.getElementById('FechaEnvioLaboratorio').value=ano+"-"+mes+"-"+dia;
-        document.getElementById('FechaReciboLaboratorio').value=ano+"-"+mes+"-"+dia;
     }
 
     function CargarDatosClientes(id)

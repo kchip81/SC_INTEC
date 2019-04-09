@@ -417,5 +417,25 @@ class Servicio_Controller extends CI_Controller {
 
       $Clientes = $this->Clientes_Model->InsertarOrdenEquipo($IdEquipo,$IdOrden); 
     }
+
+
+    public function ConsultarDatosOrdenes()
+    {
+      
+      $Datos = $this->Clientes_Model->ConsultarOrdenServicio();
+
+      foreach ($Datos as $valor)
+      {
+        echo '
+          <tr>
+          <td>'.$valor['IdOrden'].'</td>
+          <td>'.$valor['Fecha'].'</td>
+          <td>'.$valor['FechaEnvio'].'</td>
+          <td>'.$valor['FechaRecibo'].'</td>
+          <td>'.$valor['NombreCompania'].'</td>
+          <td>'.$valor['Observaciones'].'</td>
+          </tr>';
+      }
+    }
     //put your code here
 }
