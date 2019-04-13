@@ -42,7 +42,25 @@ class Servicio_Controller extends CI_Controller {
         $this->load->view('Servicio/CardOrdenServicioAbierto');
         $this->load->view('templates/FooterContainer');
     }
+
+    public function Load_ConsultarPaqueteOrdenServicio()
+    {
+        $data['title'] = 'Paquete por Orden';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardOrdenServicioPaqueteOrden');
+        $this->load->view('templates/FooterContainer');
+    }
     
+    public function Load_ConsultarPaqueteServicio()
+    {
+        $data['title'] = 'Paquete';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardOrdenServicioPaquete');
+        $this->load->view('templates/FooterContainer');
+    }
+
     public function CrearNuevaOrden()
     {
         /*$action = $this->input->post('action');
@@ -424,18 +442,65 @@ class Servicio_Controller extends CI_Controller {
       
       $Datos = $this->Clientes_Model->ConsultarOrdenServicio();
 
-      foreach ($Datos as $valor)
-      {
-        echo '
+      echo json_encode($Datos);
+
+      /* foreach ($Datos as $valor)
+       {
+         echo '
           <tr>
-          <td>'.$valor['IdOrden'].'</td>
-          <td>'.$valor['Fecha'].'</td>
-          <td>'.$valor['FechaEnvio'].'</td>
-          <td>'.$valor['FechaRecibo'].'</td>
-          <td>'.$valor['NombreCompania'].'</td>
-          <td>'.$valor['Observaciones'].'</td>
-          </tr>';
-      }
+           <td>'.$valor['IdOrden'].'</td>
+           <td>'.$valor['NombreCompania'].'</td>
+           <td></td>
+           <td></td>
+           <td>'.$valor['Fecha'].'</td>
+           <td>'.$valor['FechaEnvio'].'</td>
+           <td>'.$valor['FechaRecibo'].'</td>
+           <td>'.$valor['Observaciones'].'</td>
+           </tr>';
+       }*/
+    }
+
+
+    public function ConsultarLaboratorio_ajax()
+    {
+        $Laboratorios = $this->Clientes_Model->ConsultarLaboratorio();
+
+
+        echo $output ='<option value="">Seleccione un laboratorio</option>';
+
+        foreach ($Laboratorios as $laboratorios)
+        {
+           echo $output ='<option value="'.$laboratorios['IdLaboratorio'].'">'.$laboratorios['Descripcion_lab'].'</option>';
+        }
+    }
+
+
+    public function ConsultarOrdenLaboratorio_ajax()
+    {
+        $Laboratorios = $this->Clientes_Model->ConsultarOrdenLaboratorio();
+       
+        foreach ($Laboratorios as $laboratorios)
+        {
+          echo '
+            <tr>
+            <td>'.$laboratorios['Descripcion'].'</td>
+            <td><input type="checkbox" name="verificar" id="verificar"></td>
+            </tr>';
+        }
+    }
+
+    public function ConsultarOrdenDatosPaqute_ajax()
+    {
+        $Datos = $this->Clientes_Model->ConsultarOrdenPaquete();
+       
+        foreach ($Datos as $datos)
+        {
+          echo '
+            <tr>
+              <td>'.$datos['IdOrden'].'</td>
+              <td><input type="checkbox" name="verificar" id="verificar"></td>
+            </tr>';
+        }
     }
     //put your code here
 }

@@ -105,8 +105,31 @@ class Clientes_Model extends CI_Model{
         $this->db->select('IdOrden,Fecha,FechaEnvio,FechaRecibo,NombreCompania,Observaciones');
         $this->db->from('cliente');
         $this->db->join('orden_servicio', 'orden_servicio.IdCliente = cliente.IdCliente','INNER');
+        $this->db->order_by('IdOrden', 'ASC');
         $query = $this->db->get();
 
         return $query->result_array();
     }
+
+    public function ConsultarLaboratorio()
+    {
+        $this->db->select('*');
+        $this->db->from('laboratorio');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+
+    public function ConsultarOrdenPaquete()
+    {
+        $this->db->select('*');
+        $this->db->from('orden_servicio');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    
 }

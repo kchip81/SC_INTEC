@@ -23,16 +23,18 @@
                         <div class="form-body">  
                             
                                  
-                                <table class="table table-responsive table-bordered table-striped" id="tablaOrdenAbierta">
+                                <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
                                         <th>No. Orden</th>
                                         <th>Cliente</th>
-                                        <th>Total Equipo</th>
-                                        <th>Total Paquete</th>
-                                        <th>Fecha Creación</th>
-                                        <th>Fecha Fin Estimada</th>
-                                        <th>Fecha Fin Real</th>
-                                        <th>Observaciones</th>
+                                        <th>No. Paquete</th>
+                                        <th>Laboratorio</th>
+                                        <th>Total de Equipo</th>
+                                        <th>Fecha Envio Laboratorio</th>
+                                        <th>Fecha Recivido Laboratorio</th>
+                                        <th>Fecha Final Calibrado</th>
+                                        <th>Fecha Rest Laboratorio</th>
+                                        <th>Fecha Rescepcion Intec Laboratorio</th>
                                     </thead>
                                     <tbody id="tabla">
                                         
@@ -54,10 +56,11 @@
 <script type="text/javascript">
 
     $(document).ready(function()
-    {        
-        CargarDatos();
+    {
+        //CargarDatos();
+        //$('#tablaSubProductos').DataTable();
     });
-    
+
     function CargarDatos()
     {
         $.ajax
@@ -65,36 +68,10 @@
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDatosOrdenes',    
             success:function(resp)
             {
-                var OrdenesAbiertas = JSON.parse(resp);
-
-                var t = $("#tablaOrdenAbierta").DataTable({
-                    "destroy": true
-                });
-            
-                t.clear();
-                t.draw();
-
-                var tamaño = OrdenesAbiertas.length;
-
-                for (i=0; i< tamaño ;i++)
-                {              
-                    t.row.add([
-                        OrdenesAbiertas[i]['IdOrden'],
-                        OrdenesAbiertas[i]['NombreCompania'],
-                        OrdenesAbiertas[i]['NombreCompania'],
-                        OrdenesAbiertas[i]['NombreCompania'],
-                        OrdenesAbiertas[i]['Fecha'],    
-                        OrdenesAbiertas[i]['FechaEnvio'],   
-                        OrdenesAbiertas[i]['FechaRecibo'],   
-                        OrdenesAbiertas[i]['Observaciones']   
-
-                        ]).draw(false);  
-
-                }
+                $("#tabla").html(resp);
             }
         });
     }
-
 
 
 </script>
