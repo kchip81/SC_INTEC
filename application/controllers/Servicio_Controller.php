@@ -443,21 +443,24 @@ class Servicio_Controller extends CI_Controller {
       $Datos = $this->Clientes_Model->ConsultarOrdenServicio();
 
       echo json_encode($Datos);
+    }
 
-      /* foreach ($Datos as $valor)
-       {
-         echo '
-          <tr>
-           <td>'.$valor['IdOrden'].'</td>
-           <td>'.$valor['NombreCompania'].'</td>
-           <td></td>
-           <td></td>
-           <td>'.$valor['Fecha'].'</td>
-           <td>'.$valor['FechaEnvio'].'</td>
-           <td>'.$valor['FechaRecibo'].'</td>
-           <td>'.$valor['Observaciones'].'</td>
-           </tr>';
-       }*/
+    public function ConsultarTotalOrdenes()
+    {
+      $idOrden = 1;
+      
+      $Datos = $this->Clientes_Model->ConsultarTotalOrdenes($idOrden);
+
+      echo json_encode($Datos);
+    }
+
+    public function ConsultarTotalEquipo()
+    {
+      $idOrden = 1;
+      
+      $Datos = $this->Clientes_Model->ConsultarTotalEquipo($idOrden);
+
+      echo json_encode($Datos);
     }
 
 
@@ -491,13 +494,15 @@ class Servicio_Controller extends CI_Controller {
 
     public function ConsultarOrdenDatosPaqute_ajax()
     {
-        $Datos = $this->Clientes_Model->ConsultarOrdenPaquete();
+        $id = $_POST['idOrden'];
+        $Datos = $this->Clientes_Model->ConsultarOrdenPaquete($id);
        
         foreach ($Datos as $datos)
         {
           echo '
             <tr>
-              <td>'.$datos['IdOrden'].'</td>
+              <td class="idEquipo">'.$datos['IdEquipoOrden'].'</td>
+              <td class="descripcion">'.$datos['Descripcion'].'</td>
               <td><input type="checkbox" name="verificar" id="verificar"></td>
             </tr>';
         }

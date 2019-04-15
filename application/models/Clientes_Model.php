@@ -110,6 +110,26 @@ class Clientes_Model extends CI_Model{
 
         return $query->result_array();
     }
+    
+    public function ConsultarTotalOrdenes($id)
+    {
+        $this->db->select('count(*) as TotalOrdenes');
+        $this->db->from('');
+        $this->db->where('',$id);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function ConsultarTotalEquipo($id)
+    {
+        $this->db->select('count(*) as TotalEquipo');
+        $this->db->from('equipo_orden');
+        $this->db->where('IdOrden',$id);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     public function ConsultarLaboratorio()
     {
@@ -120,11 +140,35 @@ class Clientes_Model extends CI_Model{
         return $query->result_array();
     }
 
-
-    public function ConsultarOrdenPaquete()
+    public function ConsultarOrdenPaquete($idOrden)
     {
+
         $this->db->select('*');
-        $this->db->from('orden_servicio');
+        $this->db->from('equipo_orden');
+        $this->db->join('equipo', 'equipo.IdEquipo = equipo_orden.IdEquipo','INNER');
+        $this->db->where('IdOrden',$idOrden);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function InsertarOrdenEnvio($IdEquipoOrden,$IdLaboratorio)
+    {
+        $data = array('IdEquipoOrden' => $IdEquipoOrden,'IdLaboratorio' => $IdLaboratorio);
+        $this->db->insert('paquete_envio',$data);  
+        $insertId = $this->db->insert_id();
+        return $insertId;  
+    }
+
+    public function ConsultarPaqueteEnvio()
+    {
+        $this->db->select('IdOrden,laboratorio.Descripcion_lab,equipo.IdEquipo,equipo.Descripcion');
+        $this->db->from('paquete_envio');
+        $this->db->join('equipo_orden', ' paquete_envio.IdEquipoOrden = equipo_orden.IdEquipoOrden','INNER');
+        $this->db->join('laboratorio', 'paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
+        $this->db->join('equipo', 'equipo.IdEquipo = equipo_orden.IdEquipo','INNER');
+        $this->db->where('IdOrden',$idOrden);
 
         $query = $this->db->get();
 

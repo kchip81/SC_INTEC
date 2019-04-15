@@ -3,7 +3,7 @@
             <div class="card">
                 <!--CARD HEADER-->
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">Consulta Ordenes Abiertas</h4>
+                    <h4 class="card-title" id="basic-layout-form">No Orden XXXX</h4>
                     <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                     <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -21,6 +21,33 @@
                     <div class="card-block">
                         <!--FORM BODY-->
                         <div class="form-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="NombreCliente">Cliente:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type="text" id="NombreCliente" class="form-control" placeholder="Cliente" name="NombreCliente" readonly>
+                                            <div class="form-control-position">
+                                            <i class="icon-head"></i>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="compania">Compañía:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type="text" id="compania" class="form-control" placeholder="Compañía" name="compania" readonly>
+                                            <div class="form-control-position">
+                                            <i class="icon-office"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
                              
                             <div class="row">
                                 <div class="col-md-6">
@@ -36,7 +63,8 @@
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubOrdenes">
                                     <thead>
-                                        <th>Orden</th>
+                                        <th>No. Equipo</th>
+                                        <th>Equipo</th>
                                         <th>Verificar</th>
                                     </thead>
                                     <tbody id="tabla">
@@ -46,7 +74,7 @@
                         </div>
                                 
                             
-                        <div class="col-md-3" align="right">
+                        <div class="col-md-3">
                             <div class="form-group" style="margin-top:7px;">
                                 <button type="button" class="btn btn-primary" id="btnCrearSubOrden">Crear</button>
                             </div>
@@ -80,14 +108,31 @@
     $(document).ready(function()
     {
         CargarLaboratorio();
-        CargarOrden();
+        CargarOrden(1);
+        CargarCliente(1);
+    });
+
+    $("#btnCrearSubOrden").click(function()
+    {
+        $("#tabla tr").each(function(){
+            var id = $(this).find(".idEquipo").text();
+            var checked = $(this).find("#verificar").is(":checked");
+            var select = document.getElementById("laboratorio");
+            var laboratorio = select.value; 
+
+            if(checked)
+            {
+                alert(id);
+            }
+
+        });
     });
 
     function CargarLaboratorio()
     {
         $.ajax
         ({
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarLaboratorio_ajax',    
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarLaboratorio_ajax',     
             success:function(resp)
             {
                 $("#laboratorio").html(resp);
@@ -95,11 +140,33 @@
         });
     }
 
-    function CargarOrden()
+    function CargarCliente(cliente)
     {
+        datos = {"id":cliente};
+
         $.ajax
         ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDataClientes_ajax',
+            dataType: 'json',
+            data:datos, 
+            success:function(resp)
+            {
+                $('#NombreCliente').val(resp[0].NombreContacto);
+                $("#compania").val(resp[0].NombreCompania);
+            }
+        });
+    }
+
+    function CargarOrden(idOrden)
+    {
+        datos = {"idOrden":idOrden};
+
+        $.ajax
+        ({
+            type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarOrdenDatosPaqute_ajax',    
+            data:datos,
             success:function(resp)
             {
                 $("#tabla").append(resp);
