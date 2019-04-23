@@ -393,20 +393,23 @@
         var Observaciones =$("#ObservacionesServicio").val();
 
         datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
-
-        $.ajax
-        ({            
-            type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio',
-            data:datos, 
-            success:function(resp)
-            {
-                var id = resp;
-                valorFila(id);
-            }
-        });
+        
+        if(cliente != "")
+        {
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio',
+                data:datos, 
+                success:function(resp)
+                {
+                    var id = resp;
+                    valorFila(id);
+                }
+            });
+        }else
+            alert("Selecione un cliente");
     }
-
     function PDF(idOrden)
     {
         datos={"idOrden":idOrden};

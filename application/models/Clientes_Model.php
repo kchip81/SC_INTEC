@@ -114,8 +114,9 @@ class Clientes_Model extends CI_Model{
     public function ConsultarTotalOrdenes($id)
     {
         $this->db->select('count(*) as TotalOrdenes');
-        $this->db->from('');
-        $this->db->where('',$id);
+        $this->db->from('equipo_orden');
+        $this->db->join('paquete_envio', 'equipo_orden.IdEquipoOrden = paquete_envio.IdEquipoOrden ','INNER');
+        $this->db->where('IdOrden',$id);
 
         $query = $this->db->get();
         return $query->result_array();
@@ -175,5 +176,60 @@ class Clientes_Model extends CI_Model{
         return $query->result_array();
     }
 
-    
+    public function InsertarPaquete($IdEquipoOrden, $IdLaboratorio)
+    {
+        $data = array('IdEquipoOrden' => $IdEquipoOrden,'IdLaboratorio' =>  $IdLaboratorio);
+
+        return $this->db->insert('paquete_envio',$data);        
+    } 
+
+    public function ConsultarPaqueteOrden($idOrden)
+    {
+        $this->db->select('IdPaqueteEnvio,Descripcion_lab,IdEquipo');
+        $this->db->from('equipo_orden');
+        $this->db->join('paquete_envio', 'equipo_orden.IdEquipoOrden = paquete_envio.IdEquipoOrden','INNER');
+        $this->db->join('laboratorio', 'paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
+        $this->db->where('IdOrden',$idOrden);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function ConsultarPaqueteOrdenes($idOrden)
+    {
+        $this->db->select('IdPaqueteEnvio,IdOrden,NombreCompania,paquete_envio.IdEquipoOrden,Descripcion_lab,FechaEnv,FechaRecLab,FechaFinalCalLab,FechaRetLab,FechaRecpIntecLab,Estatus');
+        $this->db->from('equipo_orden');
+        $this->db->join('paquete_envio', 'equipo_orden.IdEquipoOrden = paquete_envio.IdEquipoOrden','INNER');
+        $this->db->join('laboratorio', 'paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
+        $this->db->join('cliente', 'cliente.IdCliente = equipo_orden.IdOrden','INNER');
+        $this->db->where('IdOrden',$idOrden);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function ModificarEstatusPaqueteOrdenes($Estatus,$Fecha,$IdPaqueteEnvio,$fecha)
+    {
+        $Estatus++;
+
+        $data = array(
+            'Estatus' => $Estatus,
+            $Fecha => $fecha
+        );
+
+        $this->db ->where ( 'IdPaqueteEnvio' ,  $IdPaqueteEnvio ); 
+        $this->db->update('paquete_envio', $data);
+    }
+
+    public function ConsultarEstatus($IdPaqueteEnvio)
+    {
+        $this->db->select('Estatus');
+        $this->db->from('paquete_envio');
+        $this->db->where('IdPaqueteEnvio',$IdPaqueteEnvio);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }

@@ -442,26 +442,82 @@ class Servicio_Controller extends CI_Controller {
       
       $Datos = $this->Clientes_Model->ConsultarOrdenServicio();
 
-      echo json_encode($Datos);
+      $array = array();
+
+      foreach($Datos as $dato)
+      {
+        $TE = 0;
+        $TO = 0;
+
+        $totalO = $this->Clientes_Model->ConsultarTotalOrdenes($dato['IdOrden']);
+        foreach($totalO as $t){$TO = $t['TotalOrdenes'];}
+        $totalE = $this->Clientes_Model->ConsultarTotalEquipo($dato['IdOrden']);
+        foreach($totalE as $t){$TE = $t['TotalEquipo'];}
+
+        $arrayOrden = array(
+          "IdOrden" => $dato['IdOrden'],
+          "Fecha" => $dato['Fecha'],
+          "FechaEnvio" => $dato['FechaEnvio'],
+          "FechaRecibo" => $dato['FechaRecibo'],
+          "NombreCompania" => $dato['NombreCompania'],
+          "Observaciones" => $dato['Observaciones'],
+          "TotalEquipo" => $TE,
+          "TotalOrdenes" => $TO
+        );
+
+        array_push($array,$arrayOrden);
+
+      }
+      echo json_encode($array);
     }
 
-    public function ConsultarTotalOrdenes()
+    public function ConsultarPaqueteOrdenes()
     {
-      $idOrden = 1;
       
-      $Datos = $this->Clientes_Model->ConsultarTotalOrdenes($idOrden);
+      $Datos = $this->Clientes_Model->ConsultarPaqueteOrdenes(1);
 
-      echo json_encode($Datos);
+      $array = array();
+
+      foreach($Datos as $dato)
+      {
+        $TE = 0;
+
+        $totalE = $this->Clientes_Model->ConsultarTotalEquipo($dato['IdOrden']);
+        foreach($totalE as $t){$TE = $t['TotalEquipo'];}
+
+        $arrayOrden = array(
+          "IdOrden" => $dato['IdPaqueteEnvio'],
+          "NombreCompania" => $dato['NombreCompania'],
+          "IdEquipoOrden" => $dato['IdEquipoOrden'],
+          "Descripcion_lab" => $dato['Descripcion_lab'],
+          "FechaEnv" => $dato['FechaEnv'],
+          "FechaRecLab" => $dato['FechaRecLab'],
+          "FechaFinalCalLab" => $dato['FechaFinalCalLab'],
+          "FechaRetLab" => $dato['FechaRetLab'],
+          "FechaRecpIntecLab" => $dato['FechaRecpIntecLab'],
+          "Estatus" => $dato['Estatus'],
+          "TotalEquipo" => $TE
+        );
+
+        $boton = '<button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>';
+
+        if($dato['Estatus'] == 0)
+          $arrayOrden['FechaEnv'] = $boton;
+        else if($dato['Estatus'] == 1)
+          $arrayOrden['FechaRecLab'] = $boton;
+        else if($dato['Estatus'] == 2)
+          $arrayOrden['FechaFinalCalLab'] = $boton;
+        else if($dato['Estatus'] == 3)
+          $arrayOrden['FechaRetLab'] = $boton;
+        else if($dato['Estatus'] == 4)
+          $arrayOrden['FechaRecpIntecLab'] = $boton;
+
+        array_push($array,$arrayOrden);
+
+      }
+      echo json_encode($array);
     }
 
-    public function ConsultarTotalEquipo()
-    {
-      $idOrden = 1;
-      
-      $Datos = $this->Clientes_Model->ConsultarTotalEquipo($idOrden);
-
-      echo json_encode($Datos);
-    }
 
 
     public function ConsultarLaboratorio_ajax()
@@ -506,6 +562,56 @@ class Servicio_Controller extends CI_Controller {
               <td><input type="checkbox" name="verificar" id="verificar"></td>
             </tr>';
         }
+    }
+
+    public function InsertarPaquete()
+    {
+      $IdEquipo = $_POST['IdEquipoOrden'];
+      $IdLaboratorio = $_POST['IdLaboratorio'];
+      
+        $Clientes = $this->Clientes_Model->InsertarPaquete($IdEquipo,$IdLaboratorio); 
+    }
+
+    public function ConsultarPaqueteOrden()
+    {
+      $IdOrden = $_POST['idOrden'];
+
+      $Paquete = $this->Clientes_Model->ConsultarPaqueteOrden($IdOrden);
+
+      foreach($Paquete  as $paquete)
+      {
+        echo '
+        <tr>
+          <td class="idPaquete">'.$paquete['IdPaqueteEnvio'].'</td>
+          <td class="laboratorio">'.$paquete['Descripcion_lab'].'</td>
+          <td class="NoEquipo">'.$paquete['IdEquipo'].'</td>
+        </tr>';
+      }
+    }
+
+    public function ModificarPaqueteOrden()
+    {
+      $fecha = $_POST['fecha'];
+      $IdPaqueteEnvio = $_POST['IdPaqueteEnvio'];
+      $Estatus = $this->Clientes_Model->ConsultarEstatus($IdPaqueteEnvio);
+      
+      foreach ($Estatus as $e)
+      {
+        if($e['Estatus'] == 0)
+            $Fecha = "FechaEnv";
+        if($e['Estatus'] == 1)
+            $Fecha = "FechaRecLab";
+        if($e['Estatus'] == 2)
+            $Fecha = "FechaFinalCalLab";
+        if($e['Estatus'] == 3)
+            $Fecha = "FechaRetLab";
+        if($e['Estatus'] == 4)
+            $Fecha = "FechaRecpIntecLab";
+
+        $PaqueteOrden = $this->Clientes_Model->ModificarEstatusPaqueteOrdenes($e['Estatus'],$Fecha,$IdPaqueteEnvio,$fecha);
+      }
+
+
     }
     //put your code here
 }

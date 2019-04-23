@@ -34,7 +34,7 @@
                                         <th>Fecha Fin Real</th>
                                         <th>Observaciones</th>
                                     </thead>
-                                    <tbody id="tabla">
+                                    <tbody id="tablaOrdenes">
                                         
                                     </tbody>
                                 </table>                                                                                    
@@ -57,6 +57,20 @@
     {        
         CargarDatos();
     });
+
+    $(function()
+    {
+        $("#tablaOrdenes").on( 'click', 'tr td:eq(3)' ,TotalEquipos);
+    });
+
+    function TotalEquipos()
+    {       
+        //alert("valor");
+
+        var valor = $(this).parents("tr").find("td").eq(0).text();
+        alert(valor);
+    }
+
     
     function CargarDatos()
     {
@@ -81,20 +95,16 @@
                     t.row.add([
                         OrdenesAbiertas[i]['IdOrden'],
                         OrdenesAbiertas[i]['NombreCompania'],
-                        OrdenesAbiertas[i]['NombreCompania'],
-                        OrdenesAbiertas[i]['NombreCompania'],
+                        OrdenesAbiertas[i]['TotalEquipo'],
+                        OrdenesAbiertas[i]['TotalOrdenes'],
                         OrdenesAbiertas[i]['Fecha'],    
                         OrdenesAbiertas[i]['FechaEnvio'],   
                         OrdenesAbiertas[i]['FechaRecibo'],   
                         OrdenesAbiertas[i]['Observaciones']   
-
                         ]).draw(false);  
-
                 }
             }
         });
     }
-
-
 
 </script>

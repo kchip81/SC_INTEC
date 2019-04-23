@@ -23,7 +23,7 @@
                         <div class="form-body">  
                             
                                  
-                                <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
+                                <table class="table table-responsive table-bordered table-striped" id="tablaSubPaqueteOr">
                                     <thead>
                                         <th>No. Orden</th>
                                         <th>Cliente</th>
@@ -36,7 +36,7 @@
                                         <th>Fecha Rest Laboratorio</th>
                                         <th>Fecha Rescepcion Intec Laboratorio</th>
                                     </thead>
-                                    <tbody id="tabla">
+                                    <tbody id="tablaPaqOrd">
                                         
                                     </tbody>
                                 </table>                                                                                    
@@ -53,22 +53,115 @@
 </div>
 
 
-<script type="text/javascript">
 
+
+<div class="modal" tabindex="-1" role="dialog" id="confirmacion" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title">Fecha</h5>
+      </div>
+      <div class="modal-body">
+        <div class="position-relative has-icon-left">
+          <input type="date" id="FechasCon" class="form-control" name="FechasConfirmacion"/>
+          <div class="form-control-position">
+            <i class="icon-calendar5"></i>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="ConfirmarFecha" type="button" class="btn btn-primary">Confirmar</button>
+        <button id="CancelarFecha" type="button" class="btn btn-primary" onclick="closeForm()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var idPaquete = 0;
+    
     $(document).ready(function()
     {
-        //CargarDatos();
-        //$('#tablaSubProductos').DataTable();
+        CargarDatos();
+        closeForm();
     });
+
+    $(function()
+    {
+        $(document).on( 'click', '#btnConfirmar' ,ConfirmarFechas);
+        $(document).on( 'click', '#ConfirmarFecha' ,ConFecha);
+    });
+
+    function ConFecha()
+    {       
+        var fecha = $("#FechasCon").val();
+       
+        datos={"fecha":fecha,"IdPaqueteEnvio":idPaquete};
+
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ModificarPaqueteOrden', 
+            data:datos,    
+            success:function(resp)
+            {
+                closeForm();
+                CargarDatos();
+            }
+        });
+    }    
+
+    function ConfirmarFechas()
+    {       
+        var valor = $(this).parents("tr").find("td").eq(0).text();
+        //alert(valor);
+        idPaquete = valor;
+        openForm();
+    }
+
+    function openForm() 
+    {
+        document.getElementById("confirmacion").style.display = "block";
+    }
+
+    function closeForm() 
+    {
+        document.getElementById("confirmacion").style.display = "none";
+    }
 
     function CargarDatos()
     {
         $.ajax
         ({
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDatosOrdenes',    
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrdenes',    
             success:function(resp)
             {
-                $("#tabla").html(resp);
+                var OrdenesAbiertas = JSON.parse(resp);
+
+                var t = $("#tablaSubPaqueteOr").DataTable({
+                    "destroy": true
+                });
+            
+                t.clear();
+                t.draw();
+
+                var tamaño = OrdenesAbiertas.length;
+                for (i=0; i< tamaño ;i++)
+                {              
+                    t.row.add([
+                        OrdenesAbiertas[i]['IdOrden'],
+                        OrdenesAbiertas[i]['NombreCompania'],
+                        OrdenesAbiertas[i]['IdEquipoOrden'],
+                        OrdenesAbiertas[i]['Descripcion_lab'],
+                        OrdenesAbiertas[i]['TotalEquipo'], 
+                        OrdenesAbiertas[i]['FechaEnv'],    
+                        OrdenesAbiertas[i]['FechaRecLab'],   
+                        OrdenesAbiertas[i]['FechaFinalCalLab'],   
+                        OrdenesAbiertas[i]['FechaRetLab'],   
+                        OrdenesAbiertas[i]['FechaRecpIntecLab']
+                        ]).draw(false);  
+                }
             }
         });
     }

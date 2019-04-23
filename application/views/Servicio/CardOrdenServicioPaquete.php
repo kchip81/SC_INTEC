@@ -84,10 +84,9 @@
 
                         <table class="table table-responsive table-bordered table-striped" id="tablaSubPaquete">
                             <thead>
-                                <th>No. Orden</th>
+                                <th>No. Orden Paquete</th>
                                 <th>Laboratorio</th>
                                 <th>No. Equipos</th>
-                                <th>Descripción del Equipo</th>
                             </thead>
                             <tbody id="tablaOrden">
                                         
@@ -110,23 +109,70 @@
         CargarLaboratorio();
         CargarOrden(1);
         CargarCliente(1);
+        CargarPaqueteOrden(1);
     });
 
     $("#btnCrearSubOrden").click(function()
     {
-        $("#tabla tr").each(function(){
-            var id = $(this).find(".idEquipo").text();
-            var checked = $(this).find("#verificar").is(":checked");
-            var select = document.getElementById("laboratorio");
-            var laboratorio = select.value; 
+        var select = document.getElementById("laboratorio");
+        var laboratorio = select.value; 
 
-            if(checked)
-            {
-                alert(id);
-            }
+        if(laboratorio != "")
+        {
+    
+            $("#tabla tr").each(function(){
+                var id = $(this).find(".idEquipo").text();
+                var checked = $(this).find("#verificar").is(":checked");
+                var select = document.getElementById("laboratorio");
+                var laboratorio = select.value; 
 
-        });
+                if(checked)
+                {
+                        InsertarPaquete(laboratorio,id);
+                        $(this).find("#verificar").parents("tr").remove();
+                }
+            });
+        }else
+            alert("Selecione un laboratorio");
     });
+
+    $('input[type=checkbox]:checked').each(function(){
+        $(this).parents("tr").remove();
+    });
+
+    function InsertarPaquete(IdLaboratorio,IdEquipoOrden)
+    {
+        datos = {"IdEquipoOrden":IdEquipoOrden,"IdLaboratorio":IdLaboratorio};
+
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/InsertarPaquete',
+            data:datos, 
+            success:function(resp)
+            {
+                //alert("Se inserto");
+                CargarPaqueteOrden(1);
+            }
+        });
+    }
+
+    function CargarPaqueteOrden(idOrden)
+    {
+        datos = {"idOrden":idOrden};
+
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrden',    
+            data:datos,
+            success:function(resp)
+            {
+                $("#tablaOrden tr").remove();
+                $("#tablaOrden").append(resp);
+            }
+        });
+    }
 
     function CargarLaboratorio()
     {
