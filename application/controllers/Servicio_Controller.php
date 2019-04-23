@@ -499,7 +499,7 @@ class Servicio_Controller extends CI_Controller {
           "TotalEquipo" => $TE
         );
 
-        $boton = '<button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>';
+        $boton = '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmacion" id="btnConfirmar">Confirmar</button>';
 
         if($dato['Estatus'] == 0)
           $arrayOrden['FechaEnv'] = $boton;

@@ -31,10 +31,10 @@
                                         <th>Laboratorio</th>
                                         <th>Total de Equipo</th>
                                         <th>Fecha Envio Laboratorio</th>
-                                        <th>Fecha Recivido Laboratorio</th>
+                                        <th>Fecha Recibido Laboratorio</th>
                                         <th>Fecha Final Calibrado</th>
                                         <th>Fecha Rest Laboratorio</th>
-                                        <th>Fecha Rescepcion Intec Laboratorio</th>
+                                        <th>Fecha Recepcion Intec Laboratorio</th>
                                     </thead>
                                     <tbody id="tablaPaqOrd">
                                         
@@ -55,7 +55,7 @@
 
 
 
-<div class="modal" tabindex="-1" role="dialog" id="confirmacion" aria-hidden="true">
+<div class="modal fade" tabindex="-1" role="dialog" id="confirmacion" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -71,8 +71,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button id="ConfirmarFecha" type="button" class="btn btn-primary">Confirmar</button>
-        <button id="CancelarFecha" type="button" class="btn btn-primary" onclick="closeForm()">Cancelar</button>
+        <button id="ConfirmarFecha" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+        <button id="CancelarFecha" type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>
@@ -84,7 +84,7 @@
     $(document).ready(function()
     {
         CargarDatos();
-        closeForm();
+        //closeForm();
     });
 
     $(function()
@@ -106,7 +106,7 @@
             data:datos,    
             success:function(resp)
             {
-                closeForm();
+                //closeForm();
                 CargarDatos();
             }
         });
