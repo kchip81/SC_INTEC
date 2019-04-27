@@ -53,8 +53,9 @@ class Servicio_Controller extends CI_Controller {
     }
     
     public function Load_ConsultarPaqueteServicio()
-    {
-        $data['title'] = 'Paquete';
+    {        
+        
+        $data['title'] = 'Paquetes';
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Servicio/CardOrdenServicioPaquete');
@@ -340,6 +341,19 @@ class Servicio_Controller extends CI_Controller {
            echo $output ='<option value="'.$cliente['IdCliente'].'">'.$cliente['NombreCompania'].'</option>';
         }
     }
+  
+    public function ConsultarDatosClientes()
+    {
+      $id = $_POST['id'];
+
+      if($id != "")
+      {
+          $Clientes = $this->Clientes_Model->ConsultarDatosPaqueteClientes($id);     
+          $json = array();
+          $json = $Clientes;
+          echo json_encode($json);
+      }
+    }
 
     public function ConsultarDataClientes_ajax()
     {
@@ -451,7 +465,7 @@ class Servicio_Controller extends CI_Controller {
 
         $totalO = $this->Clientes_Model->ConsultarTotalOrdenes($dato['IdOrden']);
         foreach($totalO as $t){$TO = $t['TotalOrdenes'];}
-        $totalE = $this->Clientes_Model->ConsultarTotalEquipo($dato['IdOrden']);
+        $totalE = $this->Clientes_Model->ConsultarTotalEquipos($dato['IdOrden']);
         foreach($totalE as $t){$TE = $t['TotalEquipo'];}
 
         $arrayOrden = array(
@@ -473,8 +487,11 @@ class Servicio_Controller extends CI_Controller {
 
     public function ConsultarPaqueteOrdenes()
     {
+      $idEnvio = $_POST['idEnvio'];
+      $idorden = $_POST['idOrden'];
+
       
-      $Datos = $this->Clientes_Model->ConsultarPaqueteOrdenes(1);
+      $Datos = $this->Clientes_Model->ConsultarPaqueteOrdenes($idorden);
 
       $array = array();
 
@@ -482,13 +499,14 @@ class Servicio_Controller extends CI_Controller {
       {
         $TE = 0;
 
-        $totalE = $this->Clientes_Model->ConsultarTotalEquipo($dato['IdOrden']);
+        $totalE = $this->Clientes_Model->ConsultarTotalEquipo($dato['IdOrden'],$dato['IdPaqueteEnvio']);
         foreach($totalE as $t){$TE = $t['TotalEquipo'];}
 
         $arrayOrden = array(
-          "IdOrden" => $dato['IdPaqueteEnvio'],
+          "IdOrden" => $dato['IdOrden'],
+          "IdPaqueteEnvio" => $dato['IdPaqueteEnvio'],
           "NombreCompania" => $dato['NombreCompania'],
-          "IdEquipoOrden" => $dato['IdEquipoOrden'],
+          "Descripcion" => $dato['Descripcion'],
           "Descripcion_lab" => $dato['Descripcion_lab'],
           "FechaEnv" => $dato['FechaEnv'],
           "FechaRecLab" => $dato['FechaRecLab'],
@@ -554,23 +572,36 @@ class Servicio_Controller extends CI_Controller {
         $Datos = $this->Clientes_Model->ConsultarOrdenPaquete($id);
        
         foreach ($Datos as $datos)
-        {
-          echo '
-            <tr>
-              <td class="idEquipo">'.$datos['IdEquipoOrden'].'</td>
-              <td class="descripcion">'.$datos['Descripcion'].'</td>
-              <td><input type="checkbox" name="verificar" id="verificar"></td>
-            </tr>';
+        { 
+          if($datos['IdPaqueteEnvio'] == null)
+          {
+            echo '
+              <tr>
+                <td class="idEquipo">'.$datos['IdEquipoOrden'].'</td>
+                <td class="descripcion">'.$datos['Descripcion'].'</td>
+                <td><input type="checkbox" name="verificar" id="verificar"></td>
+              </tr>';
+          }
         }
     }
 
     public function InsertarPaquete()
     {
-      $IdEquipo = $_POST['IdEquipoOrden'];
       $IdLaboratorio = $_POST['IdLaboratorio'];
+      $Observacion = $_POST['Observacion'];
+
+      $Clientes = $this->Clientes_Model->InsertarPaquete($IdLaboratorio,$Observacion); 
       
-        $Clientes = $this->Clientes_Model->InsertarPaquete($IdEquipo,$IdLaboratorio); 
+      echo $Clientes;
     }
+
+    public function UpdatePaquete()
+    {
+      $IdEquipo = $_POST['IdEquipoOrden'];
+      $idEnvio = $_POST['idEnvio'];
+
+      $Update = $this->Clientes_Model->ModificarPaqueteOrdenes($idEnvio,$IdEquipo); 
+    } 
 
     public function ConsultarPaqueteOrden()
     {
@@ -610,8 +641,6 @@ class Servicio_Controller extends CI_Controller {
 
         $PaqueteOrden = $this->Clientes_Model->ModificarEstatusPaqueteOrdenes($e['Estatus'],$Fecha,$IdPaqueteEnvio,$fecha);
       }
-
-
     }
     //put your code here
 }

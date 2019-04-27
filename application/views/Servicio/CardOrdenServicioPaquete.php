@@ -3,7 +3,7 @@
             <div class="card">
                 <!--CARD HEADER-->
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">No Orden XXXX</h4>
+                    <h4 class="card-title" id="basic-layout-form">No. Orden </h4>
                     <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                     <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -59,6 +59,21 @@
                                     </div>
                                 </div>                            
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="DescripcionServicio">Descripcion:</label>
+                                        <div class="position-relative has-icon-left">
+                                            <input type="text" id="DescripcionServicio" class="form-control" placeholder="Descripción" name="DescripcionServicio">
+                                            <div class="form-control-position">
+                                                <i class="icon-speech-bubble"></i>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
                             
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubOrdenes">
@@ -82,7 +97,7 @@
                           
 
 
-                        <table class="table table-responsive table-bordered table-striped" id="tablaSubPaquete">
+                        <!--<table class="table table-responsive table-bordered table-striped" id="tablaSubPaquete">
                             <thead>
                                 <th>No. Orden Paquete</th>
                                 <th>Laboratorio</th>
@@ -91,7 +106,7 @@
                             <tbody id="tablaOrden">
                                         
                             </tbody>
-                        </table>
+                        </table>-->
 
 
                             
@@ -104,34 +119,37 @@
 
 <script type="text/javascript">
 
+    var idEnvio = 0;
+    var Orden = <?php echo $this->uri->segment(3);?>;
+
     $(document).ready(function()
     {
         CargarLaboratorio();
-        CargarOrden(1);
-        CargarCliente(1);
-        CargarPaqueteOrden(1);
+        CargarOrden(Orden);
+        CargarCliente(Orden);
+        CargarPaqueteOrden(Orden);
+        document.getElementById("basic-layout-form").innerHTML = "No. Orden "+ Orden;
     });
 
     $("#btnCrearSubOrden").click(function()
     {
         var select = document.getElementById("laboratorio");
         var laboratorio = select.value; 
-
+        var Observacion = $('#DescripcionServicio').val();
+        
         if(laboratorio != "")
         {
-    
+            var contador = 0;
             $("#tabla tr").each(function(){
-                var id = $(this).find(".idEquipo").text();
                 var checked = $(this).find("#verificar").is(":checked");
-                var select = document.getElementById("laboratorio");
-                var laboratorio = select.value; 
 
                 if(checked)
-                {
-                        InsertarPaquete(laboratorio,id);
-                        $(this).find("#verificar").parents("tr").remove();
-                }
+                    contador++;
             });
+            if(contador != 0)
+            {
+                InsertarPaquete(laboratorio,Observacion);
+            }
         }else
             alert("Selecione un laboratorio");
     });
@@ -140,9 +158,9 @@
         $(this).parents("tr").remove();
     });
 
-    function InsertarPaquete(IdLaboratorio,IdEquipoOrden)
+    function InsertarPaquete(IdLaboratorio,Observacion)
     {
-        datos = {"IdEquipoOrden":IdEquipoOrden,"IdLaboratorio":IdLaboratorio};
+        datos = {"IdLaboratorio":IdLaboratorio,"Observacion":Observacion};
 
         $.ajax
         ({
@@ -151,8 +169,39 @@
             data:datos, 
             success:function(resp)
             {
-                //alert("Se inserto");
-                CargarPaqueteOrden(1);
+                idEnvio = resp;
+                ActualizarPaquete(resp);
+
+            }
+        });
+    }
+
+    function ActualizarPaquete(idEnvios)
+    {     
+
+        $("#tabla tr").each(function(){
+            var id = $(this).find(".idEquipo").text();
+            var checked = $(this).find("#verificar").is(":checked");
+
+            //alert(id);
+                        
+            if(checked)
+            {
+                $(this).find("#verificar").parents("tr").remove();
+                
+                datos = {"IdEquipoOrden":id,"idEnvio":idEnvios};
+
+                $.ajax
+                ({
+                    type:'post',
+                    url:'<?php echo site_url();?>/Servicio_Controller/UpdatePaquete',
+                    data:datos, 
+                    success:function(resp)
+                    {
+
+                    }
+                });
+
             }
         });
     }
@@ -193,7 +242,7 @@
         $.ajax
         ({
             type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDataClientes_ajax',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDatosClientes',
             dataType: 'json',
             data:datos, 
             success:function(resp)

@@ -22,9 +22,21 @@ class Clientes_Model extends CI_Model{
 
     public function ConsultarDataClientes($idCliente)
     {
-        $this->db->select($this->table.'.*');
-        $this->db->from($this->table);
-        $this->db->where($this->table.".IdCliente = '$idCliente'");
+        $this->db->select('*');
+        $this->db->from('cliente');
+        $this->db->where('IdCliente',$idCliente);
+        
+        $query = $this->db->get();
+
+        return $query->result_array();
+    } 
+
+    public function ConsultarDatosPaqueteClientes($idOrden)
+    {
+        $this->db->select('NombreCompania,NombreContacto');
+        $this->db->from('orden_servicio');
+        $this->db->join('cliente', 'cliente.IdCliente = orden_servicio.IdCliente','INNER');
+        $this->db->where('IdOrden',$idOrden);
         
         $query = $this->db->get();
 
@@ -115,14 +127,25 @@ class Clientes_Model extends CI_Model{
     {
         $this->db->select('count(*) as TotalOrdenes');
         $this->db->from('equipo_orden');
-        $this->db->join('paquete_envio', 'equipo_orden.IdEquipoOrden = paquete_envio.IdEquipoOrden ','INNER');
+        $this->db->join('paquete_envio', 'equipo_orden.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio ','INNER');
         $this->db->where('IdOrden',$id);
 
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    public function ConsultarTotalEquipo($id)
+    public function ConsultarTotalEquipo($id,$idEnvio)
+    {
+        $this->db->select('count(*) as TotalEquipo');
+        $this->db->from('equipo_orden');
+        $this->db->where('IdOrden',$id);
+        $this->db->where('IdPaqueteEnvio',$idEnvio);
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function ConsultarTotalEquipos($id)
     {
         $this->db->select('count(*) as TotalEquipo');
         $this->db->from('equipo_orden');
@@ -176,11 +199,15 @@ class Clientes_Model extends CI_Model{
         return $query->result_array();
     }
 
-    public function InsertarPaquete($IdEquipoOrden, $IdLaboratorio)
+    public function InsertarPaquete($IdLaboratorio,$Observacion)
     {
-        $data = array('IdEquipoOrden' => $IdEquipoOrden,'IdLaboratorio' =>  $IdLaboratorio);
+        //'IdEquipoOrden' => $IdEquipoOrden,
+        $data = array('IdLaboratorio' =>  $IdLaboratorio,'Descripcion' => $Observacion);
 
-        return $this->db->insert('paquete_envio',$data);        
+        $this->db->insert('paquete_envio',$data);
+        
+        $insertId = $this->db->insert_id();
+        return $insertId;
     } 
 
     public function ConsultarPaqueteOrden($idOrden)
@@ -198,9 +225,9 @@ class Clientes_Model extends CI_Model{
 
     public function ConsultarPaqueteOrdenes($idOrden)
     {
-        $this->db->select('IdPaqueteEnvio,IdOrden,NombreCompania,paquete_envio.IdEquipoOrden,Descripcion_lab,FechaEnv,FechaRecLab,FechaFinalCalLab,FechaRetLab,FechaRecpIntecLab,Estatus');
+        $this->db->select('equipo_orden.IdPaqueteEnvio,Descripcion,IdOrden,NombreCompania,Descripcion_lab,FechaEnv,FechaRecLab,FechaFinalCalLab,FechaRetLab,FechaRecpIntecLab,Estatus');
         $this->db->from('equipo_orden');
-        $this->db->join('paquete_envio', 'equipo_orden.IdEquipoOrden = paquete_envio.IdEquipoOrden','INNER');
+        $this->db->join('paquete_envio', 'equipo_orden.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
         $this->db->join('laboratorio', 'paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
         $this->db->join('cliente', 'cliente.IdCliente = equipo_orden.IdOrden','INNER');
         $this->db->where('IdOrden',$idOrden);
@@ -231,5 +258,15 @@ class Clientes_Model extends CI_Model{
         $query = $this->db->get();
 
         return $query->result_array();
+    }
+
+    public function ModificarPaqueteOrdenes($IdPaqueteEnvio,$IdEquipoOrden)
+    {
+        $data = array(
+            'IdPaqueteEnvio' => $IdPaqueteEnvio
+        );
+
+        $this->db ->where ( 'IdEquipoOrden' ,  $IdEquipoOrden ); 
+        $this->db->update('equipo_orden', $data);
     }
 }

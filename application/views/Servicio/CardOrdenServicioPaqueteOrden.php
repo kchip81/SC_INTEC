@@ -3,7 +3,7 @@
             <div class="card">
                 <!--CARD HEADER-->
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">Consulta Ordenes Abiertas</h4>
+                    <h4 class="card-title" id="basic-layout-form">Consulta Ordenes</h4>
                     <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                     <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -28,6 +28,7 @@
                                         <th>No. Orden</th>
                                         <th>Cliente</th>
                                         <th>No. Paquete</th>
+                                        <th>Descripción</th>
                                         <th>Laboratorio</th>
                                         <th>Total de Equipo</th>
                                         <th>Fecha Envio Laboratorio</th>
@@ -80,12 +81,26 @@
 
 <script type="text/javascript">
     var idPaquete = 0;
+    var idOrden =  <?php echo $this->uri->segment(3);?>;
     
     $(document).ready(function()
     {
         CargarDatos();
         //closeForm();
     });
+
+    $(function()
+    {
+        $("#tablaSubPaqueteOr").on( 'click', 'tr td:eq(5)' ,TotalEquipos);
+    });
+
+    function TotalEquipos()
+    {       
+        var valor = $(this).parents("tr").find("td").eq(0).text();
+        var direccion= "<?php echo site_url();?>/Servicio/ConsultarPaquetes/"+valor;
+        
+        location.href=direccion;
+    }
 
     $(function()
     {
@@ -132,9 +147,14 @@
 
     function CargarDatos()
     {
+        datos= {"idEnvio":idPaquete,"idOrden":idOrden};
+        
+
         $.ajax
         ({
+            type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrdenes',    
+            data:datos,
             success:function(resp)
             {
                 var OrdenesAbiertas = JSON.parse(resp);
@@ -152,7 +172,8 @@
                     t.row.add([
                         OrdenesAbiertas[i]['IdOrden'],
                         OrdenesAbiertas[i]['NombreCompania'],
-                        OrdenesAbiertas[i]['IdEquipoOrden'],
+                        OrdenesAbiertas[i]['IdPaqueteEnvio'],
+                        OrdenesAbiertas[i]['Descripcion'],
                         OrdenesAbiertas[i]['Descripcion_lab'],
                         OrdenesAbiertas[i]['TotalEquipo'], 
                         OrdenesAbiertas[i]['FechaEnv'],    

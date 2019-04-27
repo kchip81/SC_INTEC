@@ -60,15 +60,28 @@
 
     $(function()
     {
-        $("#tablaOrdenes").on( 'click', 'tr td:eq(3)' ,TotalEquipos);
+        $("#tablaOrdenAbierta").on( 'click', 'tr td:eq(3)' ,TotalPaquetes);
     });
 
     function TotalEquipos()
     {       
-        //alert("valor");
-
         var valor = $(this).parents("tr").find("td").eq(0).text();
-        alert(valor);
+        var direccion= "<?php echo site_url();?>/Servicio/ConsultarOrdenPaquetes/"+valor;
+
+        location.href=direccion;
+    }
+
+    $(function()
+    {
+        $("#tablaOrdenAbierta").on( 'click', 'tr td:eq(2)' ,TotalEquipos);
+    });
+
+    function TotalPaquetes()
+    {       
+        var valor = $(this).parents("tr").find("td").eq(0).text();
+        var direccion= "<?php echo site_url();?>/Servicio/ConsultarPaquetes/"+valor;
+        
+        location.href=direccion;
     }
 
     
