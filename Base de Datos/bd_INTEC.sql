@@ -87,12 +87,15 @@ CREATE TABLE `equipo_orden` (
   `IdEquipoOrden` int(11) NOT NULL AUTO_INCREMENT,
   `IdOrden` int(11) DEFAULT NULL,
   `IdEquipo` int(11) DEFAULT NULL,
+  `IdPaqueteEnvio` int(11) DEFAULT NULL,
   PRIMARY KEY (`IdEquipoOrden`),
   KEY `IdOrden` (`IdOrden`),
   KEY `IdEquipo` (`IdEquipo`),
+  KEY `IdPaqueteEnvio` (`IdPaqueteEnvio`),
   CONSTRAINT `equipo_orden_ibfk_1` FOREIGN KEY (`IdOrden`) REFERENCES `orden_servicio` (`IdOrden`),
-  CONSTRAINT `equipo_orden_ibfk_2` FOREIGN KEY (`IdEquipo`) REFERENCES `equipo` (`IdEquipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `equipo_orden_ibfk_2` FOREIGN KEY (`IdPaqueteEnvio`) REFERENCES `paquete_envio` (`IdPaqueteEnvio`),
+  CONSTRAINT `equipo_orden_ibfk_3` FOREIGN KEY (`IdEquipo`) REFERENCES `equipo` (`IdEquipo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +104,7 @@ CREATE TABLE `equipo_orden` (
 
 LOCK TABLES `equipo_orden` WRITE;
 /*!40000 ALTER TABLE `equipo_orden` DISABLE KEYS */;
-INSERT INTO `equipo_orden` VALUES (1,1,1),(2,1,3),(3,1,2),(4,2,1),(5,3,1),(6,3,3),(7,3,1),(8,3,3);
+INSERT INTO `equipo_orden` VALUES (1,1,1,1),(2,1,2,2),(3,1,3,1);
 /*!40000 ALTER TABLE `equipo_orden` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +151,7 @@ CREATE TABLE `orden_servicio` (
   PRIMARY KEY (`IdOrden`),
   KEY `IdCliente` (`IdCliente`),
   CONSTRAINT `orden_servicio_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +160,7 @@ CREATE TABLE `orden_servicio` (
 
 LOCK TABLES `orden_servicio` WRITE;
 /*!40000 ALTER TABLE `orden_servicio` DISABLE KEYS */;
-INSERT INTO `orden_servicio` VALUES (1,2,'2019-04-19','0000-00-00','0000-00-00','observacion'),(2,2,'2019-04-20','0000-00-00','0000-00-00',''),(3,3,'2019-04-23','2019-01-01','2019-01-01','nose');
+INSERT INTO `orden_servicio` VALUES (1,2,'2019-04-26','2019-01-01','2020-01-01','Alguna Observacion');
 /*!40000 ALTER TABLE `orden_servicio` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,8 +173,8 @@ DROP TABLE IF EXISTS `paquete_envio`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `paquete_envio` (
   `IdPaqueteEnvio` int(11) NOT NULL AUTO_INCREMENT,
-  `IdEquipoOrden` int(11) DEFAULT NULL,
   `IdLaboratorio` int(11) DEFAULT NULL,
+  `Descripcion` varchar(50) DEFAULT NULL,
   `FechaEnv` date DEFAULT NULL,
   `FechaRecLab` date DEFAULT NULL,
   `FechaFinalCalLab` date DEFAULT NULL,
@@ -179,11 +182,9 @@ CREATE TABLE `paquete_envio` (
   `FechaRecpIntecLab` date DEFAULT NULL,
   `Estatus` int(11) DEFAULT '0',
   PRIMARY KEY (`IdPaqueteEnvio`),
-  KEY `IdEquipoOrden` (`IdEquipoOrden`),
   KEY `IdLaboratorio` (`IdLaboratorio`),
-  CONSTRAINT `paquete_envio_ibfk_1` FOREIGN KEY (`IdEquipoOrden`) REFERENCES `equipo_orden` (`IdEquipoOrden`),
-  CONSTRAINT `paquete_envio_ibfk_2` FOREIGN KEY (`IdLaboratorio`) REFERENCES `laboratorio` (`IdLaboratorio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `paquete_envio_ibfk_1` FOREIGN KEY (`IdLaboratorio`) REFERENCES `laboratorio` (`IdLaboratorio`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,6 +193,7 @@ CREATE TABLE `paquete_envio` (
 
 LOCK TABLES `paquete_envio` WRITE;
 /*!40000 ALTER TABLE `paquete_envio` DISABLE KEYS */;
+INSERT INTO `paquete_envio` VALUES (1,2,'descripcion',NULL,NULL,NULL,NULL,NULL,0),(2,1,'descripcion2',NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `paquete_envio` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -204,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-23 14:22:29
+-- Dump completed on 2019-04-26 21:25:26
