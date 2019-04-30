@@ -58,6 +58,8 @@ $route['default_controller'] = 'Login_Controller/Cargar_Login';
 //Servicio
 $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
 $route['Servicio/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcio';
+$route['Servicio/NuevaOrdenPDF/(.+)']='Servicio_Controller/CrearOrdenPDF/$1';
+
 
 
 $route['Servicio/ConsultarPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteServicio/$1';

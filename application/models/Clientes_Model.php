@@ -59,6 +59,7 @@ class Clientes_Model extends CI_Model{
         $this->db->insert('orden_servicio',$data); 
         
         $insertId = $this->db->insert_id();
+        
         return $insertId;
     }
 
@@ -70,10 +71,11 @@ class Clientes_Model extends CI_Model{
         return $insertId;  
     }
 
-    public function ConsultarEquipo($peticion)
+    public function ConsultarEquipo($peticion,$IdCliente)
     {
         $this->db->select($this->tabla.'.*');
         $this->db->from($this->tabla);
+        $this->db->where('IdCliente',$IdCliente);
         $this->db->where($this->tabla.$peticion);
         
         $query = $this->db->get();
@@ -101,11 +103,12 @@ class Clientes_Model extends CI_Model{
         return $query->result_array();
     }
 
-    public function ConsultarOrdenId()
+    public function ConsultarOrdenId($IdOrden)
     {
         $this->db->select('IdOrden');
         $this->db->from('orden_servicio');
         $this->db->order_by('IdOrden', 'DESC');
+        $this->db->where('IdOrden',$IdOrden);
         $this->db->limit(1);
 
         $query = $this->db->get();
@@ -128,7 +131,7 @@ class Clientes_Model extends CI_Model{
         $this->db->select('count(*) as TotalOrdenes');
         $this->db->from('equipo_orden');
         $this->db->join('paquete_envio', 'equipo_orden.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio ','INNER');
-        $this->db->where('IdOrden',$id);
+        $this->db->where('equipo_orden.IdOrden',$id);
 
         $query = $this->db->get();
         return $query->result_array();
@@ -138,7 +141,7 @@ class Clientes_Model extends CI_Model{
     {
         $this->db->select('count(*) as TotalEquipo');
         $this->db->from('equipo_orden');
-        $this->db->where('IdOrden',$id);
+        $this->db->where('equipo_orden.IdOrden',$id);
         $this->db->where('IdPaqueteEnvio',$idEnvio);
 
         $query = $this->db->get();
@@ -212,7 +215,7 @@ class Clientes_Model extends CI_Model{
 
     public function ConsultarPaqueteOrden($idOrden)
     {
-        $this->db->select('IdPaqueteEnvio,Descripcion_lab,IdEquipo');
+        $this->db->select('equipo_orden.IdPaqueteEnvio,Descripcion_lab,IdEquipo');
         $this->db->from('equipo_orden');
         $this->db->join('paquete_envio', 'equipo_orden.IdEquipoOrden = paquete_envio.IdEquipoOrden','INNER');
         $this->db->join('laboratorio', 'paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');

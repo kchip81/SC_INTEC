@@ -2935,3 +2935,940 @@ DEBUG - 2019-04-27 04:11:03 --> UTF-8 Support Enabled
 DEBUG - 2019-04-27 04:11:04 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2019-04-27 04:11:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2019-04-27 04:11:04 --> Total execution time: 0.3953
+DEBUG - 2019-04-27 06:02:47 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:02:47 --> No URI present. Default controller set.
+DEBUG - 2019-04-27 06:02:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:02:47 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:02:47 --> Total execution time: 0.1068
+DEBUG - 2019-04-27 06:02:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:02:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:02:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:02:49 --> Total execution time: 0.1150
+DEBUG - 2019-04-27 06:02:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:02:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:02:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:02:55 --> Total execution time: 1.1904
+DEBUG - 2019-04-27 06:02:55 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:02:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:02:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-27 06:02:56 --> Query error: Unknown column 'equipo_orden.IdPaqueteEnvio' in 'on clause' - Invalid query: SELECT count(*) as TotalOrdenes
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdPaqueteEnvio` = `paquete_envio`.`IdPaqueteEnvio`
+WHERE `IdOrden` = '1'
+DEBUG - 2019-04-27 06:03:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:03:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:03:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-27 06:03:04 --> Query error: Unknown column 'equipo_orden.IdPaqueteEnvio' in 'on clause' - Invalid query: SELECT count(*) as TotalOrdenes
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdPaqueteEnvio` = `paquete_envio`.`IdPaqueteEnvio`
+WHERE `IdOrden` = '1'
+DEBUG - 2019-04-27 06:17:35 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:17:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:17:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:17:36 --> Total execution time: 0.4720
+DEBUG - 2019-04-27 06:17:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:17:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:17:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:17:36 --> Total execution time: 0.4108
+DEBUG - 2019-04-27 06:17:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:17:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:17:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:17:50 --> Total execution time: 0.4361
+DEBUG - 2019-04-27 06:17:50 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:17:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:17:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:17:50 --> Total execution time: 0.3876
+DEBUG - 2019-04-27 06:17:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:17:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:17:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:17:53 --> Total execution time: 0.4253
+DEBUG - 2019-04-27 06:18:28 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:18:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:18:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:18:29 --> Total execution time: 0.4270
+DEBUG - 2019-04-27 06:18:35 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:18:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:18:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:18:35 --> Total execution time: 0.4142
+DEBUG - 2019-04-27 06:18:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:18:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:18:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:18:39 --> Total execution time: 0.4303
+DEBUG - 2019-04-27 06:18:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:18:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:18:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:18:53 --> Total execution time: 0.4210
+DEBUG - 2019-04-27 06:19:06 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:07 --> Total execution time: 0.4387
+DEBUG - 2019-04-27 06:19:16 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:16 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:16 --> Total execution time: 0.4091
+DEBUG - 2019-04-27 06:19:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:21 --> Total execution time: 0.4405
+DEBUG - 2019-04-27 06:19:28 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:28 --> Total execution time: 0.4239
+DEBUG - 2019-04-27 06:19:34 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:35 --> Total execution time: 0.4187
+DEBUG - 2019-04-27 06:19:39 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:39 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:39 --> Total execution time: 0.4025
+DEBUG - 2019-04-27 06:19:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:41 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:41 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:41 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-27 06:19:41 --> Severity: Notice --> Undefined variable: id C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 96
+ERROR - 2019-04-27 06:19:41 --> Severity: Notice --> Undefined variable: id C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 97
+ERROR - 2019-04-27 06:19:41 --> Severity: Notice --> Undefined variable: table C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 323
+ERROR - 2019-04-27 06:19:41 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 323
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 523
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 523
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 560
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 561
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 563
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nc C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 563
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 566
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 568
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nr C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 568
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 573
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 643
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: direction C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 643
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined offset: 0 C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 648
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21089
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: border_details C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21089
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21092
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: border_details C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21092
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21095
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: border_details C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21095
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21098
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: border_details C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21098
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nc C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21105
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nr C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21106
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nc C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19311
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nr C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19312
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19315
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19318
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19318
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19318
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19318
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: cellLineHeight C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 791
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nc C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19780
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19783
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19786
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19786
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19786
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19786
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: level C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 19789
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined variable: fullpage C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 885
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined variable: maxrowheight C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 885
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nr C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 906
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined variable: remainingpage C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 1107
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined variable: maxfirstrowheight C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 1107
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: level C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21558
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: levelid C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21559
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nc C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21562
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: nr C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21563
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21571
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21579
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21586
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21649
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21652
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 21652
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22837
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22840
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22843
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22851
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: borders_separate C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22868
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22869
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22901
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: max_cell_border_width C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22901
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22901
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22901
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 22966
+ERROR - 2019-04-27 06:19:42 --> Severity: Notice --> Undefined index: margin C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Tag\Table.php 1146
+ERROR - 2019-04-27 06:19:42 --> Severity: error --> Exception: Data has already been sent to output (C:\xampp\htdocs\SC_INTEC-D\system\core\Exceptions.php at line 271), unable to output PDF file C:\xampp\htdocs\SC_INTEC-D\application\libraries\vendor\mpdf\mpdf\src\Mpdf.php 9388
+ERROR - 2019-04-27 06:19:42 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\SC_INTEC-D\system\core\Exceptions.php:271) C:\xampp\htdocs\SC_INTEC-D\system\core\Common.php 570
+DEBUG - 2019-04-27 06:19:43 --> Total execution time: 1.9860
+DEBUG - 2019-04-27 06:19:43 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:43 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:43 --> Total execution time: 0.4625
+DEBUG - 2019-04-27 06:19:44 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:44 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-27 06:19:44 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 280
+DEBUG - 2019-04-27 06:19:45 --> Total execution time: 1.1793
+DEBUG - 2019-04-27 06:19:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:56 --> Total execution time: 0.3996
+DEBUG - 2019-04-27 06:19:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:19:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:19:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:19:57 --> Total execution time: 0.3989
+DEBUG - 2019-04-27 06:20:00 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:20:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:20:00 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:20:01 --> Total execution time: 0.4255
+DEBUG - 2019-04-27 06:20:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:20:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:20:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:20:01 --> Total execution time: 0.4042
+DEBUG - 2019-04-27 06:21:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:21:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:21:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:21:12 --> Total execution time: 0.4123
+DEBUG - 2019-04-27 06:21:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:21:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:21:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:21:13 --> Total execution time: 0.3836
+DEBUG - 2019-04-27 06:21:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:21:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:21:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:21:52 --> Total execution time: 0.4002
+DEBUG - 2019-04-27 06:21:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:21:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:21:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:21:53 --> Total execution time: 0.3900
+DEBUG - 2019-04-27 06:21:55 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:21:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:21:55 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:21:56 --> Total execution time: 0.4000
+DEBUG - 2019-04-27 06:21:56 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:21:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:21:56 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:21:56 --> Total execution time: 0.4035
+DEBUG - 2019-04-27 06:30:10 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:30:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:30:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:30:10 --> Total execution time: 0.3232
+DEBUG - 2019-04-27 06:31:40 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:31:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:31:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:31:41 --> Total execution time: 0.3194
+DEBUG - 2019-04-27 06:33:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:33:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:33:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:33:12 --> Total execution time: 0.3358
+DEBUG - 2019-04-27 06:33:28 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:33:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:33:28 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:33:28 --> Total execution time: 0.3139
+DEBUG - 2019-04-27 06:33:29 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:33:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:33:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:33:29 --> Total execution time: 0.3660
+DEBUG - 2019-04-27 06:33:50 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:33:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:33:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:33:50 --> Total execution time: 0.3246
+DEBUG - 2019-04-27 06:33:51 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:33:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:33:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:33:51 --> Total execution time: 0.4000
+DEBUG - 2019-04-27 06:34:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:34:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:34:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:34:13 --> Total execution time: 0.4061
+DEBUG - 2019-04-27 06:34:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:34:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:34:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:34:14 --> Total execution time: 0.3966
+DEBUG - 2019-04-27 06:35:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:35:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:35:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:35:04 --> Total execution time: 0.2992
+DEBUG - 2019-04-27 06:35:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:35:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:35:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:35:05 --> Total execution time: 0.3423
+DEBUG - 2019-04-27 06:35:20 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:35:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:35:20 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:35:20 --> Total execution time: 0.2939
+DEBUG - 2019-04-27 06:35:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:35:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:35:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:35:21 --> Total execution time: 0.3444
+DEBUG - 2019-04-27 06:43:26 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:43:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:43:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:43:26 --> Total execution time: 0.3154
+DEBUG - 2019-04-27 06:43:26 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:43:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:43:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:43:27 --> Total execution time: 0.3332
+DEBUG - 2019-04-27 06:43:29 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:43:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:43:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:43:29 --> Total execution time: 0.2846
+DEBUG - 2019-04-27 06:43:29 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:43:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:43:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:43:29 --> Total execution time: 0.3109
+DEBUG - 2019-04-27 06:43:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:43:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:43:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:43:52 --> Total execution time: 0.3935
+DEBUG - 2019-04-27 06:43:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:43:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:43:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:43:53 --> Total execution time: 0.4150
+DEBUG - 2019-04-27 06:44:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:44:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:44:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:44:04 --> Total execution time: 0.3994
+DEBUG - 2019-04-27 06:44:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:44:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:44:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:44:05 --> Total execution time: 0.4233
+DEBUG - 2019-04-27 06:44:50 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:44:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:44:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:44:51 --> Total execution time: 0.3051
+DEBUG - 2019-04-27 06:44:51 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:44:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:44:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:44:51 --> Total execution time: 0.3789
+DEBUG - 2019-04-27 06:46:43 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:46:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-04-27 06:46:43 --> 404 Page Not Found: Servicio_Controller/CardOrdenServicioPaquete
+DEBUG - 2019-04-27 06:47:09 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:47:09 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-04-27 06:47:09 --> 404 Page Not Found: Servicio_Controller/ConsultarPaqueteServicio
+DEBUG - 2019-04-27 06:47:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:47:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:47:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:47:13 --> Total execution time: 0.3021
+DEBUG - 2019-04-27 06:47:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:47:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:47:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:47:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:47:14 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:47:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:47:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:47:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:47:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:47:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:47:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:47:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:47:14 --> Total execution time: 0.3700
+DEBUG - 2019-04-27 06:47:14 --> Total execution time: 0.5893
+ERROR - 2019-04-27 06:47:14 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 06:47:15 --> Total execution time: 1.1600
+DEBUG - 2019-04-27 06:48:30 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:31 --> Total execution time: 0.3125
+DEBUG - 2019-04-27 06:48:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:33 --> Total execution time: 0.3054
+DEBUG - 2019-04-27 06:48:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:48:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:48:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:48:33 --> Total execution time: 0.4196
+DEBUG - 2019-04-27 06:48:34 --> Total execution time: 0.6586
+DEBUG - 2019-04-27 06:48:34 --> Total execution time: 0.8848
+DEBUG - 2019-04-27 06:48:34 --> Total execution time: 1.1421
+ERROR - 2019-04-27 06:48:34 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 06:49:20 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:20 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:21 --> Total execution time: 0.4092
+DEBUG - 2019-04-27 06:49:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:21 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:21 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:21 --> Total execution time: 0.4675
+DEBUG - 2019-04-27 06:49:22 --> Total execution time: 0.7857
+ERROR - 2019-04-27 06:49:22 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 06:49:22 --> Total execution time: 1.4110
+DEBUG - 2019-04-27 06:49:23 --> Total execution time: 1.7461
+DEBUG - 2019-04-27 06:49:31 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:31 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:32 --> Total execution time: 0.5396
+DEBUG - 2019-04-27 06:49:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:32 --> Total execution time: 0.4938
+DEBUG - 2019-04-27 06:49:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:36 --> Total execution time: 0.4080
+DEBUG - 2019-04-27 06:49:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:37 --> Total execution time: 0.4835
+DEBUG - 2019-04-27 06:49:37 --> Total execution time: 0.7882
+ERROR - 2019-04-27 06:49:37 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 06:49:38 --> Total execution time: 1.3880
+DEBUG - 2019-04-27 06:49:38 --> Total execution time: 1.7005
+DEBUG - 2019-04-27 06:49:58 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:58 --> Total execution time: 0.3306
+DEBUG - 2019-04-27 06:49:59 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:59 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:59 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:59 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:59 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:49:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:49:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:49:59 --> Total execution time: 0.4042
+DEBUG - 2019-04-27 06:49:59 --> Total execution time: 0.7280
+DEBUG - 2019-04-27 06:50:00 --> Total execution time: 0.9537
+ERROR - 2019-04-27 06:50:00 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 06:50:00 --> Total execution time: 1.5137
+DEBUG - 2019-04-27 06:50:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:02 --> Total execution time: 0.3398
+DEBUG - 2019-04-27 06:50:02 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:02 --> Total execution time: 0.3442
+DEBUG - 2019-04-27 06:50:04 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:04 --> Total execution time: 0.3205
+DEBUG - 2019-04-27 06:50:05 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:05 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:05 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:05 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:05 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:50:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:50:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:50:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-27 06:50:05 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 06:50:05 --> Total execution time: 0.6146
+DEBUG - 2019-04-27 06:50:05 --> Total execution time: 0.8556
+DEBUG - 2019-04-27 06:50:06 --> Total execution time: 1.0752
+DEBUG - 2019-04-27 06:50:06 --> Total execution time: 1.3521
+DEBUG - 2019-04-27 06:54:17 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:17 --> Total execution time: 0.2641
+DEBUG - 2019-04-27 06:54:17 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:18 --> Total execution time: 0.2986
+DEBUG - 2019-04-27 06:54:23 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:24 --> Total execution time: 0.3964
+DEBUG - 2019-04-27 06:54:35 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:35 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:35 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-27 06:54:36 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 283
+DEBUG - 2019-04-27 06:54:36 --> Total execution time: 0.9569
+DEBUG - 2019-04-27 06:54:36 --> Total execution time: 1.3032
+DEBUG - 2019-04-27 06:54:46 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:46 --> Total execution time: 0.3690
+DEBUG - 2019-04-27 06:54:50 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:50 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:50 --> Total execution time: 0.3763
+DEBUG - 2019-04-27 06:54:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:53 --> Total execution time: 0.5001
+DEBUG - 2019-04-27 06:54:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:53 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-27 06:54:53 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 326
+DEBUG - 2019-04-27 06:54:53 --> Total execution time: 1.3970
+DEBUG - 2019-04-27 06:54:54 --> Total execution time: 1.2464
+DEBUG - 2019-04-27 06:54:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:54:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:54:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:54:54 --> M_pdf class already loaded. Second attempt ignored.
+ERROR - 2019-04-27 06:54:54 --> Severity: Notice --> Undefined variable: table2 C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 283
+DEBUG - 2019-04-27 06:54:55 --> Total execution time: 0.9920
+DEBUG - 2019-04-27 06:55:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:01 --> Total execution time: 0.3555
+DEBUG - 2019-04-27 06:55:02 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:02 --> Total execution time: 0.3359
+DEBUG - 2019-04-27 06:55:05 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:06 --> Total execution time: 0.3463
+DEBUG - 2019-04-27 06:55:06 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:06 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:06 --> Total execution time: 0.3392
+DEBUG - 2019-04-27 06:55:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:12 --> Total execution time: 0.3790
+DEBUG - 2019-04-27 06:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:13 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:13 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:13 --> Total execution time: 0.4426
+DEBUG - 2019-04-27 06:55:13 --> Total execution time: 0.6859
+DEBUG - 2019-04-27 06:55:14 --> Total execution time: 0.9533
+DEBUG - 2019-04-27 06:55:14 --> Total execution time: 1.2009
+ERROR - 2019-04-27 06:55:14 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 06:55:36 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:37 --> Total execution time: 0.4343
+DEBUG - 2019-04-27 06:55:37 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:37 --> Total execution time: 0.3854
+DEBUG - 2019-04-27 06:55:51 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:51 --> Total execution time: 0.3645
+DEBUG - 2019-04-27 06:55:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:55:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:55:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:55:52 --> Total execution time: 0.4539
+DEBUG - 2019-04-27 06:55:52 --> Total execution time: 0.7442
+DEBUG - 2019-04-27 06:55:53 --> Total execution time: 1.0356
+ERROR - 2019-04-27 06:55:53 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 06:55:53 --> Total execution time: 1.6086
+DEBUG - 2019-04-27 06:56:07 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:56:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:56:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-27 06:56:08 --> Severity: Notice --> Undefined index: idOrden C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 611
+ERROR - 2019-04-27 06:56:08 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` IS NULL
+DEBUG - 2019-04-27 06:59:11 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:59:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:59:11 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:59:11 --> Total execution time: 0.2873
+DEBUG - 2019-04-27 06:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:59:12 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 06:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:59:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 06:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:59:12 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 06:59:12 --> Total execution time: 0.3866
+DEBUG - 2019-04-27 06:59:12 --> Total execution time: 0.5921
+ERROR - 2019-04-27 06:59:13 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 06:59:13 --> Total execution time: 1.0145
+DEBUG - 2019-04-27 06:59:13 --> Total execution time: 1.1734
+DEBUG - 2019-04-27 07:01:45 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:45 --> Total execution time: 0.3749
+DEBUG - 2019-04-27 07:01:45 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:46 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:46 --> Total execution time: 0.3856
+DEBUG - 2019-04-27 07:01:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:49 --> Total execution time: 0.3833
+DEBUG - 2019-04-27 07:01:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:01:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:01:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:01:49 --> Total execution time: 0.4313
+DEBUG - 2019-04-27 07:01:50 --> Total execution time: 0.7397
+DEBUG - 2019-04-27 07:01:50 --> Total execution time: 0.9992
+ERROR - 2019-04-27 07:01:50 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:01:50 --> Total execution time: 1.5542
+DEBUG - 2019-04-27 07:03:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:03:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:03:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-04-27 07:03:34 --> Severity: Notice --> Undefined index: idOrden C:\xampp\htdocs\SC_INTEC-D\application\controllers\Servicio_Controller.php 611
+ERROR - 2019-04-27 07:03:34 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` IS NULL
+DEBUG - 2019-04-27 07:09:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:09:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:09:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:09:33 --> Total execution time: 0.3024
+DEBUG - 2019-04-27 07:09:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:09:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:09:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:09:34 --> Total execution time: 0.3324
+DEBUG - 2019-04-27 07:09:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:09:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:09:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:09:53 --> Total execution time: 0.2529
+DEBUG - 2019-04-27 07:09:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:09:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:09:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:09:53 --> Total execution time: 0.3031
+DEBUG - 2019-04-27 07:10:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:10:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:10:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:10:01 --> Total execution time: 0.2426
+DEBUG - 2019-04-27 07:10:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:10:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:10:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:10:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:10:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:10:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:10:01 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:10:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:10:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:10:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:10:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:10:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:10:02 --> Total execution time: 0.3017
+DEBUG - 2019-04-27 07:10:02 --> Total execution time: 0.5118
+DEBUG - 2019-04-27 07:10:02 --> Total execution time: 0.7144
+ERROR - 2019-04-27 07:10:02 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:11:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:11:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:11:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:11:32 --> Total execution time: 0.3247
+DEBUG - 2019-04-27 07:11:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:11:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:11:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:11:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:11:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:11:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:11:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:11:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:11:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:11:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:11:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:11:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:11:33 --> Total execution time: 0.3407
+DEBUG - 2019-04-27 07:11:33 --> Total execution time: 0.5140
+ERROR - 2019-04-27 07:11:33 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:11:33 --> Total execution time: 0.9657
+DEBUG - 2019-04-27 07:13:32 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:32 --> Total execution time: 0.3021
+DEBUG - 2019-04-27 07:13:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:33 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:33 --> Total execution time: 0.4119
+DEBUG - 2019-04-27 07:13:33 --> Total execution time: 0.6212
+DEBUG - 2019-04-27 07:13:34 --> Total execution time: 0.8686
+ERROR - 2019-04-27 07:13:34 --> Query error: Unknown column 'paquete_envio.IdEquipoOrden' in 'on clause' - Invalid query: SELECT `paquete_envio`.`IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:13:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:48 --> Total execution time: 0.2688
+DEBUG - 2019-04-27 07:13:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:13:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:13:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:13:49 --> Total execution time: 0.3761
+DEBUG - 2019-04-27 07:13:49 --> Total execution time: 0.5856
+DEBUG - 2019-04-27 07:13:49 --> Total execution time: 0.8009
+ERROR - 2019-04-27 07:13:49 --> Query error: Unknown column 'paquete_envio.IdEquipoOrden' in 'on clause' - Invalid query: SELECT `equipo_orden`.`IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:14:09 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:09 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:10 --> Total execution time: 0.3777
+DEBUG - 2019-04-27 07:14:10 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:10 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:10 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:10 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:10 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:10 --> Total execution time: 0.4059
+DEBUG - 2019-04-27 07:14:11 --> Total execution time: 0.6409
+ERROR - 2019-04-27 07:14:11 --> Query error: Column 'IdPaqueteEnvio' in field list is ambiguous - Invalid query: SELECT `IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:14:11 --> Total execution time: 1.1466
+DEBUG - 2019-04-27 07:14:51 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:51 --> Total execution time: 0.2603
+DEBUG - 2019-04-27 07:14:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:52 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:14:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:14:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:14:52 --> Total execution time: 0.3772
+DEBUG - 2019-04-27 07:14:52 --> Total execution time: 0.5958
+DEBUG - 2019-04-27 07:14:52 --> Total execution time: 0.8217
+ERROR - 2019-04-27 07:14:53 --> Query error: Unknown column 'paquete_envio.IdEquipoOrden' in 'on clause' - Invalid query: SELECT `equipo_orden`.`IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '4'
+DEBUG - 2019-04-27 07:15:48 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:15:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:15:48 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:15:48 --> Total execution time: 0.2564
+DEBUG - 2019-04-27 07:15:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:15:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:15:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:15:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:15:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:15:49 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:15:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:15:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:15:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:15:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:15:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:15:49 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:15:49 --> Total execution time: 0.3809
+DEBUG - 2019-04-27 07:15:49 --> Total execution time: 0.6625
+DEBUG - 2019-04-27 07:15:50 --> Total execution time: 0.9734
+ERROR - 2019-04-27 07:15:50 --> Query error: Unknown column 'paquete_envio.IdEquipoOrden' in 'on clause' - Invalid query: SELECT `equipo_orden`.`IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'
+DEBUG - 2019-04-27 07:15:57 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:15:57 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-04-27 07:15:57 --> 404 Page Not Found: Servicio_Controller/ConsultarPaqueteServicioOrden
+DEBUG - 2019-04-27 07:16:14 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:14 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:14 --> Total execution time: 0.2614
+DEBUG - 2019-04-27 07:16:15 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:15 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:15 --> Total execution time: 0.3487
+DEBUG - 2019-04-27 07:16:22 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:22 --> Total execution time: 0.3614
+DEBUG - 2019-04-27 07:16:23 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:23 --> Total execution time: 0.3563
+DEBUG - 2019-04-27 07:16:53 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:54 --> Total execution time: 0.2756
+DEBUG - 2019-04-27 07:16:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:54 --> UTF-8 Support Enabled
+DEBUG - 2019-04-27 07:16:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-04-27 07:16:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-04-27 07:16:54 --> Total execution time: 0.4259
+DEBUG - 2019-04-27 07:16:55 --> Total execution time: 0.6579
+DEBUG - 2019-04-27 07:16:55 --> Total execution time: 0.8378
+ERROR - 2019-04-27 07:16:55 --> Query error: Unknown column 'paquete_envio.IdEquipoOrden' in 'on clause' - Invalid query: SELECT `equipo_orden`.`IdPaqueteEnvio`, `Descripcion_lab`, `IdEquipo`
+FROM `equipo_orden`
+INNER JOIN `paquete_envio` ON `equipo_orden`.`IdEquipoOrden` = `paquete_envio`.`IdEquipoOrden`
+INNER JOIN `laboratorio` ON `paquete_envio`.`IdLaboratorio` = `laboratorio`.`IdLaboratorio`
+WHERE `IdOrden` = '2'

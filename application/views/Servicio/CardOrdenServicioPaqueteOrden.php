@@ -20,7 +20,8 @@
                 <div class="card-body collapse in">
                     <div class="card-block">
                         <!--FORM BODY-->
-                        <div class="form-body">  
+                        <div class="form-body"> 
+                            <h4>No. Orden #<?php echo $IdOrden;?></h4>
                             
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubPaqueteOr">
@@ -81,7 +82,10 @@
 
 <script type="text/javascript">
     var idPaquete = 0;
-    var idOrden =  <?php echo $this->uri->segment(3);?>;
+    /*
+     * CAMBIO: Se regresa la variable enviada por el controller
+     */
+    var idOrden =  <?php echo $IdOrden;?>;
     
     $(document).ready(function()
     {

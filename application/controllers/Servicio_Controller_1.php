@@ -11,7 +11,7 @@
  *
  * @author SigueMED
  */
-class Servicio_Controller extends CI_Controller {
+class Servicio_Controller_1 extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
@@ -22,8 +22,6 @@ class Servicio_Controller extends CI_Controller {
         $this->load->library('M_pdf');
         
         $this->load->model('OrdenServicio_Model');
-        $this->load->model('Paquetes_Model');
-        $this->load->model('EquipoOrden_Model');
 
     }
     
@@ -63,27 +61,6 @@ class Servicio_Controller extends CI_Controller {
     /*
      * 
      */
-    public function ConsultarEquiposSinPaquete_ajax()
-    {
-        $IdOrden = $this->input->post('IdOrden');
-        
-        $Equipos = $this->EquipoOrden_Model->ConsultarEquiposOrdenPaquete($IdOrden,null);
-        
-        echo json_encode($Equipos);
-        
-        
-        
-    }
-    
-    /*
-     * 
-     */
-    public function AgregarEquipoAPaquete_ajax()
-    {
-        
-        
-    }
-
 
     public function ConsultarPaqueteOrdenServicio($IdOrden)
     {
@@ -589,83 +566,15 @@ class Servicio_Controller extends CI_Controller {
         $Laboratorios = $this->Clientes_Model->ConsultarLaboratorio();
 
 
-        $output ='<option value="">Seleccione un laboratorio</option>';
+        echo $output ='<option value="">Seleccione un laboratorio</option>';
 
         foreach ($Laboratorios as $laboratorios)
         {
-           $output .='<option value="'.$laboratorios['IdLaboratorio'].'">'.$laboratorios['Descripcion_lab'].'</option>';
+           echo $output ='<option value="'.$laboratorios['IdLaboratorio'].'">'.$laboratorios['Descripcion_lab'].'</option>';
         }
-        echo $output;
     }
-    
-    public function CrearNuevoPaquete()
-    {
-        
-        try
-        {
-            $action = $this->input->post('action');
-            
-            if($action =="CrearPaquete")
-            {
-                $this->db->trans_start();
-                
-                $IdOrden = $this->input->post('IdOrden');
-                $Descripcion = $this->input->post('Descripcion');
-                $IdLaboratorio = $this->input->post('laboratorio');
-
-                $NuevoPaquete = array(
-                    'IdOrden'=> $IdOrden,
-                    'Descripcion'=>$Descripcion,
-                    'IdLaboratorio'=> $IdLaboratorio,
-                    'IdEstatusPaquete'=>PQT_CREADO
-
-                );
-
-                $IdNuevoPaquete = $this->Paquetes_Model->CrearNuevoPaquete($NuevoPaquete);
-
-                $EquiposSeleccionados = $this->input->post('chkEquipoPaquete');
-
-                for ($i=0;$i<sizeof($EquiposSeleccionados);$i++)
-                {
-                    $IdEquipoOrden = $EquiposSeleccionados[$i];
-                    $IdPaquete = $IdNuevoPaquete;
-
-                    $this->EquipoOrden_Model->AsignarPaqueteEquipo($IdPaquete, $IdEquipoOrden);
 
 
-                }
-                
-                $transStatus = $this->db->trans_complete();
-                        
-                if ($transStatus == true)
-                {
-                    $this->db->trans_commit();
-                }
-                else
-                {
-                    $this->db->trans_rollback();
-                }
-                
-                echo '<script>alert("Paquete Creado Exitosamente");</script>';
-                redirect(site_url('Servicio/ConsultarOrden'));
-                
-
-            }
-            
-        } catch (Exception $ex) {
-            
-            log_message('error', $ex->getMessage());
-            $this->db->trans_rollback();
-
-        }
-        
-    }
-    
-   
-
-    /*
-     * 
-     */
     public function ConsultarOrdenLaboratorio_ajax()
     {
         $Laboratorios = $this->Clientes_Model->ConsultarOrdenLaboratorio();
@@ -697,6 +606,16 @@ class Servicio_Controller extends CI_Controller {
               </tr>';
           }
         }
+    }
+
+    public function InsertarPaquete()
+    {
+      $IdLaboratorio = $_POST['IdLaboratorio'];
+      $Observacion = $_POST['Observacion'];
+
+      $Clientes = $this->Clientes_Model->InsertarPaquete($IdLaboratorio,$Observacion); 
+      
+      echo $Clientes;
     }
 
     public function UpdatePaquete()

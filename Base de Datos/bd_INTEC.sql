@@ -30,7 +30,7 @@ CREATE TABLE `cliente` (
   `Correo` varchar(50) DEFAULT NULL,
   `Telefono` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `equipo` (
   PRIMARY KEY (`IdEquipo`),
   KEY `IdCliente` (`IdCliente`),
   CONSTRAINT `equipo_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,18 +95,14 @@ CREATE TABLE `equipo_orden` (
   CONSTRAINT `equipo_orden_ibfk_1` FOREIGN KEY (`IdOrden`) REFERENCES `orden_servicio` (`IdOrden`),
   CONSTRAINT `equipo_orden_ibfk_2` FOREIGN KEY (`IdPaqueteEnvio`) REFERENCES `paquete_envio` (`IdPaqueteEnvio`),
   CONSTRAINT `equipo_orden_ibfk_3` FOREIGN KEY (`IdEquipo`) REFERENCES `equipo` (`IdEquipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `equipo_orden`
 --
 
-LOCK TABLES `equipo_orden` WRITE;
-/*!40000 ALTER TABLE `equipo_orden` DISABLE KEYS */;
-INSERT INTO `equipo_orden` VALUES (1,1,1,1),(2,1,2,2),(3,1,3,1);
-/*!40000 ALTER TABLE `equipo_orden` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `laboratorio`
@@ -121,18 +117,14 @@ CREATE TABLE `laboratorio` (
   `Domicilio` varchar(50) DEFAULT NULL,
   `Telefono` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`IdLaboratorio`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `laboratorio`
 --
 
-LOCK TABLES `laboratorio` WRITE;
-/*!40000 ALTER TABLE `laboratorio` DISABLE KEYS */;
-INSERT INTO `laboratorio` VALUES (1,'descripcionlab1','domicilio1','123456789'),(2,'descripcionlab2','domicilio3','123456789'),(3,'descripcionlab3','domicilio3','123456789');
-/*!40000 ALTER TABLE `laboratorio` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `orden_servicio`
@@ -151,18 +143,14 @@ CREATE TABLE `orden_servicio` (
   PRIMARY KEY (`IdOrden`),
   KEY `IdCliente` (`IdCliente`),
   CONSTRAINT `orden_servicio_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `orden_servicio`
 --
 
-LOCK TABLES `orden_servicio` WRITE;
-/*!40000 ALTER TABLE `orden_servicio` DISABLE KEYS */;
-INSERT INTO `orden_servicio` VALUES (1,2,'2019-04-26','2019-01-01','2020-01-01','Alguna Observacion');
-/*!40000 ALTER TABLE `orden_servicio` ENABLE KEYS */;
-UNLOCK TABLES;
+
 
 --
 -- Table structure for table `paquete_envio`
@@ -184,18 +172,14 @@ CREATE TABLE `paquete_envio` (
   PRIMARY KEY (`IdPaqueteEnvio`),
   KEY `IdLaboratorio` (`IdLaboratorio`),
   CONSTRAINT `paquete_envio_ibfk_1` FOREIGN KEY (`IdLaboratorio`) REFERENCES `laboratorio` (`IdLaboratorio`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `paquete_envio`
 --
 
-LOCK TABLES `paquete_envio` WRITE;
-/*!40000 ALTER TABLE `paquete_envio` DISABLE KEYS */;
-INSERT INTO `paquete_envio` VALUES (1,2,'descripcion',NULL,NULL,NULL,NULL,NULL,0),(2,1,'descripcion2',NULL,NULL,NULL,NULL,NULL,0);
-/*!40000 ALTER TABLE `paquete_envio` ENABLE KEYS */;
-UNLOCK TABLES;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

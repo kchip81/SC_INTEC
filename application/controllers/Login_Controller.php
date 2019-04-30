@@ -9,7 +9,7 @@
 /**
  * Description of Login_Controller
  *
- * @author SigueMed
+ * @author Simplifica Mi Negocio
  */
 
 
@@ -20,6 +20,8 @@ class Login_Controller extends CI_Controller {
         
         // Load form helper library
         $this->load->helper('form');
+        
+        $this->load->model('Usuario_Model');
         
         
         
@@ -55,11 +57,50 @@ class Login_Controller extends CI_Controller {
     public function ValidarLogin()
     {
                
-           $this->session->set_userdata('logged_in', TRUE);
+           $Usr = $this->input->post('username');
+            $Contrasena = $this->input->post('password');
+            
+             
+             
+             //Validar el usuario y contraseña
+             $Usuario = $this->Usuario_Model->ValidarUsuarioContrasena($Usr,$Contrasena);
+             //$ClinicasUsuario = 
+             
+             if ($Usuario==TRUE)
+             {//El usuario y contrasena son correctos
+                 
+                 //Cargar funciones del perfil
+                
+                 $SessionData = array(
+                     'IdUsuario'=>$Usuario->IdUsuario,
+                     'NombreUsuario'=>$Usuario->NombreUsuario.' '.$Usuario->ApellidosUsuario,
+                     'IdPerfil'=>$Usuario->IdPerfil,
+                     'DescripcionPerfil'=>$Usuario->DescripcionPerfil,
+                     
+                     'logged_in'=>TRUE,
+                     
+                 );
+                 
+                 //Establecer Sesion del usuario
+                 $this->session->set_userdata($SessionData);
                 
                 $data['title'] = "Intec";
                 $this->load->view('templates/MainContainer', $data);
                 $this->load->view('templates/FooterContainer');
+               
+                 
+                         
+                 
+             }
+             else
+             {
+                $data['errorMessage'] = 'Usuario y/o Contraseña Incorrectos';
+               
+          
+                $this->load->view('Login/login_form', $data);
+             }
+                
+                
                
                  
                          

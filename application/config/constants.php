@@ -86,13 +86,17 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 /*
- * GLOBAL CONSTANTS SGI_SIGUEMED
+ * GLOBAL CONSTANTS SCI_INTEC
  * 
  */
-//PERFILES
-defined('ENFERMERIA')        OR define('ENFERMERIA', 1);
-defined('ADMINISTRACION')        OR define('ADMINISTRACION', 2);
-defined('MEDICO')        OR define('MEDICO', 3);
+//ESTATUS PAQUETES ORDEN
+defined('PQT_CREADO')        OR define('PQT_CREADO', 1);
+defined('PQT_ENVIADOLABORATORIO')        OR define('PQT_ENVIADOLABORATORIO', 2);
+defined('PQT_RECIBIDOLABORATORIO')        OR define('PQT_RECIBIDOLABORATORIO', 3);
+defined('PQT_CALIBRACIONTERMINADA')        OR define('PQT_CALIBRACIONTERMINADA', 4);
+defined('PQT_ENRETORNO')        OR define('PQT_ENRETORNO', 5);
+defined('PQT_RECIBIDOINTEC')        OR define('PQT_RECIBIDOINTECMEDICO', 6);
+
 
 //ESTATUS CITA
 defined('AGENDADA')        OR define('AGENDADA', 1);

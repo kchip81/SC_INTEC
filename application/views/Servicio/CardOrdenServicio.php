@@ -297,13 +297,19 @@
             
         if(numSerie != "")
             peticion = ".NumService = '"+numSerie+"'";
-        if(clave != "")
+        else if(clave != "")
             peticion = ".ClaveId = '"+ clave+ "'";
-        if(modelo != "")
+        else if(modelo != "")
             peticion = ".Modelo = '"+modelo+"'";
+        
 
-        datos= {"peticion":peticion};
+        datos= {
+            "peticion":peticion,
+            IdCliente: $('#cliente').val()
+            
+        };
 
+      
         $.ajax
         ({            
             type:'post',
@@ -341,15 +347,7 @@
     $('#GuardarEntrada').click(function()
     {
         valorOrden();
-
-        $.ajax
-        ({
-            url:'<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF',    
-            success:function(resp)
-            {
-                
-            }
-        });
+     
     });
 
     $(function()
@@ -377,6 +375,7 @@
                 success:function(resp)
                 {
                     removerTabla();
+                    
                     PDF(idOrden);
                 }
             });
@@ -412,9 +411,10 @@
     }
     function PDF(idOrden)
     {
-        datos={"idOrden":idOrden};
-
-        location.href ="<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF";
+        alert("La orden de servicio ha sido creada");
+        window.open("<?php echo site_url();?>/Servicio/NuevaOrdenPDF/"+idOrden);
+//        datos={"idOrden":idOrden};
+//        location.href ="<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF";
         /*$.ajax
         ({
             //type:'post',

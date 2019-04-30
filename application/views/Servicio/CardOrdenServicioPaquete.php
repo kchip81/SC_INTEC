@@ -120,7 +120,7 @@
 <script type="text/javascript">
 
     var idEnvio = 0;
-    var Orden = <?php echo $this->uri->segment(3);?>;
+    var Orden = <?php echo $IdOrden;?>;
 
     $(document).ready(function()
     {
