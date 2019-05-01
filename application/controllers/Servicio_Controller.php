@@ -613,42 +613,46 @@ class Servicio_Controller extends CI_Controller {
                 $Descripcion = $this->input->post('DescripcionServicio');
                 $IdLaboratorio = $this->input->post('laboratorio');
 
-                $NuevoPaquete = array(
-                    'IdOrden'=> $IdOrden,
-                    'Descripcion'=>$Descripcion,
-                    'IdLaboratorio'=> $IdLaboratorio,
-                    'IdEstatusPaquete'=>PQT_CREADO
-
-                );
-
-                $IdNuevoPaquete = $this->Paquetes_Model->CrearNuevoPaquete($NuevoPaquete);
-
-                $EquiposSeleccionados = $this->input->post('chkEquipoPaquete');
-
-                for ($i=0;$i<sizeof($EquiposSeleccionados);$i++)
+                if($IdLaboratorio != 0 )
                 {
-                    $IdEquipoOrden = $EquiposSeleccionados[$i];
-                    $IdPaquete = $IdNuevoPaquete;
+                  $NuevoPaquete = array(
+                      'IdOrden'=> $IdOrden,
+                      'Descripcion'=>$Descripcion,
+                      'IdLaboratorio'=> $IdLaboratorio,
+                      'IdEstatusPaquete'=>PQT_CREADO
 
-                    $this->EquipoOrden_Model->AsignarPaqueteEquipo($IdPaquete, $IdEquipoOrden);
+                  );
 
+                  $IdNuevoPaquete = $this->Paquetes_Model->CrearNuevoPaquete($NuevoPaquete);
 
-                }
-                
-                $transStatus = $this->db->trans_complete();
-                        
-                if ($transStatus == true)
-                {
-                    $this->db->trans_commit();
-                }
-                else
-                {
-                    $this->db->trans_rollback();
-                }
-                
-                echo '<script>alert("Paquete Creado Exitosamente");</script>';
-                redirect(site_url('Servicio/ConsultarOrden'));
-                
+                  $EquiposSeleccionados = $this->input->post('chkEquipoPaquete');
+
+                  for ($i=0;$i<sizeof($EquiposSeleccionados);$i++)
+                  {
+                      $IdEquipoOrden = $EquiposSeleccionados[$i];
+                      $IdPaquete = $IdNuevoPaquete;
+
+                      $this->EquipoOrden_Model->AsignarPaqueteEquipo($IdPaquete, $IdEquipoOrden);
+
+                  }
+                    
+                  $transStatus = $this->db->trans_complete();
+                            
+                  if ($transStatus == true)
+                  {
+                      $this->db->trans_commit();
+                  }
+                  else
+                  {
+                      $this->db->trans_rollback();
+                  }
+                    
+                  echo '<script>alert("Paquete Creado Exitosamente");</script>';
+                  redirect(site_url('Servicio/ConsultarOrden'));
+                }else{
+                  echo '<script>alert("Seleccione un laboratorio");</script>';
+                  redirect(site_url('Servicio/ConsultarOrden'));
+                } 
 
             }
             
