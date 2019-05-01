@@ -610,7 +610,7 @@ class Servicio_Controller extends CI_Controller {
                 $this->db->trans_start();
                 
                 $IdOrden = $this->input->post('IdOrden');
-                $Descripcion = $this->input->post('Descripcion');
+                $Descripcion = $this->input->post('DescripcionServicio');
                 $IdLaboratorio = $this->input->post('laboratorio');
 
                 $NuevoPaquete = array(

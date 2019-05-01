@@ -176,7 +176,14 @@
                 var OrdenesAbiertas = JSON.parse(resp);
 
                 var t = $("#tablaOrdenAbierta").DataTable({
-                    "destroy": true
+                    "destroy": true,
+                    "language": {
+                              "lengthMenu": "Mostrando _MENU_ registros por pag.",
+                              "zeroRecords": "Sin Datos - disculpa",
+                              "info": "Motrando pag. _PAGE_ de _PAGES_",
+                              "infoEmpty": "Sin registros disponibles",
+                              "infoFiltered": "(filtrado de _MAX_ total)"
+                          }
                 });
             
                 t.clear();
@@ -195,7 +202,7 @@
                         OrdenesAbiertas[i]['FechaEnvio'],   
                         OrdenesAbiertas[i]['FechaRecibo'],   
                         OrdenesAbiertas[i]['Observaciones'],
-                        '<a classs = "btn" onclick="ConsultarPaquetesOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>'+
+                        '<a classs = "btn" onclick="ConsultarPaquetesOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>'+ ' ' +
                         '<a classs = "btn" onclick="CrearNuevoPaquete('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-plus" data-toggle="tooltip" data-placement="top" title="Nuevo Paquete"></i></a>'
                         ]).draw(false);  
                 }
@@ -299,6 +306,7 @@
             var _IdOrden = $('#lblIdOrden').html();
             var _IdLaboratorio= $("#laboratorio").val();
             var _Descripcion= $("#DescripcionServicio").val();
+
             
              $.ajax({
                 

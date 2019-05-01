@@ -4,6 +4,7 @@
                 <!--CARD HEADER-->
                 <div class="card-header">
                     <h4 class="card-title" id="basic-layout-form">Consulta Paquetes Orden</h4>
+                    <input type="hidden" id="NoOrden" name="NoOrden">
                     <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                     <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -43,7 +44,30 @@
                                 </table>                                                                                    
                         </div>
                                 
-                            
+                        <div class="modal fade" tabindex="-1" role="dialog" id="modalConfirmacion" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h5 class="modal-title">Fecha</h5>
+                                <input type="hidden" id="IdPaqueteEnvio" name="IdPaqueteEnvio">
+                                <input type="hidden" id="IdEstatusActual" name="IdEstatusActual">
+                            </div>
+                            <div class="modal-body">
+                                <div class="position-relative has-icon-left">
+                                <input type="date" id="FechasCon" class="form-control" name="FechasConfirmacion"/>
+                                <div class="form-control-position">
+                                    <i class="icon-calendar5"></i>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="ConfirmarFecha" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
+                                <button id="CancelarFecha" type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>     
                             
                           
                             
@@ -55,18 +79,16 @@
 <script type="text/javascript">
     function ConsultarPaquetesOrden(IdOrden)
     {
-    alert(IdOrden);
+        $('#NoOrden').val(IdOrden);
         $.ajax({
             url:"<?php echo site_url();?>/Paquetes_Controller/ConsultarPaquetesPorOrden",
             method:"POST",
             data: {IdOrden:IdOrden},
             success: function(r)
               {
-                   alert(r);
+                var Paquetes = JSON.parse(r);
 
-                 var Paquetes = JSON.parse(r);
-
-                 var t = $('#tblPaquetesOrden').DataTable({
+                var t = $('#tblPaquetesOrden').DataTable({
                          "destroy":true,
                          "language": {
                               "lengthMenu": "Mostrando _MENU_ registros por pag.",
@@ -95,7 +117,7 @@
                          Paquetes[i]['FechaFinalCalLab'],
                          Paquetes[i]['FechaRetLab'],
                          Paquetes[i]['FechaRecpIntecLab'],
-                         
+                         '<a></a>'
                          //'<a classs = "btn" onclick="ConsultarFamiliarModal('+Familiares[i]['IdFamiliarResponsable']+')"><i class="icon-edit" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Editar"></i></a>'
 
                      ]).draw(false);
@@ -107,8 +129,38 @@
               }
         });
     }
+
     function ConfirmarPaquete(IdPaqueteEnvio, IdEstatusActual)
+    {        
+        $('#IdPaqueteEnvio').val(IdPaqueteEnvio);
+        $('#IdEstatusActual').val(IdEstatusActual);
+        $("#modalConfirmacion").modal('show');
+    }
+
+    $(function()
     {
-        alert(IdPaqueteEnvio);
+        $(document).on( 'click', '#ConfirmarFecha' ,ConFecha);
+    });
+
+    function ConFecha()
+    {       
+        var fecha = $("#FechasCon").val();
+        var IdPaqueteEnvio = $('#IdPaqueteEnvio').val();
+        var IdEstatusActual =  $('#IdEstatusActual').val();
+       
+        datos={"fecha":fecha,"IdPaqueteEnvio":IdPaqueteEnvio,"IdEstatusActual":IdEstatusActual};
+
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Paquetes_Controller/ModificarPaquetesPorOrden', 
+            data:datos,    
+            success:function(resp)
+            {
+                $("#modalNuevoPaquete").modal('hide');
+                var IdOrden = $('#NoOrden').val();
+                ConsultarPaquetesOrden(IdOrden);
+            }
+        });
     }
 </script>

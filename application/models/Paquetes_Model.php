@@ -37,9 +37,12 @@ class Paquetes_Model extends CI_Model {
         
     }
     
-    public function ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus)
+    public function ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha)
     {
-        
+        $this->db->set('IdEstatusPaquete',$IdEstatusPaquete);
+        $this->db->set($Fecha,$FechaEstatus);
+        $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
+        $this->db->update($this->table);
     }
     
     /*
