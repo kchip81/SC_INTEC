@@ -183,7 +183,7 @@
                               "info": "Motrando pag. _PAGE_ de _PAGES_",
                               "infoEmpty": "Sin registros disponibles",
                               "infoFiltered": "(filtrado de _MAX_ total)"
-                          }
+                        }
                 });
             
                 t.clear();
@@ -204,7 +204,7 @@
                         OrdenesAbiertas[i]['Observaciones'],
                         '<a classs = "btn" onclick="ConsultarPaquetesOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>'+ ' ' +
                         '<a classs = "btn" onclick="CrearNuevoPaquete('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-plus" data-toggle="tooltip" data-placement="top" title="Nuevo Paquete"></i></a>'
-                        ]).draw(false);  
+                    ]).draw(false);  
                 }
             }
         });
@@ -229,15 +229,9 @@
                 $('#lblIdOrden').html(IdOrden);
                 CargarLaboratorio();
                 CargarEquiposOrden(IdOrden);
-                $("#modalNuevoPaquete").modal('show');
-
-                
+                $("#modalNuevoPaquete").modal('show');     
             }
         });
-        
-        
-        
-        
     }
     function CargarLaboratorio()
     {
@@ -276,86 +270,10 @@
                         
                         '<td><input type="checkbox" name="chkEquipoPaquete[]" id="Seleccionar" value ="'+Equipos[i]['IdEquipoOrden']+'" checked></td>'+
                         '</tr>'
-                        );
-                    
-                }
-                
-                
-                
+                        );   
+                }                
             }
         });
         
     }
-    
-    function CrearPaquete()
-    {
-        event.preventDefault();
-        if($("#FRParentes").val()==="")
-        {
-          
-            alert("El parentesco es requerido");
-        }
-        else if($("#FRNombre").val()==="")
-        {
-          
-            alert("El nombre es requerido");
-        }
-        else
-        {
-            
-            var _IdOrden = $('#lblIdOrden').html();
-            var _IdLaboratorio= $("#laboratorio").val();
-            var _Descripcion= $("#DescripcionServicio").val();
-
-            
-             $.ajax({
-                
-                url: "<?php echo site_url();?>/Servicio_Controller/CrearNuevoPaquete_ajax",
-                method:"POST",
-                data: {
-                    IdOrden:_IdOrden,
-                    IdLaboratorio:_IdLaboratorio,
-                    Descripcion:_Descripcion
-                   
-                    
-                },
-                success: function(r){
-                    
-                    if(r!='0')
-                    {
-                        alert(r);
-                        var IdEquipoOrden;
-                        $('#tblEquiposOrden tr').each(function(){
-                            if ($(this).find("#Seleccionar").is(":checked"))
-                            {
-                                IdEquipoOrden = $(this).find("#IdEquipoOrden").val();
-                                alert(IdEquipoOrden);
-                                $.ajax({
-                                    
-                                    url: "<?php echo site_url();?>/Servicio_Controller/AgregarEquipoAPaquete_ajax",
-                                    method: "POST",
-                                    data: {
-                                        IdPaquete:r,
-                                        IdEquipoOrden:IdEquipoOrden
-                                    }});    
-                            }
-                        });
-                        
-                        alert('Paquete Creado Existosamente');
-                        $("#modalNuevoPaquete").modal('hide');
-                        
-                    }
-                    else
-                    {
-                        alert ('Error al agregar un nuevo familiar');
-                    }
-                     
-
-                }
-            });
-        }
-    }
-    
-    
-
 </script>

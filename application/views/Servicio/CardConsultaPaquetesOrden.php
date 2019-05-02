@@ -76,6 +76,7 @@
             </div>
         </div>
 </div>
+
 <script type="text/javascript">
     function ConsultarPaquetesOrden(IdOrden)
     {
@@ -102,10 +103,7 @@
                   t.clear();
                   t.draw();
                  for(i=0;i<Paquetes.length;i++)
-                 {
-                    
-                    
-                                    
+                 { 
                      t.row.add([
                          Paquetes[i]['IdPaqueteEnvio'],
                          Paquetes[i]['Descripcion_lab'],
@@ -118,13 +116,8 @@
                          Paquetes[i]['FechaRetLab'],
                          Paquetes[i]['FechaRecpIntecLab'],
                          '<a></a>'
-                         //'<a classs = "btn" onclick="ConsultarFamiliarModal('+Familiares[i]['IdFamiliarResponsable']+')"><i class="icon-edit" data-toggle="tooltip" data-trigger="hover" data-placement="top" data-title="Editar"></i></a>'
-
+                        
                      ]).draw(false);
-
-
-
-
                  }
               }
         });

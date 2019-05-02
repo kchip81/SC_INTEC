@@ -1,13 +1,41 @@
 <?php
-session_start();
-$varsession  = $_SESSION['cliente'];
-?>
-<!DOCTYPE html>
-    <html lang="es">
-    <head>
-    <meta charset="utf-8">
-    <title>Reporte</title>
-    <style>
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of PDF_Model
+ *
+ * @author SigueMED
+ */
+class PDF_Model extends CI_Model {
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('OrdenServicio_Model');
+        $this->load->model('EquipoOrden_Model');
+    }
+    
+    public function GenerarPDF($IdOrden)
+    {        
+        $id = $IdOrden;
+        
+        $Registro = $this->EquipoOrden_Model->ConsultarOrden($id); 
+        $Clientes = $this->OrdenServicio_Model->ConsultarOrdenCliente($id);
+        
+        $i = 1;
+
+        $head = '
+        <!DOCTYPE html>
+        <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <title>Reporte</title>
+            <link rel="shortcut icon" type="image/x-icon" href="http://localhost/SC_Intec/app-assets/images/ico/IntecIco.ico">
+            <style>
         
               a {
                 color: #5D6975;
@@ -36,7 +64,7 @@ $varsession  = $_SESSION['cliente'];
               }
         
               #logo img {
-                width: 60px;
+                width: 200px;
                 float:left;
                 margin: 10px;
               }
@@ -53,7 +81,6 @@ $varsession  = $_SESSION['cliente'];
                 border-collapse: collapse;
                 border-spacing: 0;
                 margin-bottom: 20px;
-                /*border: 1px solid #000;*/
               }
         
               table tr:nth-child(2n-1) td {
@@ -95,39 +122,64 @@ $varsession  = $_SESSION['cliente'];
           <body>
             <header class="clearfix">
               <div id="logo">
-                <img src="http://localhost/SC_Intec/app-assets/images/logo/IntecLogo.png" style="width: 50px" align="left">
-                <h2>Datos de Servicio de Calibración</h2>
+                <img src="http://localhost/SC_Intec/app-assets/images/logo/IntecLogo.png" style="width: 80px" align="left">
+                <h2 style="float:left;">Datos de Servicio de Calibración</h2>
               </div>
               
               <p>Con la funalidad de brindarle un mejor servicio y evitar la comicion de datos que el cliente requiere en su informe de calibración</p>
         
             </header>
-              <table>
-                <thead>
+            ';
+
+            foreach($Clientes as $cliente)
+            {
+              $table = '
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="4">Datos del Informe cliente</th> 
+                    <tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <td style="width:150px">Contacto</td>
+                    <td colspan="3">'.$cliente['NombreContacto'].'</td>
                   <tr>
-                    <th colspan="2">Datos del Informe cliente</th> 
+                  <tr>
+                    <td style="width:150px">Compañia</td>
+                    <td colspan="3">'.$cliente['NombreCompania'].'</td>
+                  <tr>
+                  <tr>
+                    <td style="width:150px">Domicilio del Informe</td>
+                    <td colspan="3">'.$cliente['Domicilio'].'</td>
+                  <tr>
+                  <tr>
+                    <td style="width:150px">Correo Contacto</td>
+                    <td colspan="3">'.$cliente['Correo'].'</td>
+                    <tr>
+                  </tbody>
+                  <thead>
+                  <tr>
+                    <th colspan="4">Especificaciones de Servicio</th> 
                   <tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td style="width:150px">Contacto</td>
-                    <td></td>
+                    <td>Fecha de Recibo en Intec:</td>
+                    <td>'.$cliente['Fecha'].'</td>
+                    <td>Fecha de envio al Laboratorio:</td>
+                    <td>'.$cliente['FechaEnvio'].'</td>
                   <tr>
                   <tr>
-                    <td style="width:150px">Compañia</td>
-                    <td></td>
-                  <tr>
-                  <tr>
-                    <td style="width:150px">Domicilio del Informe</td>
-                    <td></td>
-                  <tr>
-                  <tr>
-                    <td style="width:150px">Correo Contacto</td>
-                    <td></td>
-                  <tr>
+                    <td style="width:150px">Fecha de recibido del Laboratorio:</td>
+                    <td>'.$cliente['FechaRecibo'].'</td>
+                    <td style="width:150px">Observaciones:</td>
+                    <td>'.$cliente['Observaciones'].'</td>
+                  <tr>                  
                 </tbody>
-              </table> 
-              <table>
+              
+                </table> 
+                <table>
                 <thead>
                   <tr>
                     <th>Partida</th>
@@ -141,16 +193,25 @@ $varsession  = $_SESSION['cliente'];
                   </tr>
                 </thead>
                 <tbody>
+                ';
+           }
+                foreach($Registro as $registro)
+                {
+                  $table2 .='
                   <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>'.$i.'</td>
+                    <td>'.$registro['Descripcion'].'</td>
+                    <td>'.$registro['Marca'].'</td>
+                    <td>'.$registro['Modelo'].'</td>
+                    <td>'.$registro['NumService'].'</td>
+                    <td>'.$registro['ClaveId'].'</td>
+                    <td>'.$registro['AlcanceMedicion'].'</td>
+                    <td>'.$registro['DivisionMedicion'].'</td>
                   </tr>
+                    ';
+                    $i++;
+                  }
+            $table3 ='
                   
                 </tbody>
               </table>
@@ -186,3 +247,11 @@ $varsession  = $_SESSION['cliente'];
                 </table>
           </body>
         </html>
+        ';
+
+        $pdf = $head.$table.$table2.$table3;
+
+        return $pdf;
+    }
+    //put your code here
+}

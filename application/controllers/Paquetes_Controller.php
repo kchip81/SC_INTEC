@@ -83,8 +83,7 @@ class Paquetes_Controller extends CI_Controller {
 
         $IdEstatusPaquete=$IdEstatusPaquete+1;
 
-        $this->Paquetes_Model->ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha);
-        
+        $this->Paquetes_Model->ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha);      
     }
     //put your code here
 }
