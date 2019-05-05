@@ -86,7 +86,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="laboratorio">Laboratorio</label>
-                                                    <select name="laboratorio" id="laboratorio" class="form-control">
+                                                    <select name="laboratorio" id="laboratorio" class="form-control" required="required">
                                                         <option value="">Laboratorio...</option>
                                                     </select>
                                                 </div>
@@ -98,7 +98,7 @@
                                                 <div class="form-group">
                                                     <label for="DescripcionServicio">Descripcion Paquete:</label>
                                                     <div class="position-relative has-icon-left">
-                                                        <input type="text" id="DescripcionServicio" class="form-control" placeholder="Descripción" name="DescripcionServicio">
+                                                        <input type="text" id="DescripcionServicio" class="form-control" placeholder="Descripción" name="DescripcionServicio" required="required">
                                                         <div class="form-control-position">
                                                             <i class="icon-speech-bubble"></i>
                                                         </div>
@@ -112,8 +112,11 @@
                                         <table class="table table-responsive table-bordered table-striped" id="tblEquiposOrden">
                                             <thead>
                                                 <th>No. Equipo</th>
-                                                <th>Clave</th>
                                                 <th>Descripcion</th>
+                                                <th>Modelo</th>
+                                                <th>Clave</th>
+                                                <th>Num. Serie</th>
+                                                
                                                 <th>Seleccionar</th>
                                             </thead>
                                             <tbody>
@@ -271,8 +274,11 @@
                     $('#tblEquiposOrden').append(
                         '<tr id=rowEquipoOrden'+i+'>'+
                         '<td id="IdEquipoOrden">'+Equipos[i]['IdEquipoOrden']+'</td>'+
-                        '<td >'+Equipos[i]['ClaveId']+'</td>'+
                         '<td>'+Equipos[i]['Descripcion']+'</td>'+
+                        '<td>'+Equipos[i]['Modelo']+'</td>'+
+                        '<td >'+Equipos[i]['ClaveId']+'</td>'+
+                        '<td >'+Equipos[i]['Numero']+'</td>'+
+                        
                         
                         '<td><input type="checkbox" name="chkEquipoPaquete[]" id="Seleccionar" value ="'+Equipos[i]['IdEquipoOrden']+'" checked></td>'+
                         '</tr>'

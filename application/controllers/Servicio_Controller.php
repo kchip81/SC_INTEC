@@ -440,8 +440,7 @@ class Servicio_Controller extends CI_Controller {
         $alcance = $_POST['alcance'];
         $division = $_POST['division'];
 
-        if($division != "" && $alcance != "" && $descripcion != ""&& $marca != "")
-        {
+        
 
           echo '
             <tr>
@@ -455,7 +454,7 @@ class Servicio_Controller extends CI_Controller {
             <td class="division">'.$division.'</td>
             <td><button type="button" class="btn btn-primary" id="btnEliminarSubProducto">Eliminar</button></td>
             </tr>';
-        }              
+                      
     }
 
     public function Insertar_ajax()

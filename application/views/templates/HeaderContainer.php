@@ -28,7 +28,7 @@
         if (!$this->session->has_userdata('logged_in'))
             {
                
-                redirect(base_url());
+                //redirect(base_url());
             }
             
     ?>
