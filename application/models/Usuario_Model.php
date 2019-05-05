@@ -24,7 +24,7 @@ class Usuario_Model extends CI_Model {
     public function ValidarUsuarioContrasena($Usuario=FALSE, $Contrasena=FALSE)
     {
        
-        $this->db->select($this->table.'.*, DescripcionPerfil, Perfil.IdPerfil');
+        $this->db->select($this->table.'.*, DescripcionPerfil, perfil.IdPerfil');
         $this->db->from($this->table);
         $this->db->join('perfil',$this->table.'.IdPerfil = perfil.IdPerfil');
         

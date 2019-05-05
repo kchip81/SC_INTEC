@@ -221,14 +221,9 @@
                                             <input type="text" id="DivisionSubProducto" class="form-control" placeholder="División Minima" name="DivisionSubProducto"/>
                                         </div>
                                     </div>
-                                   <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="CostoSubProducto">ID del Producto</label>
-                                            <input type="text" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">           
-                                        </div>
-                                    </div>
+                                    <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">           
                                     <br>
-                                    <div class="col-md-6">
+                                    <div class="col-md-9">
                                         <div class="form-group" align="right">
                                             <button type="button" class="btn btn-primary" id="btnAgregarSubProducto"><i class="icon-android-add"></i>Agregar</button>
                                         </div>
@@ -258,7 +253,7 @@
                             
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-warning mr-1" name="action" value="cancelar">
+                            <button type="submit" class="btn btn-warning mr-1" id="CancelarEntrada" name="action" value="cancelar">
                                 <i class="icon-cross2"></i> Cancelar
                             </button>
                             <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
@@ -287,203 +282,6 @@
         CargarClientes();
         FechaActual();
     });
-
-    $("#btnBuscarSubProducto").click(function()
-    {
-        var numSerie = $("#NumSerieSubProducto").val();
-        var clave = $("#ClaveSubProducto").val();
-        var modelo = $("#ModeloSubProducto").val();
-        var peticion = "";
-            
-        if(numSerie != "")
-            peticion = ".NumService = '"+numSerie+"'";
-        else if(clave != "")
-            peticion = ".ClaveId = '"+ clave+ "'";
-        else if(modelo != "")
-            peticion = ".Modelo = '"+modelo+"'";
-        
-
-        datos= {
-            "peticion":peticion,
-            IdCliente: $('#cliente').val()
-            
-        };
-
-      
-        $.ajax
-        ({            
-            type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/Buscar',
-            dataType: 'json',
-            data:datos, 
-            success:function(resp)
-            {
-                if(resp != '')
-                {
-                    $('#IdSubProducto').val(resp[0].IdEquipo);
-                    $('#ClaveSubProducto').val(resp[0].ClaveId);
-                    $("#NumSerieSubProducto").val(resp[0].NumService); 
-                    $("#ModeloSubProducto").val(resp[0].Modelo);
-                    $('#DescripcionSubProducto').val(resp[0].Descripcion);
-                    $("#MarcaSubProducto").val(resp[0].Marca); 
-                    $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
-                    $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
-                }else
-                    alert("Equipo no encontrado");
-            }
-        });
-    });
-
-    $("#btnAgregarSubProducto").click(function()
-    {
-        CargarTabla();
-    });
-
-    $("#cliente").change(function()
-    {
-        CargarDatosClientes($(this).val());
-    });
-
-    $('#GuardarEntrada').click(function()
-    {
-        valorOrden();
-     
-    });
-
-    $(function()
-    {
-        $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
-    });
-    
-    function removerTabla()
-    {
-        $("#tabla tr").remove();
-    }
-
-
-    function valorFila(idOrden)
-    {
-        $('#tabla tr').each(function() {
-            var id = $(this).find(".id").text();
-
-            datos = {"idequipo":id,"idOrden":idOrden};
-            $.ajax
-            ({            
-                type:'post',
-                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenEquipo',
-                data:datos, 
-                success:function(resp)
-                {
-                    removerTabla();
-                    
-                    PDF(idOrden);
-                }
-            });
-        });
-    }
-
-    function valorOrden()
-    {        
-        var select = document.getElementById("cliente");
-        var cliente = select.value; 
-        var fecha =$("#FechaReciboIntec").val();
-        var FechaEnvio =$("#FechaEnvioLaboratorio").val();
-        var FechaRecibo =$("#FechaReciboLaboratorio").val();
-        var Observaciones =$("#ObservacionesServicio").val();
-
-        datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
-        
-        if(cliente != "")
-        {
-            $.ajax
-            ({            
-                type:'post',
-                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio',
-                data:datos, 
-                success:function(resp)
-                {
-                    var id = resp;
-                    valorFila(id);
-                }
-            });
-        }else
-            alert("Selecione un cliente");
-    }
-    function PDF(idOrden)
-    {
-        alert("La orden de servicio ha sido creada");
-        window.open("<?php echo site_url();?>/Servicio/NuevaOrdenPDF/"+idOrden);
-//        datos={"idOrden":idOrden};
-//        location.href ="<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF";
-        /*$.ajax
-        ({
-            //type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/CrearOrdenPDF', 
-           // data:datos,    
-            success:function(resp)
-            {
-            }
-        });*/
-    }
-
-    function remover()
-    {
-        $(this).parents("tr").remove();
-    }
-
-    function CargarClientes()
-    {
-        $.ajax
-        ({
-            type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',    
-            success:function(resp)
-            {
-                $("#cliente").html(resp) 
-            }
-        });
-    }
-
-    function CargarTabla()
-    { 
-        var id =$('#IdSubProducto').val();
-        var clave = $('#ClaveSubProducto').val();
-        var numser = $("#NumSerieSubProducto").val(); 
-        var modelo = $("#ModeloSubProducto").val();
-        var descripcion = $('#DescripcionSubProducto').val();
-        var marca = $("#MarcaSubProducto").val(); 
-        var alcance = $("#AlcanceSubProducto").val();
-        var division = $('#DivisionSubProducto').val();
-        
-        datos = {"id":id,"clave":clave,"numser":numser,"modelo":modelo,"descripcion":descripcion,"marca":marca,"alcance":alcance,"division":division};
-        $.ajax
-        ({
-            type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/LlenarTabla',    
-            data:datos,
-            success:function(resp)
-            {
-                if(resp != '')
-                {
-                    $("#tabla").append(resp);
-                    Limpiar();
-                }else
-                    alert("Comprete la informacion");
-            }
-        });
-    }
-
-    function Limpiar()
-    {
-        $('#ClaveSubProducto').val("");
-        $("#NumSerieSubProducto").val(""); 
-        $("#ModeloSubProducto").val("");
-        $('#DescripcionSubProducto').val("");
-        $("#MarcaSubProducto").val(""); 
-        $("#AlcanceSubProducto").val("");
-        $('#DivisionSubProducto').val(""); 
-        $('#IdSubProducto').val("");       
-    }
 
     function FechaActual()
     {
@@ -516,4 +314,213 @@
             }
         });
     }
+
+    $("#btnBuscarSubProducto").click(function()
+    {
+        var numSerie = $("#NumSerieSubProducto").val();
+        var clave = $("#ClaveSubProducto").val();
+        var modelo = $("#ModeloSubProducto").val();
+        var peticion = "";
+            
+        if(numSerie != "")
+            peticion = ".NumService = '"+numSerie+"'";
+        else if(clave != "")
+            peticion = ".ClaveId = '"+ clave+ "'";
+        else if(modelo != "")
+            peticion = ".Modelo = '"+modelo+"'";
+
+        datos= {
+            "peticion":peticion,
+            IdCliente: $('#cliente').val()
+            
+        };
+      
+        $.ajax
+        ({            
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/Buscar',
+            dataType: 'json',
+            data:datos, 
+            success:function(resp)
+            {
+                if(resp != '')
+                {
+                    $('#IdSubProducto').val(resp[0].IdEquipo);
+                    $('#ClaveSubProducto').val(resp[0].ClaveId);
+                    $("#NumSerieSubProducto").val(resp[0].NumService); 
+                    $("#ModeloSubProducto").val(resp[0].Modelo);
+                    $('#DescripcionSubProducto').val(resp[0].Descripcion);
+                    $("#MarcaSubProducto").val(resp[0].Marca); 
+                    $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
+                    $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                }else
+                    alert("Equipo no encontrado");
+            }
+        });
+    });
+    
+    $("#cliente").change(function()
+    {
+        CargarDatosClientes($(this).val());
+    });
+
+    $("#btnAgregarSubProducto").click(function()
+    {
+        CargarTabla();
+    });
+
+
+    $('#GuardarEntrada').click(function()
+    {
+        valorOrden();     
+    });
+
+    $('#CancelarEntrada').click(function()
+    {
+        Limpiar();
+        Limpiar2();
+    });
+
+    function valorOrden()
+    {        
+        var select = document.getElementById("cliente");
+        var cliente = select.value; 
+        var fecha =$("#FechaReciboIntec").val();
+        var FechaEnvio =$("#FechaEnvioLaboratorio").val();
+        var FechaRecibo =$("#FechaReciboLaboratorio").val();
+        var Observaciones =$("#ObservacionesServicio").val();
+
+        datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
+        
+        if(cliente != "")
+        {
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio_ajax',
+                data:datos, 
+                success:function(resp)
+                {
+                    var id = resp;
+                    valorFila(id);
+                }
+            });
+        }else
+            alert("Selecione un cliente");
+    }
+
+    function valorFila(idOrden)
+    {
+        $('#tabla tr').each(function() {
+            var id = $(this).find(".id").text();
+
+            datos = {"idequipo":id,"idOrden":idOrden};
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenEquipo_ajax',
+                data:datos, 
+                success:function(resp)
+                {
+                    removerTabla();
+                    
+                    PDF(idOrden);
+                    Limpiar();
+                    Limpiar2();
+                }
+            });
+        });
+    }
+
+    $(function()
+    {
+        $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
+    });
+    
+    function removerTabla()
+    {
+        $("#tabla tr").remove();
+    }
+
+    function PDF(idOrden)
+    {
+        alert("La orden de servicio ha sido creada");
+        window.open("<?php echo site_url();?>/Servicio/NuevaOrdenPDF/"+idOrden);
+    }
+
+    function remover()
+    {
+        $(this).parents("tr").remove();
+    }
+
+    function CargarClientes()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',    
+            success:function(resp)
+            {
+                $("#cliente").html(resp) 
+            }
+        });
+    }
+
+    function CargarTabla()
+    { 
+        var id =$('#IdSubProducto').val();
+        var clave = $('#ClaveSubProducto').val();
+        var numser = $("#NumSerieSubProducto").val(); 
+        var modelo = $("#ModeloSubProducto").val();
+        var descripcion = $('#DescripcionSubProducto').val();
+        var marca = $("#MarcaSubProducto").val(); 
+        var alcance = $("#AlcanceSubProducto").val();
+        var division = $('#DivisionSubProducto').val();
+        
+        if(id != "")
+        {
+            $("#tabla").append(
+                '<tr>'+
+                '<td class="id">'+id+'</td>'+
+                '<td class="descripcion">'+descripcion+'</td>'+
+                '<td class="marca">'+marca+'</td>'+
+                '<td class="modelo">'+modelo+'</td>'+
+                '<td class="numser">'+numser+'</td>'+
+                '<td class="clave">'+clave+'</td>'+
+                '<td class="alcance">'+alcance+'</td>'+
+                '<td class="division">'+division+'</td>'+
+                '<td><button type="button" class="btn btn-primary" id="btnEliminarSubProducto">Eliminar</button></td>'+
+                '</tr>'
+            );
+        }else
+            alert("No se encontro el equipo");
+
+        Limpiar();
+        
+    }
+
+    function Limpiar()
+    {
+        $('#ClaveSubProducto').val("");
+        $("#NumSerieSubProducto").val(""); 
+        $("#ModeloSubProducto").val("");
+        $('#DescripcionSubProducto').val("");
+        $("#MarcaSubProducto").val(""); 
+        $("#AlcanceSubProducto").val("");
+        $('#DivisionSubProducto').val(""); 
+        $('#IdSubProducto').val("");       
+    }
+    
+    function Limpiar2()
+    {
+        $('#NombreProveedor').val("");
+        $("#DireccionCliente").val(""); 
+        $("#compania").val("");
+        $("#emailProveedor").val("");
+        $("#FechaEnvioLaboratorio").val("");
+        $("#FechaReciboLaboratorio").val("");        
+        $("#ObservacionesServicio").val("");
+        removerTabla();
+    }
+
 </script>

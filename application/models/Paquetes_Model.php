@@ -18,6 +18,7 @@ class Paquetes_Model extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->table = "paquete_envio";
+        $this->load->database();
     }
     
     public function ConsultarPaquetesOrdenServicio($IdOrden)

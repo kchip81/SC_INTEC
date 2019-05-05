@@ -3,14 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/controllers/Login_Controller.php</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/views/templates/MainContainer.php</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/system/database/DB.php</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/views/templates/FooterContainer.php</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/config/database.php</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/config/routes.php</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/third_party/index.html</file>
-            <file>file:/C:/xampp/htdocs/SC_Intec/application/views/Login/login_form.php</file>
+            <file>file:/C:/xampp/htdocs/SC_INTEC-D/application/controllers/Servicio_Controller.php</file>
+            <file>file:/C:/xampp/htdocs/SC_INTEC-D/application/models/Paquetes_Model.php</file>
+            <file>file:/C:/xampp/htdocs/SC_INTEC-D/application/views/Servicio/CardConsultaPaquetesOrden.php</file>
+            <file>file:/C:/xampp/htdocs/SC_INTEC-D/application/config/routes.php</file>
+            <file>file:/C:/xampp/htdocs/SC_INTEC-D/application/views/Servicio/CardConsultaOrdenesAbiertas.php</file>
+            <file>file:/C:/xampp/htdocs/SC_INTEC-D/application/controllers/Paquetes_Controller.php</file>
         </group>
     </open-files>
 </project-private>

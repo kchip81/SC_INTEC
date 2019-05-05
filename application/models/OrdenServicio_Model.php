@@ -45,6 +45,38 @@ class OrdenServicio_Model extends CI_Model {
         return $query->result_array();
         
     }
+
+    public function InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones)
+    {
+        $data = array('IdCliente' => $IdCliente,'Fecha' => $Fecha,"FechaEnvio" => $FechaEnvio,
+                "FechaRecibo" => $FechaRecibo,"Observaciones" => $Observaciones);
+
+        $this->db->insert($this->table,$data); 
+        
+        $insertId = $this->db->insert_id();
+        
+        return $insertId;
+    }
     
+    public function ConsultarOrdenServicio()
+    {
+        $this->db->select('IdOrden,Fecha,FechaEnvio,FechaRecibo,NombreCompania,Observaciones');
+        $this->db->from('cliente');
+        $this->db->join($this->table, $this->table.'.IdCliente = cliente.IdCliente','INNER');
+        $this->db->order_by($this->table.'.IdOrden', 'ASC');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function ConsultarOrdenCliente($id)
+    {
+        $this->db->select('*');
+        $this->db->from('cliente');
+        $this->db->join($this->table, $this->table.'.IdCliente = cliente.IdCliente','INNER');
+        $this->db->where($this->table.'.IdOrden',$id);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 //put your code here
 }

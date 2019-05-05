@@ -25,12 +25,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if (ENVIRONMENT =='production')
 {
-   $config['base_url'] = ''; 
+   $config['base_url'] = 'http://scintec.iintec.com/'; 
 }
 else
 {
 
-    $config['base_url'] = 'http://localhost/SC_Intec/';
+    $config['base_url'] = 'http://localhost/SC_Intec-D/';
 }
 /*
 |--------------------------------------------------------------------------
@@ -386,7 +386,7 @@ $config['encryption_key'] = '';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 0;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
