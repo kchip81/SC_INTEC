@@ -19,7 +19,46 @@ class Paquetes_Controller extends CI_Controller {
         $this->load->helper('form');
         
         $this->load->model('Paquetes_Model');
+        
     }
+    
+    //CARGAR VISTAS---------------------------------------------------------------------------------------------
+    public function Load_ConsultarPaquetesAbiertos()
+    {
+
+        $data['title'] = 'Consultas de Ordenes de Servicio';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Paquete/CardConsultaPaquetesAbiertos');
+        
+        $this->load->view('templates/FooterContainer');
+
+ 
+    }
+    
+    public function ConsultarPaquetesAbiertos_ajax()
+    {
+        
+        $PaquetesAbiertos = $this->Paquetes_Model->ConsultarPaquetesAbiertos();
+        
+        for($i=0;$i<sizeof($PaquetesAbiertos);$i++)
+        {
+            switch ($PaquetesAbiertos[$i]['IdEstatusPaquete'])
+            {
+                case 1:
+                    $PaquetesAbiertos[$i]['FechaEnv']= '<button type="button" class="btn btn-primary" id="btnConfirmar" onclick="ConfirmarPaquete('.$PaquetesAbiertos[$i]['IdPaqueteEnvio'].','.$PaquetesAbiertos[$i]['IdEstatusPaquete'].')">Confirmar</button>';
+                   break;
+                case 2:
+                    $PaquetesAbiertos[$i]['FechaRecLab']='<button type="button" class="btn btn-primary" id="btnConfirmar" onclick="ConfirmarPaquete('.$PaquetesAbiertos[$i]['IdPaqueteEnvio'].','.$PaquetesAbiertos[$i]['IdEstatusPaquete'].')">Confirmar</button>';
+                    break;
+                
+                }          
+        }
+        
+        echo json_encode($PaquetesAbiertos);
+        
+    }
+    //---------------------------------------------------------------------------------------------------------
     
     public function ConsultarPaquetesPorOrden()
     {
@@ -83,7 +122,14 @@ class Paquetes_Controller extends CI_Controller {
 
         $IdEstatusPaquete=$IdEstatusPaquete+1;
 
-        $this->Paquetes_Model->ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha);      
+        if($IdEstatusPaquete <= 3)
+        {
+            $this->Paquetes_Model->ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha);      
+            
+        }
+        
     }
+    
+    
     //put your code here
 }

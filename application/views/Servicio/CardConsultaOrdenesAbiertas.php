@@ -1,4 +1,4 @@
-<div class="row match-height">
+l<div class="row match-height">
         <div class="col-md-12">
             <div class="card">
                 <!--CARD HEADER-->
@@ -21,6 +21,16 @@
                     <div class="card-block">
                         <!--FORM BODY-->
                         <div class="form-body">  
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-secondary" id="btnAgregar" onclick="CrearNuevoPaquete()">
+                                            <i class="icon-android-add"></i>Crear Paquete
+                                        </button>
+                                    </div>
+                                </div>
+                                    
+                            </div>
                             
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tablaOrdenAbierta">
@@ -45,7 +55,7 @@
                               <div class="modal-dialog modal-lg" role="document">
                                   <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLabel">Crear Nuevo Paquete - Orden #<label id="lblIdOrden"></label>
+                                            <h4 class="modal-title" id="exampleModalLabel">Crear Nuevo Paquete
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -55,33 +65,7 @@
                              
                                     <div class="modal-body">
                                          
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="compania">Compañía:</label>
-                                                    <div class="position-relative has-icon-left">
-                                                        <input type="text" id="compania" class="form-control" placeholder="Compañía" name="compania" readonly>
-                                                        <div class="form-control-position">
-                                                        <i class="icon-office"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="contacto">Contacto:</label>
-                                                    <div class="position-relative has-icon-left">
-                                                        <input type="text" id="contacto" class="form-control" placeholder="Cliente" name="NombreCliente" readonly>
-                                                        <div class="form-control-position">
-                                                        <i class="icon-head"></i>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-
-                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -109,10 +93,12 @@
                                         </div>
                                         
                                         <h5>Equipos Sin Paquete</h5>
-                                        <table class="table table-responsive table-bordered table-striped" id="tblEquiposOrden">
+                                        <table class="table table-responsive table-bordered table-striped" id="tblEquiposOrdenPaquete" style="width:100%">
                                             <thead>
+                                                <th>No. Orden</th>
+                                                <th>Cliente</th>
                                                 <th>No. Equipo</th>
-                                                <th>Descripcion</th>
+                                                <th>Equipo</th>
                                                 <th>Modelo</th>
                                                 <th>Clave</th>
                                                 <th>Num. Serie</th>
@@ -205,36 +191,19 @@
                         OrdenesAbiertas[i]['FechaEnvio'],   
                         OrdenesAbiertas[i]['FechaRecibo'],   
                         OrdenesAbiertas[i]['Observaciones'],
-                        '<a classs = "btn" onclick="ConsultarPaquetesOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>'+ ' ' +
-                        '<a classs = "btn" onclick="CrearNuevoPaquete('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-plus" data-toggle="tooltip" data-placement="top" title="Nuevo Paquete"></i></a>'
+                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>'+ ' ' 
                     ]).draw(false);  
                 }
             }
         });
     }
     
-    function CrearNuevoPaquete(IdOrden)
+    function CrearNuevoPaquete()
     {
-        $.ajax
-        ({
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarOrden',
-            data:{
-                IdOrden:IdOrden
-            },
-            method: "POST",
-            success:function(resp)
-            {
-                var Orden = JSON.parse(resp);
-                
-                $('#compania').val(Orden['NombreCompania']);
-                $('#contacto').val(Orden['NombreContacto']);
-                $('#IdOrden').val(IdOrden);
-                $('#lblIdOrden').html(IdOrden);
-                CargarLaboratorio();
-                CargarEquiposOrden(IdOrden);
-                $("#modalNuevoPaquete").modal('show');     
-            }
-        });
+        CargarLaboratorio();
+        CargarEquiposOrden();
+        $("#modalNuevoPaquete").modal('show');  
+        
     }
     function CargarLaboratorio()
     {
@@ -248,30 +217,30 @@
         });
     }
     
-    function CargarEquiposOrden(IdOrden)
+    function CargarEquiposOrden()
     {
         $.ajax
         ({
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarEquiposSinPaquete_ajax',
-            data:{
-                IdOrden:IdOrden
-            },
+            
             method: "POST",
             success:function(resp)
             {
                 
                 var Equipos = JSON.parse(resp);
-                $('#tblEquiposOrden tbody tr').remove();
+                $('#tblEquiposOrdenPaquete tbody tr').remove();
                 for (i=0;i<Equipos.length;i++)
                 {
                     
-                    $('#tblEquiposOrden').append(
+                    $('#tblEquiposOrdenPaquete').append(
                         '<tr id=rowEquipoOrden'+i+'>'+
+                        '<td>'+Equipos[i]['IdOrden']+'</td>'+
+                        '<td>'+Equipos[i]['NombreCompania']+'</td>'+
                         '<td id="IdEquipoOrden">'+Equipos[i]['IdEquipoOrden']+'</td>'+
                         '<td>'+Equipos[i]['Descripcion']+'</td>'+
                         '<td>'+Equipos[i]['Modelo']+'</td>'+
                         '<td >'+Equipos[i]['ClaveId']+'</td>'+
-                        '<td >'+Equipos[i]['Numero']+'</td>'+
+                        '<td >'+Equipos[i]['NumService']+'</td>'+
                         
                         
                         '<td><input type="checkbox" name="chkEquipoPaquete[]" id="Seleccionar" value ="'+Equipos[i]['IdEquipoOrden']+'" checked></td>'+

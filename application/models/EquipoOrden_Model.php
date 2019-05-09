@@ -20,13 +20,46 @@ class EquipoOrden_Model extends CI_Model{
         $this->load->database();
     }
     
-    public function ConsultarEquiposOrdenPaquete($IdOrden, $IdPaquete)
+    public function ConsultarEquiposOrdenPaquete($IdOrden, $IdPaquete=FALSE)
     {
-        $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId');
+        $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
+        $this->db->select('Descripcion_lab, DescripcionEstatusPaquete, FechaEnv,FechaRecLab, Factura, Etiqueta, Certificado');
         $this->db->from ($this->table);
         $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
-        $this->db->where('IdOrden',$IdOrden);
-        $this->db->where('IdPaqueteEnvio',$IdPaquete);
+        $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');
+        
+        $this->db->join('cliente','orden_servicio.IdCliente = cliente.IdCliente');
+        $this->db->join('paquete_envio',$this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','left');
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','left');
+        $this->db->join('catalogoestatuspaquetes','equipo_orden.IdEstatusPaquete = catalogoestatuspaquetes.IdEstatusPaquete','left');
+        
+        $this->db->where($this->table.'.IdOrden',$IdOrden);
+        
+        if ($IdPaquete!== FALSE)
+        {
+            $this->db->where($this->table.'.IdPaqueteEnvio',$IdPaquete);
+        }
+        else
+        {
+            $this->db->where($this->table.'.IdPaqueteEnvio is not NULL');
+        }
+        
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    public function ConsultarEquiposOrdenSinPaquete($IdOrden)
+    {
+        $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
+        $this->db->select('Descripcion_lab, DescripcionEstatusPaquete, FechaEnv,FechaRecLab, Factura, Etiqueta, Certificado');
+        $this->db->from ($this->table);
+        $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
+        $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');
+        $this->db->join('cliente','orden_servicio.IdCliente = cliente.IdCliente');
+        $this->db->where($this->table.'.IdOrden',$IdOrden);
+        $this->db->where($this->table.'.IdPaqueteEnvio',NULL);
+        
         
         $query = $this->db->get();
         
@@ -58,5 +91,7 @@ class EquipoOrden_Model extends CI_Model{
         $insertId = $this->db->insert_id();
         return $insertId;  
     }
+    
+            
     //put your code here
 }

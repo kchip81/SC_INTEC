@@ -24,7 +24,7 @@
                         <div class="form-body">  
                             
                                  
-                                <table class="table table-responsive table-bordered table-striped" id="tblPaquetesOrden" style="width: 100%">
+                                <table class="table table-responsive table-bordered table-striped" id="tblPaquetesAbiertos" style="width: 100%">
                                     <thead>
                                         <th>No. Paquete</th>
                                         <th>Laboratorio</th>
@@ -33,9 +33,7 @@
                                         <th>Equipos</th>
                                         <th>Fecha Envio</th>
                                         <th>Fecha Recepción Lab</th>
-                                        <th>Fecha Fin Servicio</th>
-                                        <th>Fecha Retorno</th>
-                                        <th>Fecha Recepcion Intec</th>
+                                        
                                         <th>Acciones</th>
                                     </thead>
                                     <tbody id="tablaOrdenes">
@@ -78,18 +76,22 @@
 </div>
 
 <script type="text/javascript">
-    function ConsultarPaquetesOrden(IdOrden)
+    $(document).ready(function(){
+        ConsultarPaquetesOrden();
+    });
+    
+    function ConsultarPaquetesOrden()
     {
-        $('#NoOrden').val(IdOrden);
+       
         $.ajax({
-            url:"<?php echo site_url();?>/Paquetes_Controller/ConsultarPaquetesPorOrden",
+            url:"<?php echo site_url();?>/Paquetes_Controller/ConsultarPaquetesAbiertos_ajax",
             method:"POST",
-            data: {IdOrden:IdOrden},
+            
             success: function(r)
               {
                 var Paquetes = JSON.parse(r);
 
-                var t = $('#tblPaquetesOrden').DataTable({
+                var t = $('#tblPaquetesAbiertos').DataTable({
                          "destroy":true,
                          "language": {
                               "lengthMenu": "Mostrando _MENU_ registros por pag.",
@@ -112,9 +114,7 @@
                          Paquetes[i]['TotalEquiposPaquete'],
                          Paquetes[i]['FechaEnv'],
                          Paquetes[i]['FechaRecLab'],
-                         Paquetes[i]['FechaFinalCalLab'],
-                         Paquetes[i]['FechaRetLab'],
-                         Paquetes[i]['FechaRecpIntecLab'],
+                         
                          '<a></a>'
                         
                      ]).draw(false);
@@ -127,6 +127,17 @@
     {        
         $('#IdPaqueteEnvio').val(IdPaqueteEnvio);
         $('#IdEstatusActual').val(IdEstatusActual);
+        var fecha = new Date(); 
+        var mes = fecha.getMonth()+1; 
+        var dia = fecha.getDate(); 
+        var ano = fecha.getFullYear();
+        if(dia<10)
+            dia='0'+dia;
+        if(mes<10)
+            mes='0'+mes;
+        
+        var hoy = ano+"-"+mes+"-"+dia;
+        $('#FechasCon').val(hoy);
         $("#modalConfirmacion").modal('show');
     }
 

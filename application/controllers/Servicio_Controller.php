@@ -46,18 +46,11 @@ class Servicio_Controller extends CI_Controller {
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Servicio/CardConsultaOrdenesAbiertas');
-        $this->load->view('Servicio/CardConsultaPaquetesOrden');
+        $this->load->view('Servicio/CardConsultaEquiposOrden');
         $this->load->view('templates/FooterContainer');
     }
         
-    /*
-     * 
-     */
-    public function AgregarEquipoAPaquete_ajax()
-    {
-        
-        
-    }
+   
 
 /* ------------------------------------------------CardConsultaOrdenesServicio--------------------------------------------------------- */
     public function ConsultarPaqueteOrdenServicio($IdOrden)
@@ -217,7 +210,7 @@ class Servicio_Controller extends CI_Controller {
     {
         $IdOrden = $this->input->post('IdOrden');
         
-        $Equipos = $this->EquipoOrden_Model->ConsultarEquiposOrdenPaquete($IdOrden,null);
+        $Equipos = $this->EquipoOrden_Model->ConsultarEquiposOrdenSinPaquete($IdOrden,null);
         
         echo json_encode($Equipos);   
     }
@@ -232,14 +225,14 @@ class Servicio_Controller extends CI_Controller {
             {
                 $this->db->trans_start();
                 
-                $IdOrden = $this->input->post('IdOrden');
+                
                 $Descripcion = $this->input->post('DescripcionServicio');
                 $IdLaboratorio = $this->input->post('laboratorio');
 
                 if($IdLaboratorio != 0 )
                 {
                   $NuevoPaquete = array(
-                      'IdOrden'=> $IdOrden,
+                      
                       'Descripcion'=>$Descripcion,
                       'IdLaboratorio'=> $IdLaboratorio,
                       'IdEstatusPaquete'=>PQT_CREADO
@@ -279,6 +272,39 @@ class Servicio_Controller extends CI_Controller {
             log_message('error', $ex->getMessage());
             $this->db->trans_rollback();
         }        
+    }
+    
+    public function ConsultarEquiposPorOrden()
+    {
+        $IdOrden = $this->input->post('IdOrden');
+        
+        $EquiposOrden = $this->EquipoOrden_Model->ConsultarEquiposOrdenPaquete($IdOrden);
+        
+        for ($i=0;$i<sizeof($EquiposOrden);$i++)
+        {
+            if ($EquiposOrden[$i]['Etiqueta']==TRUE)
+            {
+                $EquiposOrden[$i]['Etiqueta'] ='<input type="checkbox" checked disabled>';
+            }
+            else
+            {
+                $EquiposOrden[$i]['Etiqueta'] ='<input type="checkbox" disabled>';
+            }
+            
+            if ($EquiposOrden[$i]['Factura']==TRUE)
+            {
+                $EquiposOrden[$i]['Factura'] ='<input type="checkbox" checked disabled>';
+            }
+            else
+            {
+                $EquiposOrden[$i]['Factura'] ='<input type="checkbox" disabled>';
+            }
+            
+            
+        }
+        
+        echo json_encode($EquiposOrden);
+        
     }
 
 /* ------------------------------------------------CardConsultaOrdenesAbiertas-------------------------------------------------------- */

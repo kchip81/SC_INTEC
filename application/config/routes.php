@@ -60,37 +60,10 @@ $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
 $route['Servicio/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcio';
 $route['Servicio/NuevaOrdenPDF/(.+)']='Servicio_Controller/CrearOrdenPDF/$1';
 
-
-
 $route['Servicio/ConsultarPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteServicio/$1';
 $route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteOrdenServicio/$1';
 
-
-
-//$route['default_controller'] = 'Ccalendar';
-$route['NotaMedica/ElaborarNota/(.+)'] = 'NotaMedica_Controller/Load_ElaborarNotaMedica/$1';
-$route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';
-$route['Clinica/SeleccionarClinica'] = 'Clinica_Controller/Cargar_SeleccionarClinica';
-
-//Nota Remision
-$route['NotaRemision/CrearNota/(.+)'] = 'NotaRemision_Controller/CrearNotaRemision/$1';
-
-//Expediente Clinico
-$route['ExpedienteClinico/ConsultarExpediente'] = 'ExpedienteClinico_Controller/ConsultarExpedientePacientes';
-$route['ExpedienteClinico/ConsultarNotaMedica/(.+)'] = 'NotaMedica_Controller/ConsultarNotaMedica/$1';
-
-//Inventario
-$route['Inventario/RegistrarEntrada'] = 'Inventario_Controller/Load_RegistrarEntradaInventario';
-$route['Inventario/ConsultarInventario'] = 'Inventario_Controller/ConsultarInventario';
-$route['Inventario/ConsultarDetalleProducto/(.+)'] = 'Inventario_Controller/ConsultarDetalleProducto/$1';
-
-//Paciente
-
-$route['Paciente/ListaPacientes'] = 'Paciente_Controller/ConsultarPacientes';
-$route['Paciente/EditarPaciente/(.+)'] = 'Paciente_Controller/Load_EditarPaciente/$1';
-
-//Nota de Remisión
-
-$route['NotaRemision/CrearNota'] = 'NotaRemision_Controller/Load_RegistrarNotaRemision';
+//PAQUETES
+$route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_ConsultarPaquetesAbiertos';
 
 
