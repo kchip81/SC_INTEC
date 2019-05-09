@@ -84,6 +84,25 @@ class Servicio_Controller extends CI_Controller {
         echo json_encode($Clientes);
     }
 
+
+    public function InsertarEquipo()
+    {
+        $IdCliente = $this->input->post('IdCliente');       
+        $ClaveId = $this->input->post('ClaveId');
+        $NumService = $this->input->post('NumService');       
+        $Modelo = $this->input->post('Modelo');
+        $Descripcion = $this->input->post('Descripcion');       
+        $Marca = $this->input->post('Marca');
+        $AlcanceMedicion = $this->input->post('AlcanceMedicion');       
+        $DivisionMedicion = $this->input->post('DivisionMedicion');
+
+        $Clientes = $this->Equipo_Model->InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente);
+
+        $resultado = $this->Equipo_Model->ConsultarEquipoID($Clientes);
+
+        echo json_encode($resultado);
+    }
+    
     public function ConsultarDataClientes_ajax()
     {
         $id = $this->input->post('id');

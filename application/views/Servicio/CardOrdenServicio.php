@@ -143,7 +143,12 @@
                             </div>
                             
                             <h4 class="form-section"><i class="icon-drawer"></i> Productos</h4>
-                            
+                            <div class="col-md-12">
+                                <div class="form-group" align="right">
+                                    <button type="button" class="btn btn-primary" id="btnAgregarEquipo" disabled><i class="icon-android-add"></i> Agregar Equipo</button>
+                                </div>
+                            </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
@@ -258,15 +263,88 @@
                             </button>
                             <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
                                 <i class="icon-check2"></i>Guardar Entrada
-                            </button>
-                            
-                                
-                                
+                            </button>   
                         </div>
+
+
+
+                        <div class="modal fade" tabindex="-1" role="dialog" id="ModalEquipo" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" id="CancelarModalEquipo">&times;</button>
+                                <h5 class="modal-title">Agregar Equipo</h5>
+                            </div>
+                            <div class="modal-body">
                                 
-                            
-                            
-                          
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ClaveModalProducto">Clavé de Identificación:</label>
+                                        <input type="text" id="ClaveModalProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveModalProducto" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DescripcionModalProducto">Numero de serie:</label>
+                                        <div class="position-relative">
+                                            <input type="text" id="NumSerieModalProducto" class="form-control" placeholder="Numero de serie" name="NumSerieModalProducto" required>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LoteModalProducto">Modelo:</label>
+                                        <input type="text" id="ModeloModalProducto" class="form-control" placeholder="Modelo" name="ModeloModalProducto" required>            
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CodigoModalProducto">Marca:</label>
+                                        <input type="text" id="MarcaModalProducto" class="form-control" placeholder="Marca" name="MarcaModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DescripcionModalProducto">Descripción del Equipo:</label>
+                                        <input type="text" id="DescripcionModalProducto" class="form-control" placeholder="Descripción" name="DescripcionModalProducto" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LoteModalProducto">Alcance de Medicion:</label>
+                                        <input type="text" id="AlcanceModalProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CantidadModalProducto">División Minima:</label>
+                                        <input type="text" id="DivisionModalProducto" class="form-control" placeholder="División Minima" name="DivisionModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button id="AgregarModalEquipo" type="button" class="btn btn-primary">Confirmar</button>
+                                <button id="CancelarModalEquipo" onclick="cerrar()" type="button" class="btn btn-primary">Cancelar</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>                       
+                                
                             
                     </div>
                 </div>
@@ -334,33 +412,102 @@
             IdCliente: $('#cliente').val()
             
         };
+
+        if($('#cliente').val() != "")
+        {
       
-        $.ajax
-        ({            
-            type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/Buscar',
-            dataType: 'json',
-            data:datos, 
-            success:function(resp)
-            {
-                if(resp != '')
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/Buscar',
+                dataType: 'json',
+                data:datos, 
+                success:function(resp)
+                {
+                    if(resp != '')
+                    {
+                        $('#IdSubProducto').val(resp[0].IdEquipo);
+                        $('#ClaveSubProducto').val(resp[0].ClaveId);
+                        $("#NumSerieSubProducto").val(resp[0].NumService); 
+                        $("#ModeloSubProducto").val(resp[0].Modelo);
+                        $('#DescripcionSubProducto').val(resp[0].Descripcion);
+                        $("#MarcaSubProducto").val(resp[0].Marca); 
+                        $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
+                        $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                    }else
+                    //{
+                        //$('#ModalEquipo').modal('show');
+                        alert("Equipo no encontrado");
+                    //}
+                }
+            });
+        }else
+            alert("Seleccione un cliente");
+    });
+
+    $('#btnAgregarEquipo').click(function(){
+        $('#ModalEquipo').modal('show');
+    });
+
+    $("#AgregarModalEquipo").click(function()
+    {
+        datos= {
+            IdCliente: $('#cliente').val(),           
+            ClaveId: $('#ClaveModalProducto').val(),
+            NumService: $("#NumSerieModalProducto").val(),
+            Modelo: $("#ModeloModalProducto").val(),
+            Descripcion: $('#DescripcionModalProducto').val(),
+            Marca: $("#MarcaModalProducto").val(),
+            AlcanceMedicion: $("#AlcanceModalProducto").val(),
+            DivisionMedicion: $('#DivisionModalProducto').val()
+        }; 
+
+        cerrar();
+
+        if( $('#ClaveModalProducto').val() != "" ||
+        $("#NumSerieModalProducto").val() != "" ||
+        $("#ModeloModalProducto").val() != "" ||
+        $('#DescripcionModalProducto').val() != "" &&
+        $("#MarcaModalProducto").val() != "" &&
+        $("#AlcanceModalProducto").val() != "" &&
+        $('#DivisionModalProducto').val() != "")
+        {
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarEquipo',
+                dataType: 'json',
+                data:datos, 
+                success:function(resp)
                 {
                     $('#IdSubProducto').val(resp[0].IdEquipo);
-                    $('#ClaveSubProducto').val(resp[0].ClaveId);
                     $("#NumSerieSubProducto").val(resp[0].NumService); 
+                    $('#ClaveSubProducto').val(resp[0].ClaveId);
                     $("#ModeloSubProducto").val(resp[0].Modelo);
                     $('#DescripcionSubProducto').val(resp[0].Descripcion);
                     $("#MarcaSubProducto").val(resp[0].Marca); 
                     $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
                     $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
-                }else
-                    alert("Equipo no encontrado");
-            }
-        });
+                }
+            });
+            LimpiarModal(); 
+        }  
     });
+
+    $("#CancelarModalEquipo").click(function()
+    {
+        cerrar();
+    });
+
+    function cerrar()
+    {
+        $('#ModalEquipo').modal('hide');
+        LimpiarModal();  
+    }
     
     $("#cliente").change(function()
     {
+        $("#btnAgregarEquipo").attr("disabled", false);
         CargarDatosClientes($(this).val());
     });
 
@@ -494,8 +641,9 @@
             );
         }else
             alert("No se encontro el equipo");
-
+        
         Limpiar();
+
         
     }
 
@@ -521,6 +669,17 @@
         $("#FechaReciboLaboratorio").val("");        
         $("#ObservacionesServicio").val("");
         removerTabla();
+    }
+
+    function LimpiarModal()
+    {
+        $('#ClaveModalProducto').val("");
+        $("#NumSerieModalProducto").val(""); 
+        $("#ModeloModalProducto").val("");
+        $('#DescripcionModalProducto').val("");
+        $("#MarcaModalProducto").val(""); 
+        $("#AlcanceModalProducto").val("");
+        $('#DivisionModalProducto').val(""); 
     }
 
 </script>
