@@ -23,7 +23,7 @@ class Equipo_Model extends CI_Model {
     
     public function ConsultarEquipo()
     {
-        $this->db->select($this->table.'.*.');
+        $this->db->select($this->table.'.*');
         $this->db->from($this->table);
         $query = $this->db->get();
 
@@ -47,7 +47,20 @@ class Equipo_Model extends CI_Model {
         $data = array('Descripcion' => $Descripcion,'Marca' => $Marca,'Modelo' => $Modelo,'NumService' => $NumService
         ,'ClaveId' => $ClaveId,'AlcanceMedicion' => $AlcanceMedicion,'DivisionMedicion' => $DivisionMedicion,'IdCliente' => $IdCliente);
 
-        return $this->db->insert($this->table,$data);        
+        $this->db->insert($this->table,$data);  
+
+        $insertId = $this->db->insert_id();
+        return $insertId;  
     }   
+
+    public function ConsultarEquipoID($id)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);
+        $this->db->where($this->table.'.IdEquipo',$id);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
     //put your code here
 }

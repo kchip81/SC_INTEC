@@ -45,7 +45,7 @@ class PDF_Model extends CI_Model {
               body {
                 position: relative;
                 width: 21cm;  
-                height: 29.7cm; 
+                height: 29cm; 
                 margin: 0 auto; 
                 color: #001028;
                 background: #FFFFFF; 
@@ -55,32 +55,20 @@ class PDF_Model extends CI_Model {
               }
         
               header {
-                padding: 10px 0;
-                margin-bottom: 30px;
-              }
-        
-              #logo {
-                text-align: left;
-              }
-        
-              #logo img {
-                width: 200px;
-                float:left;
-                margin: 10px;
+                padding: 5px 0;
+                margin-bottom: 0px;
               }
         
               h2 {
                 font-size: 2.0em;
                 text-align: center;
-                margin: 0 0 20px 0;
-              }
-        
+              }        
         
               table {
                 width: 100%;
                 border-collapse: collapse;
                 border-spacing: 0;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
               }
         
               table tr:nth-child(2n-1) td {
@@ -97,11 +85,12 @@ class PDF_Model extends CI_Model {
                 color: #5D6975;
                 border-bottom: 1px solid #C1CED9;
                 font-weight: normal;
+                padding: 5px;
               }
         
         
               table td {
-                padding: 10px;
+                padding: 5px;
                 text-align: left;
               }
         
@@ -109,7 +98,7 @@ class PDF_Model extends CI_Model {
               footer {
                 color: #5D6975;
                 width: 100%;
-                height: 30px;
+                height: 20px;
                 position: absolute;
                 bottom: 0;
                 border-top: 1px solid #C1CED9;
@@ -120,15 +109,20 @@ class PDF_Model extends CI_Model {
             </style>
           </head>
           <body>
-            <header class="clearfix">
-              <div id="logo">
-                <img src="http://localhost/SC_Intec/app-assets/images/logo/IntecLogo.png" style="width: 80px" align="left">
-                <h2 style="float:left;">Datos de Servicio de Calibración</h2>
+
+
+          <header>
+            <div>
+              <figure>
+                <img class="logo" src="'.base_url().'app-assets/images/logo/IntecLogo.png" style="width: 50px" align="left">
+              </figure>
+              <div>
+                <h2 class="title">Datos de Servicio de Calibración</h2>
+                <p>Con la finalidad de brindarle un mejor servicio y evitar la comisión de datos que el cliente requiere en su informe de calibración</p>
+                </div>
               </div>
-              
-              <p>Con la funalidad de brindarle un mejor servicio y evitar la comicion de datos que el cliente requiere en su informe de calibración</p>
-        
-            </header>
+          </header>
+
             ';
 
             foreach($Clientes as $cliente)
@@ -179,6 +173,7 @@ class PDF_Model extends CI_Model {
                 </tbody>
               
                 </table> 
+                <br>
                 <table>
                 <thead>
                   <tr>
@@ -215,6 +210,7 @@ class PDF_Model extends CI_Model {
                   
                 </tbody>
               </table>
+              <br>
               <table >
                   <thead>
                     <tr>
