@@ -49,15 +49,15 @@ class EquipoOrden_Model extends CI_Model{
         return $query->result_array();
     }
     
-    public function ConsultarEquiposOrdenSinPaquete($IdOrden)
+    public function ConsultarEquiposOrdenSinPaquete()
     {
         $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
-        $this->db->select('Descripcion_lab, DescripcionEstatusPaquete, FechaEnv,FechaRecLab, Factura, Etiqueta, Certificado');
+        
         $this->db->from ($this->table);
         $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
         $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');
         $this->db->join('cliente','orden_servicio.IdCliente = cliente.IdCliente');
-        $this->db->where($this->table.'.IdOrden',$IdOrden);
+        
         $this->db->where($this->table.'.IdPaqueteEnvio',NULL);
         
         
@@ -90,6 +90,22 @@ class EquipoOrden_Model extends CI_Model{
         $this->db->insert($this->table,$data);  
         $insertId = $this->db->insert_id();
         return $insertId;  
+    }
+    
+    public function ConsultarEquipoOrdenPorId($IdEquipoOrden)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->select('equipo.Descripcion, Marca, Modelo, NumService, ClaveId');
+        $this->db->select('Descripcion_Lab,DescripcionEstatusPaquete');
+        $this->db->from($this->table);
+        $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
+        $this->db->join('paquete_envio',$this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','left');
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','left');
+        $this->db->join('catalogoestatuspaquetes',$this->table.'.IdEstatusPaquete= catalogoestatuspaquetes.IdEstatusPaquete');
+        $this->db->where($this->table.'.IdEquipoOrden',$IdEquipoOrden);
+        $query = $this->db->get();
+        
+        return $query->row();
     }
     
             

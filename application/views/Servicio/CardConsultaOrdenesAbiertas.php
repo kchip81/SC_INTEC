@@ -1,4 +1,4 @@
-l<div class="row match-height">
+<div class="row match-height">
         <div class="col-md-12">
             <div class="card">
                 <!--CARD HEADER-->
@@ -33,7 +33,7 @@ l<div class="row match-height">
                             </div>
                             
                                  
-                                <table class="table table-responsive table-bordered table-striped" id="tablaOrdenAbierta">
+                            <table class="table table-responsive table-bordered table-striped" id="tablaOrdenAbierta" style="width:100%">
                                     <thead>
                                         <th>No. Orden</th>
                                         <th>Cliente</th>
@@ -191,7 +191,7 @@ l<div class="row match-height">
                         OrdenesAbiertas[i]['FechaEnvio'],   
                         OrdenesAbiertas[i]['FechaRecibo'],   
                         OrdenesAbiertas[i]['Observaciones'],
-                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>'+ ' ' 
+                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"></i></a>'+ ' ' 
                     ]).draw(false);  
                 }
             }

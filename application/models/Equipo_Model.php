@@ -56,11 +56,14 @@ class Equipo_Model extends CI_Model {
     public function ConsultarEquipoID($id)
     {
         $this->db->select($this->table.'.*');
+        $this->db->select('Descripcion,Marca, Modelo, NumService, ClaveId');
         $this->db->from($this->table);
+        $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
         $this->db->where($this->table.'.IdEquipo',$id);
+        $this->db->limit(1);
         $query = $this->db->get();
 
-        return $query->result_array();
+        return $query->row();
     }
     //put your code here
 }

@@ -227,9 +227,9 @@ class Servicio_Controller extends CI_Controller {
 
     public function ConsultarEquiposSinPaquete_ajax()
     {
-        $IdOrden = $this->input->post('IdOrden');
         
-        $Equipos = $this->EquipoOrden_Model->ConsultarEquiposOrdenSinPaquete($IdOrden,null);
+        
+        $Equipos = $this->EquipoOrden_Model->ConsultarEquiposOrdenSinPaquete();
         
         echo json_encode($Equipos);   
     }
@@ -324,6 +324,15 @@ class Servicio_Controller extends CI_Controller {
         
         echo json_encode($EquiposOrden);
         
+    }
+    
+    function ConsultarEquipoOrden_ajax()
+    {
+        $IdEquipoOrden = $this->input->post('IdEquipoOrden');
+        
+        $EquipoOrden = $this->EquipoOrden_Model->ConsultarEquipoOrdenPorId($IdEquipoOrden);
+        
+        echo json_encode($EquipoOrden);
     }
 
 /* ------------------------------------------------CardConsultaOrdenesAbiertas-------------------------------------------------------- */

@@ -6,6 +6,8 @@
     tr.shown td.details-control {
         background: url(<?php echo base_url('/app-assets/images/datatables/resources/details_close.png');?>) no-repeat center center;
     }
+/*    th { font-size: 13px; }
+    td { font-size: 12px; }*/
 </style>
 <div class="row match-height">
     <div class="col-md-12">
@@ -49,6 +51,7 @@
                                     <th>Estatus Paq.</th>
                                     <th>Etiqueta</th>
                                     <th>Factura</th>
+                                    <th>Acciones</th>
                                 </thead>
                                 <tbody >
 
@@ -56,6 +59,7 @@
                             </table>                                                                                    
                     </div>
 
+                    <!--MODAL FechaConfirmación-->
                     <div class="modal fade" tabindex="-1" role="dialog" id="modalConfirmacion" aria-hidden="true">
                     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -79,7 +83,111 @@
                         </div>
                         </div>
                     </div>
-                    </div>     
+                    </div> 
+                    
+                    <!--MODAL ActualizarEquipoOrden-->
+                    <?php echo form_open('Servicio_Controller/ActualizarEstatusEquipoOrden');?>
+                            <div class="modal fade" id="ModalActualizarEquipoOrden" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                              <div class="modal-dialog modal-lg" role="document" style='width: 50%'>
+                                  <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="exampleModalLabel">Actualizar Estatus Equipo
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <input type="hidden" id="IdOrden" name="IdOrden">
+                                            </h4>
+                                          </div>
+                             
+                                    <div class="modal-body">
+                                        
+                                        <div class='row'>
+                                            <div class='col-md-3'>
+                                                <div class='form-group'>
+                                                    <label for="Modal_IdOrden">No. Orden:</label>
+                                                    <input type='text' id='Modal_IdOrden' class='form-control' name='ModalIdOrden' readonly/>
+                                                </div>
+                                            </div>
+                                            <div class='col-md-4'>
+                                                <div class='form-group'>
+                                                    <label for="Modal_IdPaquete">No. Paquete:</label>
+                                                    <input type='text' id='Modal_IdPaquete' class='form-control' name='Modal_IdPaquete' readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         <div class='row'>
+                                            <div class='col-md-3'>
+                                                <div class='form-group'>
+                                                    <label for="Modal_Laboratorio">Laboratorio:</label>
+                                                    <input type='text' id='Modal_Laboratorio' class='form-control' name='Modal_Laboratorio' readonly/>
+                                                </div>
+                                            </div>
+                                            <div class='col-md-4'>
+                                                <div class='form-group'>
+                                                    <label for="Modal_EstatusEquipo">Estatus Equipo:</label>
+                                                    <input type='text' id='Modal_EstatusEquipo' class='form-control' name='Modal_EstatusEquipo' readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label for="Modal_FechaFinServicio">Fecha Fin Calibración:</label>
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="date" id="Modal_FechaFinServicio" class="form-control" name="Modal_FechaFinServicio" disabled="true"/>
+                                                        <div class="form-control-position">
+                                                            <i class="icon-calendar5"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label for="Modal_FechaRetornoLab">Fecha Retorno:</label>
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="date" id="Modal_FechaRetornoLab" class="form-control" name="Modal_FechaRetornoLab" disabled="true"/>
+                                                        <div class="form-control-position">
+                                                            <i class="icon-calendar5"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Modal_chkEtiqueta">Etiqueta:</label>
+                                                    <input type="checkbox" id="Modal_chkEtiqueta" name="Modal_chkEtiqueta">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-group">
+                                                    <label for="Modal_chkFactura">Factura:</label>
+                                                    <input type="checkbox" id="Modal_chkFactura" name="Modal_chkFactura">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                      <!-- FORM ACTIONS-->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning mr-1" data-dismiss="modal">
+                                            <i class="icon-cross2"></i>Cerrar
+                                        </button>
+                                        
+                                        <button type="submit" class="btn btn-success mr-1" name="action" value="CrearPaquete" >
+                                            <i class="icon-edit"></i>Crear Paquete
+                                        </button>
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </form>
+
 
 
 
@@ -147,65 +255,88 @@
                   "infoEmpty": "Sin registros disponibles",
                   "infoFiltered": "(filtrado de _MAX_ total)"
               },
+              "columnDefs":[
+                {
+                    "targets":14, "data":"IdOrden", "render": function(data,type,row,meta)
+                        {       
+                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"></i></a>';
+                        }}], 
+                      
               "columns": [
-                        {
-                            "className":      'details-control',
-                            "orderable":      false,
-                            "data":           null,
-                            "defaultContent": ''
-                        },
-                        { "data": "IdOrden" },
-                        { "data": "NombreCompania" },
-                        { "data": "IdEquipoOrden" },
-                        { "data": "Descripcion" },
-                        { "data": "Marca" },
-                        { "data": "Modelo" },
-                        { "data": "NumService" },
-                        { "data": "ClaveId" },
-                        { "data": "IdPaqueteEnvio" },
-                        { "data": "Descripcion_lab" },
-                        { "data": "DescripcionEstatusPaquete"},
-                        { "data": "Etiqueta"},
-                        { "data": "Factura"}
+                    {
+                        "className":      'details-control',
+                        "orderable":      false,
+                        "data":           null,
+                        "defaultContent": ''
+                    },
+                    { "data": "IdOrden" },
+                    { "data": "NombreCompania" },
+                    { "data": "IdEquipoOrden" },
+                    { "data": "Descripcion" },
+                    { "data": "Marca" },
+                    { "data": "Modelo" },
+                    { "data": "NumService" },
+                    { "data": "ClaveId" },
+                    { "data": "IdPaqueteEnvio" },
+                    { "data": "Descripcion_lab" },
+                    { "data": "DescripcionEstatusPaquete"},
+                    { "data": "Etiqueta"},
+                    { "data": "Factura"},
+                    { 
+                        "data":"IdEquipoOrden"
+                        
+                    }
+
                         //{ "data": "<a></<a>"}
 
                     ]
 
-            });   
-       
-//        $.ajax({
-//            url:"<?php echo site_url();?>/Servicio_Controller/ConsultarEquiposPorOrden",
-//            method:"POST",
-//            data: {IdOrden:IdOrden},
-//            success: function(r)
-//              {
-//                  alert(r);
-//                var Paquetes = JSON.parse(r);
-//
-//                
-//                  t.clear();
-//                  t.draw();
-//                 for(i=0;i<Paquetes.length;i++)
-//                 { 
-//                     
-//                     t.row.add([
-//                         '<td class="details-control"></td>',
-//                         Paquetes[i]['IdOrden'],
-//                         Paquetes[i]['NombreCompania'],
-//                         Paquetes[i]['IdEquipoOrden'],
-//                         Paquetes[i]['Descripcion'],
-//                         Paquetes[i]['Marca'],
-//                         Paquetes[i]['Modelo'],
-//                         Paquetes[i]['NumService'],
-//                         Paquetes[i]['ClaveId'],
-//                         Paquetes[i]['IdPaqueteEnvio'],
-//                         Paquetes[i]['Descripcion_lab'],
-//                         Paquetes[i]['DescripcionEstatusPaquete'],
-//                         '<a></a>'
-//                        
-//                     ]).draw(false);
-//                 }
-//              }
-//        });
+            });
+
+
     }
+    function EditarEquipo()
+    {
+        var table =$("#tblEquiposOrden").DataTable();
+        var data = table.row( $(this).parents('tr') ).data();
+        alert(data);
+    }
+    function OpenModal_ActualizarEquipoOrden(IdEquipoOrden)
+    {
+        $.ajax
+        ({
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarEquipoOrden_ajax',
+            data:{
+                IdEquipoOrden:IdEquipoOrden
+            },
+            method: "POST",
+            success:function(resp)
+            {
+                var EquipoOrden = JSON.parse(resp);
+                
+                $("#Modal_IdOrden").val(EquipoOrden['IdOrden']);
+                $("#Modal_FechaFinServicio").val(EquipoOrden['FechaFinCalLab']);
+                $("#Modal_FechaRetornoLab").val(EquipoOrden['FechaRetLab']);
+                $("#Modal_EstatusEquipo").val(EquipoOrden['DescripcionEstatusPaquete']);
+                if(EquipoOrden['IdEstatusPaquete']>3 && EquipoOrden['FechaFinCalLab']==null )
+                {
+                    $("#Modal_FechaFinServicio").prop("disabled",false);
+                       
+                }
+                else if(EquipoOrden['IdEstatusPaquete']>4 && EquipoOrden['FechaRetLab']==null)
+                {
+
+                    $("#Modal_FechaRetornoLab").prop("disabled",false);
+
+                }
+                
+                
+                
+                 $("#ModalActualizarEquipoOrden").modal('show');
+    
+            }
+        });
+    }            
+       
+    
 </script>
