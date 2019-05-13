@@ -86,7 +86,7 @@
                     </div> 
                     
                     <!--MODAL ActualizarEquipoOrden-->
-                    <?php echo form_open('Servicio_Controller/ActualizarEstatusEquipoOrden');?>
+                    <?php echo form_open_multipart('Servicio_Controller/do_upload'); // ActualizarEstatusEquipoOrden?>
                             <div class="modal fade" id="ModalActualizarEquipoOrden" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                               <div class="modal-dialog modal-lg" role="document" style='width: 50%'>
                                   <div class="modal-content">
@@ -170,9 +170,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-                                        
+
+                                        <div class="row">
+                                            <div class="col-md-2"> 
+                                                <input type="file" name="userfile" size="20"/>
+                                            </div>
+                                        </div>
                                     </div>
+
+
                                       <!-- FORM ACTIONS-->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-warning mr-1" data-dismiss="modal">
@@ -187,6 +193,10 @@
                               </div>
                             </div>
                         </form>
+
+
+
+
 
 
 
@@ -259,7 +269,7 @@
                 {
                     "targets":14, "data":"IdOrden", "render": function(data,type,row,meta)
                         {       
-                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"></i></a>';
+                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Ver Equipos"></i></a>';
                         }}], 
                       
               "columns": [
@@ -330,9 +340,7 @@
 
                 }
                 
-                
-                
-                 $("#ModalActualizarEquipoOrden").modal('show');
+                $("#ModalActualizarEquipoOrden").modal('show');
     
             }
         });

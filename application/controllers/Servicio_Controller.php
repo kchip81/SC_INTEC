@@ -337,4 +337,26 @@ class Servicio_Controller extends CI_Controller {
 
 /* ------------------------------------------------CardConsultaOrdenesAbiertas-------------------------------------------------------- */
     //put your code here
+
+    public function do_upload()        
+     {
+        $this->load->helper(array('form', 'url'));
+        $config['upload_path']          = './archivos/';
+        $config['allowed_types']        = 'pdf';
+        $config['max_size']             = 1024;
+        $config['max_width']            = 1024;
+        $config['max_height']           = 768;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('userfile'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            redirect('Servicio/ConsultarOrden','refresh');
+        }else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            redirect('Servicio/ConsultarOrden','refresh');
+        }          
+    }
 }

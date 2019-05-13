@@ -53,7 +53,7 @@ class Equipo_Model extends CI_Model {
         return $insertId;  
     }   
 
-    public function ConsultarEquipoID($id)
+    public function ConsultarEquipoOrdenPorId($id)
     {
         $this->db->select($this->table.'.*');
         $this->db->select('Descripcion,Marca, Modelo, NumService, ClaveId');
@@ -61,9 +61,18 @@ class Equipo_Model extends CI_Model {
         $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
         $this->db->where($this->table.'.IdEquipo',$id);
         $this->db->limit(1);
-        $query = $this->db->get();
 
         return $query->row();
+    }
+
+    public function ConsultarEquipoID($id)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);
+        $this->db->where($this->table.'.IdEquipo',$id);
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
     //put your code here
 }

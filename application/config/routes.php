@@ -54,6 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //Index.php Dirige al Login
 $route['default_controller'] = 'Login_Controller/Cargar_Login';
+$route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';
 
 //Servicio
 $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
@@ -65,5 +66,4 @@ $route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_Consult
 
 //PAQUETES
 $route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_ConsultarPaquetesAbiertos';
-
 

@@ -279,6 +279,12 @@
                                 
                             <div class="row">
                                 <div class="col-md-6">
+                                    <h4 id="ClienteSelect"></h4>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="ClaveModalProducto">Clavé de Identificación:</label>
                                         <input type="text" id="ClaveModalProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveModalProducto" required>
@@ -446,6 +452,9 @@
     });
 
     $('#btnAgregarEquipo').click(function(){
+        var opcion = $('#cliente option:selected').text();
+        var c = "Cliente: " + opcion;
+        $('#ClienteSelect').html(c);
         $('#ModalEquipo').modal('show');
     });
 
@@ -462,36 +471,35 @@
             DivisionMedicion: $('#DivisionModalProducto').val()
         }; 
 
-        cerrar();
-
-        if( $('#ClaveModalProducto').val() != "" ||
-        $("#NumSerieModalProducto").val() != "" ||
-        $("#ModeloModalProducto").val() != "" ||
-        $('#DescripcionModalProducto').val() != "" &&
-        $("#MarcaModalProducto").val() != "" &&
-        $("#AlcanceModalProducto").val() != "" &&
-        $('#DivisionModalProducto').val() != "")
+        if( $('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
         {
-            $.ajax
-            ({            
-                type:'post',
-                url:'<?php echo site_url();?>/Servicio_Controller/InsertarEquipo',
-                dataType: 'json',
-                data:datos, 
-                success:function(resp)
-                {
-                    $('#IdSubProducto').val(resp[0].IdEquipo);
-                    $("#NumSerieSubProducto").val(resp[0].NumService); 
-                    $('#ClaveSubProducto').val(resp[0].ClaveId);
-                    $("#ModeloSubProducto").val(resp[0].Modelo);
-                    $('#DescripcionSubProducto').val(resp[0].Descripcion);
-                    $("#MarcaSubProducto").val(resp[0].Marca); 
-                    $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
-                    $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
-                }
-            });
-            LimpiarModal(); 
-        }  
+            if($('#DescripcionModalProducto').val() != "" && $("#MarcaModalProducto").val() != "" &&
+            $("#AlcanceModalProducto").val() != "" && $('#DivisionModalProducto').val() != "")
+            {
+                cerrar();
+                $.ajax
+                ({            
+                    type:'post',
+                    url:'<?php echo site_url();?>/Servicio_Controller/InsertarEquipo',
+                    dataType: 'json',
+                    data:datos, 
+                    success:function(resp)
+                    {
+                        $('#IdSubProducto').val(resp[0].IdEquipo);
+                        $("#NumSerieSubProducto").val(resp[0].NumService); 
+                        $('#ClaveSubProducto').val(resp[0].ClaveId);
+                        $("#ModeloSubProducto").val(resp[0].Modelo);
+                        $('#DescripcionSubProducto').val(resp[0].Descripcion);
+                        $("#MarcaSubProducto").val(resp[0].Marca); 
+                        $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
+                        $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                    }
+                });
+                LimpiarModal(); 
+            }  else
+                alert("Complete todo los campos");
+        }else
+            alert("Complete todo los campos");
     });
 
     $("#CancelarModalEquipo").click(function()
@@ -507,7 +515,10 @@
     
     $("#cliente").change(function()
     {
-        $("#btnAgregarEquipo").attr("disabled", false);
+        if($('#cliente option:selected').text() != "Seleccione un cliente")
+            $("#btnAgregarEquipo").attr("disabled", false);
+        else
+            $("#btnAgregarEquipo").attr("disabled", true);
         CargarDatosClientes($(this).val());
     });
 
