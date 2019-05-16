@@ -30,7 +30,8 @@ class Login_Controller extends CI_Controller {
     
     public function Cargar_Login($logout=FALSE)
     {
-        if($this->session->has_userdata('logged_in'))
+        log_message('debug','*->Cargar_Login->SESSION->USERDATA:'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_NombreUsuario')); 
+        if($this->session->has_userdata('intec_logged_in'))
             {
                 $data['title'] = "Intec";
                 $this->load->view('templates/MainContainer', $data);
@@ -47,6 +48,7 @@ class Login_Controller extends CI_Controller {
                 else
                 {
                     session_destroy();
+                    log_message('debug', '*->SESSION DESTRUIDA');
                     $data['logout_message'] = "Sesión Cerrada exitosamente";
                     $this->load->view('Login/login_form', $data); 
                 }
@@ -58,13 +60,12 @@ class Login_Controller extends CI_Controller {
     {
                
            $Usr = $this->input->post('username');
-            $Contrasena = $this->input->post('password');
+           $Contrasena = $this->input->post('password');
             
              
              
              //Validar el usuario y contraseña
-             $Usuario = $this->Usuario_Model->ValidarUsuarioContrasena($Usr,$Contrasena);
-             //$ClinicasUsuario = 
+             $Usuario = $this->Usuario_Model->ValidarUsuarioContrasena($Usr,$Contrasena); 
              
              if ($Usuario==TRUE)
              {//El usuario y contrasena son correctos
@@ -72,17 +73,19 @@ class Login_Controller extends CI_Controller {
                  //Cargar funciones del perfil
                 
                  $SessionData = array(
-                     'IdUsuario'=>$Usuario->IdUsuario,
-                     'NombreUsuario'=>$Usuario->NombreUsuario.' '.$Usuario->ApellidosUsuario,
-                     'IdPerfil'=>$Usuario->IdPerfil,
-                     'DescripcionPerfil'=>$Usuario->DescripcionPerfil,
+                     'intec_IdUsuario'=>$Usuario->IdUsuario,
+                     'intec_NombreUsuario'=>$Usuario->NombreUsuario.' '.$Usuario->ApellidosUsuario,
+                     'intec_IdPerfil'=>$Usuario->IdPerfil,
+                     'intec_DescripcionPerfil'=>$Usuario->DescripcionPerfil,
                      
-                     'logged_in'=>TRUE,
+                     'intec_logged_in'=>TRUE,
                      
                  );
                  
                  //Establecer Sesion del usuario
                  $this->session->set_userdata($SessionData);
+                 
+                 log_message('debug', '*->Validar_Login->SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
                 
                 $data['title'] = "Intec";
                 $this->load->view('templates/MainContainer', $data);
@@ -112,7 +115,7 @@ class Login_Controller extends CI_Controller {
         
         public function CerrarSesion()
         {
-            $this->session->unset_userdata('logged_in','IdUsuario');
+            $this->session->unset_userdata('intec_logged_in','intec_IdUsuario');
             
             $this->Cargar_Login(TRUE);
         }

@@ -95,11 +95,11 @@ $db['development'] = array(
 	'save_queries' => TRUE
 );
 $db['production'] = array(
-	'dsn'	=> '‘mysql:host=localhost;dbname=iinteco_bd_intec’',
+	'dsn'	=> '‘mysql:host=localhost;dbname=iintecco_bd_intec’',
 	'hostname' => 'localhost',
-	'username' => 'iinteco_BDIntec',
+	'username' => 'iintecco_BDIntec',
 	'password' => '@IntecBD',
-	'database' => 'iinteco_bd_intec',
+	'database' => 'iintecco_bd_intec',
 	'dbdriver' => 'mysqli',
         'dbport'=>'3306',
 	'dbprefix' => '',

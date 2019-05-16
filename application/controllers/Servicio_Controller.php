@@ -31,6 +31,7 @@ class Servicio_Controller extends CI_Controller {
     
     public function Load_NuevaOrdenServcio()
     {
+        //log_message('debug', 'NUEVA ORDEN-0-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
         $data['title'] = 'Registrar Nueva Orden de Servicio';
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
@@ -38,16 +39,20 @@ class Servicio_Controller extends CI_Controller {
         $this->load->view('Servicio/CardOrdenServicio');
         $this->load->view('templates/FormFooter',$data); 
         $this->load->view('templates/FooterContainer');
+        
+        //log_message('debug', 'NUEVA ORDEN-1-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
     }
 
     public function Load_ConsultarOrdenServcio()
     {
+        //log_message('debug', 'CONSULTAR ORDEN-0-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
         $data['title'] = 'Consultas de Ordenes de Servicio';
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Servicio/CardConsultaOrdenesAbiertas');
         $this->load->view('Servicio/CardConsultaEquiposOrden');
         $this->load->view('templates/FooterContainer');
+        //log_message('debug', 'CONSULTAR ORDEN-1-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
     }
         
    
@@ -334,14 +339,104 @@ class Servicio_Controller extends CI_Controller {
         
         echo json_encode($EquipoOrden);
     }
+    
+    public function ActualizarEquipoOrden()
+    {
+        $IdEquipoOrden = $this->input->post('IdEquipoOrden');
+        $IdEstatusPaquete_Equipo = $this->input->post('IdEstatusPaquete_Equipo');
+        $FechaFinCalLab = $this->input->post('Modal_FechaFinServicio');
+        $FechaRetLab = $this->input->post('Modal_FechaRetornoLab');
+        $FechaRecIntec = $this->input->post('Modal_FechaRecIntec');
+        $chkFactura =  $this->input->post('Modal_chkFactura'); 
+        $chkEtiqueta =  $this->input->post('Modal_chkEtiqueta'); 
+        $Certificado = $this->input->post('Certificado_file');
+        $IdEquipo = $this->input->post('IdEquipo');
+        $IdCliente = $this->input->post('IdCliente');
+        
+        $IdEstatus = FALSE;
+        $FechaEstatus = FALSE;
+        
+        log_message('error', '*->FECHAFINCALLAB:'.$FechaFinCalLab);
+        switch ($IdEstatusPaquete_Equipo)
+        {
+            
+            //Equipo REcibido en Laboratorio
+            case PQT_RECIBIDOLABORATORIO:
+                if($FechaFinCalLab !== null && $FechaFinCalLab !== "" && $FechaFinCalLab !=="0000-00-00")
+                {
+                    $IdEstatus = PQT_CALIBRACIONTERMINADA;
+                    $chkFactura = FALSE;
+                    $chkEtiqueta =FALSE;
+                    $Certificado = "";
+                    $FechaEstatus = $FechaFinCalLab;
+           
+                }
+                break;
+            case PQT_CALIBRACIONTERMINADA:
+                
+                
+                if($FechaRetLab !== null && $FechaRetLab !== "" && $FechaRetLab !== "0000-00-00")
+                {
+                    $IdEstatus= PQT_ENRETORNO;
+                    $FechaEstatus = $FechaRetLab;
+                }
+                
+                
+                break;
+                
+            case PQT_ENRETORNO:
+                
+
+                if($FechaRecIntec !== null && $FechaRecIntec !== "" && FechaRecIntec !== "0000-00-00")
+                {
+                    $IdEstatus = PQT_RECIBIDOINTEC;
+                    $FechaEstatus = $FechaRecIntec;
+                }
+                
+                break;
+        }
+        
+        $ArchivoCertificado = FALSE;
+        $NombreArchivo =  $_FILES['Certificado_file']['name'];
+        
+        if ($NombreArchivo !== null && $NombreArchivo !== "")
+        {
+            $ArchivoCertificado = $this->do_upload($IdCliente,$IdEquipo);
+        }
+        log_message('error', '*->[DATOS ACTUALIZACIÓN]:IdEquipoOrden:'.$IdEquipoOrden.'|'.$IdEstatus.'|'.$FechaEstatus);
+        
+        $this->EquipoOrden_Model->ActualizarEstatusEquipo($IdEquipoOrden,$IdEstatus,$FechaEstatus, $chkFactura, $chkEtiqueta, $ArchivoCertificado);
+                
+        
+        
+        
+        redirect(site_url('Servicio/ConsultarOrden'));
+        echo "<script>alert(1);</script>";
+        
+        
+    }
 
 /* ------------------------------------------------CardConsultaOrdenesAbiertas-------------------------------------------------------- */
     //put your code here
 
-    public function do_upload()        
+    public function do_upload($IdCliente, $IdEquipo)        
      {
+        $path = './Certificados/';
+        if (!is_dir($path.$IdCliente))
+        {
+            mkdir($path.$IdCliente);
+            
+        }
+        $path.= $IdCliente.'/';
+        if(!is_dir($path.$IdEquipo))
+        {
+             mkdir($path.$IdEquipo);
+            
+        }
+        $path.= $IdEquipo.'/';
+        
         $this->load->helper(array('form', 'url'));
-        $config['upload_path']          = './archivos/';
+        $config['upload_path']          = $path;
         $config['allowed_types']        = 'pdf';
         $config['max_size']             = 1024;
         $config['max_width']            = 1024;
@@ -349,14 +444,18 @@ class Servicio_Controller extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('userfile'))
+        if (!$this->upload->do_upload('Certificado_file'))
         {
-            $error = array('error' => $this->upload->display_errors());
-            redirect('Servicio/ConsultarOrden','refresh');
+            
+            log_message('error',$this->upload->display_errors() );
+            return FALSE;
         }else
         {
-            $data = array('upload_data' => $this->upload->data());
-            redirect('Servicio/ConsultarOrden','refresh');
+            
+            $File = $this->upload->data('file_name');
+            log_message('debug','ARCHIVO:'.$File);
+            return $File;
+            
         }          
     }
 }

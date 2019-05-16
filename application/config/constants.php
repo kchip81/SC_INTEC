@@ -95,7 +95,7 @@ defined('PQT_ENVIADOLABORATORIO')        OR define('PQT_ENVIADOLABORATORIO', 2);
 defined('PQT_RECIBIDOLABORATORIO')        OR define('PQT_RECIBIDOLABORATORIO', 3);
 defined('PQT_CALIBRACIONTERMINADA')        OR define('PQT_CALIBRACIONTERMINADA', 4);
 defined('PQT_ENRETORNO')        OR define('PQT_ENRETORNO', 5);
-defined('PQT_RECIBIDOINTEC')        OR define('PQT_RECIBIDOINTECMEDICO', 6);
+defined('PQT_RECIBIDOINTEC')        OR define('PQT_RECIBIDOINTEC', 6);
 defined('PQT_CERRADO')        OR define('PQT_CERRADO', 7);
 
 

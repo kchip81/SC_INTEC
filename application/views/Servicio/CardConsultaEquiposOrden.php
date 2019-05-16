@@ -6,8 +6,8 @@
     tr.shown td.details-control {
         background: url(<?php echo base_url('/app-assets/images/datatables/resources/details_close.png');?>) no-repeat center center;
     }
-/*    th { font-size: 13px; }
-    td { font-size: 12px; }*/
+    th { font-size: 14px; }
+    td { font-size: 13px; }
 </style>
 <div class="row match-height">
     <div class="col-md-12">
@@ -51,7 +51,9 @@
                                     <th>Estatus Paq.</th>
                                     <th>Etiqueta</th>
                                     <th>Factura</th>
+                                    <th>Certificado</th>
                                     <th>Acciones</th>
+                                    <th>IdCliente</th>
                                 </thead>
                                 <tbody >
 
@@ -86,7 +88,7 @@
                     </div> 
                     
                     <!--MODAL ActualizarEquipoOrden-->
-                    <?php echo form_open_multipart('Servicio_Controller/do_upload'); // ActualizarEstatusEquipoOrden?>
+                    <?php echo form_open_multipart('Servicio_Controller/ActualizarEquipoOrden'); // ActualizarEstatusEquipoOrden?>
                             <div class="modal fade" id="ModalActualizarEquipoOrden" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                               <div class="modal-dialog modal-lg" role="document" style='width: 50%'>
                                   <div class="modal-content">
@@ -95,7 +97,10 @@
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
-                                                <input type="hidden" id="IdOrden" name="IdOrden">
+                                                <input type="hidden" id="IdEquipoOrden" name="IdEquipoOrden">
+                                                <input type="hidden" id="IdEquipo" name="IdEquipo">
+                                                <input type="hidden" id="IdCliente" name="IdCliente">
+                                                <input type="hidden" id="IdEstatusPaquete_Equipo" name="IdEstatusPaquete_Equipo">
                                             </h4>
                                           </div>
                              
@@ -116,7 +121,7 @@
                                             </div>
                                         </div>
                                          <div class='row'>
-                                            <div class='col-md-3'>
+                                            <div class='col-md-5'>
                                                 <div class='form-group'>
                                                     <label for="Modal_Laboratorio">Laboratorio:</label>
                                                     <input type='text' id='Modal_Laboratorio' class='form-control' name='Modal_Laboratorio' readonly/>
@@ -155,25 +160,38 @@
                                                 </div>
                                             </div>   
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group">
+                                                    <label for="Modal_FechaRecIntec">Fecha Recibido Intec:</label>
+                                                    <div class="position-relative has-icon-left">
+                                                        <input type="date" id="Modal_FechaRecIntec" class="form-control" name="Modal_FechaRecIntec" disabled="true"/>
+                                                        <div class="form-control-position">
+                                                            <i class="icon-calendar5"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="Modal_chkEtiqueta">Etiqueta:</label>
-                                                    <input type="checkbox" id="Modal_chkEtiqueta" name="Modal_chkEtiqueta">
+                                                    <input type="checkbox" id="Modal_chkEtiqueta" name="Modal_chkEtiqueta" value="1">
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
                                                     <label for="Modal_chkFactura">Factura:</label>
-                                                    <input type="checkbox" id="Modal_chkFactura" name="Modal_chkFactura">
+                                                    <input type="checkbox" id="Modal_chkFactura" name="Modal_chkFactura" value ="1">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-md-2"> 
-                                                <input type="file" name="userfile" size="20"/>
+                                                <input type="file" name="Certificado_file" size="20"/>
                                             </div>
                                         </div>
                                     </div>
@@ -185,8 +203,8 @@
                                             <i class="icon-cross2"></i>Cerrar
                                         </button>
                                         
-                                        <button type="submit" class="btn btn-success mr-1" name="action" value="CrearPaquete" >
-                                            <i class="icon-edit"></i>Crear Paquete
+                                        <button type="submit" class="btn btn-success mr-1" name="action" value="ActualizarEquipo" >
+                                            <i class="icon-edit"></i>Actualizar Equipo
                                         </button>
                                     </div>
                                   </div>
@@ -233,7 +251,7 @@
         '<tr>'+
             '<td>Fecha Envio:</td>'+
             '<td>'+d.FechaEnv+'</td>'+
-            '<td>Fecha Caliabración:</td>'+
+            '<td>Fecha Calibración:</td>'+
             '<td>'+d.FechaFinCalLab+'</td>'+            
         '</tr>'+
         '<tr>'+
@@ -267,10 +285,27 @@
               },
               "columnDefs":[
                 {
-                    "targets":14, "data":"IdOrden", "render": function(data,type,row,meta)
+                    "targets":15, "data":"IdOrden", "render": function(data,type,row,meta)
                         {       
-                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Ver Equipos"></i></a>';
-                        }}], 
+                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Editar Equipo"> Editar</i></a>';
+                        }},
+                {
+                    "targets":14, "data":"Certificado", "render": function(data,type,row,meta)
+                        {   
+                            var certificado = data;
+                            if (certificado !== "")
+                            {
+                            
+                                var url = '<?php echo base_url();?>Certificados/'+row['IdCliente']+'/'+row['IdEquipo']+'/'+data;
+                                return '<a href="'+url+'" target="_blank"><i class="icon-file-pdf"></i></a>';
+                            }
+                            else
+                            {
+                                return data;
+                            }
+                            
+                        }},
+                {"visible":false, "targets":[16]}], 
                       
               "columns": [
                     {
@@ -292,16 +327,19 @@
                     { "data": "DescripcionEstatusPaquete"},
                     { "data": "Etiqueta"},
                     { "data": "Factura"},
-                    { 
-                        "data":"IdEquipoOrden"
-                        
-                    }
+                    { "data": "Certificado"},
+                    { "data":"IdEquipoOrden"},
+                    { "data": "IdCliente"}
 
                         //{ "data": "<a></<a>"}
 
                     ]
 
             });
+            
+            var tbl = document.getElementById("tblEquiposOrden");
+            tbl.scrollIntoView();
+            
 
 
     }
@@ -322,22 +360,55 @@
             method: "POST",
             success:function(resp)
             {
+                
                 var EquipoOrden = JSON.parse(resp);
                 
+                LimpiarModalActualizarEquipo();
+                
+                $('#IdEquipoOrden').val(EquipoOrden['IdEquipoOrden']);
+                $("#IdEstatusPaquete_Equipo").val(EquipoOrden['IdEstatusPaquete']);
+                $("#IdCliente").val(EquipoOrden['IdCliente']);
+                $("#IdEquipo").val(EquipoOrden['IdEquipo']);
                 $("#Modal_IdOrden").val(EquipoOrden['IdOrden']);
+                $("#Modal_IdPaquete").val(EquipoOrden['IdPaqueteEnvio']);
+                $("#Modal_EstatusEquipo").val(EquipoOrden['DescripcionEstatusPaquete']);
+                $("#Modal_Laboratorio").val(EquipoOrden['Descripcion_Lab']);
                 $("#Modal_FechaFinServicio").val(EquipoOrden['FechaFinCalLab']);
                 $("#Modal_FechaRetornoLab").val(EquipoOrden['FechaRetLab']);
-                $("#Modal_EstatusEquipo").val(EquipoOrden['DescripcionEstatusPaquete']);
-                if(EquipoOrden['IdEstatusPaquete']>3 && EquipoOrden['FechaFinCalLab']==null )
+                if(EquipoOrden['Factura']== '1')
+                {
+                    $("#Modal_chkFactura").prop("checked",true);
+                }
+                
+                if(EquipoOrden['Etiqueta']== '1')
+                {
+                    $("#Modal_chkEtiqueta").prop("checked",true);
+                    
+                }
+                
+                $("#Modal_chkFactura").prop("disabled",true);
+                $("#Modal_chkEtiqueta").prop("disabled",true);
+                $("#Modal_FechaFinServicio").prop("disabled",true);
+                $("#Modal_FechaRetornoLab").prop("disabled",true);
+
+                if(EquipoOrden['IdEstatusPaquete']==3)
                 {
                     $("#Modal_FechaFinServicio").prop("disabled",false);
-                       
+                    
                 }
-                else if(EquipoOrden['IdEstatusPaquete']>4 && EquipoOrden['FechaRetLab']==null)
+                else if(EquipoOrden['IdEstatusPaquete']==4)
                 {
 
                     $("#Modal_FechaRetornoLab").prop("disabled",false);
+                    $("#Modal_chkFactura").prop("disabled",false);
+                    $("#Modal_chkEtiqueta").prop("disabled",false);
 
+                }
+                else if(EquipoOrden['IdEstatusPaquete']==5)
+                {
+                    $("#Modal_FechaRecIntec").prop("disabled",false);
+                    $("#Modal_chkFactura").prop("disabled",false);
+                    $("#Modal_chkEtiqueta").prop("disabled",false);
                 }
                 
                 $("#ModalActualizarEquipoOrden").modal('show');
@@ -346,5 +417,21 @@
         });
     }            
        
+   function LimpiarModalActualizarEquipo()
+   {
+        $("#Modal_IdOrden").val();
+        $("#Modal_IdCliente").val();
+        $("#Modal_IdEquipoOrden").val();
+        $("#Modal_IdPaquete").val();
+        $("#Modal_EstatusEquipo").val();
+        $("#Modal_Laboratorio").val();
+        $("#Modal_FechaFinServicio").val();
+        $("#Modal_FechaRetornoLab").val();
+        $("#Modal_FechaRecIntec").val();
+        
+        $("#Modal_chkFactura").prop("checked",false);
+        $("#Modal_chkEtiqueta").prop("checked",true);
+   }
+   
     
 </script>
