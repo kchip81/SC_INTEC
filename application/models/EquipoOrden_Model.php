@@ -53,7 +53,6 @@ class EquipoOrden_Model extends CI_Model{
     public function ConsultarEquiposOrdenSinPaquete()
     {
         $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
-        
         $this->db->from ($this->table);
         $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
         $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');

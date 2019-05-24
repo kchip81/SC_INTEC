@@ -67,3 +67,8 @@ $route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_Consult
 //PAQUETES
 $route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_ConsultarPaquetesAbiertos';
 
+
+//Cliente
+$route['Cliente/ConsultarPlanAnual']='Cliente_Controller/Load_PlanAnual';
+$route['Cliente/CatalogoCliente']='Cliente_Controller/Load_CatalogoCliente';
+

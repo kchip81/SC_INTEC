@@ -205,11 +205,11 @@
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
           <li class=" nav-item"><a href="#"><i class="icon-user-tie"></i><span data-i18n="nav.agenda.main" class="menu-title">Clientes</span></a>
             <ul class="menu-content">
-              <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
+              <li><a href="<?php echo site_url('Cliente/CatalogoCliente'); ?>" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
               </li>
               <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Registrar Nuevo Cliente</a>
               </li>
-              <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Plan Anual de servicios</a>
+              <li><a href="<?php echo site_url('Cliente/ConsultarPlanAnual'); ?>" data-i18n="nav.agenda.main" class="menu-item">Plan Anual de servicios</a>
               </li>
               
             </ul>

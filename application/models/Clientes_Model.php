@@ -62,4 +62,26 @@ class Clientes_Model extends CI_Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function InsertarCliente($email,$telefono,$direccion,$nombre,$compania)
+    {
+        $data = array('Correo' => $email,'Telefono' => $telefono,'Domicilio' => $direccion,'NombreCompania' => $compania
+        ,'NombreContacto' => $nombre);
+
+        $this->db->insert($this->table,$data);  
+        
+        $insertId = $this->db->insert_id();
+        return $insertId;  
+    }
+
+    public function ActualizarCliente($email,$telefono,$direccion,$nombre,$compania,$IdCliente)
+    {
+        $this->db->set('Correo',$email);
+        $this->db->set('Telefono',$telefono);
+        $this->db->set('Domicilio',$direccion);
+        $this->db->set('NombreCompania',$compania);
+        $this->db->set('NombreContacto',$nombre);
+        $this->db->where('IdCliente',$IdCliente);
+        return $this->db->update($this->table);
+    }
 }
