@@ -212,8 +212,8 @@
             data:datos, 
             success:function(resp)
             {
-                $("#NombreProveedor").val(resp[0].NombreCompania);
-                $("#compania").val(resp[0].NombreContacto);
+                $("#NombreProveedor").val(resp[0].NombreContacto);
+                $("#compania").val(resp[0].NombreCompania);
                 $("#DireccionCliente").val(resp[0].Domicilio);
                 $("#TelefonoCliente").val(resp[0].Telefono);
                 $("#emailProveedor").val(resp[0].Correo);
