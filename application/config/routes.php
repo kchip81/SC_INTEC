@@ -72,3 +72,6 @@ $route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_Consultar
 $route['Cliente/ConsultarPlanAnual']='Cliente_Controller/Load_PlanAnual';
 $route['Cliente/CatalogoCliente']='Cliente_Controller/Load_CatalogoCliente';
 
+//Proveedores
+$route['Proveedores/CatalogoProveedor']='Laboratorio_Controller/Load_CatalogoLaboratorio';
+
