@@ -54,33 +54,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //Index.php Dirige al Login
 $route['default_controller'] = 'Login_Controller/Cargar_Login';
+$route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';
 
 //Servicio
 $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
-//$route['default_controller'] = 'Ccalendar';
-$route['NotaMedica/ElaborarNota/(.+)'] = 'NotaMedica_Controller/Load_ElaborarNotaMedica/$1';
-$route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';
-$route['Clinica/SeleccionarClinica'] = 'Clinica_Controller/Cargar_SeleccionarClinica';
+$route['Servicio/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcio';
+$route['Servicio/NuevaOrdenPDF/(.+)']='Servicio_Controller/CrearOrdenPDF/$1';
 
-//Nota Remision
-$route['NotaRemision/CrearNota/(.+)'] = 'NotaRemision_Controller/CrearNotaRemision/$1';
+$route['Servicio/ConsultarPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteServicio/$1';
+$route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteOrdenServicio/$1';
 
-//Expediente Clinico
-$route['ExpedienteClinico/ConsultarExpediente'] = 'ExpedienteClinico_Controller/ConsultarExpedientePacientes';
-$route['ExpedienteClinico/ConsultarNotaMedica/(.+)'] = 'NotaMedica_Controller/ConsultarNotaMedica/$1';
+//PAQUETES
+$route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_ConsultarPaquetesAbiertos';
 
-//Inventario
-$route['Inventario/RegistrarEntrada'] = 'Inventario_Controller/Load_RegistrarEntradaInventario';
-$route['Inventario/ConsultarInventario'] = 'Inventario_Controller/ConsultarInventario';
-$route['Inventario/ConsultarDetalleProducto/(.+)'] = 'Inventario_Controller/ConsultarDetalleProducto/$1';
 
-//Paciente
+//Cliente
+$route['Cliente/ConsultarPlanAnual']='Cliente_Controller/Load_PlanAnual';
+$route['Cliente/CatalogoCliente']='Cliente_Controller/Load_CatalogoCliente';
 
-$route['Paciente/ListaPacientes'] = 'Paciente_Controller/ConsultarPacientes';
-$route['Paciente/EditarPaciente/(.+)'] = 'Paciente_Controller/Load_EditarPaciente/$1';
-
-//Nota de Remisión
-
-$route['NotaRemision/CrearNota'] = 'NotaRemision_Controller/Load_RegistrarNotaRemision';
-
+//Proveedores
+$route['Proveedores/CatalogoProveedor']='Laboratorio_Controller/Load_CatalogoLaboratorio';
 

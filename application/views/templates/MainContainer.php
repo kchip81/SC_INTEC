@@ -37,6 +37,12 @@
     <!-- END Page Level CSS-->
     
     
+    <script src="<?php echo base_url();?>app-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="<?php echo base_url();?>js/vendor/jquery-3.3.1.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js" type="text/javascript"></script>
+    
+    <!-- BEGIN VENDOR JS-->
     <script src="<?php echo base_url();?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
     
    
@@ -48,6 +54,11 @@
     </style>
   </head>
   <body data-open="click" data-menu="vertical-menu" data-col="2-columns" class="vertical-layout vertical-menu 2-columns  fixed-navbar">
+<?php
+        
+        log_message('debug','*->MainContainer->SESSION->USERDATA:'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_NombreUsuario')); 
+           
+    ?>
 
     <!-- navbar-fixed-top-->
     <nav class="header-navbar navbar navbar-with-menu navbar-fixed-top navbar-light navbar-shadow navbar-border">
@@ -163,14 +174,9 @@
                   <li class="dropdown-menu-footer"><a href="javascript:void(0)" class="dropdown-item text-muted text-xs-center">Read all messages</a></li>
                 </ul>
               </li>
-              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar"><img src="<?php echo base_url();?>img/ubicacion2.jpg" alt="avatar"><i></i></span><span class="user-name">Clínica:<?php echo $this->session->userdata('DescripcionClinica'); ?></span></a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="<?php echo site_url(); ?>/Clinica/SeleccionarClinica" class="dropdown-item"><i class="icon-loop2"></i>Cambiar Clínica</a>
-
-                </div>
-              </li>-->
+              
               <!--Navbar Usuario-->
-              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="<?php echo base_url();?>app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name"><?php echo $this->session->userdata('NombreUsuario'); ?></span></a>
+              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="<?php echo base_url();?>app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name"><?php echo $this->session->userdata('intec_NombreUsuario'); ?></span></a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="#" class="dropdown-item"><i class="icon-mail6"></i> My Inbox</a>
                     <a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Task</a>
@@ -199,11 +205,11 @@
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
           <li class=" nav-item"><a href="#"><i class="icon-user-tie"></i><span data-i18n="nav.agenda.main" class="menu-title">Clientes</span></a>
             <ul class="menu-content">
-              <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
+              <li><a href="<?php echo site_url('Cliente/CatalogoCliente'); ?>" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
               </li>
               <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Registrar Nuevo Cliente</a>
               </li>
-              <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Plan Anual de servicios</a>
+              <li><a href="<?php echo site_url('Cliente/ConsultarPlanAnual'); ?>" data-i18n="nav.agenda.main" class="menu-item">Plan Anual de servicios</a>
               </li>
               
             </ul>
@@ -212,7 +218,9 @@
             <ul class="menu-content">
               <li><a href="<?php echo site_url('Servicio/NuevaOrden');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Crear Orden de Servicio</a>
               </li>
-              <li><a href="#" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
+              <li><a href="<?php echo site_url('Servicio/ConsultarOrden');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
+              </li>
+              <li><a href="<?php echo site_url('Paquetes/ConsultarPaquetesAbiertos');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Paquetes Abiertos</a>
               </li>
               <li><a href="#" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Historial</a>
               </li>
@@ -221,7 +229,7 @@
           </li>
           <li class=" nav-item"><a href="#"><i class="icon-ios-speedometer"></i><span data-i18n="nav.expediente.main" class="menu-title">Proveedores</span></a>
             <ul class="menu-content">
-              <li><a href="#" data-i18n="nav.expediente.main" class="menu-item">Catalogo de Proveedores</a>
+              <li><a href="<?php echo site_url('Proveedores/CatalogoProveedor');?>" data-i18n="nav.expediente.main" class="menu-item">Catalogo de Proveedores</a>
               </li>
               
             </ul>

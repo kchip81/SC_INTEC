@@ -1,2 +1,2 @@
 <section id="EntradaInventario">
-    <?php echo form_open('Servicio_Controller/CrearNuevaOrden');?>
+    <?php //echo form_open('Servicio_Controller/CrearOrdenPDF');?>

@@ -143,26 +143,56 @@
                             </div>
                             
                             <h4 class="form-section"><i class="icon-drawer"></i> Productos</h4>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Productos">Producto:</label>
-                                        <select name="Productos" id="Productos" class="form-control" onchange="$('#CodigoSubProducto').focus()">
-                                            <option value="">Productos</option>
-                                            
-                                        </select>
-                                        
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group" align="right">
+                                    <button type="button" class="btn btn-primary" id="btnAgregarEquipo" disabled><i class="icon-android-add"></i> Agregar Equipo</button>
                                 </div>
-                                
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="CodigoSubProducto">Codigo:</label>
+                                        <label for="ClaveSubProducto">Clavé de Identificación:</label>
+                                        <div class="position-relative">
+                                            <input type="text" id="ClaveSubProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveSubProducto" onchange="ClaveSubProducto()">
+                                            
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="DescripcionSubProducto">Numero de serie:</label>
+                                        <div class="position-relative">
+                                            <input type="text" id="NumSerieSubProducto" class="form-control" placeholder="Numero de serie" name="NumSerieSubProducto">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="LoteSubProducto">Modelo:</label>
+                                        <input type="text" id="ModeloSubProducto" class="form-control" placeholder="Modelo" name="ModeloSubProducto">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3" align="right">
+                                <br>
+                                    <div class="form-group" style="margin-top:7px;">
+                                        <button type="button" class="btn btn-primary" id="btnBuscarSubProducto"><i class="icon-android-search"></i> Buscar</button>
+                                    </div>
+
+                                </div>
+                                </div>
+
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="CodigoSubProducto">Marca:</label>
                                         <div class="position-relative has-icon-left">
-                                            <input type="text" id="CodigoSubProducto" class="form-control" placeholder="Código de Barras" name="CodigoSubProducto" onchange="CargarSubProducto()">
+                                            <input type="text" id="MarcaSubProducto" class="form-control" placeholder="Marca" name="MarcaSubProducto" onchange="CargarSubProducto()">
                                             <div class="form-control-position">
                                             <i class="icon-barcode"></i>
                                             </div>
@@ -172,7 +202,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="DescripcionSubProducto">Descripción:</label>
+                                        <label for="DescripcionSubProducto">Descripción del Equipo:</label>
                                         <div class="position-relative has-icon-left">
                                             <input type="text" id="DescripcionSubProducto" class="form-control" placeholder="Descripción" name="DescripcionSubProducto">
                                             <div class="form-control-position">
@@ -181,44 +211,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="LoteSubProducto">No. Lote:</label>
-                                        <input type="text" id="LoteSubProducto" class="form-control" placeholder="No. Lote" name="LoteSubProducto">
+                                        <label for="LoteSubProducto">Alcance de Medicion:</label>
+                                        <input type="text" id="AlcanceSubProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceSubProducto">
                                         
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="CaducidadSubProducto">Fecha Caducidad:</label>
-                                        <div class="position-relative has-icon-left">
-                                            <input type="date" id="CaducidadSubProducto" class="form-control" name="CaducidadSubProducto"/>
-                                            <div class="form-control-position">
-                                                    <i class="icon-calendar5"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
                                 </div>
                                 <div class="row  ">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label for="CantidadSubProducto">Cantidad:</label>
-                                            <input type="text" id="CantidadSubProducto" class="form-control" placeholder="Cantidad" name="CantidadSubProducto"/>
-                                        </div>
-                                    </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="CostoSubProducto">Costo:</label>
-                                            <div class="input-group">
-                                                    <span class="input-group-addon">$</span>
-                                                    <input type="text" id="CostoSubProducto" class="form-control square" placeholder="Costo" aria-label="Costo" name="CostoSubProducto">
-                                                    
-                                            </div>
+                                            <label for="CantidadSubProducto">División Minima:</label>
+                                            <input type="text" id="DivisionSubProducto" class="form-control" placeholder="División Minima" name="DivisionSubProducto"/>
                                         </div>
                                     </div>
-                                    <div class="col-md-7">
+                                    <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">           
+                                    <br>
+                                    <div class="col-md-9">
                                         <div class="form-group" align="right">
                                             <button type="button" class="btn btn-primary" id="btnAgregarSubProducto"><i class="icon-android-add"></i>Agregar</button>
                                         </div>
@@ -230,42 +240,457 @@
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
-                                        <th>#</th>
-                                        <th>Producto</th>
-                                        <th>Código</th>
-                                        <th>Nombre</th>
-                                        <th>No. Lote</th>
-                                        <th>Fec. Caducidad</th>
-                                        <th>Cantidad</th>
-                                        <th>Costo</th>
+                                        <th>ID Producto</th>
+                                        <th>Descripcion del Equipo</th>
+                                        <th>Marca</th>
+                                        <th>Modelo</th>
+                                        <th>No. Serie</th>
+                                        <th>Clavé de Identificación</th>
+                                        <th>Alcance de Medicion</th>
+                                        <th>División Minima</th>
                                         <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tabla">
                                         
                                     </tbody>
-                                    
                                 </table>
                                 
                             
                         </div>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-warning mr-1" name="action" value="cancelar">
+                            <button type="submit" class="btn btn-warning mr-1" id="CancelarEntrada" name="action" value="cancelar">
                                 <i class="icon-cross2"></i> Cancelar
                             </button>
-                            <button type="submit" class="btn btn-primary mr-1" name="action" value='GuardarEntrada'>
+                            <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
                                 <i class="icon-check2"></i>Guardar Entrada
-                            </button>
-                            
-                                
-                                
+                            </button>   
                         </div>
+
+
+
+                        <div class="modal fade" tabindex="-1" role="dialog" id="ModalEquipo" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" id="CancelarModalEquipo">&times;</button>
+                                <h5 class="modal-title">Agregar Equipo</h5>
+                            </div>
+                            <div class="modal-body">
                                 
-                            
-                            
-                          
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 id="ClienteSelect"></h4>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ClaveModalProducto">Clavé de Identificación:</label>
+                                        <input type="text" id="ClaveModalProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveModalProducto" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DescripcionModalProducto">Numero de serie:</label>
+                                        <div class="position-relative">
+                                            <input type="text" id="NumSerieModalProducto" class="form-control" placeholder="Numero de serie" name="NumSerieModalProducto" required>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LoteModalProducto">Modelo:</label>
+                                        <input type="text" id="ModeloModalProducto" class="form-control" placeholder="Modelo" name="ModeloModalProducto" required>            
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CodigoModalProducto">Marca:</label>
+                                        <input type="text" id="MarcaModalProducto" class="form-control" placeholder="Marca" name="MarcaModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DescripcionModalProducto">Descripción del Equipo:</label>
+                                        <input type="text" id="DescripcionModalProducto" class="form-control" placeholder="Descripción" name="DescripcionModalProducto" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LoteModalProducto">Alcance de Medicion:</label>
+                                        <input type="text" id="AlcanceModalProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CantidadModalProducto">División Minima:</label>
+                                        <input type="text" id="DivisionModalProducto" class="form-control" placeholder="División Minima" name="DivisionModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button id="AgregarModalEquipo" type="button" class="btn btn-primary">Confirmar</button>
+                                <button id="CancelarModalEquipo" onclick="cerrar()" type="button" class="btn btn-primary">Cancelar</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>                       
+                                
                             
                     </div>
                 </div>
             </div>
         </div>
 </div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function()
+    {
+        CargarClientes();
+        FechaActual();
+    });
+
+    function FechaActual()
+    {
+        var fecha = new Date(); 
+        var mes = fecha.getMonth()+1; 
+        var dia = fecha.getDate(); 
+        var ano = fecha.getFullYear();
+        if(dia<10)
+            dia='0'+dia;
+        if(mes<10)
+            mes='0'+mes 
+        document.getElementById('FechaReciboIntec').value=ano+"-"+mes+"-"+dia;
+    }
+
+    function CargarDatosClientes(id)
+    {
+        datos = {"id":id};
+        $.ajax
+        ({            
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDataClientes_ajax',
+            dataType: 'json',
+            data:datos, 
+            success:function(resp)
+            {
+                $('#NombreProveedor').val(resp[0].NombreContacto);
+                $("#DireccionCliente").val(resp[0].Domicilio); 
+                $("#compania").val(resp[0].NombreCompania);
+                $("#emailProveedor").val(resp[0].Correo);
+            }
+        });
+    }
+
+    $("#btnBuscarSubProducto").click(function()
+    {
+        var numSerie = $("#NumSerieSubProducto").val();
+        var clave = $("#ClaveSubProducto").val();
+        var modelo = $("#ModeloSubProducto").val();
+        var peticion = "";
+            
+        if(numSerie != "")
+            peticion = ".NumService = '"+numSerie+"'";
+        else if(clave != "")
+            peticion = ".ClaveId = '"+ clave+ "'";
+        else if(modelo != "")
+            peticion = ".Modelo = '"+modelo+"'";
+
+        datos= {
+            "peticion":peticion,
+            IdCliente: $('#cliente').val()
+            
+        };
+
+        if($('#cliente').val() != "")
+        {
+      
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/Buscar',
+                dataType: 'json',
+                data:datos, 
+                success:function(resp)
+                {
+                    if(resp != '')
+                    {
+                        $('#IdSubProducto').val(resp[0].IdEquipo);
+                        $('#ClaveSubProducto').val(resp[0].ClaveId);
+                        $("#NumSerieSubProducto").val(resp[0].NumService); 
+                        $("#ModeloSubProducto").val(resp[0].Modelo);
+                        $('#DescripcionSubProducto').val(resp[0].Descripcion);
+                        $("#MarcaSubProducto").val(resp[0].Marca); 
+                        $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
+                        $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                    }else
+                    //{
+                        //$('#ModalEquipo').modal('show');
+                        alert("Equipo no encontrado");
+                    //}
+                }
+            });
+        }else
+            alert("Seleccione un cliente");
+    });
+
+    $('#btnAgregarEquipo').click(function(){
+        var opcion = $('#cliente option:selected').text();
+        var c = "Cliente: " + opcion;
+        $('#ClienteSelect').html(c);
+        $('#ModalEquipo').modal('show');
+    });
+
+    $("#AgregarModalEquipo").click(function()
+    {
+        datos= {
+            IdCliente: $('#cliente').val(),           
+            ClaveId: $('#ClaveModalProducto').val(),
+            NumService: $("#NumSerieModalProducto").val(),
+            Modelo: $("#ModeloModalProducto").val(),
+            Descripcion: $('#DescripcionModalProducto').val(),
+            Marca: $("#MarcaModalProducto").val(),
+            AlcanceMedicion: $("#AlcanceModalProducto").val(),
+            DivisionMedicion: $('#DivisionModalProducto').val()
+        }; 
+
+        if( $('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
+        {
+            if($('#DescripcionModalProducto').val() != "" && $("#MarcaModalProducto").val() != "" &&
+            $("#AlcanceModalProducto").val() != "" && $('#DivisionModalProducto').val() != "")
+            {
+                cerrar();
+                $.ajax
+                ({            
+                    type:'post',
+                    url:'<?php echo site_url();?>/Servicio_Controller/InsertarEquipo',
+                    dataType: 'json',
+                    data:datos, 
+                    success:function(resp)
+                    {
+                        $('#IdSubProducto').val(resp[0].IdEquipo);
+                        $("#NumSerieSubProducto").val(resp[0].NumService); 
+                        $('#ClaveSubProducto').val(resp[0].ClaveId);
+                        $("#ModeloSubProducto").val(resp[0].Modelo);
+                        $('#DescripcionSubProducto').val(resp[0].Descripcion);
+                        $("#MarcaSubProducto").val(resp[0].Marca); 
+                        $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
+                        $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                    }
+                });
+                LimpiarModal(); 
+            }  else
+                alert("Complete todo los campos");
+        }else
+            alert("Complete todo los campos");
+    });
+
+    $("#CancelarModalEquipo").click(function()
+    {
+        cerrar();
+    });
+
+    function cerrar()
+    {
+        $('#ModalEquipo').modal('hide');
+        LimpiarModal();  
+    }
+    
+    $("#cliente").change(function()
+    {
+        if($('#cliente option:selected').text() != "Seleccione un cliente")
+            $("#btnAgregarEquipo").attr("disabled", false);
+        else
+            $("#btnAgregarEquipo").attr("disabled", true);
+        CargarDatosClientes($(this).val());
+    });
+
+    $("#btnAgregarSubProducto").click(function()
+    {
+        CargarTabla();
+    });
+
+
+    $('#GuardarEntrada').click(function()
+    {
+        valorOrden();     
+    });
+
+    $('#CancelarEntrada').click(function()
+    {
+        Limpiar();
+        Limpiar2();
+    });
+
+    function valorOrden()
+    {        
+        var select = document.getElementById("cliente");
+        var cliente = select.value; 
+        var fecha =$("#FechaReciboIntec").val();
+        var FechaEnvio =$("#FechaEnvioLaboratorio").val();
+        var FechaRecibo =$("#FechaReciboLaboratorio").val();
+        var Observaciones =$("#ObservacionesServicio").val();
+
+        datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
+        
+        if(cliente != "")
+        {
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio_ajax',
+                data:datos, 
+                success:function(resp)
+                {
+                    var id = resp;
+                    valorFila(id);
+                }
+            });
+        }else
+            alert("Selecione un cliente");
+    }
+
+    function valorFila(idOrden)
+    {
+        $('#tabla tr').each(function() {
+            var id = $(this).find(".id").text();
+
+            datos = {"idequipo":id,"idOrden":idOrden};
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenEquipo_ajax',
+                data:datos, 
+                success:function(resp)
+                {
+                    removerTabla();
+                    
+                    PDF(idOrden);
+                    Limpiar();
+                    Limpiar2();
+                }
+            });
+        });
+    }
+
+    $(function()
+    {
+        $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
+    });
+    
+    function removerTabla()
+    {
+        $("#tabla tr").remove();
+    }
+
+    function PDF(idOrden)
+    {
+        alert("La orden de servicio ha sido creada");
+        window.open("<?php echo site_url();?>/Servicio/NuevaOrdenPDF/"+idOrden);
+    }
+
+    function remover()
+    {
+        $(this).parents("tr").remove();
+    }
+
+    function CargarClientes()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',    
+            success:function(resp)
+            {
+                $("#cliente").html(resp) 
+            }
+        });
+    }
+
+    function CargarTabla()
+    { 
+        var id =$('#IdSubProducto').val();
+        var clave = $('#ClaveSubProducto').val();
+        var numser = $("#NumSerieSubProducto").val(); 
+        var modelo = $("#ModeloSubProducto").val();
+        var descripcion = $('#DescripcionSubProducto').val();
+        var marca = $("#MarcaSubProducto").val(); 
+        var alcance = $("#AlcanceSubProducto").val();
+        var division = $('#DivisionSubProducto').val();
+        
+        if(id != "")
+        {
+            $("#tabla").append(
+                '<tr>'+
+                '<td class="id">'+id+'</td>'+
+                '<td class="descripcion">'+descripcion+'</td>'+
+                '<td class="marca">'+marca+'</td>'+
+                '<td class="modelo">'+modelo+'</td>'+
+                '<td class="numser">'+numser+'</td>'+
+                '<td class="clave">'+clave+'</td>'+
+                '<td class="alcance">'+alcance+'</td>'+
+                '<td class="division">'+division+'</td>'+
+                '<td><button type="button" class="btn btn-primary" id="btnEliminarSubProducto">Eliminar</button></td>'+
+                '</tr>'
+            );
+        }else
+            alert("No se encontro el equipo");
+        
+        Limpiar();
+
+        
+    }
+
+    function Limpiar()
+    {
+        $('#ClaveSubProducto').val("");
+        $("#NumSerieSubProducto").val(""); 
+        $("#ModeloSubProducto").val("");
+        $('#DescripcionSubProducto').val("");
+        $("#MarcaSubProducto").val(""); 
+        $("#AlcanceSubProducto").val("");
+        $('#DivisionSubProducto').val(""); 
+        $('#IdSubProducto').val("");       
+    }
+    
+    function Limpiar2()
+    {
+        $('#NombreProveedor').val("");
+        $("#DireccionCliente").val(""); 
+        $("#compania").val("");
+        $("#emailProveedor").val("");
+        $("#FechaEnvioLaboratorio").val("");
+        $("#FechaReciboLaboratorio").val("");        
+        $("#ObservacionesServicio").val("");
+        removerTabla();
+    }
+
+    function LimpiarModal()
+    {
+        $('#ClaveModalProducto').val("");
+        $("#NumSerieModalProducto").val(""); 
+        $("#ModeloModalProducto").val("");
+        $('#DescripcionModalProducto').val("");
+        $("#MarcaModalProducto").val(""); 
+        $("#AlcanceModalProducto").val("");
+        $('#DivisionModalProducto').val(""); 
+    }
+
+</script>

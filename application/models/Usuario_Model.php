@@ -24,17 +24,21 @@ class Usuario_Model extends CI_Model {
     public function ValidarUsuarioContrasena($Usuario=FALSE, $Contrasena=FALSE)
     {
        
-        $this->db->select($this->table.'.*,NombreEmpleado, ApellidosEmpleado, DescripcionPerfil, Perfil.IdPerfil');
-        $this->db->from($this->table.', Empleado, Perfil');
-        $this->db->where ($this->table.'.IdEmpleado = empleado.IdEmpleado');
-        $this->db->where ($this->table.'.IdPerfil = perfil.IdPerfil');
+        $this->db->select($this->table.'.*, DescripcionPerfil, perfil.IdPerfil');
+        $this->db->from($this->table);
+        $this->db->join('perfil',$this->table.'.IdPerfil = perfil.IdPerfil');
+        
         $this->db->where ('usuario', $Usuario);
         $this->db->where ('contrasena', $Contrasena);
         $this->db->limit(1);
  
         $query = $this->db->get();
         
-        return $query->row();                
+        return $query->row();  
+        
+        
+        
+       
     }
     
 }
