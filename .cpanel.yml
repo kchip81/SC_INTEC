@@ -2,5 +2,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/iinteco/scintec.iintec.com/application
-    - /bin/cp -R /application/* $DEPLOYPATH
+    - export DEPLOYPATH=/home/iinteco/scintec.iintec.com
+    - /bin/cp -R * $DEPLOYPATH
