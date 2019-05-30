@@ -40,9 +40,10 @@ class Laboratorio_Model extends CI_Model {
         return $query->result_array();
     }
 
-    public function InsertarLaboratorio($Descripcion_lab,$Domicilio,$Telefono)
+    public function InsertarLaboratorio($Descripcion_lab,$Domicilio,$Telefono,$diasServicios)
     {
-        $data = array('Descripcion_lab' => $Descripcion_lab,'Domicilio' => $Domicilio,'Telefono' => $Telefono);
+        $data = array('Descripcion_lab' => $Descripcion_lab,'Domicilio' => $Domicilio,'Telefono' => $Telefono
+        ,'diasServicios' => $diasServicios);
 
         $this->db->insert($this->table,$data);  
         
@@ -50,11 +51,12 @@ class Laboratorio_Model extends CI_Model {
         return $insertId;  
     }
 
-    public function ActualizarLaboratorio($Descripcion_lab,$Domicilio,$Telefono,$Id)
+    public function ActualizarLaboratorio($Descripcion_lab,$Domicilio,$Telefono,$diasServicios,$Id)
     {
         $this->db->set('Descripcion_lab',$Descripcion_lab);
         $this->db->set('Domicilio',$Domicilio);
         $this->db->set('Telefono',$Telefono);
+        $this->db->set('diasServicios',$diasServicios);
         $this->db->where($this->table.'.IdLaboratorio',$Id);
         return $this->db->update($this->table);
     }

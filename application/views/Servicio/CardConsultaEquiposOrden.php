@@ -90,10 +90,10 @@
                     <!--MODAL ActualizarEquipoOrden-->
                     <?php echo form_open_multipart('Servicio_Controller/ActualizarEquipoOrden'); // ActualizarEstatusEquipoOrden?>
                             <div class="modal fade" id="ModalActualizarEquipoOrden" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                              <div class="modal-dialog modal-lg" role="document" style='width: 50%'>
+                              <div class="modal-dialog modal-md" role="document" style=''>
                                   <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="exampleModalLabel">Actualizar Estatus Equipo
+                                            <h4 class="modal-title" id="ModalLabel">Actualizar Estatus Equipo
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -214,6 +214,89 @@
 
 
 
+                        <div class="modal fade" tabindex="-1" role="dialog" id="ModalEquipo" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button onclick="cerrar()" type="button" class="close" id="CancelarModalEquipo">&times;</button>
+                                <h5 class="modal-title" id="actualizarModalLabel">Actualizar Equipo</h5>
+                            </div>
+                            <div class="modal-body">
+                                
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 id="ClienteSelect"></h4>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="ClaveModalProducto">Clavé de Identificación:</label>
+                                        <input type="text" id="ClaveModalProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveModalProducto" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DescripcionModalProducto">Numero de serie:</label>
+                                        <div class="position-relative">
+                                            <input type="text" id="NumSerieModalProducto" class="form-control" placeholder="Numero de serie" name="NumSerieModalProducto" required>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LoteModalProducto">Modelo:</label>
+                                        <input type="text" id="ModeloModalProducto" class="form-control" placeholder="Modelo" name="ModeloModalProducto" required>            
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CodigoModalProducto">Marca:</label>
+                                        <input type="text" id="MarcaModalProducto" class="form-control" placeholder="Marca" name="MarcaModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="DescripcionModalProducto">Descripción del Equipo:</label>
+                                        <input type="text" id="DescripcionModalProducto" class="form-control" placeholder="Descripción" name="DescripcionModalProducto" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="LoteModalProducto">Alcance de Medicion:</label>
+                                        <input type="text" id="AlcanceModalProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="CantidadModalProducto">División Minima:</label>
+                                        <input type="text" id="DivisionModalProducto" class="form-control" placeholder="División Minima" name="DivisionModalProducto" required>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button id="ModificarModalEquipo" type="button" class="btn btn-primary">Confirmar</button>
+                                <button id="CancelarModalEquipo" onclick="cerrar()" type="button" class="btn btn-primary">Cancelar</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>                       
+
 
 
 
@@ -225,6 +308,9 @@
     </div>
 </div>
 <script type="text/javascript">
+
+    var idEquipoa = 0;
+
     $(document).ready(function(){
         // Add event listener for opening and closing details
         $('#tblEquiposOrden tbody').on('click', 'td.details-control', function () {
@@ -266,7 +352,6 @@
 }
     function ConsultarEquiposOrden(IdOrden)
     {
-        
         var t = $('#tblEquiposOrden').DataTable({
             "ajax":{
                 url:"<?php echo site_url();?>/Servicio_Controller/ConsultarEquiposPorOrden",
@@ -287,7 +372,9 @@
                 {
                     "targets":15, "data":"IdOrden", "render": function(data,type,row,meta)
                         {       
-                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Editar Equipo"> Editar</i></a>';
+                            return '<a classs = "btn" onclick="OpenModal_ActualizarEquipoOrden('+data+')"><i class="icon-repeat" data-toggle="tooltip" data-placement="top" id="VerEstatus" title="Editar Estatus"> Estatus</i></a><br>'
+                            + '<a classs = "btn" onclick="OpenModal_ActualizarEquipo('+row['IdEquipo']+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Editar Equipo"> Editar</i></a>';
+
                         }},
                 {
                     "targets":14, "data":"Certificado", "render": function(data,type,row,meta)
@@ -343,12 +430,92 @@
 
 
     }
+
     function EditarEquipo()
     {
         var table =$("#tblEquiposOrden").DataTable();
         var data = table.row( $(this).parents('tr') ).data();
         alert(data);
     }
+    
+    $("#ModificarModalEquipo").click(function()
+    {
+        datos= {
+            IdEquipo: idEquipoa,           
+            ClaveId: $('#ClaveModalProducto').val(),
+            NumService: $("#NumSerieModalProducto").val(),
+            Modelo: $("#ModeloModalProducto").val(),
+            Descripcion: $('#DescripcionModalProducto').val(),
+            Marca: $("#MarcaModalProducto").val(),
+            AlcanceMedicion: $("#AlcanceModalProducto").val(),
+            DivisionMedicion: $('#DivisionModalProducto').val()
+        }; 
+
+        if($('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
+        {
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/ActualizarEquipoPorId',
+                dataType: 'json',
+                data:datos, 
+                success:function(resp)
+                {
+                    //alert("naskndaksd");
+                }
+
+            });
+            cerrar();
+        }
+    });
+
+    function OpenModal_ActualizarEquipo(IdEquipo)
+    {
+        var c = "Actualizar equipo: " + IdEquipo ;
+        $('#actualizarModalLabel').html(c);
+
+        idEquipoa = IdEquipo;
+        $.ajax
+        ({
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarEquipoPorId',
+            data:{
+                IdEquipo:IdEquipo
+            },
+            method: "POST",
+            success:function(resp)
+            {
+                var Equipo = JSON.parse(resp);
+
+                $('#ClaveModalProducto').val(Equipo['ClaveId']);
+                $('#NumSerieModalProducto').val(Equipo['NumService']); 
+                $('#ModeloModalProducto').val(Equipo['Modelo']);
+                $('#DescripcionModalProducto').val(Equipo['Descripcion']);
+                $('#MarcaModalProducto').val(Equipo['Marca']); 
+                $('#AlcanceModalProducto').val(Equipo['AlcanceMedicion']);
+                $('#DivisionModalProducto').val(Equipo['DivisionMedicion']);
+
+                $('#ModalEquipo').modal('show');
+            } 
+        });
+    }
+
+    function Limpiar()
+    {
+        $('#ClaveModalProducto').val("");
+        $("#NumSerieModalProducto").val(""); 
+        $("#ModeloModalProducto").val("");
+        $('#DescripcionModalProducto').val("");
+        $("#MarcaModalProducto").val(""); 
+        $("#AlcanceModalProducto").val("");
+        $('#DivisionModalProducto').val("");     
+    }
+    
+    function cerrar()
+    {
+        $('#ModalEquipo').modal('hide');
+        Limpiar();  
+    }
+
     function OpenModal_ActualizarEquipoOrden(IdEquipoOrden)
     {
         $.ajax

@@ -7,11 +7,11 @@
  */
 
 /**
- * Description of Laboratorio_Controller
+ * Description of Equipo_Controller
  *
  * @author SigueMED
  */
-class Laboratorio_Controller extends CI_Controller {
+class Equipo_Controller extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
