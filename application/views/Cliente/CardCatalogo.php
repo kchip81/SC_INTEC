@@ -107,7 +107,7 @@
                                                 <div class="position-relative has-icon-left">
                                                     <input type="text" id="TelefonoCliente" class="form-control" placeholder="Telefono" name="TelefonoCliente">
                                                     <div class="form-control-position">
-                                                        <i class="icon-cell2"></i>
+                                                        <i class="icon-phone"></i>
                                                     </div>
                                                 </div>  
                                             </div>
@@ -178,7 +178,6 @@
         });
     }
 
-
     $('#btnAgregarCliente').click(function()
     {
         $('#modalCliente').modal('show');       
@@ -219,9 +218,6 @@
                 $("#emailProveedor").val(resp[0].Correo);
             }
         });
-
-
-
         $('#modalCliente').modal('show'); 
     }
 
@@ -243,14 +239,12 @@
             data:datos, 
             success:function(resp)
             {
-                //alert(resp)
                 CargarClientes();
                 Limpiar()
                 $('#modalCliente').modal('hide'); 
             }
         });      
     });
-
 
     $('#AgregarModalAgregar').click(function()
     {
@@ -259,7 +253,6 @@
         var direccion = $("#DireccionCliente").val();
         var telefono =  $("#TelefonoCliente").val();
         var email = $("#emailProveedor").val();
-
 
         datos = {"nombre":nombre,"compania":compania,"direccion":direccion,"telefono":telefono,"email":email};
 
@@ -274,18 +267,15 @@
                 Limpiar()
             }
         });
-
         $('#modalCliente').modal('hide');       
     });
     
-
     function Limpiar() {
         $("#NombreProveedor").val("");
         $("#compania").val("");
         $("#DireccionCliente").val("");
         $("#TelefonoCliente").val("");
         $("#emailProveedor").val("");
-
     }
 
 </script>

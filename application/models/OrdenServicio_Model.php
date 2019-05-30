@@ -78,5 +78,11 @@ class OrdenServicio_Model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function EliminarEquipoOrdenPorId($IdOrden)
+    {
+        $this->db->where($this->table.'.IdOrden', $IdOrden);
+        $this->db->delete($this->table);
+    }
 //put your code here
 }

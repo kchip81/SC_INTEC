@@ -100,8 +100,29 @@ class Equipo_Model extends CI_Model {
         $query = $this->db->get();
 
         return $query->result_array();
+    }    
+
+    public function ConsultarEquipoPorId($ID)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);        
+        $this->db->where($this->table.'.IdEquipo',$ID);
+        $query = $this->db->get();
+
+        return $query->row();
     }
 
-    
+    public function ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion)
+    {
+        $this->db->set('ClaveId',$ClaveId);
+        $this->db->set('NumService',$NumService);
+        $this->db->set('Modelo',$Modelo);
+        $this->db->set('Descripcion',$Descripcion);
+        $this->db->set('Marca',$Marca);
+        $this->db->set('DivisionMedicion',$DivisionMedicion);
+        $this->db->set('AlcanceMedicion',$AlcanceMedicion);
+        $this->db->where($this->table.'.IdEquipo',$IdEquipo);
+        return $this->db->update($this->table);
+    }
     //put your code here
 }
