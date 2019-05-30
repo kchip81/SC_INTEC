@@ -1,0 +1,6 @@
+## YAML Template.
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/iintecco/scintec.iintec.com
+    - /bin/cp -R * $DEPLOYPATH
