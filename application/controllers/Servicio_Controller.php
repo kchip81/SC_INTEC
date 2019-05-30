@@ -458,4 +458,34 @@ class Servicio_Controller extends CI_Controller {
             
         }          
     }
+
+    public function ConsultarEquipoPorId()
+    {
+        $IdEquipo = $this->input->post('IdEquipo');
+        
+        $Equipo = $this->Equipo_Model->ConsultarEquipoPorId($IdEquipo);
+        
+        echo json_encode($Equipo); 
+    }
+
+    public function ActualizarEquipoPorId()
+    {
+        $IdEquipo = $this->input->post('IdEquipo');
+        $ClaveId = $this->input->post('ClaveId');
+        $NumService = $this->input->post('NumService');
+        $Modelo = $this->input->post('Modelo');
+        $Descripcion = $this->input->post('Descripcion');
+        $Marca = $this->input->post('Marca');
+        $AlcanceMedicion = $this->input->post('AlcanceMedicion');
+        $DivisionMedicion = $this->input->post('DivisionMedicion');
+
+        $Equipo = $this->Equipo_Model->ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion);
+    }
+
+    public function EliminarEquipoOrdenPorId()
+    {
+        $IdOrden = $this->input->post('IdOrden');
+
+        $this->OrdenServicio_Model->EliminarEquipoOrdenPorId($IdOrden);
+    }
 }

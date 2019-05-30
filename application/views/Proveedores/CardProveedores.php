@@ -29,6 +29,7 @@
                             <th>Descripcion</th>
                             <th>Domicilio</th>
                             <th>Telefono</th>
+                            <th>Dias de Servicio</th>
                                         
                             <th>Acciones</th>
                         </thead>
@@ -87,8 +88,16 @@
                                                 <div class="position-relative has-icon-left">
                                                     <input type="text" id="Telefono" class="form-control" placeholder="Telefono" name="Telefono">
                                                     <div class="form-control-position">
-                                                        <i class="icon-head"></i>
+                                                        <i class="icon-phone"></i>
                                                     </div>
+                                                </div>
+                                            </div>                       
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="diasServicios">Dia de Servicio:</label>
+                                                <div class="position-relative ">
+                                                    <input type="text" id="diasServicios" class="form-control" placeholder="Dias de Servicios" name="diasServicios">
                                                 </div>
                                             </div>                       
                                         </div>
@@ -137,7 +146,7 @@
 
             "columnDefs":[
                     {
-                        "targets":4, "data":"IdLaboratorio", "render": function(data,type,row,meta)
+                        "targets":5, "data":"IdLaboratorio", "render": function(data,type,row,meta)
                         {       
                             return '<a classs = "btn" onclick="OpenModal_ActualizarLaboratorio('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="EditarLaboratorio" title="Editar Laboratorio"> Editar</i></a>';
                         }
@@ -147,7 +156,8 @@
                     { "data": "IdLaboratorio" },
                     { "data": "Descripcion_lab" },
                     { "data": "Domicilio" },
-                    { "data": "Telefono" }
+                    { "data": "Telefono" },
+                    { "data": "diasServicios" }
                 ]
             });
         }
@@ -188,6 +198,7 @@
                     $("#Descripcion").val(resp[0].Descripcion_lab);
                     $("#Domicilio").val(resp[0].Domicilio);
                     $("#Telefono").val(resp[0].Telefono);
+                    $("#diasServicios").val(resp[0].diasServicios);
                 }
             });
             $('#modalLaboratorio').modal('show');
@@ -199,6 +210,7 @@
                 Descripcion: $("#Descripcion").val(),         
                 Domicilio: $("#Domicilio").val(),
                 Telefono: $("#Telefono").val(),
+                diasServicios: $("#diasServicios").val(),
                 IdLaboratorio: IdLaboratorio
             }; 
 
@@ -222,9 +234,9 @@
             var Descripcion = $("#Descripcion").val();
             var Domicilio =$("#Domicilio").val();
             var Telefono = $("#Telefono").val();
+            var diasServicios = $("#diasServicios").val();
 
-
-            datos = {"Descripcion":Descripcion,"Domicilio":Domicilio,"Telefono":Telefono};
+            datos = {"Descripcion":Descripcion,"Domicilio":Domicilio,"Telefono":Telefono,"diasServicios":diasServicios};
 
             $.ajax
             ({            
@@ -237,15 +249,13 @@
                     Limpiar()
                 }
             });
-
             $('#modalLaboratorio').modal('hide');       
         });
         
-
         function Limpiar() {
             $("#Descripcion").val("");
             $("#Domicilio").val("");
             $("#Telefono").val("");
-
+            $("#diasServicios").val("");
         }
     </script>

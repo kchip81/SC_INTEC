@@ -191,13 +191,13 @@
                         OrdenesAbiertas[i]['FechaEnvio'],   
                         OrdenesAbiertas[i]['FechaRecibo'],   
                         OrdenesAbiertas[i]['Observaciones'],
-                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"> Equipos</i></a>'+ ' ' 
+                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"> Equipos</i></a>'+ '<br> <a classs = "btn" onclick="EliminarOrden('+OrdenesAbiertas[i]['IdOrden']+','+OrdenesAbiertas[i]['TotalOrdenes']+')"><i class="icon-trash" data-toggle="tooltip" data-placement="top" title="Eliminar Equipos"> Eliminar</i></a>' 
                     ]).draw(false);  
                 }
             }
         });
     }
-    
+     
     function CrearNuevoPaquete()
     {
         CargarLaboratorio();
@@ -216,7 +216,30 @@
             }
         });
     }
-    
+
+    function EliminarOrden(IdOrden,TotalOrdenes)
+    {
+        datos= {
+            IdOrden: IdOrden        
+        };
+
+        if(TotalOrdenes == 0)
+        {
+            $.ajax
+            ({            
+                type:'post',
+                url:'<?php echo site_url();?>/Servicio_Controller/EliminarEquipoOrdenPorId',
+                dataType: 'json',
+                data:datos, 
+                complete:function(resp)
+                {
+                    CargarDatos();
+                }
+            });
+        }else
+        alert("La orden no se puede eliminar");
+    }
+
     function CargarEquiposOrden()
     {
         $.ajax
