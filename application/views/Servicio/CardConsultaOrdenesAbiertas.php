@@ -233,7 +233,10 @@
                 data:datos, 
                 complete:function(resp)
                 {
-                    CargarDatos();
+                   
+                        alert('Orden Eliminada');
+                        CargarDatos();
+                   
                 }
             });
         }else
