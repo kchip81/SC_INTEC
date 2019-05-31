@@ -485,7 +485,20 @@ class Servicio_Controller extends CI_Controller {
     public function EliminarEquipoOrdenPorId()
     {
         $IdOrden = $this->input->post('IdOrden');
-
-        $this->OrdenServicio_Model->EliminarEquipoOrdenPorId($IdOrden);
+        
+        $EquiposPaquetes = $this->EquipoOrden_Model->ConsultarEquiposPaquetesOrden($IdOrden);
+        
+        if (sizeof($EquiposPaquetes)==0)
+        {
+            $this->EquipoOrden_Model->EliminarEquiposOrden($IdOrden);
+            $this->OrdenServicio_Model->EliminarEquipoOrdenPorId($IdOrden);
+            echo json_encode(1);
+        }
+        else
+        {
+             echo json_encode(2);
+        }
+        
+        
     }
 }
