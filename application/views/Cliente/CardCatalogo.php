@@ -12,7 +12,7 @@
                         <li><a data-action="close"><i class="icon-cross2"></i></a></li>
                     </ul>
                 </div>
-            </div>
+            <!--</div>-->
             <br>
             <div class="col-md-3">
                 <div class="form-group" style="margin-top:7px;">
