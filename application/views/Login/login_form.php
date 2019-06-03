@@ -78,7 +78,6 @@
 
                         <?php echo form_open('Login_Controller/ValidarLogin','class="form-horizontal form-simple" novalidate'); ?>
                     
-                    
                         <fieldset class="form-group position-relative has-icon-left mb-0">
                             <input type="text" class="form-control form-control-lg input-lg"name="username" id="usuario" placeholder="Tu Usuario" required>
                             <div class="form-control-position">
