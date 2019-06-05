@@ -191,7 +191,7 @@
                         OrdenesAbiertas[i]['FechaEnvio'],   
                         OrdenesAbiertas[i]['FechaRecibo'],   
                         OrdenesAbiertas[i]['Observaciones'],
-                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"> Equipos</i></a>'+ '<br> <a classs = "btn" onclick="EliminarOrden('+OrdenesAbiertas[i]['IdOrden']+','+OrdenesAbiertas[i]['TotalOrdenes']+')"><i class="icon-trash" data-toggle="tooltip" data-placement="top" title="Eliminar Equipos"> Eliminar</i></a>' 
+                        '<a classs = "btn" onclick="ConsultarEquiposOrden('+OrdenesAbiertas[i]['IdOrden']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"> Equipos</i></a>'+ '<br> <a classs = "btn" onclick="EliminarOrden('+OrdenesAbiertas[i]['IdOrden']+','+OrdenesAbiertas[i]['TotalOrdenes']+')"><i class="icon-trash" data-toggle="tooltip" data-placement="top" title="Eliminar Equipos"> Eliminar</i></a><br><a classs = "btn" href="<?php echo site_url(); ?>/Servicio/NuevaOrdenPDF/'+OrdenesAbiertas[i]['IdOrden']+'"><i class="icon-file-pdf" data-toggle="tooltip" data-placement="top" id="VerOrden" title="Ver Orden"> Orden</i></a>'
                     ]).draw(false);  
                 }
             }
