@@ -100,11 +100,15 @@ class Paquetes_Controller extends CI_Controller {
         $IdPaqueteOrden = $this->input->post('IdPaqueteEnvio');
         $IdEstatusPaquete = $this->input->post('IdEstatusActual');
         $FechaEstatus = $this->input->post('fecha');
+        $NumeroGuia = $this->input->post('NumeroGuia');
+        $CostoEnvio = $this->input->post('CostoEnvio');
 
         switch ($IdEstatusPaquete)
         {
             case 1:
                 $Fecha = "FechaEnv";
+                $datosOrden =array("NumeroGuia"=>$NumeroGuia, "CostoEnvio"=>$CostoEnvio);
+                $this->Paquetes_Model->ActualizarPaquete($IdPaqueteOrden,$datosOrden);
                 break;
             case 2:
                 $Fecha = "FechaRecLab";

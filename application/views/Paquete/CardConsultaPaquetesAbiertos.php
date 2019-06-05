@@ -1,3 +1,15 @@
+<style>
+    td.details-control {
+        background: url(<?php echo base_url('/app-assets/images/datatables/resources/details_open.png');?>) no-repeat center center;
+        cursor: pointer;
+    }
+    tr.shown td.details-control {
+        background: url(<?php echo base_url('/app-assets/images/datatables/resources/details_close.png');?>) no-repeat center center;
+    }
+    th { font-size: 14px; }
+    td { font-size: 13px; }
+</style>
+
 <div class="row match-height">
         <div class="col-md-12">
             <div class="card">
@@ -26,6 +38,7 @@
                                  
                                 <table class="table table-responsive table-bordered table-striped" id="tblPaquetesAbiertos" style="width: 100%">
                                     <thead>
+                                        <th></th>
                                         <th>No. Paquete</th>
                                         <th>Laboratorio</th>
                                         <th>Descripcion</th>
@@ -34,16 +47,16 @@
                                         <th>Fecha Envio</th>
                                         <th>Fecha Recepción Lab</th>
                                         
-                                        <th>Acciones</th>
+                                        
                                     </thead>
-                                    <tbody id="tablaOrdenes">
+                                    <tbody>
                                         
                                     </tbody>
                                 </table>                                                                                    
                         </div>
                                 
                         <div class="modal fade" tabindex="-1" role="dialog" id="modalConfirmacion" aria-hidden="true">
-                        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-md modal-dialog-centered" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -52,13 +65,46 @@
                                 <input type="hidden" id="IdEstatusActual" name="IdEstatusActual">
                             </div>
                             <div class="modal-body">
-                                <div class="position-relative has-icon-left">
-                                <input type="date" id="FechasCon" class="form-control" name="FechasConfirmacion"/>
-                                <div class="form-control-position">
-                                    <i class="icon-calendar5"></i>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <div class="position-relative has-icon-left">
+                                                <input type="date" id="FechasCon" class="form-control" name="FechasConfirmacion"/>
+                                                <div class="form-control-position">
+                                                    <i class="icon-calendar5"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="row" id="InformacionPaquete">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="NumeroGuia">Numero Guía:</label>
+                                            <div class="position-relative has-icon-left">
+                                                <input type="text" id="NumeroGuia" class="form-control" placeholder="Numero de guía" name="NumeroGuia">
+                                                <div class="form-control-position">
+                                                    <i class="icon-hashtag"></i>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="CostoEnvio">Costo Envio:</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">$</span>
+                                                <input type="text" id="CostoEnvio" name="CostoEnvio" class="form-control" placeholder="Costo Envio"/>
+                                             </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                    
+                                
+                           
                             <div class="modal-footer">
                                 <button id="ConfirmarFecha" type="button" class="btn btn-primary" data-dismiss="modal">Confirmar</button>
                                 <button id="CancelarFecha" type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
@@ -66,7 +112,7 @@
                             </div>
                         </div>
                         </div>     
-                            
+                            </div> 
                           
                             
                     </div>
@@ -78,49 +124,86 @@
 <script type="text/javascript">
     $(document).ready(function(){
         ConsultarPaquetesOrden();
+        
+        // Add event listener for opening and closing details
+        $('#tblPaquetesAbiertos tbody').on('click', 'td.details-control', function () {
+            var tr = $(this).closest('tr');
+            var t = $("#tblPaquetesAbiertos").DataTable();
+            var row = t.row( tr );
+
+            if ( row.child.isShown() ) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child( LoadRowDetail(row.data()) ).show();
+                tr.addClass('shown');
+            }
+        } );
     });
+    
+    function LoadRowDetail ( d ) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+        '<tr>'+
+            '<td>Numero Guía:</td>'+
+            '<td colspan="2">'+d.NumeroGuia+'</td>'+
+                       
+        '</tr>'+
+        '<tr>'+
+            '<td>Costo Envio:</td>'+
+            '<td>$'+d.CostoEnvio+'</td>'+
+            
+            
+        '</tr>'+
+        
+    '</table>';
+}
     
     function ConsultarPaquetesOrden()
     {
        
-        $.ajax({
+       var t = $('#tblPaquetesAbiertos').DataTable({
+        "ajax":{
             url:"<?php echo site_url();?>/Paquetes_Controller/ConsultarPaquetesAbiertos_ajax",
             method:"POST",
-            
-            success: function(r)
-              {
-                var Paquetes = JSON.parse(r);
+            dataSrc: ""
+        },
 
-                var t = $('#tblPaquetesAbiertos').DataTable({
-                         "destroy":true,
-                         "language": {
-                              "lengthMenu": "Mostrando _MENU_ registros por pag.",
-                              "zeroRecords": "Sin Datos - disculpa",
-                              "info": "Motrando pag. _PAGE_ de _PAGES_",
-                              "infoEmpty": "Sin registros disponibles",
-                              "infoFiltered": "(filtrado de _MAX_ total)"
-                          }
-
-                          });   
-                  t.clear();
-                  t.draw();
-                 for(i=0;i<Paquetes.length;i++)
-                 { 
-                     t.row.add([
-                         Paquetes[i]['IdPaqueteEnvio'],
-                         Paquetes[i]['Descripcion_lab'],
-                         Paquetes[i]['Descripcion'],
-                         Paquetes[i]['DescripcionEstatusPaquete'],
-                         Paquetes[i]['TotalEquiposPaquete'],
-                         Paquetes[i]['FechaEnv'],
-                         Paquetes[i]['FechaRecLab'],
+         "destroy":true,
+         "language": {
+              "lengthMenu": "Mostrando _MENU_ registros por pag.",
+              "zeroRecords": "Sin Datos - disculpa",
+              "info": "Motrando pag. _PAGE_ de _PAGES_",
+              "infoEmpty": "Sin registros disponibles",
+              "infoFiltered": "(filtrado de _MAX_ total)"
+          },
+          "autoWidth":true,
+          "columns": [
+                {
+                    "className":      'details-control',
+                    "orderable":      false,
+                    "data":           null,
+                    "defaultContent": ''
+                },
+                 
                          
-                         '<a></a>'
-                        
-                     ]).draw(false);
-                 }
-              }
+                { "data": "IdPaqueteEnvio" },
+                { "data": "Descripcion_lab" },
+                { "data": "Descripcion" },
+                { "data": "DescripcionEstatusPaquete" },
+                { "data": "TotalEquiposPaquete" },
+                
+                
+                { "data": "FechaEnv" },
+                { "data": "FechaRecLab" }
+                ]
+
         });
+        
+       
     }
 
     function ConfirmarPaquete(IdPaqueteEnvio, IdEstatusActual)
@@ -138,6 +221,24 @@
         
         var hoy = ano+"-"+mes+"-"+dia;
         $('#FechasCon').val(hoy);
+        
+        if (IdEstatusActual>=2)
+        {
+            
+            document.getElementById('InformacionPaquete').style.display = 'none';
+
+        }
+        else
+        {
+            alert (1);
+            document.getElementById('InformacionPaquete').style.display = '';
+            var x= document.getElementById('InformacionPaquete');
+                    x.style.visibility = 'visible';
+            $("#NumeroGuia").val();
+            $("#CostoEnvio").val();
+
+        }
+    
         $("#modalConfirmacion").modal('show');
     }
 
@@ -151,8 +252,10 @@
         var fecha = $("#FechasCon").val();
         var IdPaqueteEnvio = $('#IdPaqueteEnvio').val();
         var IdEstatusActual =  $('#IdEstatusActual').val();
+        var NumeroGuia = $("#NumeroGuia").val();
+        var CostoEnvio =$("#CostoEnvio").val();
        
-        datos={"fecha":fecha,"IdPaqueteEnvio":IdPaqueteEnvio,"IdEstatusActual":IdEstatusActual};
+        datos={"fecha":fecha,"IdPaqueteEnvio":IdPaqueteEnvio,"IdEstatusActual":IdEstatusActual, "NumeroGuia": NumeroGuia, "CostoEnvio":CostoEnvio};
 
         $.ajax
         ({
