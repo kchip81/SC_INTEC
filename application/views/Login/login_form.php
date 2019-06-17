@@ -104,6 +104,55 @@
                     </form>
                 </div>
             </div>
+
+
+
+
+                            <div class="modal fade" id="modalContraseña" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="ModalLabel">Actualización de la contraseña
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <input type="hidden" id="IdOrden" name="IdOrden">
+                                            </h4>
+                                          </div>
+                             
+                                    <div class="modal-body">
+                                                                   
+                                        <fieldset class="form-group position-relative has-icon-left mb-0">
+                                            <input type="text" class="form-control form-control-lg input-lg" readonly="readonly" value="<?php echo $this->session->userdata('intec_Usuario'); ?>"  id="user" placeholder="Usuario">
+                                            <div class="form-control-position">
+                                                <i class="icon-head"></i>
+                                            </div>
+                                        </fieldset>
+                                        <br>
+                                        <fieldset class="form-group position-relative has-icon-left">
+                                            <input type="password" class="form-control form-control-lg input-lg" id="anteriorcontrasena" placeholder="Contraseña" required>
+                                            <div class="form-control-position">
+                                                <i class="icon-lock"></i>
+                                            </div>
+                                        </fieldset>
+                                        <fieldset class="form-group position-relative has-icon-left">
+                                            <input type="password" onkeyup="muestra_seguridad_clave(this.value)" class="form-control form-control-lg input-lg" name="password" id="nuevacontrasena" placeholder="Nueva Contraseña" required>
+                                            <div class="form-control-position">
+                                                <i class="icon-lock"></i>
+                                            </div>
+                                            <div id="progress" class="progress">
+                                                <div class="progress-bar  bg-info" role="progressbar" style="width: 100%;border-radius: 10px;text-align:center;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                            </div>
+                                        </fieldset>
+                                    
+                                    </div>
+                                      <!-- FORM ACTIONS-->
+                                    <div class="modal-footer">
+                                        <button id="ActualizarModal" type="button" class="btn btn-primary"><i class="icon-refresh"></i> Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+  
             
         </div>
     </div>
@@ -112,6 +161,117 @@
         </div>
       </div>
     </div>
+
+    <script>
+        var security = 0;
+        $(document).ready(function()
+        {
+            var message = "<?php echo $errorMessage; ?>";
+   
+            if(message.localeCompare("Actualizar contraseña") == 0 || message.localeCompare("Contraseña muy vieja") == 0)
+            {
+                $('#modalContraseña').modal('show');
+            }
+        });
+    
+        function muestra_seguridad_clave(clave){
+            seguridad=seguridad_clave(clave);
+            security = seguridad;
+            var barra = '<div class="progress-bar  bg-info" role="progressbar" style="width: 100%;border-radius: 10px;text-align:center;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">'+ seguridad +'%</div>';
+            $('#progress').html(barra);
+        }
+    
+        var numeros="0123456789";
+        var letras="abcdefghyjklmnñopqrstuvwxyz";
+        var letras_mayusculas="ABCDEFGHYJKLMNÑOPQRSTUVWXYZ";
+
+        function tiene_numeros(texto){
+            for(i=0; i<texto.length; i++){
+                if (numeros.indexOf(texto.charAt(i),0)!=-1){
+                    return 1;
+                }
+            }
+            return 0;
+        } 
+
+        function tiene_letras(texto){
+            texto = texto.toLowerCase();
+            for(i=0; i<texto.length; i++){
+                if (letras.indexOf(texto.charAt(i),0)!=-1){
+                    return 1;
+                }
+            }
+            return 0;
+        } 
+
+        function tiene_minusculas(texto){
+            for(i=0; i<texto.length; i++){
+                if (letras.indexOf(texto.charAt(i),0)!=-1){
+                    return 1;
+                }
+            }
+            return 0;
+        } 
+
+        function tiene_mayusculas(texto){
+            for(i=0; i<texto.length; i++){
+                if (letras_mayusculas.indexOf(texto.charAt(i),0)!=-1){
+                    return 1;
+                }
+            }
+            return 0;
+        } 
+
+        function seguridad_clave(clave){
+            var seguridad = 0;
+            if (clave.length!=0){
+                if (tiene_numeros(clave) && tiene_letras(clave)){
+                    seguridad += 30;
+                }
+                if (tiene_minusculas(clave) && tiene_mayusculas(clave)){
+                    seguridad += 30;
+                }
+                if (clave.length >= 4 && clave.length <= 5){
+                    seguridad += 10;
+                }else{
+                    if (clave.length >= 6 && clave.length <= 8){
+                        seguridad += 30;
+                    }else{
+                        if (clave.length > 8){
+                            seguridad += 40;
+                        }
+                    }
+                }
+            }
+            return seguridad				
+        }	
+
+        $('#ActualizarModal').click(function()
+        {
+            if(security >=50){
+    
+                datos = {
+                    IdUsuario: $("#user").val(),
+                    Contrasena: $("#anteriorcontrasena").val(),
+                    ContrasenaNueva: $("#nuevacontrasena").val()
+                };
+
+                $.ajax
+                ({            
+                    type:'post',
+                    url:'<?php echo site_url();?>/Login_Controller/ActualizarContrasena',
+                    data:datos, 
+                    success:function(resp)
+                    {
+                        alert(resp);
+                        if(resp != "Contraseña incorrecta")
+                        $('#modalContraseña').modal('hide'); 
+                    }
+                });  
+            }else
+                alert("Seguridad muy baja");
+        });
+    </script>
         
         
     <!-- BEGIN VENDOR JS-->

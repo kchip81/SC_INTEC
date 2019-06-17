@@ -56,7 +56,20 @@ class Servicio_Controller extends CI_Controller {
     }
         
    
+    public function Load_EquipoDemora()
+    {
+        $data['title'] = 'Equipos con demora en Laboratorio';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardEquiposDemora');
+        $this->load->view('templates/FooterContainer');
+    }
 
+    public function ConsultarEquipoDemora()
+    {
+        $Equipo = $this->EquipoOrden_Model->ConsultarEquipoDemora();
+        echo json_encode($Equipo);
+    }
 /* ------------------------------------------------CardConsultaOrdenesServicio--------------------------------------------------------- */
     public function ConsultarPaqueteOrdenServicio($IdOrden)
     {
