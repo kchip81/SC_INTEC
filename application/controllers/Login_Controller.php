@@ -34,8 +34,10 @@ class Login_Controller extends CI_Controller {
         if($this->session->has_userdata('intec_logged_in'))
             {
                 $data['title'] = "Intec";
-                $this->load->view('templates/MainContainer', $data);
-                $this->load->view('templates/FooterContainer');
+                            
+                header('Location:'.site_url('Dashboard'));
+                /*$this->load->view('templates/MainContainer', $data);
+                $this->load->view('templates/FooterContainer');*/
                 
             }
             else
@@ -71,13 +73,10 @@ class Login_Controller extends CI_Controller {
                 if($Usuario->creacion == 1)
                 {
                                         
-                    $fechaEntera = date('Y-m-d');
+                    $Fecha = $this->Usuario_Model->ValidarUsuarioFecha($Usr); 
 
-                    //$datetime1 = date_create($fechaEntera);
-                    //$datetime2 = date_create($Usuario->fechaA);
-                    
-                    //if($datetime1 < $datetime2)
-                    //{
+                    if($Fecha==TRUE)
+                    {
                         //Cargar funciones del perfil
                         
                         $SessionData = array(
@@ -95,14 +94,17 @@ class Login_Controller extends CI_Controller {
                         
                         log_message('debug', '*->Validar_Login->SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
                         
-                        $data['title'] = "Intec";
+                        
+                        header('Location:'.site_url('Dashboard'));
+
+                        /*$data['title'] = "Intec";
                         $this->load->view('templates/MainContainer', $data);
-                        $this->load->view('templates/FooterContainer'); 
-                    /*}else
+                        $this->load->view('templates/FooterContainer'); */
+                    }else
                     {
                         $data['errorMessage'] = 'Contraseña muy vieja';
                         $this->load->view('Login/login_form', $data);
-                    }*/                                     
+                    }                                     
                 }else
                 {
                     $SessionData = array(

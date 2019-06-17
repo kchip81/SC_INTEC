@@ -49,8 +49,8 @@
                 position = $(".main-menu-content").find('li.active').position();
               }
               setTimeout(function(){
-                // $.app.menu.container.scrollTop(position.top);
-                $.app.menu.container.stop().animate({scrollTop:position.top}, 300);
+                $.app.menu.container.scrollTop(position.top);
+                //$.app.menu.container.stop().animate({scrollTop:position.top}, 300);
                 $('.main-menu').data('scroll-to-active', 'false');
               },300);
           }

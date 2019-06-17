@@ -34,7 +34,20 @@ class Usuario_Model extends CI_Model {
  
         $query = $this->db->get();
         return $query->row();          
-    }    
+    }  
+
+    public function ValidarUsuarioFecha($Usuario)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where ('usuario', $Usuario);
+        $this->db->where ('fechaActualizado < now()');
+        $this->db->limit(1);
+ 
+        $query = $this->db->get();
+        return $query->row(); 
+        
+    }
 
     public function ConsultarDataUsuarios()
     {

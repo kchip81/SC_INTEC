@@ -112,8 +112,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input type="checkbox" class="form-check-input" id="Restablecer">    
-                                                <label for="contrasena">Restablecer</label>
+                                                <label for="Modal_chkRestablecer">Restablecer </label>
+                                                <input type="checkbox" id="Restablecer">
                                             </div>
                                         </div>
                                     </div>

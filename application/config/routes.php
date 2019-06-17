@@ -59,11 +59,14 @@ $route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';
 //Registrar
 $route['Usuario/Registrar'] = 'Registrar_Controller/Load_Registrar';
 
+//Dashboard
+$route['Dashboard'] = 'Dashboard_Controller/Load_Dashboard';
 
 //Servicio
 $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
 $route['Servicio/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcio';
 $route['Servicio/NuevaOrdenPDF/(.+)']='Servicio_Controller/CrearOrdenPDF/$1';
+$route['Servicio/ConsultarEquipoDemora']='Servicio_Controller/Load_EquipoDemora';
 
 $route['Servicio/ConsultarPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteServicio/$1';
 $route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteOrdenServicio/$1';

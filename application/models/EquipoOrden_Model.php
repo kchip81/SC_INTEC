@@ -86,6 +86,42 @@ class EquipoOrden_Model extends CI_Model{
         return $query->result_array();
     }
 
+    public function ConsultarTotalEquipoDemora()
+    {
+        $this->db->select('count(*) as retardo');
+        $this->db->from($this->table);
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');        
+        $this->db->where($this->table.'.IdEstatusPaquete = 3 and ADDDATE(equipo_orden.FechaRetLab, INTERVAL diasServicios DAY) < now()');
+        
+        $query = $this->db->get();
+        return $query->row();
+    }
+
+    public function ConsultarEquipoDemora()
+    {
+        $this->db->select('*,equipo_orden.IdOrden as IdOrdenes');
+        $this->db->from($this->table);
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');        
+        $this->db->join('equipo','equipo.IdEquipo = equipo_orden.IdEquipo ','INNER');        
+        $this->db->join('cliente','cliente.IdCliente = equipo.IdCliente  ','INNER');        
+        $this->db->where($this->table.'.IdEstatusPaquete = 3 and ADDDATE(equipo_orden.FechaRetLab, INTERVAL diasServicios DAY) < now()');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function ConsultarTotalEquipoOrden()
+    {
+        $this->db->select('count(*) as total');
+        $this->db->from($this->table);
+        $this->db->where('IdEstatusPaquete < 6');
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
     public function InsertarOrdenEquipo($IdEquipo,$IdOrden)
     {
         $data = array('IdEquipo' => $IdEquipo,'IdOrden' => $IdOrden);
