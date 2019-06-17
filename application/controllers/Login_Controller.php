@@ -34,8 +34,10 @@ class Login_Controller extends CI_Controller {
         if($this->session->has_userdata('intec_logged_in'))
             {
                 $data['title'] = "Intec";
-                $this->load->view('templates/MainContainer', $data);
-                $this->load->view('templates/FooterContainer');
+                            
+                header('Location:'.site_url('Dashboard'));
+                /*$this->load->view('templates/MainContainer', $data);
+                $this->load->view('templates/FooterContainer');*/
                 
             }
             else
@@ -60,59 +62,88 @@ class Login_Controller extends CI_Controller {
     {
                
            $Usr = $this->input->post('username');
-           $Contrasena = $this->input->post('password');
-            
+           $Contrasena = $this->input->post('password');            
              
+            //Validar el usuario y contraseña
+            $Usuario = $this->Usuario_Model->ValidarUsuarioContrasena($Usr, md5($Contrasena)); 
              
-             //Validar el usuario y contraseña
-             $Usuario = $this->Usuario_Model->ValidarUsuarioContrasena($Usr,$Contrasena); 
-             
-             if ($Usuario==TRUE)
-             {//El usuario y contrasena son correctos
+            if ($Usuario==TRUE)
+            {//El usuario y contrasena son correctos
                  
-                 //Cargar funciones del perfil
-                
-                 $SessionData = array(
-                     'intec_IdUsuario'=>$Usuario->IdUsuario,
-                     'intec_NombreUsuario'=>$Usuario->NombreUsuario.' '.$Usuario->ApellidosUsuario,
-                     'intec_IdPerfil'=>$Usuario->IdPerfil,
-                     'intec_DescripcionPerfil'=>$Usuario->DescripcionPerfil,
-                     
-                     'intec_logged_in'=>TRUE,
-                     
-                 );
-                 
-                 //Establecer Sesion del usuario
-                 $this->session->set_userdata($SessionData);
-                 
-                 log_message('debug', '*->Validar_Login->SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
-                
-                $data['title'] = "Intec";
-                $this->load->view('templates/MainContainer', $data);
-                $this->load->view('templates/FooterContainer');
-               
-                 
-                         
-                 
-             }
-             else
-             {
+                if($Usuario->creacion == 1)
+                {
+                                        
+                    $Fecha = $this->Usuario_Model->ValidarUsuarioFecha($Usr); 
+
+                    if($Fecha==TRUE)
+                    {
+                        //Cargar funciones del perfil
+                        
+                        $SessionData = array(
+                            'intec_IdUsuario'=>$Usuario->IdUsuario,
+                            'intec_NombreUsuario'=>$Usuario->NombreUsuario.' '.$Usuario->ApellidosUsuario,
+                            'intec_IdPerfil'=>$Usuario->IdPerfil,
+                            'intec_DescripcionPerfil'=>$Usuario->DescripcionPerfil,
+                            
+                            'intec_logged_in'=>TRUE,
+                            
+                        );
+                        
+                        //Establecer Sesion del usuario
+                        $this->session->set_userdata($SessionData);
+                        
+                        log_message('debug', '*->Validar_Login->SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
+                        
+                        
+                        header('Location:'.site_url('Dashboard'));
+
+                        /*$data['title'] = "Intec";
+                        $this->load->view('templates/MainContainer', $data);
+                        $this->load->view('templates/FooterContainer'); */
+                    }else
+                    {
+                        $data['errorMessage'] = 'Contraseña muy vieja';
+                        $this->load->view('Login/login_form', $data);
+                    }                                     
+                }else
+                {
+                    $SessionData = array(
+                        'intec_Usuario'=>$Usr                        
+                    );
+
+                    $this->session->set_userdata($SessionData);
+                    $data['errorMessage'] = 'Actualizar contraseña';
+                    $this->load->view('Login/login_form', $data);
+                }
+            }else
+            {
                 $data['errorMessage'] = 'Usuario y/o Contraseña Incorrectos';
-               
-          
                 $this->load->view('Login/login_form', $data);
-             }
-                
-                
-               
-                 
-                         
-                 
-             
-             
-             
+            }             
         }
-        
+
+        public function ActualizarContrasena()
+        {
+            $IdUsuario = $this->input->post('IdUsuario');
+            $contrasena = $this->input->post('Contrasena');
+            $contrasenanueva = $this->input->post('ContrasenaNueva'); 
+            
+            $res= $this->Usuario_Model->ValidarUsuarioContrasena($IdUsuario, md5($contrasena));
+
+            if($res==TRUE)
+            {
+                $resultado = $this->Usuario_Model->ActualizarContrasena($IdUsuario,$contrasenanueva);
+                if($resultado) 
+                {
+                    echo "Contraseña Actualizada"; 
+                    $res = $this->Usuario_Model->caducidad($IdUsuario); 
+                }else
+                    echo "No se actualizo la Contraseña";  
+
+            }else
+                echo "Contraseña incorrecta";
+        }
+
         public function CerrarSesion()
         {
             $this->session->unset_userdata('intec_logged_in','intec_IdUsuario');

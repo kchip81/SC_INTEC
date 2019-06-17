@@ -66,7 +66,7 @@
         <div class="navbar-header">
           <ul class="nav navbar-nav">
             <li class="nav-item mobile-menu hidden-md-up float-xs-left"><a class="nav-link nav-menu-main menu-toggle hidden-xs"><i class="icon-menu5 font-large-1"></i></a></li>
-            <li class="nav-item"><a href="index.html" class="navbar-brand nav-link"><img alt="branding logo" src="<?php echo base_url();?>app-assets/images/logo/IntecLogoV.png" data-expand="<?php echo base_url();?>app-assets/images/logo/IntecLogoV.png" data-collapse="<?php echo base_url();?>app-assets/images/logo/IntecLogoS.png" class="brand-logo"></a></li>
+            <li class="nav-item"><a href="<?php echo site_url(); ?>" class="navbar-brand nav-link"><img alt="branding logo" src="<?php echo base_url();?>app-assets/images/logo/IntecLogoV.png" data-expand="<?php echo base_url();?>app-assets/images/logo/IntecLogoV.png" data-collapse="<?php echo base_url();?>app-assets/images/logo/IntecLogoS.png" class="brand-logo"></a></li>
             <li class="nav-item hidden-md-up float-xs-right"><a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container"><i class="icon-ellipsis pe-2x icon-icon-rotate-right-right"></i></a></li>
           </ul>
         </div>
@@ -203,40 +203,63 @@
       <!-- main menu content-->
       <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
-          <li class=" nav-item"><a href="#"><i class="icon-user-tie"></i><span data-i18n="nav.agenda.main" class="menu-title">Clientes</span></a>
-            <ul class="menu-content">
-              <li><a href="<?php echo site_url('Cliente/CatalogoCliente'); ?>" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
-              </li>
-              <li><a href="#" data-i18n="nav.agenda.main" class="menu-item">Registrar Nuevo Cliente</a>
-              </li>
-              <li><a href="<?php echo site_url('Cliente/ConsultarPlanAnual'); ?>" data-i18n="nav.agenda.main" class="menu-item">Plan Anual de servicios</a>
-              </li>
-              
-            </ul>
-          </li>
-          <li class=" nav-item"><a href="#"><i class="icon-wrench3"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Servicios</span></a>
-            <ul class="menu-content">
-              <li><a href="<?php echo site_url('Servicio/NuevaOrden');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Crear Orden de Servicio</a>
-              </li>
-              <li><a href="<?php echo site_url('Servicio/ConsultarOrden');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
-              </li>
-              <li><a href="<?php echo site_url('Paquetes/ConsultarPaquetesAbiertos');?>" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Paquetes Abiertos</a>
-              </li>
-              <li><a href="#" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Historial</a>
-              </li>
+        <?php
 
-            </ul>
-          </li>
-          <li class=" nav-item"><a href="#"><i class="icon-ios-speedometer"></i><span data-i18n="nav.expediente.main" class="menu-title">Proveedores</span></a>
-            <ul class="menu-content">
-              <li><a href="<?php echo site_url('Proveedores/CatalogoProveedor');?>" data-i18n="nav.expediente.main" class="menu-item">Catalogo de Proveedores</a>
-              </li>
-              
-            </ul>
-          </li>
+          $Perfil = $this->session->userdata('intec_IdPerfil');
           
+          if($Perfil == 1)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="icon-group"></i><span data-i18n="nav.agenda.main" class="menu-title">Usuarios</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Usuario/Registrar').'" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Usuarios</a>
+                </li>
+              </ul>
+            </li>';
+          }
+
+          if($Perfil == 1 || $Perfil == 2)
+          {
+            $cadena = '<li class=" nav-item"><a href="#"><i class="icon-user-tie"></i><span data-i18n="nav.agenda.main" class="menu-title">Clientes</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Cliente/CatalogoCliente').'" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
+                </li>';
+
+                if($Perfil == 1)
+                {
+                  $cadena = $cadena.'<li><a href="'.site_url('Cliente/ConsultarPlanAnual').'" data-i18n="nav.agenda.main" class="menu-item">Plan Anual de servicios</a>
+                  </li>';
+                }
+
+              $cadena = $cadena.'</ul>
+            </li>';
+            echo $cadena;
+          }
+        
+          if($Perfil == 1 || $Perfil == 2)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="icon-wrench3"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Servicios</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Servicio/NuevaOrden').'" data-i18n="nav.cards.card_statistics" class="menu-item">Crear Orden de Servicio</a>
+                </li>
+                <li><a href="'.site_url('Servicio/ConsultarOrden').'" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
+                </li>
+                <li><a href="'.site_url('Paquetes/ConsultarPaquetesAbiertos').'" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Paquetes Abiertos</a></li>
+                <li><a href="'.site_url('Servicio/ConsultarEquipoDemora').'" data-i18n="nav.cards.card_statistics" class="menu-item">Equipos con Demora</a></li>
+              </ul>
+            </li>';
+          }
+          
+          if($Perfil == 1 || $Perfil == 2)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="icon-ios-speedometer"></i><span data-i18n="nav.expediente.main" class="menu-title">Proveedores</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Proveedores/CatalogoProveedor').'" data-i18n="nav.expediente.main" class="menu-item">Catalogo de Proveedores</a>
+                </li>    
+              </ul>
+            </li>';
+          }
          
-           
+          ?>   
         </ul>
       </div>
       <!-- /main menu content-->

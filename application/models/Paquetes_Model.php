@@ -95,5 +95,15 @@ class Paquetes_Model extends CI_Model {
         return $query->result_array();
     }
    
+
+    public function ConsutarTotaPaquetesAbiertos()
+    {
+        $this->db->select('count(*) as total');
+        $this->db->from ($this->table);
+        $this->db->where('IdEstatusPaquete < 3');  
+        $query = $this->db->get();
+        
+        return $query->row(); 
+    }
     //put your code here
 }
