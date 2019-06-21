@@ -49,10 +49,13 @@ class Paquetes_Model extends CI_Model {
         
         $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
         $this->db->update('equipo_orden');
-        
-        
-        
-        
+       
+    }
+    
+    public function ActualizarPaquete($IdPaquete, $DatosPaquete)
+    {
+        $this->db->where('IdPaqueteEnvio', $IdPaquete);
+        return $this->db->update($this->table,$DatosPaquete);
     }
     
     /*

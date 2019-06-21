@@ -1,3 +1,5 @@
 /application/logs/
 /Certificados/
 /archivos/
+/aplication/config/database.php
+index.php

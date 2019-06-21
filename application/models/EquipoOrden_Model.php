@@ -186,6 +186,24 @@ class EquipoOrden_Model extends CI_Model{
         
         return $this->db->update($this->table);
     }
+    
+    public function ConsultarEquiposPaquetesOrden($IdOrden)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);
+        $this->db->where('IdOrden', $IdOrden);
+        $this->db->where('IdPaqueteEnvio IS NOT NULL');
+        
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    public function EliminarEquiposOrden($IdOrden)
+    {
+        $this->db->where('IdOrden',$IdOrden);
+        return $this->db->delete($this->table);
+    }
             
     //put your code here
 }
