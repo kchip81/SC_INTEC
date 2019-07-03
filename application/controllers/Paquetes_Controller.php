@@ -19,6 +19,7 @@ class Paquetes_Controller extends CI_Controller {
         $this->load->helper('form');
         
         $this->load->model('Paquetes_Model');
+        $this->load->model('EquipoOrden_Model');
         
     }
     
@@ -30,6 +31,7 @@ class Paquetes_Controller extends CI_Controller {
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Paquete/CardConsultaPaquetesAbiertos');
+        $this->load->view('Paquete/CardConsultaEquiposPaquetes');
         
         $this->load->view('templates/FooterContainer');
 
@@ -132,6 +134,15 @@ class Paquetes_Controller extends CI_Controller {
             
         }
         
+    }
+
+    public function ConsultarEquiposPaquetes()
+    {
+        $id = $this->input->post('IdPaqueteEnvio');
+
+        $PaquetesOrden = $this->EquipoOrden_Model->ConsultarEquiposPaquetes($id);
+
+        echo json_encode($PaquetesOrden);
     }
     
     

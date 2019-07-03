@@ -102,6 +102,13 @@ class Servicio_Controller extends CI_Controller {
         echo json_encode($Clientes);
     }
 
+    public function ConsultarIdEquipos()
+    {
+        $idEquipo = $this->input->post('idEquipo');   
+
+        $Clientes = $this->Equipo_Model->ConsultarIdEquipos($idEquipo);
+        echo json_encode($Clientes);
+    }
 
     public function InsertarEquipo()
     {
@@ -119,6 +126,21 @@ class Servicio_Controller extends CI_Controller {
         $resultado = $this->Equipo_Model->ConsultarEquipoID($Clientes);
 
         echo json_encode($resultado);
+    }
+
+    public function ActualizarEquipo()
+    {
+        $IdCliente = $this->input->post('IdCliente');       
+        $ClaveId = $this->input->post('ClaveId');
+        $NumService = $this->input->post('NumService');       
+        $Modelo = $this->input->post('Modelo');
+        $Descripcion = $this->input->post('Descripcion');       
+        $Marca = $this->input->post('Marca');
+        $AlcanceMedicion = $this->input->post('AlcanceMedicion');       
+        $DivisionMedicion = $this->input->post('DivisionMedicion');
+
+        $Equipo = $this->Equipo_Model->ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion);
+
     }
     
     public function ConsultarDataClientes_ajax()
@@ -513,5 +535,21 @@ class Servicio_Controller extends CI_Controller {
         }
         
         
+    }
+
+
+    public function CrearPDF($IdOrden)
+    {
+        $this->load->library('M_pdf');
+
+        $hoy = date("dmyhis");
+        
+        $pdf = $this->PDF_Model->GenerarPDFLaboratorio($IdOrden);
+
+        $pdfFilePath = "reporte_".$hoy.".pdf";
+
+        $this->m_pdf->pdf->WriteHTML($pdf);
+        $this->m_pdf->pdf->Output($pdfFilePath, "I");
+
     }
 }

@@ -17,6 +17,7 @@ class PDF_Model extends CI_Model {
         parent::__construct();
         $this->load->model('OrdenServicio_Model');
         $this->load->model('EquipoOrden_Model');
+        $this->load->model('Paquetes_Model');
     }
     
     public function GenerarPDF($IdOrden)
@@ -34,7 +35,7 @@ class PDF_Model extends CI_Model {
           <head>
             <meta charset="utf-8">
             <title>Reporte</title>
-            <link rel="shortcut icon" type="image/x-icon" href="http://localhost/SC_Intec/app-assets/images/ico/IntecIco.ico">
+            <link rel="shortcut icon" type="image/x-icon" href="'.base_url().'/app-assets/images/ico/IntecIco.ico">
             <style>
         
               a {
@@ -249,5 +250,193 @@ class PDF_Model extends CI_Model {
 
         return $pdf;
     }
+    public function GenerarPDFLaboratorio($id)
+    {        
+        
+        $Registro = $this->EquipoOrden_Model->ConsultarPDF($id); 
+        $Laboratorio = $this->Paquetes_Model->ConsultarPDF($id);
+        
+        $head = '
+        <!DOCTYPE html>
+        <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <title>Reporte</title>
+            <link rel="shortcut icon" type="image/x-icon" href="'.base_url().'/app-assets/images/ico/IntecIco.ico">
+            <style>
+        
+              a {
+                color: #5D6975;
+                text-decoration: underline;
+              }
+        
+              body {
+                position: relative;
+                width: 21cm;  
+                height: 29cm; 
+                margin: 0 auto; 
+                color: #001028;
+                background: #FFFFFF; 
+                font-family: Arial, sans-serif; 
+                font-size: 12px; 
+                font-family: Arial;
+              }
+        
+              header {
+                padding: 5px 0;
+                margin-bottom: 0px;
+              }
+        
+              h2 {
+                font-size: 2.0em;
+                text-align: center;
+              }        
+        
+              table {
+                width: 100%;
+                border-collapse: collapse;
+                border-spacing: 0;
+                margin-bottom: 10px;
+              }
+        
+              table tr:nth-child(2n-1) td {
+                background: #F5F5F5;
+              }
+        
+              table th,
+              table td {
+                text-align: center;
+                border: 1px solid #C1CED9;
+              }
+        
+              table th {
+                color: #5D6975;
+                border-bottom: 1px solid #C1CED9;
+                font-weight: normal;
+                padding: 5px;
+              }
+        
+        
+              table td {
+                padding: 5px;
+                text-align: left;
+              }
+        
+        
+              footer {
+                color: #5D6975;
+                width: 100%;
+                height: 20px;
+                position: absolute;
+                bottom: 0;
+                border-top: 1px solid #C1CED9;
+                padding: 8px 0;
+                text-align: center;
+              }
+            
+            </style>
+          </head>
+          <body>
+
+
+          <header>
+            <div align="center">
+              <figure align="center">
+                <img class="logo" src="'.base_url().'app-assets/images/logo/IntecLogo.png" style="width: 100px" align="center">
+              </figure>
+              <div>
+          
+              </div>
+          </header>
+          <br>
+
+            ';
+
+            foreach($Laboratorio as $laboratorio)
+            {
+              $table = '
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="4">Datos del Laboratorio</th> 
+                    <tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                    <td style="width:150px">Laboratorio</td>
+                    <td colspan="3">'.$laboratorio['Descripcion_lab'].'</td>
+                  <tr>
+                  <tr>
+                    <td style="width:150px">Domicilio</td>
+                    <td colspan="3">'.$laboratorio['Domicilio'].'</td>
+                  <tr>
+                  <tr>
+                    <td style="width:150px">Teléfono</td>
+                    <td colspan="3">'.$laboratorio['Telefono'].'</td>
+                  <tr>
+                  </tbody>
+                  <thead>
+                  <tr>
+                    <th colspan="4">Especificaciones del Paquete</th> 
+                  <tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="1">Descripcion</td>
+                    <td colspan="1" style="width:150px">'.$laboratorio['Descripcion'].'</td>
+                    <td colspan="1">Fecha de envio al Laboratorio:</td>
+                    <td colspan="1">'.$laboratorio['FechaEnv'].'</td>
+                  <tr>                
+                </tbody>
+              
+                </table> 
+                <br>
+                <table>
+                <thead>
+                  <tr>
+                    <th>No. Orden</th>
+                    <th>Cliente</th>
+                    <th>Descripción del equipo</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Numero de Serie</th>
+                    <th>Clavé de identificacion</th>
+                    <th>Alcance de Medición</th>
+                    <th>Divicion Minima</th>
+                  </tr>
+                </thead>
+                <tbody>
+                ';
+            }
+                foreach($Registro as $registro)
+                {
+                  $table2 .='
+                  <tr>
+                    <td>'.$registro['ID'].'</td>
+                    <td>'.$registro['NombreCompania'].'</td>
+                    <td>'.$registro['Descripcion'].'</td>
+                    <td>'.$registro['Marca'].'</td>
+                    <td>'.$registro['Modelo'].'</td>
+                    <td>'.$registro['NumService'].'</td>
+                    <td>'.$registro['ClaveId'].'</td>
+                    <td>'.$registro['AlcanceMedicion'].'</td>
+                    <td>'.$registro['DivisionMedicion'].'</td>
+                  </tr>
+                    ';
+                }
+            $table3 ='
+                  
+                </tbody>
+              </table>
+            </body>
+        </html>
+        ';
+
+        $pdf = $head.$table.$table2.$table3;
+
+        return $pdf;
+    }
+
+
     //put your code here
 }

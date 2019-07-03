@@ -37,6 +37,19 @@ class Paquetes_Model extends CI_Model {
         return $query->result_array();
         
     }
+
+    public function ConsultarPDF($id)
+    {
+
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join('laboratorio', $this->table.'.IdLaboratorio = laboratorio.IdLaboratorio ','INNER');        
+        $this->db->where($this->table.'.IdPaqueteEnvio',$id);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     
     public function ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha)
     {
