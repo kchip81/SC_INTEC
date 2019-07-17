@@ -46,6 +46,7 @@
                                         <th>Equipos</th>
                                         <th>Fecha Envio</th>
                                         <th>Fecha Recepción Lab</th>
+                                        <th>Acciones</th>
                                         
                                         
                                     </thead>
@@ -181,6 +182,16 @@
               "infoFiltered": "(filtrado de _MAX_ total)"
           },
           "autoWidth":true,
+
+          
+          "columnDefs":[
+           {
+               "targets":8, "data":"IdPaqueteEnvio", "render": function(data,type,row,meta)
+               {   
+                   return '<a href="<?php echo site_url('Servicio/PaquetePDF/'); ?>'+data+'" target="_blank"><i class="icon-file-pdf"></i> Orden del Paquete</a><br><a classs = "btn" onclick="ConsultarEquiposOrden('+row['IdPaqueteEnvio']+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" title="Ver Equipos"> Equipos</i></a>';                        
+               }
+           }], 
+
           "columns": [
                 {
                     "className":      'details-control',
@@ -195,8 +206,6 @@
                 { "data": "Descripcion" },
                 { "data": "DescripcionEstatusPaquete" },
                 { "data": "TotalEquiposPaquete" },
-                
-                
                 { "data": "FechaEnv" },
                 { "data": "FechaRecLab" }
                 ]
