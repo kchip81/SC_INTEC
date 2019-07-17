@@ -73,11 +73,11 @@ class Login_Controller extends CI_Controller {
                 if($Usuario->creacion == 1)
                 {
                                         
-                    $Fecha = $this->Usuario_Model->ValidarUsuarioFecha($Usr); 
+                    /*$Fecha = $this->Usuario_Model->ValidarUsuarioFecha($Usr); 
 
-                    if($Fecha==TRUE)
+                    if($Fecha!="")
                     {
-                        //Cargar funciones del perfil
+                    */    //Cargar funciones del perfil
                         
                         $SessionData = array(
                             'intec_IdUsuario'=>$Usuario->IdUsuario,
@@ -100,11 +100,11 @@ class Login_Controller extends CI_Controller {
                         /*$data['title'] = "Intec";
                         $this->load->view('templates/MainContainer', $data);
                         $this->load->view('templates/FooterContainer'); */
-                    }else
+                    /*}else
                     {
                         $data['errorMessage'] = 'Contraseña muy vieja';
                         $this->load->view('Login/login_form', $data);
-                    }                                     
+                    } */                                    
                 }else
                 {
                     $SessionData = array(

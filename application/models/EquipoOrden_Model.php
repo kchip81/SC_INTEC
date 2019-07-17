@@ -98,6 +98,22 @@ class EquipoOrden_Model extends CI_Model{
         return $query->row();
     }
 
+
+    public function ConsultarPDF($id)
+    {
+
+        $this->db->select(' equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID');
+        $this->db->from($this->table);
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
+        $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');        
+        $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');        
+        $this->db->where($this->table.'.IdPaqueteEnvio',$id);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+
+    }
+
     public function ConsultarEquipoDemora()
     {
         $this->db->select('*,equipo_orden.IdOrden as IdOrdenes');
@@ -203,6 +219,21 @@ class EquipoOrden_Model extends CI_Model{
     {
         $this->db->where('IdOrden',$IdOrden);
         return $this->db->delete($this->table);
+    }
+
+    public function ConsultarEquiposPaquetes($id)
+    {
+
+        $this->db->select(' equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID');
+        $this->db->from($this->table);
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
+        $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');        
+        $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');        
+        $this->db->where($this->table.'.IdPaqueteEnvio',$id);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+
     }
             
     //put your code here
