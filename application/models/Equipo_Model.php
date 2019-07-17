@@ -42,6 +42,17 @@ class Equipo_Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function ConsultarIdEquipos($idEquipo)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);
+        $this->db->where('IdEquipo',$idEquipo);
+        
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     public function InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente)
     {
         $data = array('Descripcion' => $Descripcion,'Marca' => $Marca,'Modelo' => $Modelo,'NumService' => $NumService

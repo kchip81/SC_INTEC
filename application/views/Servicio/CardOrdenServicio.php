@@ -228,13 +228,13 @@
                                     </div>
                                     <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">           
                                     <br>
+
                                     <div class="col-md-9">
                                         <div class="form-group" align="right">
-                                            <button type="button" class="btn btn-primary" id="btnAgregarSubProducto"><i class="icon-android-add"></i>Agregar</button>
+                                            <button id="ActualizarEquipo" type="button" class="btn btn-primary" style="display:none"><i class="icon-refresh"> </i>Actualizar</button>
+                                            <button type="button" class="btn btn-primary" id="btnAgregarSubProducto"><i class="icon-android-add"> </i>Agregar</button>
                                         </div>
-
                                     </div>
-                                    
                             </div>
                             
                                  
@@ -249,6 +249,7 @@
                                         <th>Alcance de Medicion</th>
                                         <th>División Minima</th>
                                         <th>Eliminar</th>
+                                        <th>Editar</th>
                                     </thead>
                                     <tbody id="tabla">
                                         
@@ -345,6 +346,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button id="AgregarModalEquipo" type="button" class="btn btn-primary">Confirmar</button>
+                                <button id="ActualizarModalAgregar" type="button" class="btn btn-primary" style="display:none">Actualizar</button>
                                 <button id="CancelarModalEquipo" onclick="cerrar()" type="button" class="btn btn-primary">Cancelar</button>
                             </div>
                             </div>
@@ -440,6 +442,7 @@
                         $("#MarcaSubProducto").val(resp[0].Marca); 
                         $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
                         $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                        $('#ActualizarEquipo').show();
                     }else
                     //{
                         //$('#ModalEquipo').modal('show');
@@ -460,6 +463,11 @@
 
     $("#AgregarModalEquipo").click(function()
     {
+
+        $(this).show();
+        $('#ActualizarModalAgregar').hide();
+        
+
         datos= {
             IdCliente: $('#cliente').val(),           
             ClaveId: $('#ClaveModalProducto').val(),
@@ -527,6 +535,10 @@
         CargarTabla();
     });
 
+    $('#ActualizarEquipo').click(function()
+    {
+        Actualizar();     
+    });
 
     $('#GuardarEntrada').click(function()
     {
@@ -593,6 +605,8 @@
     $(function()
     {
         $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
+        
+        $(document).on( 'click', '#btnEditarSubProducto' ,removerEditar);
     });
     
     function removerTabla()
@@ -610,6 +624,13 @@
     {
         $(this).parents("tr").remove();
     }
+    function removerEditar()
+    {
+        var id = $(this).parents("tr").find("td:eq(0)").html();
+        editar(id);
+        $(this).parents("tr").remove();
+        $('#ActualizarEquipo').show();
+    }
 
     function CargarClientes()
     {
@@ -626,6 +647,8 @@
 
     function CargarTabla()
     { 
+        
+        $('#ActualizarEquipo').hide();
         var id =$('#IdSubProducto').val();
         var clave = $('#ClaveSubProducto').val();
         var numser = $("#NumSerieSubProducto").val(); 
@@ -647,7 +670,8 @@
                 '<td class="clave">'+clave+'</td>'+
                 '<td class="alcance">'+alcance+'</td>'+
                 '<td class="division">'+division+'</td>'+
-                '<td><button type="button" class="btn btn-primary" id="btnEliminarSubProducto">Eliminar</button></td>'+
+                '<td><button type="button" class="btn btn-primary" id="btnEliminarSubProducto">Eliminar</button><!--<br><button type="button" onclick="editar('+id+')" class="btn btn-primary" id="btnEditaSubProducto">Editar</td>-->'+
+                '<td><button type="button" class="btn btn-primary" id="btnEditarSubProducto">Editar</button><td>'+
                 '</tr>'
             );
         }else
@@ -658,6 +682,66 @@
         
     }
 
+    function editar(idEquipo)
+    {
+        datos = {"idEquipo":idEquipo};
+        $.ajax
+        ({            
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarIdEquipos',
+            dataType: 'json',
+            data:datos, 
+            success:function(resp)
+            {
+                $('#IdSubProducto').val(resp[0].IdEquipo);
+                $("#NumSerieSubProducto").val(resp[0].NumService); 
+                $('#ClaveSubProducto').val(resp[0].ClaveId);
+                $("#ModeloSubProducto").val(resp[0].Modelo);
+                $('#DescripcionSubProducto').val(resp[0].Descripcion);
+                $("#MarcaSubProducto").val(resp[0].Marca); 
+                $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
+                $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+            }
+        });
+    }
+
+    function Actualizar()
+    {
+        datos= {         
+            IdEquipo:$('#IdSubProducto').val(),
+            ClaveId: $('#ClaveSubProducto').val(),
+            NumService: $("#NumSerieSubProducto").val(),
+            Modelo: $("#ModeloSubProducto").val(),
+            Descripcion: $('#DescripcionSubProducto').val(),
+            Marca: $("#MarcaSubProducto").val(),
+            AlcanceMedicion: $("#AlcanceSubProducto").val(),
+            DivisionMedicion: $('#DivisionSubProducto').val()
+        }; 
+
+        if( $('#ClaveSubProducto').val() != "" || $("#NumSerieSubProducto").val() != "" || $("#ModeloSubProducto").val() != "")
+        {
+            if($('#DescripcionSubProducto').val() != "" && $("#MarcaSubProducto").val() != "" &&
+            $("#AlcanceSubProducto").val() != "" && $('#DivisionSubProducto').val() != "")
+            {
+  
+                $.ajax
+                ({            
+                    type:'post',
+                    url:'<?php echo site_url();?>/Servicio_Controller/ActualizarEquipoPorId',
+                    dataType: 'json',
+                    data:datos, 
+                    success:function(resp)
+                    {
+
+                    }
+                });
+                LimpiarModal(); 
+            }  else
+                alert("Complete todo los campos");
+        }else
+            alert("Complete todo los campos");
+    }
+    
     function Limpiar()
     {
         $('#ClaveSubProducto').val("");
@@ -691,6 +775,9 @@
         $("#MarcaModalProducto").val(""); 
         $("#AlcanceModalProducto").val("");
         $('#DivisionModalProducto').val(""); 
+        
+        $('#AgregarModalEquipo').show();
+        $('#ActualizarModalAgregar').hide();
     }
 
 </script>
