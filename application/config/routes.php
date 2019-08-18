@@ -83,3 +83,5 @@ $route['Cliente/CatalogoCliente']='Cliente_Controller/Load_CatalogoCliente';
 //Proveedores
 $route['Proveedores/CatalogoProveedor']='Laboratorio_Controller/Load_CatalogoLaboratorio';
 
+//Factura
+$route['Factura']='Factura_Controller/Load_Factura';
