@@ -25,12 +25,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if (ENVIRONMENT =='production')
 {
-   $config['base_url'] = 'http://scintec.iintec.com/'; 
+   $config['base_url'] = 'http://scintec.iintec.com/';
 }
 else
 {
 
-    $config['base_url'] = 'http://localhost/SC_Intec/';
+    $config['base_url'] = 'http://localhost/SC_Intec-D/';
 }
 /*
 |--------------------------------------------------------------------------
