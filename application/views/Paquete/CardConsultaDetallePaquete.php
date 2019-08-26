@@ -43,19 +43,39 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                           <div class="form-group">
-                            <label for="txtNumEnvio">No. Guía</label>
-                            <input type="text" class="form-control" name="txtNumEnvio" id="txtNumEnvio" value="<?=$Paquete->NumeroGuia?>">
+                            <label for="txtEstatusPaquete">Estatus Paquete</label>
+                            <input type="text" class="form-control" name="txtEstatusPaquete" id="txtEstatusPaquete" value="<?=$Paquete->DescripcionEstatusPaquete?>" readonly>
                           </div>
                         </div>
                         <div class="col-md-2">
                           <div class="form-group">
                             <label for="txtNumEnvio">No. Guía</label>
-                            <input type="text" class="form-control" name="txtNumEnvio" id="txtNumEnvio" value="<?=$Paquete->NumeroGuia?>">
+                            <input type="text" class="form-control" name="txtNumEnvio" id="txtNumEnvio" value="<?=$Paquete->NumeroGuia?>" readonly>
                           </div>
                         </div>
-                        
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="txtFechaEnv">Fecha Envio</label>
+                            <input type="text" class="form-control" name="txtFechaEnv" id="txtFechaEnv" value="<?=$Paquete->FechaEnv?>" readonly>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="txtCostoEnvio">Costo Envio</label>
+                            <div class="input-group">
+                              <span class="input-group-addon">$</span>
+                              <input type="text" class="form-control" name="txtCostoEnvio" id="txtCostoEnvio" value="<?=$Paquete->CostoEnvio?>" readonly>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-2">
+                          <div class="form-group">
+                            <label for="txtFechaRec">Fecha Recepción</label>
+                            <input type="text" class="form-control" name="txtFechaRec" id="txtFechaRec" value="<?=$Paquete->FechaRecLab?>" readonly>
+                          </div>
+                        </div>
                       </div>
                     </div>
                 </div>
@@ -63,3 +83,8 @@
         </div>
       </div>
   </div>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    ConsultarEquiposOrden(<?=$Paquete->IdPaqueteEnvio?>);
+  });
+  </script>

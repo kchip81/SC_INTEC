@@ -158,6 +158,7 @@ class Paquetes_Controller extends CI_Controller {
       $this->load->view('templates/MainContainer',$data);
       $this->load->view('templates/HeaderContainer',$data);
       $this->load->view('Paquete/CardConsultaDetallePaquete', $data);
+      $this->load->view('Paquete/CardConsultaEquiposPaquetes', $data);
 
       $this->load->view('templates/FooterContainer');
 
