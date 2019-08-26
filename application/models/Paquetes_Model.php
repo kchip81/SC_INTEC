@@ -12,30 +12,30 @@
  * @author SigueMED
  */
 class Paquetes_Model extends CI_Model {
-    
+
     private $table;
-    
+
     public function __construct() {
         parent::__construct();
         $this->table = "paquete_envio";
         $this->load->database();
     }
-    
+
     public function ConsultarPaquetesOrdenServicio($IdOrden)
     {
-        
+
         $this->db->select($this->table.'.*, Descripcion_lab, DescripcionEstatusPaquete,'. $this->table.'.IdEstatusPaquete');
         $this->db->select('(SELECT COUNT(IdEquipo) FROM equipo_orden WHERE IdPaqueteEnvio ='.$this->table.'.IdPaqueteEnvio)as TotalEquiposPaquete');
         $this->db->join('laboratorio',$this->table.'.IdLaboratorio = laboratorio.IdLaboratorio');
         $this->db->join('catalogoestatuspaquetes',$this->table.'.IdEstatusPaquete = catalogoestatuspaquetes.IdEstatusPaquete');
-        
+
         $this->db->from($this->table);
         $this->db->where('IdOrden',$IdOrden);
-        
+
         $query = $this->db->get();
-        
+
         return $query->result_array();
-        
+
     }
 
     public function ConsultarPDF($id)
@@ -43,34 +43,34 @@ class Paquetes_Model extends CI_Model {
 
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->join('laboratorio', $this->table.'.IdLaboratorio = laboratorio.IdLaboratorio ','INNER');        
+        $this->db->join('laboratorio', $this->table.'.IdLaboratorio = laboratorio.IdLaboratorio ','INNER');
         $this->db->where($this->table.'.IdPaqueteEnvio',$id);
-        
+
         $query = $this->db->get();
         return $query->result_array();
     }
 
-    
+
     public function ActualizarEstatusPaquete($IdPaqueteOrden,$IdEstatusPaquete,$FechaEstatus,$Fecha)
     {
         $this->db->set('IdEstatusPaquete',$IdEstatusPaquete);
         $this->db->set($Fecha,$FechaEstatus);
         $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
         $this->db->update($this->table);
-        
+
         $this->db->set('IdEstatusPaquete',$IdEstatusPaquete);
-        
+
         $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
         $this->db->update('equipo_orden');
-       
+
     }
-    
+
     public function ActualizarPaquete($IdPaquete, $DatosPaquete)
     {
         $this->db->where('IdPaqueteEnvio', $IdPaquete);
         return $this->db->update($this->table,$DatosPaquete);
     }
-    
+
     /*
      * NOMBRE: CrearNuevoPaquete
      * DESCRIPCION: Crear un nuevo Paquete para una Orden ($IdORden)
@@ -81,11 +81,11 @@ class Paquetes_Model extends CI_Model {
     public function CrearNuevoPaquete($NuevoPaquete)
     {
         $query = $this->db->insert($this->table,$NuevoPaquete);
-        
+
         return $this->db->insert_id();
-        
+
     }
-    
+
     /*
      * NOMBRE: Consultar Paquetes Abiertos
      * DESCRIPCION: Consultar todos los paquetes cuyo estatos sea distinto a cerrado
@@ -99,24 +99,38 @@ class Paquetes_Model extends CI_Model {
         $this->db->select('(SELECT COUNT(IdEquipo) FROM equipo_orden WHERE IdPaqueteEnvio ='.$this->table.'.IdPaqueteEnvio)as TotalEquiposPaquete');
         $this->db->join('laboratorio',$this->table.'.IdLaboratorio = laboratorio.IdLaboratorio');
         $this->db->join('catalogoestatuspaquetes',$this->table.'.IdEstatusPaquete = catalogoestatuspaquetes.IdEstatusPaquete');
-        
+
         $this->db->from($this->table);
         $this->db->where($this->table.'.IdEstatusPaquete <>',PQT_CERRADO);
-        
+
         $query = $this->db->get();
-        
+
         return $query->result_array();
     }
-   
+
 
     public function ConsutarTotaPaquetesAbiertos()
     {
         $this->db->select('count(*) as total');
         $this->db->from ($this->table);
-        $this->db->where('IdEstatusPaquete < 3');  
+        $this->db->where('IdEstatusPaquete < 3');
         $query = $this->db->get();
-        
-        return $query->row(); 
+
+        return $query->row();
+    }
+
+    public function ConsultarPaquete($IdPaquete)
+    {
+      $this->db->select($this->table.'.*, Descripcion_lab,Domicilio,Telefono, DescripcionEstatusPaquete');
+      $this->db->from($this->table);
+      $this->db->join('laboratorio l', $this->table.'.IdLaboratorio = l.IdLaboratorio');
+      $this->db->join('catalogoestatuspaquetes c', $this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
+      $this->db->where('IdPaqueteEnvio', $IdPaquete);
+
+      $query = $this->db->get();
+
+      return $query->row();
+      // code...
     }
     //put your code here
 }
