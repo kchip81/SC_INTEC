@@ -30,7 +30,7 @@ if (ENVIRONMENT =='production')
 else
 {
 
-    $config['base_url'] = 'http://localhost/SC_INTEC/';
+    $config['base_url'] = 'http://localhost/SC_INTEC-D/';
 }
 /*
 |--------------------------------------------------------------------------

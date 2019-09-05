@@ -46,6 +46,8 @@
                                         <th>Equipos</th>
                                         <th>Fecha Envio</th>
                                         <th>Fecha Recepción Lab</th>
+                                        <th></th>
+                                        <th></th>
                                         <th>Acciones</th>
 
 
@@ -167,6 +169,9 @@
     {
 
        var t = $('#tblPaquetesAbiertos').DataTable({
+         "drawCallback": function( settings ) {
+           $('[data-toggle="tooltip"]').tooltip();
+         },
         "ajax":{
             url:"<?php echo site_url();?>/Paquetes_Controller/ConsultarPaquetesAbiertos_ajax",
             method:"POST",
@@ -186,11 +191,36 @@
 
           "columnDefs":[
            {
-               "targets":8, "data":"IdPaqueteEnvio", "render": function(data,type,row,meta)
+               "targets":10, "data":"IdPaqueteEnvio", "render": function(data,type,row,meta)
                {
                    return '<a href="<?php echo site_url('Paquete/ConsultarDetalle/'); ?>'+data+'"><i class="icon-eye4"></i>Detalle</a>';
                }
-           }],
+           },
+           {
+             "targets":8, "data":"dias", "render":function(data,type,row,meta)
+             {
+               var dif = row['diasServicios'] - data;
+               if (dif <1)
+               {
+                 return '<i class="fas fa-lightbulb red" data-toggle="tooltip" data-placement="top" id="DiasDemora" title="'+dif+' días"></i>';
+               }
+               else {
+                 if (dif==1)
+                 {
+                   return '<i class="fas fa-lightbulb yellow"></i>'
+                 }
+                 else {
+                   return '<i class="fas fa-lightbulb green"></i>'
+                 }
+
+               }
+               return dif;
+             }
+           },
+           {
+             "targets":[9], "visible":false
+           }
+         ],
 
           "columns": [
                 {
@@ -207,7 +237,9 @@
                 { "data": "DescripcionEstatusPaquete" },
                 { "data": "TotalEquiposPaquete" },
                 { "data": "FechaEnv" },
-                { "data": "FechaRecLab" }
+                { "data": "FechaRecLab" },
+                { "data": "dias" },
+                { "data": "diasServicios" }
                 ]
 
         });

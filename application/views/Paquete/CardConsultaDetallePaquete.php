@@ -77,6 +77,13 @@
                           </div>
                         </div>
                       </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <button type="button" class="btn btn-primary"  name="button" onclick="window.open('<?=site_url('Servicio/PaquetePDF/')?><?=$Paquete->IdPaqueteEnvio?>')">Ver PDF <i class="icon-file-pdf"></i></button>
+
+                        </div>
+                      
+                      </div>
                     </div>
                 </div>
             </div>
@@ -85,6 +92,6 @@
   </div>
   <script type="text/javascript">
   $(document).ready(function(){
-    ConsultarEquiposOrden(<?=$Paquete->IdPaqueteEnvio?>);
+    ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
   });
   </script>

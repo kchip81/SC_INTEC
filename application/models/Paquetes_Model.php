@@ -97,11 +97,12 @@ class Paquetes_Model extends CI_Model {
     {
         $this->db->select($this->table.'.*, Descripcion_lab, DescripcionEstatusPaquete,'. $this->table.'.IdEstatusPaquete');
         $this->db->select('(SELECT COUNT(IdEquipo) FROM equipo_orden WHERE IdPaqueteEnvio ='.$this->table.'.IdPaqueteEnvio)as TotalEquiposPaquete');
+        $this->db->select('timestampdiff(DAY,FechaRecLab, curdate()) as dias, diasServicios');
         $this->db->join('laboratorio',$this->table.'.IdLaboratorio = laboratorio.IdLaboratorio');
         $this->db->join('catalogoestatuspaquetes',$this->table.'.IdEstatusPaquete = catalogoestatuspaquetes.IdEstatusPaquete');
 
         $this->db->from($this->table);
-        $this->db->where($this->table.'.IdEstatusPaquete <>',PQT_CERRADO);
+        $this->db->where($this->table.'.IdEstatusPaquete <',PQT_CERRADO);
 
         $query = $this->db->get();
 

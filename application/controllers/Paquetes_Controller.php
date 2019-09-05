@@ -33,7 +33,7 @@ class Paquetes_Controller extends CI_Controller {
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Paquete/CardConsultaPaquetesAbiertos');
-        $this->load->view('Paquete/CardConsultaEquiposPaquetes');
+        //$this->load->view('Paquete/CardConsultaEquiposPaquetes');
 
         $this->load->view('templates/FooterContainer');
 
@@ -163,6 +163,63 @@ class Paquetes_Controller extends CI_Controller {
       $this->load->view('templates/FooterContainer');
 
 
+      // code...
+    }
+
+    public function ObtenerNuevoEstatus_ajax()
+    {
+      $IdEstatusActual = $this->input->post('IdEstatus');
+
+      $this->load->model('CatalogoEstatusPaquetes_Model');
+
+      $NuevoEstatus = $this->CatalogoEstatusPaquetes_Model->ObtenerSiguienteEstatus($IdEstatusActual);
+
+      echo json_encode($NuevoEstatus);
+      // code...
+    }
+
+    public function AvanzarEstatusEquipo_ajax()
+    {
+
+      try {
+
+        $this->db->trans_start();
+        $IdEquipoOrden = $this->input->post('IdEquipoOrden');
+        $IdEstatusActual = $this->input->post('IdEstatusActual');
+        $FechaEstatus = $this->input->post('FechaEstatus');
+
+        $result = $this->EquipoOrden_Model->RegistrarEstatusEquipo($IdEquipoOrden,$IdEstatusActual+1,$FechaEstatus);
+
+        $transStatus= $this->db->trans_complete();
+
+        if ($transStatus == true)
+        {
+            $this->db->trans_commit();
+        }
+        else
+        {
+            $this->db->trans_rollback();
+        }
+
+        echo $result;
+
+      } catch (Exception $e) {
+        log_message('error', $ex->getMessage());
+        $this->db->trans_rollback();
+      }
+
+
+      // code...
+    }
+
+    public function RecibirEtiquetaEquipo_ajax()
+    {
+      $IdEquipoOrden = $this->input->post('IdEquipoOrden');
+      $FechaEtiqueta = $this->input->post('FechaEtiqueta');
+
+      $result = $this->EquipoOrden_Model->RecibirEtiquetaEquipo($IdEquipoOrden,$FechaEtiqueta);
+
+      echo $result;
       // code...
     }
 
