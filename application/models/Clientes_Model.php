@@ -84,4 +84,17 @@ class Clientes_Model extends CI_Model{
         $this->db->where('IdCliente',$IdCliente);
         return $this->db->update($this->table);
     }
+
+    public function ConsultarClientesFactura($IdCliente)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);
+        $this->db->join('orden_servicio', $this->table.'.IdCliente = orden_servicio.IdCliente ','INNER');
+        $this->db->join('paquete_envio', 'orden_servicio.IdOrden = paquete_envio.IdOrden','INNER');
+        $this->db->where($this->table.'.IdCliente',$IdCliente);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }

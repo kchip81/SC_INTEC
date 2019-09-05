@@ -13,23 +13,24 @@
  */
 class OrdenServicio_Model extends CI_Model {
     private $table;
-    
+
     public function __construct() {
         parent::__construct();
-        
+
         $this->table = 'orden_servicio';
         $this->load->database();
     }
-    
+
     public function ConsultarOrdenPorId($IdOrden)
     {
-        $this->db->select($this->table.'.*, NombreCompania, NombreContacto');
+        $this->db->select($this->table.'.*, NombreCompania, NombreContacto, Telefono, DescripcionEstatusOrden');
         $this->db->from ($this->table);
         $this->db->join('cliente', $this->table.'.IdCliente = cliente.IdCliente');
+        $this->db->join('catalogoestatusorden',$this->table.'.IdEstatusOrden = catalogoestatusorden.IdEstatusOrden');
         $this->db->where('IdOrden',$IdOrden);
-        
+
         $query = $this->db->get();
-        
+
         return $query->row();
     }
      public function ConsultarEquiposOrdenPaquete($IdOrden, $IdPaquete)
@@ -39,31 +40,35 @@ class OrdenServicio_Model extends CI_Model {
         $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
         $this->db->where('IdOrden',$IdOrden);
         $this->db->where('IdPaqueteEnvio',$IdPaquete);
-        
+
         $query = $this->db->get();
-        
+
         return $query->result_array();
-        
+
     }
 
     public function InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones)
     {
         $data = array('IdCliente' => $IdCliente,'Fecha' => $Fecha,"FechaEnvio" => $FechaEnvio,
-                "FechaRecibo" => $FechaRecibo,"Observaciones" => $Observaciones);
+                "FechaRecibo" => $FechaRecibo,"Observaciones" => $Observaciones, "IdEstatusOrden"=>1);
 
-        $this->db->insert($this->table,$data); 
-        
+        $this->db->insert($this->table,$data);
+
         $insertId = $this->db->insert_id();
-        
+
         return $insertId;
     }
-    
-    public function ConsultarOrdenServicio()
+
+    public function ConsultarOrdenServicioAbiertas()
     {
-        $this->db->select('IdOrden,Fecha,FechaEnvio,FechaRecibo,NombreCompania,Observaciones');
+        $this->db->select($this->table.'.*');
+        $this->db->select('NombreCompania,NombreContacto, DescripcionEstatusOrden');
         $this->db->from('cliente');
         $this->db->join($this->table, $this->table.'.IdCliente = cliente.IdCliente','INNER');
+        $this->db->join('catalogoestatusorden', $this->table.'.IdEstatusOrden = catalogoestatusorden.IdEstatusOrden');
+        $this->db->where($this->table.'.IdEstatusOrden < 3');
         $this->db->order_by($this->table.'.IdOrden', 'ASC');
+
         $query = $this->db->get();
 
         return $query->result_array();
