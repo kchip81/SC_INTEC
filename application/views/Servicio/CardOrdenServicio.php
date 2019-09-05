@@ -38,7 +38,7 @@
                                     <div class="form-group">
                                         <label for="NombreProveedor">Contacto:</label>
                                         <div class="position-relative has-icon-left">
-                                            <input type="text" id="NombreProveedor" class="form-control" placeholder="Proveedor" name="NombreProveedor" readonly>
+                                            <input type="text" id="NombreProveedor" class="form-control" placeholder="Usuario" name="NombreProveedor" readonly>
                                             <div class="form-control-position">
                                             <i class="icon-head"></i>
                                             </div>

@@ -12,44 +12,37 @@
  * @author SigueMED
  */
 class EquipoOrden_Model extends CI_Model{
-    
+
     private $table;
     public function __construct() {
         parent::__construct();
         $this->table = "equipo_orden";
         $this->load->database();
     }
-    
-    public function ConsultarEquiposOrdenPaquete($IdOrden, $IdPaquete=FALSE)
-    {
-        $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
-        $this->db->select('Descripcion_lab, DescripcionEstatusPaquete, FechaEnv,FechaRecLab, Factura, Etiqueta, Certificado, orden_servicio.IdCliente');
-        $this->db->from ($this->table);
-        $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
-        $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');
-        
-        $this->db->join('cliente','orden_servicio.IdCliente = cliente.IdCliente');
-        $this->db->join('paquete_envio',$this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','left');
-        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','left');
-        $this->db->join('catalogoestatuspaquetes','equipo_orden.IdEstatusPaquete = catalogoestatuspaquetes.IdEstatusPaquete','left');
-        
-        if($IdOrden!== FALSE)
-        {
-            $this->db->where($this->table.'.IdOrden',$IdOrden);
-        }
-        
-        
-        if ($IdPaquete!== FALSE)
-        {
-            $this->db->where($this->table.'.IdPaqueteEnvio',$IdPaquete);
-        }
-        
-        
-        $query = $this->db->get();
-        
-        return $query->result_array();
-    }
-    
+
+    // public function ConsultarEquiposOrden($IdOrden)
+    // {
+    //     $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
+    //     $this->db->select('Descripcion_lab, DescripcionEstatusPaquete, FechaEnv,FechaRecLab, Factura, Etiqueta, Certificado, orden_servicio.IdCliente, equipo_orden.IdPaqueteEnvio');
+    //     $this->db->from ($this->table);
+    //     $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
+    //     $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');
+    //
+    //     $this->db->join('cliente','orden_servicio.IdCliente = cliente.IdCliente');
+    //     $this->db->join('paquete_envio',$this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','left');
+    //     $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','left');
+    //     $this->db->join('catalogoestatuspaquetes','equipo_orden.IdEstatusPaquete = catalogoestatuspaquetes.IdEstatusPaquete','left');
+    //
+    //     if($IdOrden!== FALSE)
+    //     {
+    //         $this->db->where($this->table.'.IdOrden',$IdOrden);
+    //     }
+    //
+    //     $query = $this->db->get();
+    //
+    //     return $query->result_array();
+    // }
+
     public function ConsultarEquiposOrdenSinPaquete()
     {
         $this->db->select($this->table.'.*, equipo.Descripcion,equipo.ClaveId, equipo.NumService, equipo.Modelo,equipo.Marca, NombreCompania');
@@ -57,30 +50,49 @@ class EquipoOrden_Model extends CI_Model{
         $this->db->join('equipo',$this->table.'.IdEquipo = equipo.IdEquipo');
         $this->db->join('orden_servicio', $this->table.'.IdOrden = orden_servicio.IdOrden');
         $this->db->join('cliente','orden_servicio.IdCliente = cliente.IdCliente');
-        
+
         $this->db->where($this->table.'.IdPaqueteEnvio',NULL);
-        
-        
+
+
         $query = $this->db->get();
-        
+
         return $query->result_array();
-        
+
     }
-    
+
     public function AsignarPaqueteEquipo($IdPaquete,$IdEquipoOrden)
     {
         $this->db->set('IdPaqueteEnvio',$IdPaquete);
         $this->db->set('IdEstatusPaquete',PQT_CREADO);
         $this->db->where('IdEquipoOrden',$IdEquipoOrden);
-        return $this->db->update($this->table);
-        
+        $this->db->update($this->table);
+
+        $this->db->select ('IdEstatusOrden, eo.IdOrden');
+        $this->db->from('equipo_orden eo');
+        $this->db->join('orden_servicio os','os.IdOrden = eo.IdOrden');
+        $this->db->where('IdEquipoOrden',$IdEquipoOrden);
+
+        $query = $this->db->get();
+        $Orden = $query->row();
+
+        $IdEstatusOrden = $Orden->IdEstatusOrden;
+        log_message("debug","ASIGNARPAQUETEEQUIPO: IdEstatusOrden=>".$IdEstatusOrden);
+        $IdOrden = $Orden->IdOrden;
+
+        if ($IdEstatusOrden == 1)
+        {
+          $this->db->set('IdEstatusOrden',2);
+          $this->db->where('IdOrden',$IdOrden);
+          $this->db->update('orden_servicio');
+        }
+
     }
 
     public function ConsultarOrden($id)
     {
         $this->db->select('*');
         $this->db->from('equipo');
-        $this->db->join($this->table, $this->table.'.IdEquipo = equipo.IdEquipo','INNER');        
+        $this->db->join($this->table, $this->table.'.IdEquipo = equipo.IdEquipo','INNER');
         $this->db->where($this->table.'.IdOrden',$id);
         $query = $this->db->get();
         return $query->result_array();
@@ -90,10 +102,10 @@ class EquipoOrden_Model extends CI_Model{
     {
         $this->db->select('count(*) as retardo');
         $this->db->from($this->table);
-        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
-        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');        
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
         $this->db->where($this->table.'.IdEstatusPaquete = 3 and ADDDATE(equipo_orden.FechaRetLab, INTERVAL diasServicios DAY) < now()');
-        
+
         $query = $this->db->get();
         return $query->row();
     }
@@ -104,11 +116,11 @@ class EquipoOrden_Model extends CI_Model{
 
         $this->db->select(' equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID');
         $this->db->from($this->table);
-        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
-        $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');        
-        $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');        
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
+        $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
+        $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
         $this->db->where($this->table.'.IdPaqueteEnvio',$id);
-        
+
         $query = $this->db->get();
         return $query->result_array();
 
@@ -118,12 +130,12 @@ class EquipoOrden_Model extends CI_Model{
     {
         $this->db->select('*,equipo_orden.IdOrden as IdOrdenes');
         $this->db->from($this->table);
-        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
-        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');        
-        $this->db->join('equipo','equipo.IdEquipo = equipo_orden.IdEquipo ','INNER');        
-        $this->db->join('cliente','cliente.IdCliente = equipo.IdCliente  ','INNER');        
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
+        $this->db->join('equipo','equipo.IdEquipo = equipo_orden.IdEquipo ','INNER');
+        $this->db->join('cliente','cliente.IdCliente = equipo.IdCliente  ','INNER');
         $this->db->where($this->table.'.IdEstatusPaquete = 3 and ADDDATE(equipo_orden.FechaRetLab, INTERVAL diasServicios DAY) < now()');
-        
+
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -141,11 +153,11 @@ class EquipoOrden_Model extends CI_Model{
     public function InsertarOrdenEquipo($IdEquipo,$IdOrden)
     {
         $data = array('IdEquipo' => $IdEquipo,'IdOrden' => $IdOrden);
-        $this->db->insert($this->table,$data);  
+        $this->db->insert($this->table,$data);
         $insertId = $this->db->insert_id();
-        return $insertId;  
+        return $insertId;
     }
-    
+
     public function ConsultarEquipoOrdenPorId($IdEquipoOrden)
     {
         $this->db->select($this->table.'.*');
@@ -158,14 +170,14 @@ class EquipoOrden_Model extends CI_Model{
         $this->db->join('catalogoestatuspaquetes',$this->table.'.IdEstatusPaquete= catalogoestatuspaquetes.IdEstatusPaquete','left');
         $this->db->where($this->table.'.IdEquipoOrden',$IdEquipoOrden);
         $query = $this->db->get();
-        
+
         return $query->row();
     }
-    
+
     public function ActualizarEstatusEquipo($IdEquipoOrden,$IdNuevoEstatus,$Fecha, $chkFactura=FALSE, $chkEtiqueta=FALSE, $Certificado=FALSE)
     {
-        
-        
+
+
         if ($IdNuevoEstatus !== FALSE)
         {
             $this->db->set('IdEstatusPaquete',$IdNuevoEstatus);
@@ -183,9 +195,9 @@ class EquipoOrden_Model extends CI_Model{
                     break;
             }
         }
-        
+
         $this->db->where('IdEquipoOrden',$IdEquipoOrden);
-        
+
         if($chkFactura == '1')
         {
             $this->db->set('Factura',TRUE);
@@ -194,27 +206,27 @@ class EquipoOrden_Model extends CI_Model{
         {
             $this->db->set('Etiqueta',TRUE);
         }
-        
+
         if($Certificado !== FALSE)
         {
             $this->db->set('Certificado',$Certificado);
         }
-        
+
         return $this->db->update($this->table);
     }
-    
+
     public function ConsultarEquiposPaquetesOrden($IdOrden)
     {
         $this->db->select($this->table.'.*');
         $this->db->from($this->table);
         $this->db->where('IdOrden', $IdOrden);
         $this->db->where('IdPaqueteEnvio IS NOT NULL');
-        
+
         $query = $this->db->get();
-        
+
         return $query->result_array();
     }
-    
+
     public function EliminarEquiposOrden($IdOrden)
     {
         $this->db->where('IdOrden',$IdOrden);
@@ -224,17 +236,114 @@ class EquipoOrden_Model extends CI_Model{
     public function ConsultarEquiposPaquetes($id)
     {
 
-        $this->db->select(' equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID');
+        $this->db->select($this->table.'.*, equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID, DescripcionEstatusPaquete, c.IdEstatusPaquete');
+        $this->db->select('timestampdiff(DAY,paquete_envio.FechaRecLab, curdate()) as dias, diasServicios');
         $this->db->from($this->table);
-        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');        
-        $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');        
-        $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');        
+        $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio');
+        $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
+        $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
+        $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
         $this->db->where($this->table.'.IdPaqueteEnvio',$id);
-        
+
         $query = $this->db->get();
         return $query->result_array();
 
     }
-            
+
+    public function ConsultarEquiposOrden($IdOrden)
+    {
+      $this->db->select($this->table.'.*, equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID, DescripcionEstatusPaquete, c.IdEstatusPaquete');
+      $this->db->select('timestampdiff(DAY,paquete_envio.FechaRecLab, curdate()) as dias, diasServicios');
+      $this->db->from($this->table);
+      $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
+      $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio');
+      $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
+      $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
+      $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
+      $this->db->where($this->table.'.IdOrden',$IdOrden);
+
+      $query = $this->db->get();
+      return $query->result_array();
+
+      // code...
+    }
+    public function GuardarCertificadoEquipo($IdEquipoOrden,$NombreArchivoCertificado)
+    {
+
+      $this->db->set('Certificado',$NombreArchivoCertificado);
+      $this->db->where('IdEquipoOrden',$IdEquipoOrden);
+      return $this->db->update($this->table);
+      // code...
+    }
+
+    public function RegistrarEstatusEquipo($IdEquipoOrden,$NuevoEstatus,$FechaEstatus)
+    {
+
+      $this->db->set('IdEstatusPaquete',$NuevoEstatus);
+      $this->db->where('IdEquipoOrden',$IdEquipoOrden);
+
+      $this->db->update($this->table);
+
+      $this->load->model('EstatusEquipo_Model');
+      $this->EstatusEquipo_Model->RegistrarEstatusEquipo($IdEquipoOrden,$NuevoEstatus,$FechaEstatus);
+
+      $this->db->select('IdPaqueteEnvio, IdOrden');
+      $this->db->from($this->table);
+      $this->db->where('IdEquipoOrden',$IdEquipoOrden);
+
+      $query = $this->db->get();
+
+      $IdPaqueteEnvio = $query->row();
+
+      $this->db->select('MIN(IdEstatusPaquete) as minEstatusPaquete');
+      $this->db->from($this->table);
+      $this->db->where('IdPaqueteEnvio',$IdPaqueteEnvio->IdPaqueteEnvio);
+      $query = $this->db->get();
+
+      $MinEstatusPaquete = $query->row();
+
+      if ($MinEstatusPaquete->minEstatusPaquete==7)
+      {
+        $this->db->set('IdEstatusPaquete',7);
+        $this->db->where('IdPaqueteEnvio',$IdPaqueteEnvio->IdPaqueteEnvio);
+        $this->db->update('paquete_envio');
+      }
+
+
+
+      $this->db->select('MIN(IdEstatusPaquete) as minEstatusOrden');
+      $this->db->from($this->table);
+      $this->db->where('IdOrden',$IdPaqueteEnvio->IdOrden);
+      $query = $this->db->get();
+
+      $MinEstatusOrden = $query->row();
+
+      if ($MinEstatusOrden->minEstatusOrden==7)
+      {
+        $this->db->set('IdEstatusOrden',3);
+        $this->db->where('IdOrden',$IdPaqueteEnvio->IdOrden);
+        $this->db->update('orden_servicio');
+      }
+      else {
+        $this->db->set('IdEstatusOrden',2);
+        $this->db->where('IdOrden',$IdPaqueteEnvio->IdORden);
+        $this->db->update('orden_servicio');
+      }
+
+    // code...
+    }
+
+    public function RecibirEtiquetaEquipo($IdEquipoOrden,$Fecha)
+    {
+
+      $this->db->set('Etiqueta',1);
+      $this->db->set('FechaEtiqueta',$Fecha);
+      $this->db->where('IdEquipoOrden',$IdEquipoOrden);
+
+      return $this->db->update($this->table);
+      // code...
+    }
+
     //put your code here
 }
