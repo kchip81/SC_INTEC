@@ -87,7 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 /*
  * GLOBAL CONSTANTS SCI_INTEC
- * 
+ *
  */
 //ESTATUS PAQUETES ORDEN
 defined('PQT_CREADO')        OR define('PQT_CREADO', 1);
@@ -97,15 +97,3 @@ defined('PQT_CALIBRACIONTERMINADA')        OR define('PQT_CALIBRACIONTERMINADA',
 defined('PQT_ENRETORNO')        OR define('PQT_ENRETORNO', 5);
 defined('PQT_RECIBIDOINTEC')        OR define('PQT_RECIBIDOINTEC', 6);
 defined('PQT_CERRADO')        OR define('PQT_CERRADO', 7);
-
-
-//ESTATUS CITA
-defined('AGENDADA')        OR define('AGENDADA', 1);
-defined('CONFIRMADA')        OR define('CONFIRMADA', 2);
-defined('REGISTRADA')        OR define('REGISTRADA', 3);
-defined('ATENDIDA')        OR define('ATENDIDA', 4);
-defined('CANCELADA')        OR define('CANCELADA', 5);
-
-//SERVICIOS INVENTARIO
-defined('FARMACIA')        OR define('FARMACIA', 13);
-

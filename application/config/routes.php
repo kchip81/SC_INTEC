@@ -65,6 +65,7 @@ $route['Dashboard'] = 'Dashboard_Controller/Load_Dashboard';
 //Servicio
 $route['Servicio/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcio';
 $route['Servicio/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcio';
+$route['Servicio/ConsultarDetalleServicio/(.+)']='Servicio_Controller/Load_ConsultarDetalleOrden/$1';
 $route['Servicio/NuevaOrdenPDF/(.+)']='Servicio_Controller/CrearOrdenPDF/$1';
 $route['Servicio/PaquetePDF/(.+)']='Servicio_Controller/CrearPDF/$1';
 $route['Servicio/ConsultarEquipoDemora']='Servicio_Controller/Load_EquipoDemora';
@@ -74,6 +75,8 @@ $route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_Consult
 
 //PAQUETES
 $route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_ConsultarPaquetesAbiertos';
+$route['Paquete/ConsultarDetalle/(.+)']='Paquetes_Controller/Load_ConsultarDetallePaquete/$1';
+
 
 
 //Cliente
@@ -83,3 +86,5 @@ $route['Cliente/CatalogoCliente']='Cliente_Controller/Load_CatalogoCliente';
 //Proveedores
 $route['Proveedores/CatalogoProveedor']='Laboratorio_Controller/Load_CatalogoLaboratorio';
 
+//Factura
+$route['Factura']='Factura_Controller/Load_Factura';
