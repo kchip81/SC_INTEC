@@ -203,7 +203,7 @@
       <div class="modal-body">
 
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-10">
                 <div class="form-group">
                     <div class="position-relative has-icon-left">
                         <input type="date" id="FechaEtiqueta" class="form-control"/>
@@ -279,12 +279,12 @@
 
       $("#form-modal-SubirCertificado").submit(function (event){
 
-      alert(1);
+
 	    event.preventDefault();
       var formData = new FormData($("#form-modal-SubirCertificado")[0]);
 
 
-       alert(formData);
+
        $.ajax({
          url: '<?=site_url()?>/Servicio_Controller/SubirCertificado_ajax',
          type: 'POST',
@@ -411,7 +411,7 @@
                 {
                   "targets":12, "data":"Certificado", "render":function(data,type,row,meta)
                   {
-                    if (data =="")
+                    if (data =="" || data==null)
                     {
                       return "<button type ='button' class='btn btn-primary btn-sm' onclick=OpenModal_SubirCertificado("+row['IdCliente']+","+row['IdEquipo']+","+row['IdEquipoOrden']+")>Subir</button>";
 
@@ -565,7 +565,7 @@
                 {
                   "targets":12, "data":"Certificado", "render":function(data,type,row,meta)
                   {
-                    if (data =="")
+                    if (data =="" || data==null)
                     {
                       return "<button type ='button' class='btn btn-primary btn-sm' onclick=OpenModal_SubirCertificado("+row['IdCliente']+","+row['IdEquipo']+","+row['IdEquipoOrden']+")>Subir</button>";
 
