@@ -82,7 +82,12 @@
                           <button type="button" class="btn btn-primary"  name="button" onclick="window.open('<?=site_url('Servicio/PaquetePDF/')?><?=$Paquete->IdPaqueteEnvio?>')">Ver PDF <i class="icon-file-pdf"></i></button>
 
                         </div>
-                      
+
+                        <div class="col-md-3">
+                          <button type="button" class="btn btn-green"  name="button" onclick="AvanzarEstatusPaquete()">Avanzar Estatus <i class="fas fa-sign-in-alt"></i></button>
+
+                        </div>
+
                       </div>
                     </div>
                 </div>
@@ -94,4 +99,21 @@
   $(document).ready(function(){
     ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
   });
+
+  function AvanzarEstatusPaquete() {
+
+    $.ajax({
+      url: '<?=site_url()?>/Paquetes_Controller/AvanzarEstatusEquiposPaquete_ajax',
+      type: 'POST',
+      data: {IdPaqueteEnvio: <?=$Paquete->IdPaqueteEnvio?>}
+    })
+    .done(function() {
+      alert('El estatus de los equipos ha sido actualizado');
+    })
+    .fail(function() {
+      console.log("error AvanzarEstatusPaquete()");
+    });
+
+
+  }
   </script>

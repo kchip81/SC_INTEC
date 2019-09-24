@@ -10,22 +10,23 @@ class Clientes_Model extends CI_Model{
         $this->load->database();
 
     }
-    
+
     public function ConsultarDataClientes($idCliente)
     {
         $this->db->select('*');
         $this->db->from('cliente');
         $this->db->where('IdCliente',$idCliente);
-        
+
         $query = $this->db->get();
-        
+
         return $query->result_array();
-    } 
-    
+    }
+
     public function ConsultarClientes()
     {
         $this->db->select($this->table.'.*');
         $this->db->from($this->table);
+        $this->db->order_by('NombreCompania','asc');
         $query = $this->db->get();
 
         return $query->result_array();
@@ -68,10 +69,10 @@ class Clientes_Model extends CI_Model{
         $data = array('Correo' => $email,'Telefono' => $telefono,'Domicilio' => $direccion,'NombreCompania' => $compania
         ,'NombreContacto' => $nombre);
 
-        $this->db->insert($this->table,$data);  
-        
+        $this->db->insert($this->table,$data);
+
         $insertId = $this->db->insert_id();
-        return $insertId;  
+        return $insertId;
     }
 
     public function ActualizarCliente($email,$telefono,$direccion,$nombre,$compania,$IdCliente)

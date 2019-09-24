@@ -33,7 +33,7 @@
                 <tbody >
 
                 </tbody>
-            </table> 
+            </table>
 
 
 
@@ -41,23 +41,23 @@
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="ModalLabel">Agregar Cliente 
+                                            <h4 class="modal-title" id="ModalLabel">Agregar Cliente
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                                 <input type="hidden" id="IdOrden" name="IdOrden">
                                             </h4>
                                           </div>
-                             
+
                                     <div class="modal-body">
-                                                                                 
+
                                     <!--<h5>Agregar Cliente</h5>-->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="NombreProveedor">Contacto:</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" id="NombreProveedor" class="form-control" placeholder="Usuario" name="NombreProveedor">
+                                                    <input type="text" id="NombreProveedor" class="form-control" placeholder="Usuario" name="NombreProveedor" required>
                                                     <div class="form-control-position">
                                                         <i class="icon-head"></i>
                                                     </div>
@@ -68,31 +68,31 @@
                                             <div class="form-group">
                                                 <label for="compania">Compañía:</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" id="compania" class="form-control" placeholder="Compañía" name="compania">
+                                                    <input type="text" id="compania" class="form-control" placeholder="Compañía" name="compania" required>
                                                     <div class="form-control-position">
                                                         <i class="icon-office"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>                            
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="DireccionCliente">Dirección:</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" id="DireccionCliente" class="form-control" placeholder="Dirección" name="DireccionCliente">
+                                                    <input type="text" id="DireccionCliente" class="form-control" placeholder="Dirección" name="DireccionCliente" required>
                                                     <div class="form-control-position">
                                                         <i class="icon-globe2"></i>
                                                     </div>
-                                                </div>  
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="emailProveedor">Correo Contacto:</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" id="emailProveedor" class="form-control" placeholder="email" name="emailProveedor">
+                                                    <input type="text" id="emailProveedor" class="form-control" placeholder="email" name="emailProveedor" required>
                                                     <div class="form-control-position">
                                                         <i class="icon-mail2"></i>
                                                     </div>
@@ -109,7 +109,7 @@
                                                     <div class="form-control-position">
                                                         <i class="icon-phone"></i>
                                                     </div>
-                                                </div>  
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -124,7 +124,7 @@
                             </div>
                         </div>
 
-  
+
 
 
         </div>
@@ -157,16 +157,16 @@
             "info": "Motrando pag. _PAGE_ de _PAGES_",
             "infoEmpty": "Sin registros disponibles",
             "infoFiltered": "(filtrado de _MAX_ total)"
-        },          
-        
+        },
+
         "columnDefs":[
                 {
                     "targets":6, "data":"IdCliente", "render": function(data,type,row,meta)
-                    {       
+                    {
                         return '<a classs = "btn" onclick="OpenModal_ActualizarCliente('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="EditarCliente" title="Editar Cliente"> Editar</i></a>';
                     }
-                }],  
-        
+                }],
+
         "columns": [
                 { "data": "IdCliente" },
                 { "data": "NombreCompania" },
@@ -180,7 +180,7 @@
 
     $('#btnAgregarCliente').click(function()
     {
-        $('#modalCliente').modal('show');       
+        $('#modalCliente').modal('show');
     });
 
     $('#btnAgregarCliente').click(function()
@@ -190,7 +190,7 @@
 
         var c = "Agregar Cliente ";
         $('#ModalLabel').html(c);
-        $('#modalCliente').modal('show');       
+        $('#modalCliente').modal('show');
     });
 
     function OpenModal_ActualizarCliente(idCliente)
@@ -200,15 +200,15 @@
         var c = "No. Cliente: " + idCliente ;
         $('#ModalLabel').html(c);
         idClientes = idCliente
-        
+
         datos = {"IdCliente":idCliente};
 
         $.ajax
-        ({            
+        ({
             type:'post',
             url:'<?php echo site_url();?>/Cliente_Controller/ConsultarClienteId',
             dataType: 'json',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 $("#NombreProveedor").val(resp[0].NombreContacto);
@@ -218,32 +218,32 @@
                 $("#emailProveedor").val(resp[0].Correo);
             }
         });
-        $('#modalCliente').modal('show'); 
+        $('#modalCliente').modal('show');
     }
 
     $('#ActualizarModalAgregar').click(function()
     {
         datos= {
-            nombre: $("#NombreProveedor").val(),         
+            nombre: $("#NombreProveedor").val(),
             compania: $("#compania").val(),
             direccion: $("#DireccionCliente").val(),
             telefono: $("#TelefonoCliente").val(),
             email: $("#emailProveedor").val(),
             IdCliente: idClientes
-        }; 
+        };
 
         $.ajax
-        ({            
+        ({
             type:'post',
             url:'<?php echo site_url();?>/Cliente_Controller/ActualizarCliente',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 CargarClientes();
                 Limpiar()
-                $('#modalCliente').modal('hide'); 
+                $('#modalCliente').modal('hide');
             }
-        });      
+        });
     });
 
     $('#AgregarModalAgregar').click(function()
@@ -257,19 +257,19 @@
         datos = {"nombre":nombre,"compania":compania,"direccion":direccion,"telefono":telefono,"email":email};
 
         $.ajax
-        ({            
+        ({
             type:'post',
             url:'<?php echo site_url();?>/Cliente_Controller/InsertarCliente',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 CargarClientes();
                 Limpiar()
             }
         });
-        $('#modalCliente').modal('hide');       
+        $('#modalCliente').modal('hide');
     });
-    
+
     function Limpiar() {
         $("#NombreProveedor").val("");
         $("#compania").val("");

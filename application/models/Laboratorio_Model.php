@@ -12,19 +12,20 @@
  * @author SigueMED
  */
 class Laboratorio_Model extends CI_Model {
-    
+
     private $table;
-    
+
     public function __construct() {
         parent::__construct();
         $this->table = "laboratorio";
         $this->load->database();
     }
-    
+
     public function ConsultarLaboratorio()
     {
         $this->db->select($this->table.'.*');
         $this->db->from($this->table);
+        $this->db->order_by('Descripcion_lab','asc');
         $query = $this->db->get();
 
         return $query->result_array();
@@ -45,10 +46,10 @@ class Laboratorio_Model extends CI_Model {
         $data = array('Descripcion_lab' => $Descripcion_lab,'Domicilio' => $Domicilio,'Telefono' => $Telefono
         ,'diasServicios' => $diasServicios);
 
-        $this->db->insert($this->table,$data);  
-        
+        $this->db->insert($this->table,$data);
+
         $insertId = $this->db->insert_id();
-        return $insertId;  
+        return $insertId;
     }
 
     public function ActualizarLaboratorio($Descripcion_lab,$Domicilio,$Telefono,$diasServicios,$Id)
