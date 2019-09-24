@@ -223,6 +223,19 @@ class Paquetes_Controller extends CI_Controller {
       // code...
     }
 
+    public function AvanzarEstatusEquiposPaquete_ajax()
+    {
+      $IdPaquete = $this->input->post('IdPaqueteEnvio');
+      $this->load->helper('date');
+
+      $FechaEstatus = mdate('%Y-%m-%d',now());
+
+      $result = $this->EquipoOrden_Model->AvanzarEstatusEquiposPorPaquete($IdPaquete,$FechaEstatus);
+
+      echo $result;
+      // code...
+    }
+
 
     //put your code here
 }
