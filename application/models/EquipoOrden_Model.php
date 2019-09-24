@@ -345,5 +345,28 @@ class EquipoOrden_Model extends CI_Model{
       // code...
     }
 
+    public function AvanzarEstatusEquiposPorPaquete($IdPaquete, $FechaEstatus)
+    {
+      $this->db->select($this->table.'.*');
+      $this->db->from($this->table);
+      $this->db->where('IdPaqueteEnvio',$IdPaquete);
+
+      $query = $this->db->get();
+
+      $EquiposPaquete = $query->result_array();
+
+      foreach ($EquiposPaquete as $equipoPaquete) {
+        $IdEstatusEquipo_Anterior = $equipoPaquete['IdEstatusPaquete'];
+        if ($IdEstatusEquipo_Anterior<7)
+        {
+          $IdEstatusEquipo = $IdEstatusEquipo_Anterior + 1;
+          $this->RegistrarEstatusEquipo($equipoPaquete['IdEquipoOrden'],$IdEstatusEquipo,$FechaEstatus);
+        }
+
+
+      }
+      return true;
+    }
+
     //put your code here
 }
