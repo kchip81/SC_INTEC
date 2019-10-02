@@ -325,168 +325,31 @@
 
     function ConsultarEquiposPaquete(IdPaqueteEnvio)
     {
-        var t = $('#tblEquiposOrden').DataTable({
-            "drawCallback": function( settings ) {
-              $('[data-toggle="tooltip"]').tooltip();
-            },
-            "ajax":{
-                url:"<?php echo site_url();?>/Paquetes_Controller/ConsultarEquiposPaquetes",
-                method:"POST",
-                data: {IdPaqueteEnvio:IdPaqueteEnvio},
-                dataSrc: ""
-            },
+      url = "/Paquetes_Controller/ConsultarEquiposPaquetes";
+      id = IdPaqueteEnvio;
 
-             "destroy":true,
-             "language": {
-                  "lengthMenu": "Mostrando _MENU_ registros por pag.",
-                  "zeroRecords": "Sin Datos - disculpa",
-                  "info": "Motrando pag. _PAGE_ de _PAGES_",
-                  "infoEmpty": "Sin registros disponibles",
-                  "infoFiltered": "(filtrado de _MAX_ total)"
-              },
-              "columnDefs":[
-                {"targets":0, "data":"ID", "render":function(data,type, meta, row)
-                  {
-                    return "<a href='<?=site_url()?>/Servicio/ConsultarDetalleServicio/"+data+"''>"+data+"</a>";
-                  }
-                },
-                {"targets":1, "data":"IdPaqueteEnvio", "render":function(data,type, meta, row)
-                  {
-                    return "<a href='<?=site_url()?>/Paquete/ConsultarDetalle/"+data+"''>"+data+"</a>";
-                  }
-                },
-                {"targets":17, "data":"ID", "render": function(data,type,row,meta)
-                        {
-                          var btnAvanzar ="";
-                            if (row['IdEstatusPaquete']<7 && row['IdEstatusPaquete']>2)
-                            {
-                              btnAvanzar=' <button type="button" style="border-radius: 200px" class="btn btn-primary btn-sm" onclick="Modal_AvanzarEstatus('+row['IdEquipoOrden']+',\''+row['DescripcionEstatusPaquete']+'\','+row['IdEstatusPaquete']+')"><i class="fas fa-angle-double-right fa-lg" data-toggle="tooltip" data-placement="top" id="AvanzarEquipo" title="Avanzar Estatus"></i></button>';
-
-                            }
-                            return '<button type="button" style="border-radius: 200px" class="btn btn-success btn-sm" onclick="OpenModal_ActualizarEquipo('+row['IdEquipo']+')"><i class="far fa-edit fa-lg" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Editar Equipo"></i></button>'+
-                            btnAvanzar;
-                        }
-                },
-                {"targets":10, "data":"Etiqueta", "render":function(data,type,row,meta)
-                  {
-                    if (row['IdEstatusPaquete']>2)
-                    {
-                      if (data=="1")
-                       {
-                         return '<i class="far fa-check-square fa-lg green"></i>';
-
-                       }
-                       else {
-                         return "<button class='btn btn-primary btn-sm' onclick=RecibirEtiquetaEquipo("+row['IdEquipoOrden']+")>Recibir</button>";
-                       }
-
-                    }
-                    else {
-                      return "";
-                    }
-
-                  }
-
-                },
-                {"targets":11, "data":"Factura", "render":function(data,type,row,meta)
-                  {
-                    if (row['IdEstatusPaquete']>2)
-                    {
-                      if(data==null)
-                      {
-                        return "<a href='<?=site_url()?>/Factura' class='btn btn-primary btn-sm'>Generar</a>";
-                      }
-                      else {
-                        return data;
-                      }
-
-
-                    }
-                    else {
-                      return "";
-                    }
-                  }
-
-                },
-                {
-                  "targets":12, "data":"Certificado", "render":function(data,type,row,meta)
-                  {
-                    if (data =="" || data==null)
-                    {
-                      return "<button type ='button' class='btn btn-primary btn-sm' onclick=OpenModal_SubirCertificado("+row['IdCliente']+","+row['IdEquipo']+","+row['IdEquipoOrden']+")>Subir</button>";
-
-                    }
-                    else {
-                      var url = '<?php echo base_url();?>Certificados/'+row['IdCliente']+'/'+row['IdEquipo']+'/'+data;
-                      return '<a href="'+url+'" target="_blank"><i class="icon-file-pdf"></i></a>';
-                    }
-                    return data;
-                  }
-                },
-
-                {"targets":[3,13,14,16], "visible":false
-              },
-              {
-                "targets":15, "data":"dias", "render":function(data,type,row,meta)
-                {
-                  var dif = row['diasServicios'] - data;
-                  if (dif <1)
-                  {
-                    return '<i class="fas fa-lightbulb red" data-toggle="tooltip" data-placement="top" id="DiasDemora" title="'+dif+' días"></i>';
-                  }
-                  else {
-                    if (dif==1)
-                    {
-                      return '<i class="fas fa-lightbulb yellow"></i>'
-                    }
-                    else {
-                      return '<i class="fas fa-lightbulb green"></i>'
-                    }
-
-                  }
-                  return dif;
-                }
-              }
-                ],
-
-              "columns": [
-
-                    { "data": "ID" },
-                    {"data":"IdPaqueteEnvio"},
-                    { "data": "NombreCompania" },
-                    { "data": "IdEquipo" },
-                    { "data": "Descripcion" },
-                    { "data": "Marca" },
-                    { "data": "Modelo" },
-                    { "data": "NumService" },
-                    { "data": "ClaveId" },
-                    { "data": "DescripcionEstatusPaquete" },
-                    { "data": "Etiqueta" },
-                    { "data": "Factura" },
-                    { "data": "Certificado" },
-                    {"data":"IdEquipoOrden"},
-                    {"data":"IdCliente"},
-                    {"data":"dias"},
-                    {"data":"diasServicios"}
-
-                ]
-
-            });
-
-            var tbl = document.getElementById("tblEquiposOrden");
-            tbl.scrollIntoView();
+      CargarTabla(url,id);
     }
 
     function ConsultarEquiposOrden(IdOrden)
     {
+      url = "/Servicio_Controller/ConsultarEquiposOrden";
+      id =IdOrden;
+
+      CargarTabla(url,id);
+
+    }
+    function CargarTabla(url, id) {
+
+
         var t = $('#tblEquiposOrden').DataTable({
             "drawCallback": function( settings ) {
               $('[data-toggle="tooltip"]').tooltip();
             },
             "ajax":{
-                url:"<?php echo site_url();?>/Servicio_Controller/ConsultarEquiposOrden",
+                url:"<?php echo site_url();?>"+url,
                 method:"POST",
-                data: {IdOrden:IdOrden},
+                data: {Id:id},
                 dataSrc: ""
             },
 
@@ -548,7 +411,7 @@
                     {
                       if(data==null)
                       {
-                        return "<a href='<?=site_url()?>/Factura' class='btn btn-primary btn-sm'>Generar</a>";
+                        return "<a href='<?=site_url()?>/Factura/"+row['IdCliente']+"' class='btn btn-primary btn-sm'>Generar</a>";
                       }
                       else {
                         return data;
@@ -616,7 +479,7 @@
                     { "data": "ClaveId" },
                     { "data": "DescripcionEstatusPaquete" },
                     { "data": "Etiqueta" },
-                    { "data": "Factura" },
+                    { "data": "NumFactura" },
                     { "data": "Certificado" },
                     {"data":"IdEquipoOrden"},
                     {"data":"IdCliente"},

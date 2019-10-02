@@ -238,11 +238,13 @@ class EquipoOrden_Model extends CI_Model{
 
         $this->db->select($this->table.'.*, equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID, DescripcionEstatusPaquete, c.IdEstatusPaquete');
         $this->db->select('timestampdiff(DAY,paquete_envio.FechaRecLab, curdate()) as dias, diasServicios');
+        $this->db->select('NumFactura');
         $this->db->from($this->table);
         $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
         $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio');
         $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
         $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
+        $this->db->join('facturacliente',$this->table.'.Factura = facturacliente.IdFactura','left');
         $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
         $this->db->where($this->table.'.IdPaqueteEnvio',$id);
 
@@ -255,11 +257,13 @@ class EquipoOrden_Model extends CI_Model{
     {
       $this->db->select($this->table.'.*, equipo.*,cliente.NombreCompania,equipo_orden.IdOrden as ID, DescripcionEstatusPaquete, c.IdEstatusPaquete');
       $this->db->select('timestampdiff(DAY,paquete_envio.FechaRecLab, curdate()) as dias, diasServicios');
+      $this->db->select('NumFactura');
       $this->db->from($this->table);
       $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
       $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio');
       $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
       $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
+      $this->db->join('facturacliente',$this->table.'.Factura = facturacliente.IdFactura','left');
       $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
       $this->db->where($this->table.'.IdOrden',$IdOrden);
 
@@ -366,6 +370,39 @@ class EquipoOrden_Model extends CI_Model{
 
       }
       return true;
+    }
+
+    public function ConsultarEquiposOrdenParaFactura($IdCliente)
+    {
+      $this->db->select('eo.*');
+      $this->db->select('c.IdCliente, NombreCompania');
+      $this->db->select('e.*');
+      $this->db->select('DescripcionEstatusPaquete');
+
+      $this->db->from($this->table.' eo');
+      $this->db->join('equipo e','eo.IdEquipo = e.IdEquipo');
+      $this->db->join('cliente c','c.IdCliente = e.IdCliente');
+      $this->db->join('catalogoestatuspaquetes cep', 'eo.IdEstatusPaquete = cep.IdEstatusPaquete');
+
+      $this->db->where('c.IdCliente',$IdCliente);
+      $this->db->where('Factura', null);
+      $this->db->where('eo.IdEstatusPaquete >4');//ESTATUS ES MAYOR A CALIBRACION TERMINADA
+
+      $query = $this->db->get();
+
+      return $query->result_array();
+
+
+      // code...
+    }
+
+    public function AsignarFacturaEquipo($IdEquipoOrden,$IdFactura)
+    {
+
+      $this->db->set('Factura',$IdFactura);
+      $this->db->where('IdEquipoOrden',$IdEquipoOrden);
+      return $this->db->update($this->table);
+      // code...
     }
 
     //put your code here
