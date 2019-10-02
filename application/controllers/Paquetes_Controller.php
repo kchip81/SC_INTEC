@@ -140,7 +140,7 @@ class Paquetes_Controller extends CI_Controller {
 
     public function ConsultarEquiposPaquetes()
     {
-        $id = $this->input->post('IdPaqueteEnvio');
+        $id = $this->input->post('Id');
 
         $PaquetesOrden = $this->EquipoOrden_Model->ConsultarEquiposPaquetes($id);
 

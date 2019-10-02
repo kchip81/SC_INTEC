@@ -99,7 +99,7 @@ class Servicio_Controller extends CI_Controller {
 
     public function ConsultarEquiposOrden()
     {
-      $IdOrden   = $this->input->post('IdOrden');
+      $IdOrden   = $this->input->post('Id');
 
       $EquiposOrden = $this->EquipoOrden_Model->ConsultarEquiposOrden($IdOrden);
 
