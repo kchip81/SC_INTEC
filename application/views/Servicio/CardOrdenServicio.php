@@ -13,25 +13,25 @@
                                     <li><a data-action="close"><i class="icon-cross2"></i></a></li>
                             </ul>
                     </div>
-                    
+
 
                 </div>
                 <!--CARD BODY-->
                 <div class="card-body collapse in">
                     <div class="card-block">
                         <!--FORM BODY-->
-                        <div class="form-body">  
+                        <div class="form-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="Clientes">Cliente</label>
                                         <select name="cliente" id="cliente" class="form-control" onchange="">
                                             <option value="">Clientes...</option>
-                                            
+
                                         </select>
                                     </div>
                                 </div>
-                            
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -43,7 +43,7 @@
                                             <i class="icon-head"></i>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -69,7 +69,7 @@
                                                 <i class="icon-globe2"></i>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
                             <h4 class="form-section"><i class="icon-paper"></i> Especificaciones de Servicio</h4>
                             <div class="row">
@@ -123,9 +123,9 @@
                                     </div>
 
                                 </div>
-                               
-                                
-                                
+
+
+
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -137,11 +137,11 @@
                                                 <i class="icon-speech-bubble"></i>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <h4 class="form-section"><i class="icon-drawer"></i> Productos</h4>
                             <div class="col-md-12">
                                 <div class="form-group" align="right">
@@ -155,9 +155,9 @@
                                         <label for="ClaveSubProducto">Clavé de Identificación:</label>
                                         <div class="position-relative">
                                             <input type="text" id="ClaveSubProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveSubProducto" onchange="ClaveSubProducto()">
-                                            
+
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -165,7 +165,7 @@
                                         <label for="DescripcionSubProducto">Numero de serie:</label>
                                         <div class="position-relative">
                                             <input type="text" id="NumSerieSubProducto" class="form-control" placeholder="Numero de serie" name="NumSerieSubProducto">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +173,7 @@
                                     <div class="form-group">
                                         <label for="LoteSubProducto">Modelo:</label>
                                         <input type="text" id="ModeloSubProducto" class="form-control" placeholder="Modelo" name="ModeloSubProducto">
-                                        
+
                                     </div>
                                 </div>
 
@@ -197,7 +197,7 @@
                                             <i class="icon-barcode"></i>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -215,7 +215,7 @@
                                     <div class="form-group">
                                         <label for="LoteSubProducto">Alcance de Medicion:</label>
                                         <input type="text" id="AlcanceSubProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceSubProducto">
-                                        
+
                                     </div>
                                 </div>
                                 </div>
@@ -226,7 +226,7 @@
                                             <input type="text" id="DivisionSubProducto" class="form-control" placeholder="División Minima" name="DivisionSubProducto"/>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">           
+                                    <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">
                                     <br>
 
                                     <div class="col-md-9">
@@ -236,8 +236,8 @@
                                         </div>
                                     </div>
                             </div>
-                            
-                                 
+
+
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
                                         <th>ID Producto</th>
@@ -252,11 +252,11 @@
                                         <th>Editar</th>
                                     </thead>
                                     <tbody id="tabla">
-                                        
+
                                     </tbody>
                                 </table>
-                                
-                            
+
+
                         </div>
                         <div class="form-actions">
                             <button type="submit" class="btn btn-warning mr-1" id="CancelarEntrada" name="action" value="cancelar">
@@ -264,7 +264,7 @@
                             </button>
                             <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
                                 <i class="icon-check2"></i>Guardar Entrada
-                            </button>   
+                            </button>
                         </div>
 
 
@@ -277,7 +277,7 @@
                                 <h5 class="modal-title">Agregar Equipo</h5>
                             </div>
                             <div class="modal-body">
-                                
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <h4 id="ClienteSelect"></h4>
@@ -296,7 +296,7 @@
                                         <label for="DescripcionModalProducto">Numero de serie:</label>
                                         <div class="position-relative">
                                             <input type="text" id="NumSerieModalProducto" class="form-control" placeholder="Numero de serie" name="NumSerieModalProducto" required>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="LoteModalProducto">Modelo:</label>
-                                        <input type="text" id="ModeloModalProducto" class="form-control" placeholder="Modelo" name="ModeloModalProducto" required>            
+                                        <input type="text" id="ModeloModalProducto" class="form-control" placeholder="Modelo" name="ModeloModalProducto" required>
                                     </div>
                                 </div>
 
@@ -351,9 +351,9 @@
                             </div>
                             </div>
                         </div>
-                        </div>                       
-                                
-                            
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -371,14 +371,14 @@
 
     function FechaActual()
     {
-        var fecha = new Date(); 
-        var mes = fecha.getMonth()+1; 
-        var dia = fecha.getDate(); 
+        var fecha = new Date();
+        var mes = fecha.getMonth()+1;
+        var dia = fecha.getDate();
         var ano = fecha.getFullYear();
         if(dia<10)
             dia='0'+dia;
         if(mes<10)
-            mes='0'+mes 
+            mes='0'+mes
         document.getElementById('FechaReciboIntec').value=ano+"-"+mes+"-"+dia;
     }
 
@@ -386,15 +386,15 @@
     {
         datos = {"id":id};
         $.ajax
-        ({            
+        ({
             type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDataClientes_ajax',
             dataType: 'json',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 $('#NombreProveedor').val(resp[0].NombreContacto);
-                $("#DireccionCliente").val(resp[0].Domicilio); 
+                $("#DireccionCliente").val(resp[0].Domicilio);
                 $("#compania").val(resp[0].NombreCompania);
                 $("#emailProveedor").val(resp[0].Correo);
             }
@@ -407,7 +407,7 @@
         var clave = $("#ClaveSubProducto").val();
         var modelo = $("#ModeloSubProducto").val();
         var peticion = "";
-            
+
         if(numSerie != "")
             peticion = ".NumService = '"+numSerie+"'";
         else if(clave != "")
@@ -418,28 +418,28 @@
         datos= {
             "peticion":peticion,
             IdCliente: $('#cliente').val()
-            
+
         };
 
         if($('#cliente').val() != "")
         {
-      
+
             $.ajax
-            ({            
+            ({
                 type:'post',
                 url:'<?php echo site_url();?>/Servicio_Controller/Buscar',
                 dataType: 'json',
-                data:datos, 
+                data:datos,
                 success:function(resp)
                 {
                     if(resp != '')
                     {
                         $('#IdSubProducto').val(resp[0].IdEquipo);
                         $('#ClaveSubProducto').val(resp[0].ClaveId);
-                        $("#NumSerieSubProducto").val(resp[0].NumService); 
+                        $("#NumSerieSubProducto").val(resp[0].NumService);
                         $("#ModeloSubProducto").val(resp[0].Modelo);
                         $('#DescripcionSubProducto').val(resp[0].Descripcion);
-                        $("#MarcaSubProducto").val(resp[0].Marca); 
+                        $("#MarcaSubProducto").val(resp[0].Marca);
                         $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
                         $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
                         $('#ActualizarEquipo').show();
@@ -466,10 +466,10 @@
 
         $(this).show();
         $('#ActualizarModalAgregar').hide();
-        
+
 
         datos= {
-            IdCliente: $('#cliente').val(),           
+            IdCliente: $('#cliente').val(),
             ClaveId: $('#ClaveModalProducto').val(),
             NumService: $("#NumSerieModalProducto").val(),
             Modelo: $("#ModeloModalProducto").val(),
@@ -477,7 +477,7 @@
             Marca: $("#MarcaModalProducto").val(),
             AlcanceMedicion: $("#AlcanceModalProducto").val(),
             DivisionMedicion: $('#DivisionModalProducto').val()
-        }; 
+        };
 
         if( $('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
         {
@@ -486,24 +486,24 @@
             {
                 cerrar();
                 $.ajax
-                ({            
+                ({
                     type:'post',
                     url:'<?php echo site_url();?>/Servicio_Controller/InsertarEquipo',
                     dataType: 'json',
-                    data:datos, 
+                    data:datos,
                     success:function(resp)
                     {
                         $('#IdSubProducto').val(resp[0].IdEquipo);
-                        $("#NumSerieSubProducto").val(resp[0].NumService); 
+                        $("#NumSerieSubProducto").val(resp[0].NumService);
                         $('#ClaveSubProducto').val(resp[0].ClaveId);
                         $("#ModeloSubProducto").val(resp[0].Modelo);
                         $('#DescripcionSubProducto').val(resp[0].Descripcion);
-                        $("#MarcaSubProducto").val(resp[0].Marca); 
+                        $("#MarcaSubProducto").val(resp[0].Marca);
                         $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
                         $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
                     }
                 });
-                LimpiarModal(); 
+                LimpiarModal();
             }  else
                 alert("Complete todo los campos");
         }else
@@ -518,9 +518,9 @@
     function cerrar()
     {
         $('#ModalEquipo').modal('hide');
-        LimpiarModal();  
+        LimpiarModal();
     }
-    
+
     $("#cliente").change(function()
     {
         if($('#cliente option:selected').text() != "Seleccione un cliente")
@@ -537,12 +537,12 @@
 
     $('#ActualizarEquipo').click(function()
     {
-        Actualizar();     
+        Actualizar();
     });
 
     $('#GuardarEntrada').click(function()
     {
-        valorOrden();     
+        valorOrden();
     });
 
     $('#CancelarEntrada').click(function()
@@ -552,23 +552,23 @@
     });
 
     function valorOrden()
-    {        
+    {
         var select = document.getElementById("cliente");
-        var cliente = select.value; 
+        var cliente = select.value;
         var fecha =$("#FechaReciboIntec").val();
         var FechaEnvio =$("#FechaEnvioLaboratorio").val();
         var FechaRecibo =$("#FechaReciboLaboratorio").val();
         var Observaciones =$("#ObservacionesServicio").val();
 
         datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
-        
+
         if(cliente != "")
         {
             $.ajax
-            ({            
+            ({
                 type:'post',
                 url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenServicio_ajax',
-                data:datos, 
+                data:datos,
                 success:function(resp)
                 {
                     var id = resp;
@@ -586,29 +586,30 @@
 
             datos = {"idequipo":id,"idOrden":idOrden};
             $.ajax
-            ({            
+            ({
                 type:'post',
                 url:'<?php echo site_url();?>/Servicio_Controller/InsertarOrdenEquipo_ajax',
-                data:datos, 
+                data:datos,
                 success:function(resp)
                 {
-                    removerTabla();
-                    
-                    PDF(idOrden);
-                    Limpiar();
-                    Limpiar2();
+
                 }
             });
         });
+        removerTabla();
+
+        PDF(idOrden);
+        Limpiar();
+        Limpiar2();
     }
 
     $(function()
     {
         $(document).on( 'click', '#btnEliminarSubProducto' ,remover);
-        
+
         $(document).on( 'click', '#btnEditarSubProducto' ,removerEditar);
     });
-    
+
     function removerTabla()
     {
         $("#tabla tr").remove();
@@ -637,27 +638,27 @@
         $.ajax
         ({
             type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',    
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',
             success:function(resp)
             {
-                $("#cliente").html(resp) 
+                $("#cliente").html(resp)
             }
         });
     }
 
     function CargarTabla()
-    { 
-        
+    {
+
         $('#ActualizarEquipo').hide();
         var id =$('#IdSubProducto').val();
         var clave = $('#ClaveSubProducto').val();
-        var numser = $("#NumSerieSubProducto").val(); 
+        var numser = $("#NumSerieSubProducto").val();
         var modelo = $("#ModeloSubProducto").val();
         var descripcion = $('#DescripcionSubProducto').val();
-        var marca = $("#MarcaSubProducto").val(); 
+        var marca = $("#MarcaSubProducto").val();
         var alcance = $("#AlcanceSubProducto").val();
         var division = $('#DivisionSubProducto').val();
-        
+
         if(id != "")
         {
             $("#tabla").append(
@@ -676,29 +677,29 @@
             );
         }else
             alert("No se encontro el equipo");
-        
+
         Limpiar();
 
-        
+
     }
 
     function editar(idEquipo)
     {
         datos = {"idEquipo":idEquipo};
         $.ajax
-        ({            
+        ({
             type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarIdEquipos',
             dataType: 'json',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 $('#IdSubProducto').val(resp[0].IdEquipo);
-                $("#NumSerieSubProducto").val(resp[0].NumService); 
+                $("#NumSerieSubProducto").val(resp[0].NumService);
                 $('#ClaveSubProducto').val(resp[0].ClaveId);
                 $("#ModeloSubProducto").val(resp[0].Modelo);
                 $('#DescripcionSubProducto').val(resp[0].Descripcion);
-                $("#MarcaSubProducto").val(resp[0].Marca); 
+                $("#MarcaSubProducto").val(resp[0].Marca);
                 $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
                 $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
             }
@@ -707,7 +708,7 @@
 
     function Actualizar()
     {
-        datos= {         
+        datos= {
             IdEquipo:$('#IdSubProducto').val(),
             ClaveId: $('#ClaveSubProducto').val(),
             NumService: $("#NumSerieSubProducto").val(),
@@ -716,52 +717,52 @@
             Marca: $("#MarcaSubProducto").val(),
             AlcanceMedicion: $("#AlcanceSubProducto").val(),
             DivisionMedicion: $('#DivisionSubProducto').val()
-        }; 
+        };
 
         if( $('#ClaveSubProducto').val() != "" || $("#NumSerieSubProducto").val() != "" || $("#ModeloSubProducto").val() != "")
         {
             if($('#DescripcionSubProducto').val() != "" && $("#MarcaSubProducto").val() != "" &&
             $("#AlcanceSubProducto").val() != "" && $('#DivisionSubProducto').val() != "")
             {
-  
+
                 $.ajax
-                ({            
+                ({
                     type:'post',
                     url:'<?php echo site_url();?>/Servicio_Controller/ActualizarEquipoPorId',
                     dataType: 'json',
-                    data:datos, 
+                    data:datos,
                     success:function(resp)
                     {
 
                     }
                 });
-                LimpiarModal(); 
+                LimpiarModal();
             }  else
                 alert("Complete todo los campos");
         }else
             alert("Complete todo los campos");
     }
-    
+
     function Limpiar()
     {
         $('#ClaveSubProducto').val("");
-        $("#NumSerieSubProducto").val(""); 
+        $("#NumSerieSubProducto").val("");
         $("#ModeloSubProducto").val("");
         $('#DescripcionSubProducto').val("");
-        $("#MarcaSubProducto").val(""); 
+        $("#MarcaSubProducto").val("");
         $("#AlcanceSubProducto").val("");
-        $('#DivisionSubProducto').val(""); 
-        $('#IdSubProducto').val("");       
+        $('#DivisionSubProducto').val("");
+        $('#IdSubProducto').val("");
     }
-    
+
     function Limpiar2()
     {
         $('#NombreProveedor').val("");
-        $("#DireccionCliente").val(""); 
+        $("#DireccionCliente").val("");
         $("#compania").val("");
         $("#emailProveedor").val("");
         $("#FechaEnvioLaboratorio").val("");
-        $("#FechaReciboLaboratorio").val("");        
+        $("#FechaReciboLaboratorio").val("");
         $("#ObservacionesServicio").val("");
         removerTabla();
     }
@@ -769,13 +770,13 @@
     function LimpiarModal()
     {
         $('#ClaveModalProducto').val("");
-        $("#NumSerieModalProducto").val(""); 
+        $("#NumSerieModalProducto").val("");
         $("#ModeloModalProducto").val("");
         $('#DescripcionModalProducto').val("");
-        $("#MarcaModalProducto").val(""); 
+        $("#MarcaModalProducto").val("");
         $("#AlcanceModalProducto").val("");
-        $('#DivisionModalProducto').val(""); 
-        
+        $('#DivisionModalProducto').val("");
+
         $('#AgregarModalEquipo').show();
         $('#ActualizarModalAgregar').hide();
     }

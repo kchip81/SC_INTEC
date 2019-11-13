@@ -59,14 +59,22 @@ class OrdenServicio_Model extends CI_Model {
         return $insertId;
     }
 
-    public function ConsultarOrdenServicioAbiertas()
+    public function ConsultarOrdenServicioAbiertas($Cerradas)
     {
         $this->db->select($this->table.'.*');
         $this->db->select('NombreCompania,NombreContacto, DescripcionEstatusOrden');
         $this->db->from('cliente');
         $this->db->join($this->table, $this->table.'.IdCliente = cliente.IdCliente','INNER');
         $this->db->join('catalogoestatusorden', $this->table.'.IdEstatusOrden = catalogoestatusorden.IdEstatusOrden');
-        $this->db->where($this->table.'.IdEstatusOrden < 3');
+
+        if ($Cerradas==='1')
+        {
+          $this->db->where($this->table.'.IdEstatusOrden >= 3');
+        }
+        else {
+          $this->db->where($this->table.'.IdEstatusOrden < 3');
+        }
+
         $this->db->order_by($this->table.'.IdOrden', 'ASC');
 
         $query = $this->db->get();

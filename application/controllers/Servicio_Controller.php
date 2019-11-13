@@ -238,8 +238,9 @@ class Servicio_Controller extends CI_Controller {
 
     public function ConsultarDatosOrdenesAbiertas()
     {
-
-      $Datos = $this->OrdenServicio_Model->ConsultarOrdenServicioAbiertas();
+      $cerradas = $this->input->post('Cerradas');
+      
+      $Datos = $this->OrdenServicio_Model->ConsultarOrdenServicioAbiertas($cerradas);
       echo json_encode($Datos);
 
     }

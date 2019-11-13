@@ -241,11 +241,11 @@ class EquipoOrden_Model extends CI_Model{
         $this->db->select('NumFactura');
         $this->db->from($this->table);
         $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
-        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio');
+        $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','INNER');
         $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
         $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
         $this->db->join('facturacliente',$this->table.'.Factura = facturacliente.IdFactura','left');
-        $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
+        $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete','INNER');
         $this->db->where($this->table.'.IdPaqueteEnvio',$id);
 
         $query = $this->db->get();
@@ -259,12 +259,12 @@ class EquipoOrden_Model extends CI_Model{
       $this->db->select('timestampdiff(DAY,paquete_envio.FechaRecLab, curdate()) as dias, diasServicios');
       $this->db->select('NumFactura');
       $this->db->from($this->table);
-      $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','INNER');
-      $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio');
+      $this->db->join('paquete_envio', $this->table.'.IdPaqueteEnvio = paquete_envio.IdPaqueteEnvio','left');
+      $this->db->join('laboratorio','paquete_envio.IdLaboratorio = laboratorio.IdLaboratorio','left');
       $this->db->join('equipo', 'equipo_orden.IdEquipo = equipo.IdEquipo','INNER');
       $this->db->join('cliente', 'cliente.IdCliente = equipo.IdCliente','INNER');
       $this->db->join('facturacliente',$this->table.'.Factura = facturacliente.IdFactura','left');
-      $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
+      $this->db->join('catalogoestatuspaquetes c',$this->table.'.IdEstatusPaquete = c.IdEstatusPaquete','left');
       $this->db->where($this->table.'.IdOrden',$IdOrden);
 
       $query = $this->db->get();
