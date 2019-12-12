@@ -135,5 +135,15 @@ class Equipo_Model extends CI_Model {
         $this->db->where($this->table.'.IdEquipo',$IdEquipo);
         return $this->db->update($this->table);
     }
+
+    public function ConsultarEquipoClientePorId($id)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->from($this->table);
+        $this->db->where($this->table.'.IdCliente',$id);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
     //put your code here
 }

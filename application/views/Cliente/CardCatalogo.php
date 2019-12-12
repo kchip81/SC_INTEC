@@ -126,7 +126,6 @@
 
 
 
-
         </div>
     </div>
 </div>
@@ -163,7 +162,10 @@
                 {
                     "targets":6, "data":"IdCliente", "render": function(data,type,row,meta)
                     {
-                        return '<a classs = "btn" onclick="OpenModal_ActualizarCliente('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="EditarCliente" title="Editar Cliente"> Editar</i></a>';
+                        var url = '<?php echo site_url();?>/Cliente/CatalogoClienteEquipos/'+data+'/'+row['NombreCompania'];
+
+                        return '<a classs = "btn" onclick="OpenModal_ActualizarCliente('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="EditarCliente" title="Editar Cliente"> Editar</i></a>' +
+                        '<br><a href="'+url+'" classs = "btn" ><i class="icon-eye" data-toggle="tooltip" data-placement="top" id="verCliente" title="Ver Equipos"> Ver equipos</i></a>';
                     }
                 }],
 

@@ -98,4 +98,13 @@ class Clientes_Model extends CI_Model{
 
         return $query->result_array();
     }
+
+    public function ConsultarClienteEquipos()
+    {
+        $this->db->select('IdCliente,NombreCompania');
+        $this->db->from($this->table);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }

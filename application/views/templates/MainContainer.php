@@ -222,7 +222,10 @@
             $cadena = '<li class=" nav-item"><a href="#"><i class="icon-user-tie"></i><span data-i18n="nav.agenda.main" class="menu-title">Clientes</span></a>
               <ul class="menu-content">
                 <li><a href="'.site_url('Cliente/CatalogoCliente').'" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Clientes</a>
-                </li>';
+                </li>
+                ';
+                /*<li><a href="'.site_url('Cliente/CatalogoClienteEquipos').'" data-i18n="nav.agenda.main" class="menu-item">Catalogo de Equipos</a>
+                </li> */
 
                 if($Perfil == 1)
                 {
