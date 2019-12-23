@@ -22,13 +22,7 @@
                         <!--FORM BODY-->
                         <div class="form-body">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <button type="button" class="btn btn-secondary" id="btnAgregar" onclick="CrearNuevoPaquete()">
-                                            <i class="icon-android-add"></i>Crear Paquete
-                                        </button>
-                                    </div>
-                                </div>
+                              
                                 <div class="col-md-1">
                                   <div class="form-group">
                                       <button type="button" class="btn btn-secondary" id="btnOrdenesAbiertas" onclick="CargarOrdenes(0)">

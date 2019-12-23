@@ -435,7 +435,7 @@
     {
         var table =$("#tblEquiposOrden").DataTable();
         var data = table.row( $(this).parents('tr') ).data();
-        alert(data);
+
     }
 
     $("#ModificarModalEquipo").click(function()

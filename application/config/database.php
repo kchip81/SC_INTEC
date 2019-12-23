@@ -77,7 +77,7 @@ $db['development'] = array(
 	'dsn'	=> '‘mysql:host=localhost;dbname=bd_intec’',
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => 'diego160499',
+	'password' => '',
 	'database' => 'bd_intec',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
