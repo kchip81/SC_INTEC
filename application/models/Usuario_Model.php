@@ -52,7 +52,8 @@ class Usuario_Model extends CI_Model {
     public function ConsultarDataUsuarios()
     {
         $this->db->select('*');
-        $this->db->from($this->table);        
+        $this->db->from($this->table); 
+        $this->db->join('perfil',$this->table.'.IdPerfil = perfil.IdPerfil');       
         $query = $this->db->get();
         
         return $query->result_array();

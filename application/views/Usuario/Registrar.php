@@ -194,7 +194,7 @@
                 { "data": "NombreUsuario" },
                 { "data": "ApellidosUsuario" },
                 { "data": "usuario" },
-                { "data": "IdPerfil" }
+                { "data": "DescripcionPerfil" }
             ]
         });
     }
@@ -254,7 +254,10 @@
         var contrasena =  $("#contrasena").val();
         var select = $("#perfil").val();
 
-        var restablecer = $("#Restablecer:checked").val();
+        var restablecer = $('#Restablecer').prop('checked');
+
+        if(!restablecer)
+            restablecer = 1;
 
         datos = {"Nombre":Nombre,"ApellidosUsuario":ApellidosUsuario,"usuario":usuario,
                 "contrasena":contrasena,"tipo":select, "creacion":restablecer};
