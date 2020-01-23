@@ -84,5 +84,28 @@ public function CrearFactura()
   }
   // code...
 }
+public function Load_ConsultarFacturas()
+{
+  $data['title'] = 'Consulta de Facturas';
+
+  $this->load->view('templates/MainContainer',$data);
+  $this->load->view('templates/HeaderContainer',$data);
+  $this->load->view('Factura/CardConsultaFacturas',$data);
+  $this->load->view('templates/FooterContainer');
+  // code...
+}
+
+public function ConsultarFacturasCliente_ajax()
+{
+
+  $IdCliente =$this->input->post('IdCliente');
+
+  $this->load->model('Factura_Model');
+
+  $Facturas = $this->Factura_Model->ConsultarFacturasCliente($IdCliente);
+
+  echo json_encode($Facturas);
+  // code...
+}
     //put your code here
 }

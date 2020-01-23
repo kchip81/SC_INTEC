@@ -90,4 +90,5 @@ $route['Cliente/ConsultarOrden/(.+)']='Cliente_Controller/Load_ConsultarOrdenSer
 $route['Proveedores/CatalogoProveedor']='Laboratorio_Controller/Load_CatalogoLaboratorio';
 
 //Factura
+$route['Factura/ConsultarFacturas']='Factura_Controller/Load_ConsultarFacturas';
 $route['Factura/(.+)']='Factura_Controller/Load_Factura/$1';

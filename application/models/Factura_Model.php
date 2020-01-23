@@ -19,4 +19,19 @@ class Factura_Model extends CI_Model{
     // code...
   }
 
+  public function ConsultarFacturasCliente($IdCliente)
+  {
+    $this->db->select($this->table.'.*');
+    $this->db->select('COUNT(IdEquipoOrden) as TotalEquipos');
+    $this->db->from($this->table);
+    $this->db->join('equipo_orden',$this->table.'.IdFactura = equipo_orden.Factura');
+    $this->db->where($this->table.'.IdCliente',$IdCliente);
+    $this->db->group_by('IdFactura,NumFactura,FechaFactura,IdCliente');
+
+    $query = $this->db->get();
+
+    return $query->result_array();
+    // code...
+  }
+
 }

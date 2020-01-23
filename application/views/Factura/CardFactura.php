@@ -24,7 +24,7 @@
                               <div class="form-group">
                                   <label for="Clientes">Cliente</label>
                                   <input type="text" class="form-control" name="NombreCliente" value="<?=$Cliente[0]['NombreCompania']?>" readonly>
-                                  <input type="hidden" class="form-control" name="IdCliente" id="IdCliente" value="<?=$Cliente[0]['IdCliente']?>">
+                                  <input type="hidden" class="form-control" name="IdCliente" id="IdCliente" onchange="CargarEquiposCliente()">
                               </div>
                           </div>
                       </div>

@@ -559,11 +559,18 @@
         var FechaEnvio =$("#FechaEnvioLaboratorio").val();
         var FechaRecibo =$("#FechaReciboLaboratorio").val();
         var Observaciones =$("#ObservacionesServicio").val();
+        var TotalEquipos = $("#tabla tr").length;
+
+        alert(TotalEquipos);
 
         datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
 
         if(cliente != "")
         {
+
+          if (TotalEquipos>0)
+          {
+
             $.ajax
             ({
                 type:'post',
@@ -575,6 +582,13 @@
                     valorFila(id);
                 }
             });
+
+          }
+          else {
+            alert("No ha seleccionado un equipo");
+          }
+
+
         }else
             alert("Selecione un cliente");
     }

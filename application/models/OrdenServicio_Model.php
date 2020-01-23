@@ -98,16 +98,16 @@ class OrdenServicio_Model extends CI_Model {
         $this->db->delete($this->table);
     }
 
-    
+
     public function ConsultarDatosOrdenesAbiertasEquipo($Cerradas,$idEquipo)
     {
         $this->db->select($this->table.'.*');
-        $this->db->select('NombreCompania,NombreContacto, DescripcionEstatusOrden, Equipo.*');
+        $this->db->select('NombreCompania,NombreContacto, DescripcionEstatusOrden, equipo.*');
         $this->db->from('cliente');
         $this->db->join($this->table, $this->table.'.IdCliente = cliente.IdCliente','INNER');
         $this->db->join('catalogoestatusorden', $this->table.'.IdEstatusOrden = catalogoestatusorden.IdEstatusOrden');
-        $this->db->join('Equipo', $this->table.'.IdCliente = Equipo.IdCliente','INNER');
-        $this->db->where(' Equipo.IdEquipo',$idEquipo);
+        $this->db->join('equipo', $this->table.'.IdCliente = equipo.IdCliente','INNER');
+        $this->db->where(' equipo.IdEquipo',$idEquipo);
 
         if ($Cerradas==='1')
         {
