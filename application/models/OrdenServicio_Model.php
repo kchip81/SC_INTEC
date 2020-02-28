@@ -123,5 +123,11 @@ class OrdenServicio_Model extends CI_Model {
 
         return $query->result_array();
     }
+
+    public function EliminarOrden($IdOrden)
+    {
+        $this->db->where('IdOrden',$IdOrden);
+        return $this->db->delete($this->table);
+    }
 //put your code here
 }

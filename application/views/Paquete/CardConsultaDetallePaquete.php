@@ -88,6 +88,11 @@
 
                         </div>
 
+                        <div class="col-md-3">
+                          <button id="eliminar" type="button" class="btn btn-danger" style="display: none;"  name="button" onclick="EliminarPaquete()">Eliminar Paquete <i class="fas fa-trash"></i></button>
+
+                        </div>
+
                       </div>
                     </div>
                 </div>
@@ -99,6 +104,25 @@
   $(document).ready(function(){
     ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
   });
+
+  function EliminarPaquete(){
+    alert(<?=$Paquete->IdPaqueteEnvio?>);
+
+    $.ajax
+    ({
+        url:'<?php echo site_url();?>/Paquetes_Controller/EliminarPaquete',
+        data:{
+          IdPaqueteEnvio:<?=$Paquete->IdPaqueteEnvio?>
+        },
+        method: "POST",
+        success:function(resp)
+        {
+          $(location).attr('href','<?php echo site_url();?>/Paquetes/ConsultarPaquetesAbiertos');
+
+        }
+    });
+
+  }
 
   function AvanzarEstatusPaquete() {
 

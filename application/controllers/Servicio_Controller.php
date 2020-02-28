@@ -18,7 +18,7 @@ class Servicio_Controller extends CI_Controller {
 
         $this->load->helper('form');
         $this->load->helper('url_helper');
-        $this->load->library('M_pdf');
+       // $this->load->library('M_pdf');
 
         $this->load->model('Clientes_Model');
         $this->load->model('Equipo_Model');
@@ -573,6 +573,53 @@ class Servicio_Controller extends CI_Controller {
 
         $this->m_pdf->pdf->WriteHTML($pdf);
         $this->m_pdf->pdf->Output($pdfFilePath, "I");
+
+    }
+
+    public function EliminarEquipoPorIdPaquete()
+    {
+        $IdOrden = $this->input->post('IdOrden');
+        $IdEquipo = $this->input->post('IdEquipo');
+
+        $result = $this->EquipoOrden_Model->EliminarEquipoPorIdPaquete($IdEquipo,$IdOrden);
+
+        if($result)
+            echo 'borrado';
+        else
+            echo 'no se borro';
+
+    }
+
+    
+    public function EliminarEquipodelPaquete()
+    {
+        $IdOrden = $this->input->post('IdOrden');
+        $IdEquipo = $this->input->post('IdEquipo');
+
+        $result = $this->EquipoOrden_Model->EliminarEquipodelPaquete($IdEquipo,$IdOrden);
+
+    }
+
+
+    public function ConsultarNumOrdenEquipo(){
+
+        $Id =  $this->input->post('Id');
+
+        $result = $this->EquipoOrden_Model->ConsultarNumOrdenEquipo($Id);
+
+        echo $result->numequipo;
+    }
+
+    public function EliminarOrden()
+    {
+        $IdOrden = $this->input->post('IdOrden');
+
+        $result = $this->OrdenServicio_Model->EliminarOrden($IdOrden);
+
+        if($result)
+            echo 'borrado';
+        else
+            echo 'no se borro';
 
     }
 }
