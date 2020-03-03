@@ -411,7 +411,7 @@
                     {
                       if(data==null)
                       {
-                        return "<a href='<?=site_url()?>/Factura/"+row['IdCliente']+"' class='btn btn-primary btn-sm'>Generar</a>";
+                        return "<a href='<?=site_url()?>/Factura/RegistrarFactura/"+row['IdCliente']+"' class='btn btn-primary btn-sm'>Generar</a>";
                       }
                       else {
                         return data;

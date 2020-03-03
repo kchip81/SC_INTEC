@@ -561,7 +561,6 @@
         var Observaciones =$("#ObservacionesServicio").val();
         var TotalEquipos = $("#tabla tr").length;
 
-        alert(TotalEquipos);
 
         datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
 

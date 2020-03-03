@@ -395,6 +395,26 @@ class EquipoOrden_Model extends CI_Model{
 
       // code...
     }
+    public function ConsultarEquiposOrdenFactura($IdFactura)
+    {
+      $this->db->select('eo.*');
+      $this->db->select('c.IdCliente, NombreCompania');
+      $this->db->select('e.*');
+      $this->db->select('DescripcionEstatusPaquete');
+
+      $this->db->from($this->table.' eo');
+      $this->db->join('equipo e','eo.IdEquipo = e.IdEquipo');
+      $this->db->join('cliente c','c.IdCliente = e.IdCliente');
+      $this->db->join('catalogoestatuspaquetes cep', 'eo.IdEstatusPaquete = cep.IdEstatusPaquete');
+
+      $this->db->where('Factura', $IdFactura);
+      $query = $this->db->get();
+
+      return $query->result_array();
+
+
+      // code...
+    }
 
     public function AsignarFacturaEquipo($IdEquipoOrden,$IdFactura)
     {
