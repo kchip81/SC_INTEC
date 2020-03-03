@@ -380,8 +380,19 @@
                               btnAvanzar=' <button type="button" style="border-radius: 200px" class="btn btn-primary btn-sm" onclick="Modal_AvanzarEstatus('+row['IdEquipoOrden']+',\''+row['DescripcionEstatusPaquete']+'\','+row['IdEstatusPaquete']+')"><i class="fas fa-angle-double-right fa-lg" data-toggle="tooltip" data-placement="top" id="AvanzarEquipo" title="Avanzar Estatus"></i></button>';
 
                             }
+                            if(row['IdEstatusPaquete'] < 2){
+                              btnAvanzar = '<button type="button" style="border-radius: 200px" class="btn btn-danger btn-sm" onclick="EliminarEquipo('+row['IdEquipo']+', '+row['IdOrden']+')"><i class="fa fa-trash-o fa-lg" data-toggle="tooltip" data-placement="top" id="EliminarEquipo" title="Eliminar Equipo"></i></button>'+
+                              btnAvanzar;
+                            }
+
+                            if(row['IdEstatusPaquete'] < 2 && row['IdPaqueteEnvio'] != null){
+                              btnAvanzar = '<button type="button" style="border-radius: 200px" class="btn btn-danger btn-sm" onclick="EliminarDelPaquete('+row['IdEquipo']+', '+row['IdOrden']+')"><i class="fa fa-minus fa-lg" data-toggle="tooltip" data-placement="top" id="QuitarEquipo" title="Quitar del paquete"></i></button>'+
+                              btnAvanzar;
+                            }
+
                             return '<button type="button" style="border-radius: 200px" class="btn btn-success btn-sm" onclick="OpenModal_ActualizarEquipo('+row['IdEquipo']+')"><i class="far fa-edit fa-lg" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Editar Equipo"></i></button>'+
                             btnAvanzar;
+
                         }
                 },
                 {"targets":10, "data":"Etiqueta", "render":function(data,type,row,meta)
@@ -492,8 +503,36 @@
 
             var tbl = document.getElementById("tblEquiposOrden");
             tbl.scrollIntoView();
-    }
+            
+            $.ajax
+            ({
+              type:'post',
+              url:'<?php echo site_url();?>/Paquetes_Controller/ConsultarNumEquiposOrden',
+              dataType: 'json',
+              data:{Id:id},
+              success:function(resp)
+              {
+                //alert(resp);             
+                if(resp == 0)
+                  $('#eliminar').show ();
 
+              }
+            }); 
+
+            $.ajax
+            ({
+              type:'post',
+              url:'<?php echo site_url();?>/Servicio_Controller/ConsultarNumOrdenEquipo',
+              dataType: 'json',
+              data:{Id:id},
+              success:function(resp)
+              {          
+                if(resp == 0)
+                  $('#eliminarOrden').show ();
+
+              }
+            }); 
+    }
 
     function EditarEquipo()
     {
@@ -716,5 +755,43 @@
 
       }
     }
+
+    function EliminarEquipo(IdEquipo,IdOrden){
+
+      $.ajax
+        ({
+            url:'<?php echo site_url();?>/Servicio_Controller/EliminarEquipoPorIdPaquete',
+            data:{
+              IdEquipo:IdEquipo,
+              IdOrden:IdOrden
+            },
+            method: "POST",
+            success:function(resp)
+            {
+              ConsultarEquiposOrden(IdOrden);
+            }
+        });
+    }
+
+
+    function EliminarDelPaquete(IdEquipo,IdOrden){
+
+
+      $.ajax
+      ({
+          url:'<?php echo site_url();?>/Servicio_Controller/EliminarEquipodelPaquete',
+          data:{
+            IdEquipo:IdEquipo,
+            IdOrden:IdOrden
+          },
+          method: "POST",
+          success:function(resp)
+          {
+            ConsultarEquiposOrden(IdOrden);
+          }
+      });
+    }
+
+    
 
 </script>

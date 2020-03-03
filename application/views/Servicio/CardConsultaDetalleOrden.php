@@ -68,15 +68,40 @@
                           <button type="button" class="btn btn-sm btn-primary"  name="button" onclick="window.open('<?=site_url('Servicio/NuevaOrdenPDF/')?><?=$Orden->IdOrden?>')">Ver PDF <i class="icon-file-pdf"></i></button>
                         </div>
 
+                        
+                        <div class="col-md-3">
+                          <button id="eliminarOrden" type="button" class="btn btn-danger" style="display: none;"  name="button" onclick="EliminarOrden()">Eliminar Orden <i class="fas fa-trash"></i></button>
+
+                        </div>
+
+
                       </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
       </div>
   </div>
   <script type="text/javascript">
   $(document).ready(function(){
     ConsultarEquiposOrden(<?=$Orden->IdOrden?>);
   });
+
+  function EliminarOrden(){
+
+//alert(<?=$Orden->IdOrden?>);
+    $.ajax
+    ({
+        url:'<?php echo site_url();?>/Servicio_Controller/EliminarOrden',
+        data:{
+          IdOrden:<?=$Orden->IdOrden?>
+        },
+        method: "POST",
+        success:function(resp)
+        {
+          $(location).attr('href','<?php echo site_url();?>/Servicio/ConsultarOrden');
+
+        }
+    });
+  }
   </script>

@@ -40,6 +40,28 @@ class Paquetes_Controller extends CI_Controller {
 
     }
 
+    public function ConsultarNumEquiposOrden(){
+
+        $Id =  $this->input->post('Id');
+
+        $result = $this->EquipoOrden_Model->ConsultarNumEquiposOrden($Id);
+
+        echo $result->numequipo;
+    }
+
+    public function EliminarPaquete()
+    {
+        $IdPaqueteEnvio = $this->input->post('IdPaqueteEnvio');
+
+        $result = $this->Paquetes_Model->EliminarPaquete($IdPaqueteEnvio);
+
+        if($result)
+            echo 'borrado';
+        else
+            echo 'no se borro';
+
+    }
+
     public function ConsultarPaquetesAbiertos_ajax()
     {
 

@@ -109,6 +109,11 @@ class Paquetes_Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function EliminarPaquete($IdPaqueteEnvio)
+    {      
+        $this->db->where('IdPaqueteEnvio',$IdPaqueteEnvio);
+        $this->db->delete($this->table);
+    }
 
     public function ConsutarTotaPaquetesAbiertos()
     {
