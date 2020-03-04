@@ -95,7 +95,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="DescripcionServicio">Descripcion Paquete:</label>
+                                                    <label for="DescripcionServicio">Descripción Paquete:</label>
                                                     <div class="position-relative has-icon-left">
                                                         <input type="text" id="DescripcionServicio" class="form-control" placeholder="Descripción" name="DescripcionServicio" required="required">
                                                         <div class="form-control-position">

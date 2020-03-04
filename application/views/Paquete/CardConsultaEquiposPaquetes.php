@@ -132,7 +132,7 @@
                               <div class="row">
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="CantidadModalProducto">División Minima:</label>
+                                          <label for="CantidadModalProducto">División Mínima:</label>
                                           <input type="text" id="DivisionModalProducto" class="form-control" placeholder="División Minima" name="DivisionModalProducto" required>
                                       </div>
                                   </div>
@@ -503,7 +503,7 @@
 
             var tbl = document.getElementById("tblEquiposOrden");
             tbl.scrollIntoView();
-            
+
             $.ajax
             ({
               type:'post',
@@ -512,12 +512,12 @@
               data:{Id:id},
               success:function(resp)
               {
-                //alert(resp);             
+                //alert(resp);
                 if(resp == 0)
                   $('#eliminar').show ();
 
               }
-            }); 
+            });
 
             $.ajax
             ({
@@ -526,12 +526,12 @@
               dataType: 'json',
               data:{Id:id},
               success:function(resp)
-              {          
+              {
                 if(resp == 0)
                   $('#eliminarOrden').show ();
 
               }
-            }); 
+            });
     }
 
     function EditarEquipo()
@@ -792,6 +792,6 @@
       });
     }
 
-    
+
 
 </script>

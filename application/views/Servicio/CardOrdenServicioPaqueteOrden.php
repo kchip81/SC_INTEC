@@ -13,17 +13,17 @@
                                     <li><a data-action="close"><i class="icon-cross2"></i></a></li>
                             </ul>
                     </div>
-                    
+
 
                 </div>
                 <!--CARD BODY-->
                 <div class="card-body collapse in">
                     <div class="card-block">
                         <!--FORM BODY-->
-                        <div class="form-body"> 
+                        <div class="form-body">
                             <h4>No. Orden #<?php echo $IdOrden;?></h4>
-                            
-                                 
+
+
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubPaqueteOr">
                                     <thead>
                                         <th>No. Orden</th>
@@ -32,22 +32,22 @@
                                         <th>Descripción</th>
                                         <th>Laboratorio</th>
                                         <th>Total de Equipo</th>
-                                        <th>Fecha Envio Laboratorio</th>
+                                        <th>Fecha Envío Laboratorio</th>
                                         <th>Fecha Recibido Laboratorio</th>
                                         <th>Fecha Final Calibrado</th>
                                         <th>Fecha Rest Laboratorio</th>
-                                        <th>Fecha Recepcion Intec Laboratorio</th>
+                                        <th>Fecha Recepción Intec Laboratorio</th>
                                     </thead>
                                     <tbody id="tablaPaqOrd">
-                                        
+
                                     </tbody>
-                                </table>                                                                                    
+                                </table>
                         </div>
-                                
-                            
-                            
-                          
-                            
+
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
      * CAMBIO: Se regresa la variable enviada por el controller
      */
     var idOrden =  <?php echo $IdOrden;?>;
-    
+
     $(document).ready(function()
     {
         CargarDatos();
@@ -99,10 +99,10 @@
     });
 
     function TotalEquipos()
-    {       
+    {
         var valor = $(this).parents("tr").find("td").eq(0).text();
         var direccion= "<?php echo site_url();?>/Servicio/ConsultarPaquetes/"+valor;
-        
+
         location.href=direccion;
     }
 
@@ -113,38 +113,38 @@
     });
 
     function ConFecha()
-    {       
+    {
         var fecha = $("#FechasCon").val();
-       
+
         datos={"fecha":fecha,"IdPaqueteEnvio":idPaquete};
 
         $.ajax
         ({
             type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ModificarPaqueteOrden', 
-            data:datos,    
+            url:'<?php echo site_url();?>/Servicio_Controller/ModificarPaqueteOrden',
+            data:datos,
             success:function(resp)
             {
                 //closeForm();
                 CargarDatos();
             }
         });
-    }    
+    }
 
     function ConfirmarFechas()
-    {       
+    {
         var valor = $(this).parents("tr").find("td").eq(0).text();
         //alert(valor);
         idPaquete = valor;
         openForm();
     }
 
-    function openForm() 
+    function openForm()
     {
         document.getElementById("confirmacion").style.display = "block";
     }
 
-    function closeForm() 
+    function closeForm()
     {
         document.getElementById("confirmacion").style.display = "none";
     }
@@ -152,12 +152,12 @@
     function CargarDatos()
     {
         datos= {"idEnvio":idPaquete,"idOrden":idOrden};
-        
+
 
         $.ajax
         ({
             type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrdenes',    
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrdenes',
             data:datos,
             success:function(resp)
             {
@@ -166,26 +166,26 @@
                 var t = $("#tablaSubPaqueteOr").DataTable({
                     "destroy": true
                 });
-            
+
                 t.clear();
                 t.draw();
 
                 var tamaño = OrdenesAbiertas.length;
                 for (i=0; i< tamaño ;i++)
-                {              
+                {
                     t.row.add([
                         OrdenesAbiertas[i]['IdOrden'],
                         OrdenesAbiertas[i]['NombreCompania'],
                         OrdenesAbiertas[i]['IdPaqueteEnvio'],
                         OrdenesAbiertas[i]['Descripcion'],
                         OrdenesAbiertas[i]['Descripcion_lab'],
-                        OrdenesAbiertas[i]['TotalEquipo'], 
-                        OrdenesAbiertas[i]['FechaEnv'],    
-                        OrdenesAbiertas[i]['FechaRecLab'],   
-                        OrdenesAbiertas[i]['FechaFinalCalLab'],   
-                        OrdenesAbiertas[i]['FechaRetLab'],   
+                        OrdenesAbiertas[i]['TotalEquipo'],
+                        OrdenesAbiertas[i]['FechaEnv'],
+                        OrdenesAbiertas[i]['FechaRecLab'],
+                        OrdenesAbiertas[i]['FechaFinalCalLab'],
+                        OrdenesAbiertas[i]['FechaRetLab'],
                         OrdenesAbiertas[i]['FechaRecpIntecLab']
-                        ]).draw(false);  
+                        ]).draw(false);
                 }
             }
         });

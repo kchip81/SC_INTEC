@@ -57,13 +57,13 @@
                         </div>
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label for="txtFechaEnv">Fecha Envio</label>
+                            <label for="txtFechaEnv">Fecha Envío</label>
                             <input type="text" class="form-control" name="txtFechaEnv" id="txtFechaEnv" value="<?=$Paquete->FechaEnv?>" readonly>
                           </div>
                         </div>
                         <div class="col-md-2">
                           <div class="form-group">
-                            <label for="txtCostoEnvio">Costo Envio</label>
+                            <label for="txtCostoEnvio">Costo Envío</label>
                             <div class="input-group">
                               <span class="input-group-addon">$</span>
                               <input type="text" class="form-control" name="txtCostoEnvio" id="txtCostoEnvio" value="<?=$Paquete->CostoEnvio?>" readonly>

@@ -34,4 +34,13 @@ class Factura_Model extends CI_Model{
     // code...
   }
 
+  public function ConsultarFacturaPorId($IdFactura)
+  {
+    $this->db->select($this->table.'.*');
+    $this->db->from($this->table);
+    $this->db->join('cliente')
+    $this->db->where('IdFactura',$IdFactura);
+    // code...
+  }
+
 }

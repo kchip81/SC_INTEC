@@ -287,7 +287,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="ClaveModalProducto">Clavé de Identificación:</label>
+                                        <label for="ClaveModalProducto">Clave de Identificación:</label>
                                         <input type="text" id="ClaveModalProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveModalProducto" required>
                                     </div>
                                 </div>
@@ -326,7 +326,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="LoteModalProducto">Alcance de Medicion:</label>
+                                        <label for="LoteModalProducto">Alcance de Medición:</label>
                                         <input type="text" id="AlcanceModalProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceModalProducto" required>
                                     </div>
                                 </div>

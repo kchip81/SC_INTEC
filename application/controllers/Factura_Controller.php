@@ -46,6 +46,17 @@ public function ConsultarEquiposFactura_ajax()
   // code...
 }
 
+public function ConsultarEquiposDetalleFactura_ajax()
+{
+  $IdFactura = $this->input->post('IdFactura');
+
+  $this->load->model('EquipoOrden_Model');
+  $EquiposFactura = $this->EquipoOrden_Model->ConsultarEquiposOrdenParaFactura($IdFactura);
+
+  echo json_encode($EquiposFactura);
+  // code...
+}
+
 public function CrearFactura()
 {
   $action = $this->input->post('action');
@@ -105,6 +116,24 @@ public function ConsultarFacturasCliente_ajax()
   $Facturas = $this->Factura_Model->ConsultarFacturasCliente($IdCliente);
 
   echo json_encode($Facturas);
+  // code...
+}
+
+public function Load_ConsultarDetalleFactura($IdFactura)
+{
+  $data['title'] = 'Detalle Factura';
+
+  $this->load->model('Factura_Model');
+
+  $Factura = $this->Factura_Model->ConsultarFacturaPorId($IdFactura);
+
+  $data['Factura'] = $Factura;
+
+  $this->load->view('templates/MainContainer',$data);
+  $this->load->view('templates/HeaderContainer',$data);
+  $this->load->view('Factura/CardConsultaFacturas',$data);
+  $this->load->view('templates/FooterContainer');
+
   // code...
 }
     //put your code here

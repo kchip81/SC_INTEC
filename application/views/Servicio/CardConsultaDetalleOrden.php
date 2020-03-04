@@ -45,7 +45,7 @@
                       <div class="row">
                         <div class="col-md-3">
                           <div class="form-group">
-                            <label for="txtTelefono">Telefono</label>
+                            <label for="txtTelefono">Teléfono</label>
                             <input type="text" class="form-control" name="txtTelefono" id="txtTelefono" value="<?=$Orden->Telefono?>" readonly>
                           </div>
                         </div>
@@ -68,7 +68,7 @@
                           <button type="button" class="btn btn-sm btn-primary"  name="button" onclick="window.open('<?=site_url('Servicio/NuevaOrdenPDF/')?><?=$Orden->IdOrden?>')">Ver PDF <i class="icon-file-pdf"></i></button>
                         </div>
 
-                        
+
                         <div class="col-md-3">
                           <button id="eliminarOrden" type="button" class="btn btn-danger" style="display: none;"  name="button" onclick="EliminarOrden()">Eliminar Orden <i class="fas fa-trash"></i></button>
 
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
       </div>
   </div>
   <script type="text/javascript">

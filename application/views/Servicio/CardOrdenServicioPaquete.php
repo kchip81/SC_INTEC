@@ -13,7 +13,7 @@
                                     <li><a data-action="close"><i class="icon-cross2"></i></a></li>
                             </ul>
                     </div>
-                    
+
 
                 </div>
                 <!--CARD BODY-->
@@ -32,7 +32,7 @@
                                             <i class="icon-head"></i>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -46,9 +46,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
-                             
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -57,25 +57,25 @@
                                             <option value="">Laboratorio...</option>
                                         </select>
                                     </div>
-                                </div>                            
+                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="DescripcionServicio">Descripcion:</label>
+                                        <label for="DescripcionServicio">Descripción:</label>
                                         <div class="position-relative has-icon-left">
                                             <input type="text" id="DescripcionServicio" class="form-control" placeholder="Descripción" name="DescripcionServicio">
                                             <div class="form-control-position">
                                                 <i class="icon-speech-bubble"></i>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
-                            
-                                 
+
+
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubOrdenes">
                                     <thead>
                                         <th>No. Equipo</th>
@@ -83,18 +83,18 @@
                                         <th>Verificar</th>
                                     </thead>
                                     <tbody id="tabla">
-                                        
+
                                     </tbody>
-                                </table>                                                                                    
+                                </table>
                         </div>
-                                
-                            
+
+
                         <div class="col-md-3">
                             <div class="form-group" style="margin-top:7px;">
                                 <button type="button" class="btn btn-primary" id="btnCrearSubOrden">Crear</button>
                             </div>
                         </div>
-                          
+
 
 
                         <!--<table class="table table-responsive table-bordered table-striped" id="tablaSubPaquete">
@@ -104,12 +104,12 @@
                                 <th>No. Equipos</th>
                             </thead>
                             <tbody id="tablaOrden">
-                                        
+
                             </tbody>
                         </table>-->
 
 
-                            
+
                     </div>
                 </div>
             </div>
@@ -134,9 +134,9 @@
     $("#btnCrearSubOrden").click(function()
     {
         var select = document.getElementById("laboratorio");
-        var laboratorio = select.value; 
+        var laboratorio = select.value;
         var Observacion = $('#DescripcionServicio').val();
-        
+
         if(laboratorio != "")
         {
             var contador = 0;
@@ -166,7 +166,7 @@
         ({
             type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/InsertarPaquete',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 idEnvio = resp;
@@ -177,25 +177,25 @@
     }
 
     function ActualizarPaquete(idEnvios)
-    {     
+    {
 
         $("#tabla tr").each(function(){
             var id = $(this).find(".idEquipo").text();
             var checked = $(this).find("#verificar").is(":checked");
 
             //alert(id);
-                        
+
             if(checked)
             {
                 $(this).find("#verificar").parents("tr").remove();
-                
+
                 datos = {"IdEquipoOrden":id,"idEnvio":idEnvios};
 
                 $.ajax
                 ({
                     type:'post',
                     url:'<?php echo site_url();?>/Servicio_Controller/UpdatePaquete',
-                    data:datos, 
+                    data:datos,
                     success:function(resp)
                     {
 
@@ -213,7 +213,7 @@
         $.ajax
         ({
             type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrden',    
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarPaqueteOrden',
             data:datos,
             success:function(resp)
             {
@@ -227,7 +227,7 @@
     {
         $.ajax
         ({
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarLaboratorio_ajax',     
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarLaboratorio_ajax',
             success:function(resp)
             {
                 $("#laboratorio").html(resp);
@@ -244,7 +244,7 @@
             type:'post',
             url:'<?php echo site_url();?>/Servicio_Controller/ConsultarDatosClientes',
             dataType: 'json',
-            data:datos, 
+            data:datos,
             success:function(resp)
             {
                 $('#NombreCliente').val(resp[0].NombreContacto);
@@ -260,7 +260,7 @@
         $.ajax
         ({
             type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarOrdenDatosPaqute_ajax',    
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarOrdenDatosPaqute_ajax',
             data:datos,
             success:function(resp)
             {

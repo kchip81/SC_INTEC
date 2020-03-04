@@ -41,10 +41,10 @@
                                         <th></th>
                                         <th>No. Paquete</th>
                                         <th>Laboratorio</th>
-                                        <th>Descripcion</th>
+                                        <th>Descripción</th>
                                         <th>Estatus</th>
                                         <th>Equipos</th>
-                                        <th>Fecha Envio</th>
+                                        <th>Fecha Envío</th>
                                         <th>Fecha Recepción Lab</th>
                                         <th></th>
                                         <th></th>
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="CostoEnvio">Costo Envio:</label>
+                                            <label for="CostoEnvio">Costo Envío:</label>
                                             <div class="input-group">
                                                 <span class="input-group-addon">$</span>
                                                 <input type="text" id="CostoEnvio" name="CostoEnvio" class="form-control" placeholder="Costo Envio"/>

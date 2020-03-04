@@ -41,13 +41,13 @@
                                     <th>No. Orden</th>
                                     <th>Compañia</th>
                                     <th>No. Equipo</th>
-                                    <th>Descripcion</th>
+                                    <th>Descripción</th>
                                     <th>Marca</th>
                                     <th>Modelo</th>
                                     <th>Num. Serie</th>
                                     <th>Clave</th>
                                     <th>No. Paquete</th>
-                                    <th>Descripcion Paq.</th>
+                                    <th>Descripción Paq.</th>
                                     <th>Estatus Paq.</th>
                                     <th>Etiqueta</th>
                                     <th>Factura</th>

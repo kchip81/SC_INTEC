@@ -84,35 +84,24 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-  CargarClientes();
 
+CargarEquiposFactura();
 
 
 });
 
-function CargarClientes()
-{
-    $.ajax
-    ({
-        type:'post',
-        url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',
-        success:function(resp)
-        {
-            $("#cliente").html(resp)
-        }
-    });
-}
-function CargarFacturasCliente() {
 
-  var IdCliente = $("#cliente").val();
+function CargarEquiposFactura() {
+
+  var IdFactura = <?=$Factura->IdFactura?>;
 
   var t = $('#tblOrdenAbierta').DataTable({
            "drawCallback": function( settings ) {
                    $('[data-toggle="tooltip"]').tooltip();
                  },
              "ajax":{
-               url:"<?php echo site_url();?>/Factura_Controller/ConsultarFacturasCliente_ajax",
-               data:{"IdCliente":IdCliente},
+               url:"<?php echo site_url();?>/Factura_Controller/ConsultarEquiposDetalleFactura_ajax",
+               data:{"IdFactura":IdFactura},
                method:"POST",
                dataSrc: ""
              },
@@ -128,9 +117,15 @@ function CargarFacturasCliente() {
                "autoWidth":true,
                "columnDefs":[
                  {
-                   "targets":3, "data":"IdFactura", "render":function(data,type,row,meta)
-                   {
-                      return '<a href="<?php echo site_url('Factura/ConsultarEquiposFactura/'); ?>'+data+'"><i class="icon-eye4"></i>Detalle</a>';
+                   {"targets":0, "data":"ID", "render":function(data,type, meta, row)
+                     {
+                       return "<a href='<?=site_url()?>/Servicio/ConsultarDetalleServicio/"+data+"''>"+data+"</a>";
+                     }
+                   },
+                   {"targets":1, "data":"IdPaqueteEnvio", "render":function(data,type, meta, row)
+                     {
+                       return "<a href='<?=site_url()?>/Paquete/ConsultarDetalle/"+data+"''>"+data+"</a>";
+                     }
                    }
                  }
 
@@ -138,9 +133,15 @@ function CargarFacturasCliente() {
                ],
                "columns": [
 
-                     { "data": "NumFactura"},
-                     { "data": "FechaFactura" },
-                     { "data": "TotalEquipos" }
+                 { "data": "ID" },
+                 {"data":"IdPaqueteEnvio"},
+                 { "data": "NombreCompania" },
+                 { "data": "IdEquipo" },
+                 { "data": "Descripcion" },
+                 { "data": "Marca" },
+                 { "data": "Modelo" },
+                 { "data": "NumService" },
+                 { "data": "ClaveId" }
 
                      ]
 
