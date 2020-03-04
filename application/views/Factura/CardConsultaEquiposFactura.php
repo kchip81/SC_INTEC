@@ -58,7 +58,7 @@
                                       <th>Num. Serie</th>
                                       <th>Clave</th>
                                     </thead>
-                                    <tbody id="tablaOrdenes">
+                                    <tbody>
 
                                     </tbody>
                                 </table>
@@ -86,6 +86,11 @@
 $(document).ready(function() {
 
 CargarEquiposFactura();
+$("#txtIdFactura").val(<?=$Factura->NumFactura?>);
+$("#txtFechaFactura").val("<?=$Factura->FechaFactura?>");
+$("#txtNombreCliente").val("<?=$Factura->NombreCompania?>");
+
+
 
 
 });
@@ -95,7 +100,7 @@ function CargarEquiposFactura() {
 
   var IdFactura = <?=$Factura->IdFactura?>;
 
-  var t = $('#tblOrdenAbierta').DataTable({
+  var t = $('#tblEquiposFactura').DataTable({
            "drawCallback": function( settings ) {
                    $('[data-toggle="tooltip"]').tooltip();
                  },
@@ -116,8 +121,8 @@ function CargarEquiposFactura() {
                },
                "autoWidth":true,
                "columnDefs":[
-                 {
-                   {"targets":0, "data":"ID", "render":function(data,type, meta, row)
+
+                   {"targets":0, "data":"IdOrden", "render":function(data,type, meta, row)
                      {
                        return "<a href='<?=site_url()?>/Servicio/ConsultarDetalleServicio/"+data+"''>"+data+"</a>";
                      }
@@ -127,13 +132,13 @@ function CargarEquiposFactura() {
                        return "<a href='<?=site_url()?>/Paquete/ConsultarDetalle/"+data+"''>"+data+"</a>";
                      }
                    }
-                 }
+
 
 
                ],
                "columns": [
 
-                 { "data": "ID" },
+                 { "data": "IdOrden" },
                  {"data":"IdPaqueteEnvio"},
                  { "data": "NombreCompania" },
                  { "data": "IdEquipo" },

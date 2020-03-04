@@ -92,4 +92,4 @@ $route['Proveedores/CatalogoProveedor']='Laboratorio_Controller/Load_CatalogoLab
 //Factura
 $route['Factura/ConsultarFacturas']='Factura_Controller/Load_ConsultarFacturas';
 $route['Factura/RegistrarFactura/(.+)']='Factura_Controller/Load_Factura/$1';
-$route['Factura/ConsultarEquiposFactura/(.+)']='Factura_Controller/Load_ConsultarEquiposFactura/$1';
+$route['Factura/ConsultarEquiposFactura/(.+)']='Factura_Controller/Load_ConsultarDetalleFactura/$1';

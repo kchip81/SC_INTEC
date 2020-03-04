@@ -235,7 +235,7 @@ class EquipoOrden_Model extends CI_Model{
 
     public function EliminarEquipoPorIdPaquete($idEquipo ,$IdOrden)
     {
-      $this->db->where($this->table.'.IdEquipo', $idEquipo);        
+      $this->db->where($this->table.'.IdEquipo', $idEquipo);
       $this->db->where('IdOrden',$IdOrden);
       $this->db->delete($this->table);
     }
@@ -243,7 +243,7 @@ class EquipoOrden_Model extends CI_Model{
     public function EliminarEquipodelPaquete($idEquipo ,$IdOrden)
     {
       $this->db->set('IdPaqueteEnvio',null);
-      $this->db->where($this->table.'.IdEquipo', $idEquipo);        
+      $this->db->where($this->table.'.IdEquipo', $idEquipo);
       $this->db->where('IdOrden',$IdOrden);
 
       return $this->db->update($this->table);
@@ -254,7 +254,7 @@ class EquipoOrden_Model extends CI_Model{
       $this->db->select('COUNT(IdEquipo) as numequipo');
       $this->db->from($this->table);
       $this->db->where('IdPaqueteEnvio', $Id);
-      
+
       $query = $this->db->get();
 
       return $query->row();
@@ -264,9 +264,9 @@ class EquipoOrden_Model extends CI_Model{
       $this->db->select('COUNT(IdEquipo) as numequipo');
       $this->db->from($this->table);
       $this->db->where('IdOrden', $Id);
-      
+
       $query = $this->db->get();
-  
+
       return $query->row();
   }
 

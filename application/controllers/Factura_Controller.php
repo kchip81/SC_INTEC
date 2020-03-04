@@ -51,7 +51,7 @@ public function ConsultarEquiposDetalleFactura_ajax()
   $IdFactura = $this->input->post('IdFactura');
 
   $this->load->model('EquipoOrden_Model');
-  $EquiposFactura = $this->EquipoOrden_Model->ConsultarEquiposOrdenParaFactura($IdFactura);
+  $EquiposFactura = $this->EquipoOrden_Model->ConsultarEquiposOrdenFactura($IdFactura);
 
   echo json_encode($EquiposFactura);
   // code...
@@ -131,7 +131,7 @@ public function Load_ConsultarDetalleFactura($IdFactura)
 
   $this->load->view('templates/MainContainer',$data);
   $this->load->view('templates/HeaderContainer',$data);
-  $this->load->view('Factura/CardConsultaFacturas',$data);
+  $this->load->view('Factura/CardConsultaEquiposFactura',$data);
   $this->load->view('templates/FooterContainer');
 
   // code...
