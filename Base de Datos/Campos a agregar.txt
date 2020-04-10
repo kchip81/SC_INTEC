@@ -1,0 +1,23 @@
+
+CREATE TABLE `catalogoPeriodos` (
+	`IdPeriodo` int(11) auto_increment primary key NOT NULL,
+    `TipoPeriodo` varchar(20) not null
+);
+
+INSERT INTO `catalogoPeriodos` (`TipoPeriodo`) VALUES
+('Mensual'),('Trimestral'),('Semestral'),('Anual');
+
+CREATE TABLE `equipo` (
+  `IdEquipo` int(11) NOT NULL,
+  `Descripcion` varchar(100) DEFAULT NULL,
+  `Marca` varchar(50) DEFAULT NULL,
+  `Modelo` varchar(50) DEFAULT NULL,
+  `NumService` varchar(20) DEFAULT NULL,
+  `ClaveId` varchar(50) DEFAULT NULL,
+  `AlcanceMedicion` varchar(100) DEFAULT NULL,
+  `DivisionMedicion` varchar(100) DEFAULT NULL,
+  `IdPeriodo` int,
+  `MesInicio` int,
+  `IdCliente` int(11) DEFAULT NULL,
+	FOREIGN KEY (IdPeriodo) REFERENCES catalogoPeriodos (IdPeriodo)
+)

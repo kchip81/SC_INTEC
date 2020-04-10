@@ -146,8 +146,10 @@ class Servicio_Controller extends CI_Controller {
         $Marca = $this->input->post('Marca');
         $AlcanceMedicion = $this->input->post('AlcanceMedicion');
         $DivisionMedicion = $this->input->post('DivisionMedicion');
+        $Periodo = $this->input->post('Periodo');
+        $MesInicio = $this->input->post('MesInicio');
 
-        $Clientes = $this->Equipo_Model->InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente);
+        $Clientes = $this->Equipo_Model->InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente,$MesInicio,$Periodo);
 
         $resultado = $this->Equipo_Model->ConsultarEquipoID($Clientes);
 
@@ -179,6 +181,20 @@ class Servicio_Controller extends CI_Controller {
 
             echo json_encode($Clientes);
         }
+    }
+
+    public function CargarDatosPeriodos()
+    {
+        $Equipo = $this->Equipo_Model->ConsultarDatosPeriodos();
+
+        $output ='<option value="">Seleccione un Periodo</option>';
+
+        foreach ($Equipo as $equipo)
+        {
+            $output .='<option value="'.$equipo['IdPeriodo'].'">'.$equipo['TipoPeriodo'].'</option>';
+        }
+
+        echo $output;
     }
 
     public function InsertarOrdenServicio_ajax()
@@ -545,8 +561,11 @@ class Servicio_Controller extends CI_Controller {
         $Marca = $this->input->post('Marca');
         $AlcanceMedicion = $this->input->post('AlcanceMedicion');
         $DivisionMedicion = $this->input->post('DivisionMedicion');
+        
+        $MesInicio = $this->input->post('MesInicio');
+        $Periodo = $this->input->post('Periodo');
 
-        $Equipo = $this->Equipo_Model->ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion);
+        $Equipo = $this->Equipo_Model->ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion,$Periodo,$MesInicio);
     }
 
     public function EliminarEquipoOrdenPorId()

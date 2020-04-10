@@ -53,10 +53,21 @@ class Equipo_Model extends CI_Model {
         return $query->result_array();
     }
 
-    public function InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente)
+    public function ConsultarDatosPeriodos()
+    {
+        $this->db->select('*');
+        $this->db->from('catalogoPeriodos');
+        
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente,$MesInicio,$Periodo)
     {
         $data = array('Descripcion' => $Descripcion,'Marca' => $Marca,'Modelo' => $Modelo,'NumService' => $NumService
-        ,'ClaveId' => $ClaveId,'AlcanceMedicion' => $AlcanceMedicion,'DivisionMedicion' => $DivisionMedicion,'IdCliente' => $IdCliente);
+        ,'ClaveId' => $ClaveId,'AlcanceMedicion' => $AlcanceMedicion,'DivisionMedicion' => $DivisionMedicion,'IdCliente' => $IdCliente
+        ,'MesInicio' => $MesInicio,'IdPeriodo' => $Periodo);
 
         $this->db->insert($this->table,$data);  
 
@@ -123,7 +134,7 @@ class Equipo_Model extends CI_Model {
         return $query->row();
     }
 
-    public function ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion)
+    public function ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion,$Periodo,$MesInicio)
     {
         $this->db->set('ClaveId',$ClaveId);
         $this->db->set('NumService',$NumService);
@@ -132,6 +143,8 @@ class Equipo_Model extends CI_Model {
         $this->db->set('Marca',$Marca);
         $this->db->set('DivisionMedicion',$DivisionMedicion);
         $this->db->set('AlcanceMedicion',$AlcanceMedicion);
+        $this->db->set('IdPeriodo',$Periodo);
+        $this->db->set('MesInicio',$MesInicio);
         $this->db->where($this->table.'.IdEquipo',$IdEquipo);
         return $this->db->update($this->table);
     }

@@ -226,17 +226,45 @@
                                             <input type="text" id="DivisionSubProducto" class="form-control" placeholder="División Minima" name="DivisionSubProducto"/>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="Periodos">Periodo:</label>
+                                            <select name="PeriodoSubProducto" id="PeriodoSubProducto" class="form-control" onchange="">
+                                                <option value="">Periodos...</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="MesInicio">Mes de Inicio</label>                                            
+                                            <select name="MesInicioSubProducto" id="MesInicioSubProducto" class="form-control" onchange="">
+                                                <option value="1">Enero</option>
+                                                <option value="2">Febrero</option>
+                                                <option value="3">Marzo</option>
+                                                <option value="4">Abril</option>
+                                                <option value="5">Mayo</option>
+                                                <option value="6">Junio</option>
+                                                <option value="7">Julio</option>
+                                                <option value="8">Agosto</option>
+                                                <option value="9">Septiembre</option>
+                                                <option value="10">Octubre</option>
+                                                <option value="11">Noviembre</option>
+                                                <option value="12">Diciembre</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">
                                     <br>
 
-                                    <div class="col-md-9">
+                                    <div class="col-md-3">
                                         <div class="form-group" align="right">
                                             <button id="ActualizarEquipo" type="button" class="btn btn-primary" style="display:none"><i class="icon-refresh"> </i>Actualizar</button>
                                             <button type="button" class="btn btn-primary" id="btnAgregarSubProducto"><i class="icon-android-add"> </i>Agregar</button>
                                         </div>
                                     </div>
-                            </div>
-
+                                </div>
+                                <br><br>
 
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
@@ -248,6 +276,8 @@
                                         <th>Clavé de Identificación</th>
                                         <th>Alcance de Medicion</th>
                                         <th>División Minima</th>
+                                        <th>Mes de Inicio</th>
+                                        <th>Periodo</th>
                                         <th>Eliminar</th>
                                         <th>Editar</th>
                                     </thead>
@@ -338,6 +368,38 @@
                                         <input type="text" id="DivisionModalProducto" class="form-control" placeholder="División Minima" name="DivisionModalProducto" required>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Periodo">Periodo:</label>
+                                        <select name="PeriodoModal" id="PeriodoModal" class="form-control" onchange="">
+                                            <option value="">Periodos...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="MesInicio">Mes de Inicio</label>
+                                        <select name="Mes de inicio" id="MesInicioModal" class="form-control" onchange="">
+                                            <option value="1">Enero</option>
+                                            <option value="2">Febrero</option>
+                                            <option value="3">Marzo</option>
+                                            <option value="4">Abril</option>
+                                            <option value="5">Mayo</option>
+                                            <option value="6">Junio</option>
+                                            <option value="7">Julio</option>
+                                            <option value="8">Agosto</option>
+                                            <option value="9">Septiembre</option>
+                                            <option value="10">Octubre</option>
+                                            <option value="11">Noviembre</option>
+                                            <option value="12">Diciembre</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
 
@@ -367,6 +429,7 @@
     {
         CargarClientes();
         FechaActual();
+        CargarDatosPeriodos();
     });
 
     function FechaActual()
@@ -375,11 +438,27 @@
         var mes = fecha.getMonth()+1;
         var dia = fecha.getDate();
         var ano = fecha.getFullYear();
+        $('#MesInicioModal').val(mes);
+        $('#MesInicioSubProducto').val(mes);
         if(dia<10)
             dia='0'+dia;
         if(mes<10)
             mes='0'+mes
         document.getElementById('FechaReciboIntec').value=ano+"-"+mes+"-"+dia;
+    }
+
+    function CargarDatosPeriodos()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/CargarDatosPeriodos',
+            success:function(resp)
+            {
+                $("#PeriodoModal").html(resp);
+                $("#PeriodoSubProducto").html(resp);
+            }
+        });
     }
 
     function CargarDatosClientes(id)
@@ -442,6 +521,8 @@
                         $("#MarcaSubProducto").val(resp[0].Marca);
                         $("#AlcanceSubProducto").val(resp[0].AlcanceMedicion);
                         $('#DivisionSubProducto').val(resp[0].DivisionMedicion);
+                        $('#MesInicioSubProducto').val(resp[0].MesInicio);
+                        $('#PeriodoSubProducto').val(resp[0].IdPeriodo);
                         $('#ActualizarEquipo').show();
                     }else
                     //{
@@ -476,7 +557,9 @@
             Descripcion: $('#DescripcionModalProducto').val(),
             Marca: $("#MarcaModalProducto").val(),
             AlcanceMedicion: $("#AlcanceModalProducto").val(),
-            DivisionMedicion: $('#DivisionModalProducto').val()
+            DivisionMedicion: $('#DivisionModalProducto').val(),
+            Periodo: $('#PeriodoModal').val(),
+            MesInicio: $('#MesInicioModal').val()
         };
 
         if( $('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
@@ -671,6 +754,8 @@
         var marca = $("#MarcaSubProducto").val();
         var alcance = $("#AlcanceSubProducto").val();
         var division = $('#DivisionSubProducto').val();
+        var Mes = $("#MesInicioSubProducto").val();
+        var Periodo = $('#PeriodoSubProducto').val();
 
         if(id != "")
         {
@@ -684,6 +769,8 @@
                 '<td class="clave">'+clave+'</td>'+
                 '<td class="alcance">'+alcance+'</td>'+
                 '<td class="division">'+division+'</td>'+
+                '<td class="mes">'+Mes+'</td>'+
+                '<td class="periodo">'+Periodo+'</td>'+
                 '<td><button type="button" class="btn btn-primary" id="btnEliminarSubProducto">Eliminar</button><!--<br><button type="button" onclick="editar('+id+')" class="btn btn-primary" id="btnEditaSubProducto">Editar</td>-->'+
                 '<td><button type="button" class="btn btn-primary" id="btnEditarSubProducto">Editar</button><td>'+
                 '</tr>'
@@ -729,7 +816,9 @@
             Descripcion: $('#DescripcionSubProducto').val(),
             Marca: $("#MarcaSubProducto").val(),
             AlcanceMedicion: $("#AlcanceSubProducto").val(),
-            DivisionMedicion: $('#DivisionSubProducto').val()
+            DivisionMedicion: $('#DivisionSubProducto').val(),
+            Periodo: $('#PeriodoSubProducto').val(),
+            MesInicio: $('#MesInicioSubProducto').val()
         };
 
         if( $('#ClaveSubProducto').val() != "" || $("#NumSerieSubProducto").val() != "" || $("#ModeloSubProducto").val() != "")
@@ -746,7 +835,7 @@
                     data:datos,
                     success:function(resp)
                     {
-
+                        alert("Equipo Actualizado");
                     }
                 });
                 LimpiarModal();
