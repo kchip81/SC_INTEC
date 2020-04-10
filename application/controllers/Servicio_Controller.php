@@ -239,7 +239,7 @@ class Servicio_Controller extends CI_Controller {
     public function ConsultarDatosOrdenesAbiertas()
     {
       $cerradas = $this->input->post('Cerradas');
-      
+
       $Datos = $this->OrdenServicio_Model->ConsultarOrdenServicioAbiertas($cerradas);
       echo json_encode($Datos);
 
@@ -455,7 +455,7 @@ class Servicio_Controller extends CI_Controller {
 
     public function SubirCertificado_ajax()
     {
-      log_message("error","SubirCertificado_ajax");
+      log_message("debug","SubirCertificado_ajax");
 
       $IdEquipoOrden = $this->input->post('CERT_IdEquipoOrden');
 
@@ -465,12 +465,20 @@ class Servicio_Controller extends CI_Controller {
       log_message('debug',"SUBIR_CERTIFICADO=>".$IdEquipoOrden);
 
       $ArchivoCertificado = $this->do_upload($IdCliente,$IdEquipo);
-      log_message('debug'," Nombre Archivo=>".$ArchivoCertificado);
+
+      if ($ArchivoCertificado != null)
+      {
+        log_message('debug'," Nombre Archivo=>".$ArchivoCertificado);
 
 
-      $this->EquipoOrden_Model->GuardarCertificadoEquipo($IdEquipoOrden,$ArchivoCertificado);
+        $this->EquipoOrden_Model->GuardarCertificadoEquipo($IdEquipoOrden,$ArchivoCertificado);
 
-      echo '1';
+        echo '1';
+      }
+      else {
+        echo '0';
+      }
+
       // code...
     }
 
@@ -501,6 +509,7 @@ class Servicio_Controller extends CI_Controller {
         $config['max_height']           = 768;
 
         $this->load->library('upload', $config);
+
 
         if (!$this->upload->do_upload('Certificado_file'))
         {
@@ -590,7 +599,7 @@ class Servicio_Controller extends CI_Controller {
 
     }
 
-    
+
     public function EliminarEquipodelPaquete()
     {
         $IdOrden = $this->input->post('IdOrden');

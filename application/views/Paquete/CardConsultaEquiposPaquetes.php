@@ -225,7 +225,7 @@
 </div>
 
 <!--MODAL:Subir Certificado-->
-<form id="form-modal-SubirCertificado" method="post">
+<form id="form-modal-SubirCertificado" method="post" enctype="multipart/form-data">
   <div class="modal fade" tabindex="-1" role="dialog" id="modalSubirCertificado" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -285,6 +285,8 @@
 
 
 
+
+
        $.ajax({
          url: '<?=site_url()?>/Servicio_Controller/SubirCertificado_ajax',
          type: 'POST',
@@ -292,7 +294,7 @@
          processData: false,
         contentType: false,
        })
-       .done(function() {
+       .success(function() {
          alert('Archivo Guardado');
        })
        .fail(function() {
@@ -729,10 +731,11 @@
 
     function SubirCertificado()
     {
+
       var certificado_file = $("#Certificado_file");
 
       var archivos = certificado_file[0].files;
-
+        alert ("1");
       if (archivos.length >0)
       {
          var formData = new FormData($("#form-modal-SubirCertificado")[0]);
@@ -746,7 +749,7 @@
           type: 'POST',
           data: formData
         })
-        .done(function() {
+        .success(function() {
           alert('Archivo Guardado');
         })
         .fail(function() {
