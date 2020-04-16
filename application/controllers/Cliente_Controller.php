@@ -184,9 +184,11 @@ class Cliente_Controller extends CI_Controller {
         $Marca = $this->input->post('Marca');
         $AlcanceMedicion = $this->input->post('AlcanceMedicion');
         $DivisionMedicion = $this->input->post('DivisionMedicion');
+        $MesInicio = $this->input->post('MesInicio');
+        $Periodo = $this->input->post('Periodo');
 
-        $Equipo = $this->Equipo_Model->ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion);
-    }
+        $Equipo = $this->Equipo_Model->ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion,$Periodo,$MesInicio);
+ }
 
 
     /* ------------------------------------------------------------------------- */
@@ -231,6 +233,21 @@ class Cliente_Controller extends CI_Controller {
 
         echo json_encode($Equipos);
     }
+
+    public function CargarDatosPeriodos()
+    {
+        $Equipo = $this->Equipo_Model->ConsultarDatosPeriodos();
+
+        $output ='<option value="">Seleccione un Periodo</option>';
+
+        foreach ($Equipo as $equipo)
+        {
+            $output .='<option value="'.$equipo['IdPeriodo'].'">'.$equipo['TipoPeriodo'].'</option>';
+        }
+
+        echo $output;
+    }
+
 
     public function CrearNuevoPaquete()
     {

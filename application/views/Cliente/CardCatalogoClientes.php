@@ -101,6 +101,37 @@
                                         <input type="text" id="DivisionModalProducto" class="form-control" placeholder="División Minima" name="DivisionModalProducto" required>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Periodo">Periodo:</label>
+                                        <select name="PeriodoModal" id="PeriodoModal" class="form-control" onchange="">
+                                            <option value="">Periodos...</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="MesInicio">Mes de Inicio</label>
+                                        <select name="Mes de inicio" id="MesInicioModal" class="form-control" onchange="">
+                                            <option value="1">Enero</option>
+                                            <option value="2">Febrero</option>
+                                            <option value="3">Marzo</option>
+                                            <option value="4">Abril</option>
+                                            <option value="5">Mayo</option>
+                                            <option value="6">Junio</option>
+                                            <option value="7">Julio</option>
+                                            <option value="8">Agosto</option>
+                                            <option value="9">Septiembre</option>
+                                            <option value="10">Octubre</option>
+                                            <option value="11">Noviembre</option>
+                                            <option value="12">Diciembre</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
 
@@ -131,6 +162,10 @@
 
     $(document).ready(function()
     {
+        var fecha = new Date();
+        var mes = fecha.getMonth()+1;
+        $('#MesInicioModal').val(mes);
+        CargarDatosPeriodos();
         CargarClientesEquipos(<?php echo $this->uri->segment(3);?>);
     });
 
@@ -176,6 +211,19 @@
         });
     }
 
+    function CargarDatosPeriodos()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Cliente_Controller/CargarDatosPeriodos',
+            success:function(resp)
+            {
+                $("#PeriodoModal").html(resp);
+            }
+        });
+    }
+
 
     $("#ModificarModalEquipo").click(function()
     {
@@ -187,7 +235,9 @@
             Descripcion: $('#DescripcionModalProducto').val(),
             Marca: $("#MarcaModalProducto").val(),
             AlcanceMedicion: $("#AlcanceModalProducto").val(),
-            DivisionMedicion: $('#DivisionModalProducto').val()
+            DivisionMedicion: $('#DivisionModalProducto').val(),
+            MesInicio: $('#MesInicioModal').val(),
+            Periodo: $('#PeriodoModal').val()
         };
 
         if($('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
@@ -238,6 +288,8 @@
                 $('#MarcaModalProducto').val(Equipo['Marca']);
                 $('#AlcanceModalProducto').val(Equipo['AlcanceMedicion']);
                 $('#DivisionModalProducto').val(Equipo['DivisionMedicion']);
+                $('#MesInicioModal').val(Equipo['MesInicio']);
+                $('#PeriodoModal').val(Equipo['IdPeriodo']);
 
                 $('#ModalEquipo').modal('show');
             }
