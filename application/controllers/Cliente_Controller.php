@@ -4,10 +4,10 @@ class Cliente_Controller extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        
-        $this->load->helper('form');        
+
+        $this->load->helper('form');
         $this->load->helper('url_helper');
-        $this->load->model('Usuario_Model');   
+        $this->load->model('Usuario_Model');
         $this->load->model('Clientes_Model');
         $this->load->model('Equipo_Model');
         $this->load->model('EquipoOrden_Model');
@@ -22,7 +22,7 @@ class Cliente_Controller extends CI_Controller {
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Cliente/CardPlanAnual');
-        $this->load->view('templates/FormFooter',$data); 
+        $this->load->view('templates/FormFooter',$data);
         $this->load->view('templates/FooterContainer');
     }
 
@@ -32,27 +32,43 @@ class Cliente_Controller extends CI_Controller {
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Cliente/CardCatalogo');
-        $this->load->view('templates/FormFooter',$data); 
+        $this->load->view('templates/FormFooter',$data);
         $this->load->view('templates/FooterContainer');
     }
 
     public function Load_CatalogoClienteEquipos($IdCliente)
     {
+
+        $this->load->model('Clientes_Model');
+        $cliente = $this->Clientes_Model->ConsultarDataClientes($IdCliente);
+
+        $data['cliente']= $cliente;
+
         $data['title'] = 'Catalogo de Equipos';
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Cliente/CardCatalogoClientes');
-        $this->load->view('templates/FormFooter',$data); 
-        $this->load->view('templates/FooterContainer');   
-        
+        $this->load->view('templates/FormFooter',$data);
+        $this->load->view('templates/FooterContainer');
+
     }
 
-    public function Load_ConsultarOrdenServicio($cliente)
+    public function Load_ConsultarOrdenServicio($IdCliente, $IdEquipo)
     {
-        $data['title'] = 'Consultas de Ordenes de Servicio del Cliente '.$cliente;
+
+      $this->load->model('Clientes_Model');
+        $cliente = $this->Clientes_Model->ConsultarDataClientes($IdCliente);
+        $this->load->model('Equipo_Model');
+
+        $Equipo = $this->Equipo_Model->ConsultarIdEquipos($IdEquipo);
+
+        $data['Cliente']=$cliente;
+        $data['Equipo'] = $Equipo;
+
+        $data['title'] = 'Consultas de Ordenes de Servicio del Cliente '.$cliente[0]['NombreCompania'];
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
-        $this->load->view('Cliente/CardConsultaOrdenesAbiertas');
+        $this->load->view('Cliente/CardConsultaOrdenesAbiertas',$data);
         $this->load->view('templates/FooterContainer');
     }
 
@@ -62,8 +78,8 @@ class Cliente_Controller extends CI_Controller {
 
         if($id != "")
         {
-            $Clientes = $this->Clientes_Model->ConsultarDataClientes($id);     
-    
+            $Clientes = $this->Clientes_Model->ConsultarDataClientes($id);
+
             echo json_encode($Clientes);
         }
     }
@@ -90,12 +106,12 @@ class Cliente_Controller extends CI_Controller {
         $Equipo = $this->Equipo_Model->ConsultarEquipoPorCliente($idCliente);
         echo json_encode($Equipo);
         /*
-        if($Equipo[0]['IdOrden'] != null)        
+        if($Equipo[0]['IdOrden'] != null)
             echo json_encode($Equipo);
         else
         {
             $array = array();
-            echo json_encode($array);   
+            echo json_encode($array);
         }*/
     }
 
@@ -123,7 +139,7 @@ class Cliente_Controller extends CI_Controller {
         $Cliente = $this->Clientes_Model->ConsultarDataClientes($IdCliente);
         echo json_encode($Cliente);
     }
-    
+
 
     public function InsertarCliente()
     {
@@ -136,7 +152,7 @@ class Cliente_Controller extends CI_Controller {
         $Cliente = $this->Clientes_Model->InsertarCliente($email,$telefono,$direccion,$nombre,$compania);
         echo json_encode($Cliente);
     }
-    
+
     public function ActualizarCliente()
     {
         $compania = $this->input->post('compania');
@@ -156,11 +172,11 @@ class Cliente_Controller extends CI_Controller {
         $Cliente = $this->Clientes_Model->ConsultarClienteEquipos();
         echo json_encode($Cliente);
     }
-    
+
     public function ConsultarEquipos()
     {
-        $id = $this->input->get('idCliente'); 
-    
+        $id = $this->input->get('idCliente');
+
         $Cliente = $this->Equipo_Model->ConsultarEquipoClientePorId($id);
         echo json_encode($Cliente);
     }
@@ -193,7 +209,7 @@ class Cliente_Controller extends CI_Controller {
 
     /* ------------------------------------------------------------------------- */
 
-    
+
     public function ConsultarDatosOrdenesAbiertasEquipo()
     {
       $cerradas = $this->input->post('Cerradas');

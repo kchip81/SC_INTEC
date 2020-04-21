@@ -3,7 +3,7 @@
             <div class="card">
                 <!--CARD HEADER-->
                 <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">Consultar Ordenes de Servicios del Equipo <?php echo $this->uri->segment(4);?></h4>
+                    <h4 class="card-title" id="basic-layout-form">Consultar Ordenes por Equipo</h4>
                     <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                     <div class="heading-elements">
                             <ul class="list-inline mb-0">
@@ -21,8 +21,28 @@
                     <div class="card-block">
                         <!--FORM BODY-->
                         <div class="form-body">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                  <label for="Cliente">Cliente</label>
+                                  <input type="text" class="form-control" name="NombreCliente" value="<?=$Cliente[0]['NombreCompania']?>" readonly>
+                                  <input type="hidden" class="form-control" name="IdCliente" id="IdCliente" value ="<?=$Cliente[0]['IdCliente']?>">
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                  <label for="Equipo">Equipo</label>
+                                  <input type="text" class="form-control" name="NombreEquipo" value="<?=$Equipo[0]['Descripcion']?> - <?=$Equipo[0]['Marca']?>" readonly>
+                                  <input type="hidden" class="form-control" name="IdEquipo" id="IdEquipo" value ="<?=$Equipo[0]['IdEquipo']?>">
+                              </div>
+                            </div>
+
+                          </div>
                             <div class="row">
-                              
+
                                 <div class="col-md-1">
                                   <div class="form-group">
                                       <button type="button" class="btn btn-secondary" id="btnOrdenesAbiertas" onclick="CargarOrdenes(0)">

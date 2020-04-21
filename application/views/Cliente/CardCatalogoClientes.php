@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title" id="basic-layout-form">Catalogo de Equipos de <?php echo $this->uri->segment(4);?></h4>
+                <h4 class="card-title" id="basic-layout-form">Catalogo de Equipos de <?= $cliente[0]['NombreCompania'];?></h4>
                 <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -14,7 +14,7 @@
                 </div>
 
             <br>
-            
+
             <table class="table table-responsive table-bordered table-striped" id="tblClienteEquipos"  style="width: 100%">
                 <thead>
                     <th>No. Equipo</th>
@@ -29,7 +29,7 @@
 
                 </tbody>
             </table>
-          
+
 
 
             <div class="modal fade" tabindex="-1" role="dialog" id="ModalEquipo" aria-hidden="true">
@@ -169,11 +169,11 @@
         CargarClientesEquipos(<?php echo $this->uri->segment(3);?>);
     });
 
-    function CargarClientesEquipos(id)  
+    function CargarClientesEquipos(id)
     {
 
-        var t = $('#tblClienteEquipos').DataTable({     
-        
+        var t = $('#tblClienteEquipos').DataTable({
+
         "ajax":{
             url:"<?php echo site_url();?>/Cliente_Controller/ConsultarEquipos?idCliente="+id,
             dataSrc: ""
@@ -192,7 +192,7 @@
                 {
                     "targets":6, "data":"IdCliente", "render": function(data,type,row,meta)
                     {
-                        var url = '<?php echo site_url();?>/Cliente/ConsultarOrden/<?php echo $this->uri->segment(4);?>/'+row['IdEquipo'];
+                        var url = '<?php echo site_url();?>/Cliente/ConsultarOrden/'+data+'/'+row['IdEquipo'];
                         return '<a classs = "btn" onclick="OpenModal_ActualizarEquipo('+row['IdEquipo']+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Editar Equipo"> Editar</i></a>'
                         +'<br><a href="'+url+'" classs = "btn" ><i class="icon-eye" data-toggle="tooltip" data-placement="top" id="verOrdenes" title="Ver Equipos"> Ver Ordenes</i></a>';
 ;
