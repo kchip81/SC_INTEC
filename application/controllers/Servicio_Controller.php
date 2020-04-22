@@ -520,7 +520,7 @@ class Servicio_Controller extends CI_Controller {
         $this->load->helper(array('form', 'url'));
         $config['upload_path']          = $path;
         $config['allowed_types']        = 'pdf';
-        $config['max_size']             = 1024;
+        $config['max_size']             = 5120;
         $config['max_width']            = 1024;
         $config['max_height']           = 768;
 
@@ -561,7 +561,7 @@ class Servicio_Controller extends CI_Controller {
         $Marca = $this->input->post('Marca');
         $AlcanceMedicion = $this->input->post('AlcanceMedicion');
         $DivisionMedicion = $this->input->post('DivisionMedicion');
-        
+
         $MesInicio = $this->input->post('MesInicio');
         $Periodo = $this->input->post('Periodo');
 
