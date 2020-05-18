@@ -59,7 +59,6 @@ class Paquetes_Model extends CI_Model {
         $this->db->update($this->table);
 
         $this->db->set('IdEstatusPaquete',$IdEstatusPaquete);
-
         $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
         $this->db->update('equipo_orden');
 
@@ -110,7 +109,7 @@ class Paquetes_Model extends CI_Model {
     }
 
     public function EliminarPaquete($IdPaqueteEnvio)
-    {      
+    {
         $this->db->where('IdPaqueteEnvio',$IdPaqueteEnvio);
         $this->db->delete($this->table);
     }

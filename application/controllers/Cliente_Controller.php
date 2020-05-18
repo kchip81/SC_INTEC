@@ -102,8 +102,11 @@ class Cliente_Controller extends CI_Controller {
     public function ConsultarEquipoPorCliente()
     {
         $idCliente = $this->input->post('idCliente');
+        $Mes = $this->input->post('MesConsulta');
+        $Opcion = $this->input->post('Opcion');
 
-        $Equipo = $this->Equipo_Model->ConsultarEquipoPorCliente($idCliente);
+
+        $Equipo = $this->Equipo_Model->ConsultarPlanAnualPorCliente($idCliente,$Mes,$Opcion);
         echo json_encode($Equipo);
         /*
         if($Equipo[0]['IdOrden'] != null)

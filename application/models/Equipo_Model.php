@@ -12,15 +12,15 @@
  * @author SigueMED
  */
 class Equipo_Model extends CI_Model {
-    
+
     private $table;
-    
+
     public function __construct() {
         parent::__construct();
         $this->table = "equipo";
         $this->load->database();
     }
-    
+
     public function ConsultarEquipo()
     {
         $this->db->select($this->table.'.*');
@@ -36,7 +36,7 @@ class Equipo_Model extends CI_Model {
         $this->db->from($this->table);
         $this->db->where('IdCliente',$IdCliente);
         $this->db->where($this->table.$peticion);
-        
+
         $query = $this->db->get();
 
         return $query->result_array();
@@ -47,7 +47,7 @@ class Equipo_Model extends CI_Model {
         $this->db->select($this->table.'.*');
         $this->db->from($this->table);
         $this->db->where('IdEquipo',$idEquipo);
-        
+
         $query = $this->db->get();
 
         return $query->result_array();
@@ -56,8 +56,8 @@ class Equipo_Model extends CI_Model {
     public function ConsultarDatosPeriodos()
     {
         $this->db->select('*');
-        $this->db->from('catalogoPeriodos');
-        
+        $this->db->from('catalogoperiodos');
+
         $query = $this->db->get();
 
         return $query->result_array();
@@ -69,11 +69,11 @@ class Equipo_Model extends CI_Model {
         ,'ClaveId' => $ClaveId,'AlcanceMedicion' => $AlcanceMedicion,'DivisionMedicion' => $DivisionMedicion,'IdCliente' => $IdCliente
         ,'MesInicio' => $MesInicio,'IdPeriodo' => $Periodo);
 
-        $this->db->insert($this->table,$data);  
+        $this->db->insert($this->table,$data);
 
         $insertId = $this->db->insert_id();
-        return $insertId;  
-    }   
+        return $insertId;
+    }
 
     public function ConsultarEquipoOrdenPorId($id)
     {
@@ -110,7 +110,7 @@ class Equipo_Model extends CI_Model {
 
         return $query->result_array();
     }
-    
+
     public function ConsultarCertificadoEquipo($id)
     {
         $this->db->select($this->table.'.* ,Certificado,equipo_orden.IdOrden, equipo.IdCliente');
@@ -122,12 +122,12 @@ class Equipo_Model extends CI_Model {
         $query = $this->db->get();
 
         return $query->result_array();
-    }    
+    }
 
     public function ConsultarEquipoPorId($ID)
     {
         $this->db->select($this->table.'.*');
-        $this->db->from($this->table);        
+        $this->db->from($this->table);
         $this->db->where($this->table.'.IdEquipo',$ID);
         $query = $this->db->get();
 
@@ -136,6 +136,8 @@ class Equipo_Model extends CI_Model {
 
     public function ActualizarEquipoPorId($IdEquipo,$ClaveId,$NumService,$Modelo,$Descripcion,$Marca,$AlcanceMedicion,$DivisionMedicion,$Periodo,$MesInicio)
     {
+        $equipo = $this->ConsultarEquipoPorId($IdEquipo);
+
         $this->db->set('ClaveId',$ClaveId);
         $this->db->set('NumService',$NumService);
         $this->db->set('Modelo',$Modelo);
@@ -145,6 +147,11 @@ class Equipo_Model extends CI_Model {
         $this->db->set('AlcanceMedicion',$AlcanceMedicion);
         $this->db->set('IdPeriodo',$Periodo);
         $this->db->set('MesInicio',$MesInicio);
+
+        if ($equipo->$MesUltimoServicio == 0)
+        {
+          $this->db->set('MesUltimoServicio',$MesInicio);
+        }
         $this->db->where($this->table.'.IdEquipo',$IdEquipo);
         return $this->db->update($this->table);
     }
@@ -157,6 +164,67 @@ class Equipo_Model extends CI_Model {
         $query = $this->db->get();
 
         return $query->result_array();
+    }
+
+    public function ActualizarFechaUltimoServicio($IdEquipo, $MesUltimoServicio)
+    {
+      $this->db->set('MesUltimoServicio',$MesUltimoServicio);
+      $this->db->where('IdEquipo',$IdEquipo);
+      return $this->db->update($this->table);
+    }
+
+    public function ConsultarPlanAnualPorCliente($IdCliente,$Mes,$OpcionMes)
+    {
+      $this->db->select("MesInicio, TipoPeriodo, MesUltimoServicio, e.*");
+      $this->db->from($this->table." e");
+      $this->db->join("catalogoperiodos cp","cp.IdPeriodo = e.IdPeriodo");
+
+      if($OpcionMes==1)
+      {
+        $this->db->where("cp.IdPeriodo = 1 or
+                        (
+                          (ValorPeriodo = 3) AND
+                          (((MesUltimoServicio+cp.ValorPeriodo) = ".$Mes.")
+                          OR ((MesUltimoServicio+(cp.ValorPeriodo*2)) = ".$Mes.")
+                            OR ((MesUltimoServicio+(cp.ValorPeriodo*3)) = ".$Mes.")
+                            OR ((MesUltimoServicio+(cp.ValorPeriodo*4)) = ".$Mes."))
+                        )
+                        OR
+                        (
+                          (ValorPeriodo = 6) AND
+                            (((MesUltimoServicio+cp.ValorPeriodo) = ".$Mes.")
+                          OR (MesUltimoServicio = ".$Mes."))
+                        )
+                        OR
+                        (
+                          (ValorPeriodo = 12) AND (MesUltimoServicio = ".$Mes.")
+                        )");
+      }
+      else {
+        $this->db->where("cp.IdPeriodo = 1 or
+                        (
+                        	(ValorPeriodo = 3) AND
+                        	(((MesInicio+cp.ValorPeriodo) = ".$Mes.")
+                        	OR ((MesInicio+(cp.ValorPeriodo*2)) = ".$Mes.")
+                            OR ((MesInicio+(cp.ValorPeriodo*3)) = ".$Mes.")
+                            OR ((MesInicio+(cp.ValorPeriodo*4)) = ".$Mes."))
+                        )
+                        OR
+                        (
+                        	(ValorPeriodo = 6) AND
+                            (((MesInicio+cp.ValorPeriodo) = ".$Mes.")
+                        	OR (MesInicio = ".$Mes."))
+                        )
+                        OR
+                        (
+                        	(ValorPeriodo = 12) AND (MesInicio = ".$Mes.")
+                        )");
+      }
+
+      $result = $this->db->get();
+
+      return $result->result_array();
+
     }
     //put your code here
 }

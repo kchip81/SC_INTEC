@@ -185,6 +185,7 @@ class EquipoOrden_Model extends CI_Model{
             {
                 case 4:
                     $this->db->set('FechaFinCalLab',$Fecha);
+                    $SetFechaServicio = true;
 
                     break;
                 case 5:
@@ -213,6 +214,8 @@ class EquipoOrden_Model extends CI_Model{
         }
 
         return $this->db->update($this->table);
+
+
     }
 
     public function ConsultarEquiposPaquetesOrden($IdOrden)
@@ -368,7 +371,7 @@ class EquipoOrden_Model extends CI_Model{
       }
       else {
         $this->db->set('IdEstatusOrden',2);
-        $this->db->where('IdOrden',$IdPaqueteEnvio->IdORden);
+        $this->db->where('IdOrden',$IdPaqueteEnvio->IdOrden);
         $this->db->update('orden_servicio');
       }
 
@@ -402,7 +405,17 @@ class EquipoOrden_Model extends CI_Model{
         {
           $IdEstatusEquipo = $IdEstatusEquipo_Anterior + 1;
           $this->RegistrarEstatusEquipo($equipoPaquete['IdEquipoOrden'],$IdEstatusEquipo,$FechaEstatus);
+
+          if ($IdEstatusEquipo = 4)
+          {
+            $this->load->model('Equipo_Model');
+            $stamp = strtotime($FechaEstatus);
+            $month = date('m',$stamp);
+            $this->Equipo_Model->ActualizarFechaUltimoServicio($equipoPaquete['IdEquipo'],$month);
+          }
         }
+
+
 
 
       }

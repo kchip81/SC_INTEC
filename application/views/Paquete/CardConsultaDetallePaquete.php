@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="col-md-3">
-                          <button type="button" class="btn btn-green"  name="button" onclick="AvanzarEstatusPaquete()">Avanzar Estatus <i class="fas fa-sign-in-alt"></i></button>
+                          <button type="button" class="btn btn-green"  name="btnAvanzarEstatus" id="btnAvanzarEstatus" onclick="AvanzarEstatusPaquete()">Avanzar Estatus <i class="fas fa-sign-in-alt"></i></button>
 
                         </div>
 
@@ -103,6 +103,16 @@
   <script type="text/javascript">
   $(document).ready(function(){
     ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
+
+    var IdEstatusPaquete = <?=$Paquete->IdEstatusPaquete?>;
+
+    if (IdEstatusPaquete < 3)
+    {
+
+      var x = document.getElementById("btnAvanzarEstatus");
+      x.style.display = "none";
+
+    }
   });
 
   function EliminarPaquete(){
