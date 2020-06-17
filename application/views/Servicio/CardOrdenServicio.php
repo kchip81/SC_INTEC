@@ -525,14 +525,23 @@
                         $('#PeriodoSubProducto').val(resp[0].IdPeriodo);
                         $('#ActualizarEquipo').show();
                     }else
-                    //{
+                    {
                         //$('#ModalEquipo').modal('show');
-                        alert("Equipo no encontrado");
-                    //}
+                        swal({
+                            title: "Equipo no encontrado",
+                            icon: "error",
+                        });
+                        //alert("Equipo no encontrado");
+                    }
                 }
             });
-        }else
-            alert("Seleccione un cliente");
+        }else{
+            swal({
+                title: "Seleccione un cliente",
+                icon: "info",
+            });
+        }
+            //alert("Seleccione un cliente");
     });
 
     $('#btnAgregarEquipo').click(function(){
@@ -587,10 +596,21 @@
                     }
                 });
                 LimpiarModal();
-            }  else
-                alert("Complete todo los campos");
-        }else
-            alert("Complete todo los campos");
+            }  else{
+                
+                swal({
+                    title: "Complete todo los campos",
+                    icon: "info",
+                });
+                //alert("Complete todo los campos");
+            }
+        }else{
+            swal({
+                title: "Complete todo los campos",
+                icon: "info",
+            });
+            //alert("Complete todo los campos");
+        }
     });
 
     $("#CancelarModalEquipo").click(function()
@@ -667,12 +687,21 @@
 
           }
           else {
-            alert("No ha seleccionado un equipo");
+            swal({
+                title: "No ha seleccionado un equipo",
+                icon: "info",
+            });
+            //alert("No ha seleccionado un equipo");
           }
 
 
-        }else
-            alert("Selecione un cliente");
+        }else{
+            swal({
+                title: "Selecione un cliente",
+                icon: "info",
+            });
+            //alert("Selecione un cliente");
+        }
     }
 
     function valorFila(idOrden)
@@ -713,7 +742,11 @@
 
     function PDF(idOrden)
     {
-        alert("La orden de servicio ha sido creada");
+        swal({
+            title: "La orden de servicio ha sido creada",
+            icon: "success",
+        });
+        //alert("La orden de servicio ha sido creada");
         window.open("<?php echo site_url();?>/Servicio/NuevaOrdenPDF/"+idOrden);
     }
 
@@ -775,8 +808,13 @@
                 '<td><button type="button" class="btn btn-primary" id="btnEditarSubProducto">Editar</button><td>'+
                 '</tr>'
             );
-        }else
-            alert("No se encontro el equipo");
+        }else{
+            swal({
+                title: "No se encontro el equipo",
+                icon: "error",
+            });
+            //alert("No se encontro el equipo");
+        }
 
         Limpiar();
 
@@ -835,14 +873,28 @@
                     data:datos,
                     success:function(resp)
                     {
-                        alert("Equipo Actualizado");
+                        swal({
+                            title: "Equipo Actualizado",
+                            icon: "success",
+                        });
+                        //alert("Equipo Actualizado");
                     }
                 });
                 LimpiarModal();
-            }  else
-                alert("Complete todo los campos");
-        }else
-            alert("Complete todo los campos");
+            }  else{
+                swal({
+                    title: "Complete todo los campos",
+                    icon: "info",
+                });
+                //alert("Complete todo los campos");
+            }
+        }else{
+            swal({
+                title: "Complete todo los campos",
+                icon: "info",
+            });
+            //alert("Complete todo los campos");
+        }
     }
 
     function Limpiar()

@@ -142,6 +142,14 @@ INSERT INTO `cliente` (`IdCliente`, `NombreCompania`, `NombreContacto`, `Domicil
 -- Estructura de tabla para la tabla `equipo`
 --
 
+CREATE TABLE `catalogoperiodos` (
+	`IdPeriodo` int(11) auto_increment primary key NOT NULL,
+    `TipoPeriodo` varchar(20) not null
+);
+
+INSERT INTO `catalogoperiodos` (`TipoPeriodo`) VALUES
+('Mensual'),('Trimestral'),('Semestral'),('Anual');
+
 CREATE TABLE `equipo` (
   `IdEquipo` int(11) NOT NULL,
   `Descripcion` varchar(100) DEFAULT NULL,
@@ -151,7 +159,11 @@ CREATE TABLE `equipo` (
   `ClaveId` varchar(50) DEFAULT NULL,
   `AlcanceMedicion` varchar(100) DEFAULT NULL,
   `DivisionMedicion` varchar(100) DEFAULT NULL,
-  `IdCliente` int(11) DEFAULT NULL
+  `IdPeriodo` int,
+  `MesInicio` int,
+  `MesUltimoServicio` int,
+  `IdCliente` int(11) DEFAULT NULL,
+	FOREIGN KEY (IdPeriodo) REFERENCES catalogoperiodos (IdPeriodo)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

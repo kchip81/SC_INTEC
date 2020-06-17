@@ -297,13 +297,23 @@
                 complete:function(resp)
                 {
 
-                        alert('Orden Eliminada');
-                        CargarDatos();
+                    swal({
+                        title: "Orden Eliminada",
+                        icon: "success",
+                    });
+                        //alert('Orden Eliminada');
+                    CargarDatos();
 
                 }
             });
         }else
-        alert("La orden no se puede eliminar");
+        {
+            swal({
+                title: "La orden no se puede eliminar",
+                icon: "error",
+            });
+        }
+        //alert("La orden no se puede eliminar");
     }
 
     function CargarEquiposOrden()

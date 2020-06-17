@@ -295,10 +295,18 @@
         contentType: false,
        })
        .success(function() {
-         alert('Archivo Guardado');
+          swal({
+            title: "Archivo Guardado",
+            icon: "success",
+          });
+         //alert('Archivo Guardado');
        })
        .fail(function() {
-         alert("error");
+          swal({
+            title: "Error en guardar el archivo",
+            icon: "error",
+          });
+         //alert("error");
          console.log("error");
        });
 
@@ -323,11 +331,11 @@
             }
         } );
     });
-
+    var id =0
 
     function ConsultarEquiposPaquete(IdPaqueteEnvio)
     {
-      url = "/Paquetes_Controller/ConsultarEquiposPaquetes";
+      var url = "/Paquetes_Controller/ConsultarEquiposPaquetes";
       id = IdPaqueteEnvio;
 
       CargarTabla(url,id);
@@ -540,7 +548,7 @@
     {
         var table =$("#tblEquiposOrden").DataTable();
         var data = table.row( $(this).parents('tr') ).data();
-        alert(data);
+        //alert(data);
     }
 
     $("#ModificarModalEquipo").click(function()
@@ -670,6 +678,7 @@
         }
       })
       .done(function() {
+        //ConsultarEquiposPaquete(id);
         location.reload();
       })
       .fail(function() {
@@ -711,6 +720,7 @@
         }
       })
       .done(function() {
+        //ConsultarEquiposPaquete(id);
         location.reload();
       })
       .fail(function() {
@@ -735,7 +745,7 @@
       var certificado_file = $("#Certificado_file");
 
       var archivos = certificado_file[0].files;
-        alert ("1");
+        //alert ("1");
       if (archivos.length >0)
       {
          var formData = new FormData($("#form-modal-SubirCertificado")[0]);
@@ -750,9 +760,17 @@
           data: formData
         })
         .success(function() {
-          alert('Archivo Guardado');
+          swal({
+            title: "Archivo Guardado",
+            icon: "success",
+          });
+          //alert('Archivo Guardado');
         })
         .fail(function() {
+          swal({
+            title: "Error al guardar el archivo",
+            icon: "error",
+          });
           console.log("error");
         });
 

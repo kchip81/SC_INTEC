@@ -116,7 +116,7 @@
   });
 
   function EliminarPaquete(){
-    alert(<?=$Paquete->IdPaqueteEnvio?>);
+    //alert(<?=$Paquete->IdPaqueteEnvio?>);
 
     $.ajax
     ({
@@ -142,12 +142,21 @@
       data: {IdPaqueteEnvio: <?=$Paquete->IdPaqueteEnvio?>}
     })
     .done(function() {
-      alert('El estatus de los equipos ha sido actualizado');
+      swal({
+          title: "El estatus de los equipos ha sido actualizado",
+          icon: "success",
+      });
+      //alert('El estatus de los equipos ha sido actualizado');
     })
     .fail(function() {
-      console.log("error AvanzarEstatusPaquete()");
+      swal({
+          title: "error AvanzarEstatusPaquete",
+          icon: "error",
+      });
+      //alert("error AvanzarEstatusPaquete()");
     });
 
+    ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
 
   }
   </script>
