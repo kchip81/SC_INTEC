@@ -84,6 +84,7 @@ public function CrearFactura()
     {
       $this->EquipoOrden_Model->AsignarFacturaEquipo($Equipos[$i],$IdFactura);
     }
+//    echo "<script>swal({title: 'La factura fue guardada exitosamente',icon: 'success'}); window.location.href='".site_url()."/Servicio/ConsultarOrden';</script>";
 
     echo "<script>alert('La factura fue guardada exitosamente'); window.location.href='".site_url()."/Servicio/ConsultarOrden';</script>";
 

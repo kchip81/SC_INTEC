@@ -99,6 +99,13 @@ class Cliente_Controller extends CI_Controller {
         echo $output;
     }
 
+    public function ConsultarEquipoByCliente(){
+        $idCliente = $this->input->post('idCliente');
+
+        $Equipo = $this->Equipo_Model->ConsultarPlanEquipoPorCliente($idCliente);
+        echo json_encode($Equipo);
+    }
+
     public function ConsultarEquipoPorCliente()
     {
         $idCliente = $this->input->post('idCliente');
