@@ -150,8 +150,13 @@
             {
                 InsertarPaquete(laboratorio,Observacion);
             }
-        }else
-            alert("Selecione un laboratorio");
+        }else{
+            swal({
+                title: "Selecione un laboratorio",
+                icon: "info",
+            });
+        }
+            //alert("Selecione un laboratorio");
     });
 
     $('input[type=checkbox]:checked').each(function(){
@@ -273,7 +278,7 @@
     function checked()
     {
         $("input[type=checkbox]:checked").each(function(){
-            alert($(this).val());
+            //alert($(this).val());
         });
     }
 

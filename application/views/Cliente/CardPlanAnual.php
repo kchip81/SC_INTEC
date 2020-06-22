@@ -196,7 +196,53 @@
     $(document).ready(function()
     {
         CargarClientes();
+
     });
+
+
+    function CargarDatosEquipoByCliente(IdCliente){
+
+        datos = {"idCliente":IdCliente};
+
+        var t = $('#tblEquiposOrden').DataTable({
+
+            "ajax":{
+                url:"<?php echo site_url();?>/Cliente_Controller/ConsultarEquipoByCliente",
+                method:"POST",
+                data: datos,
+                dataSrc: ""
+            },
+
+             "destroy":true,
+             "language": {
+                  "lengthMenu": "Mostrando _MENU_ registros por pag.",
+                  "zeroRecords": "Sin Datos - disculpa",
+                  "info": "Motrando pag. _PAGE_ de _PAGES_",
+                  "infoEmpty": "Sin registros disponibles",
+                  "infoFiltered": "(filtrado de _MAX_ total)"
+              },
+
+                "columnDefs":[
+                {
+                    "targets":9, "data":"IdEquipo", "render": function(data,type,row,meta)
+                    {
+                        return '<a classs = "btn" onclick="OpenModal_VerCertificado('+data+')"><i class="icon-clipboard3" data-toggle="tooltip" data-placement="top" id="VerEquipo" title="Ver Equipo"> Equipo</i></a>';
+                    }
+                }],
+
+              "columns": [
+                    { "data": "MesInicio" },
+                    { "data": "TipoPeriodo" },
+                    { "data": "MesUltimoServicio" },
+                    { "data": "IdEquipo" },
+                    { "data": "Descripcion" },
+                    { "data": "Marca" },
+                    { "data": "Modelo" },
+                    { "data": "NumService" },
+                    { "data": "ClaveId" }
+                ]
+            });
+    }
 
     function CargarClientes()
     {
@@ -214,7 +260,7 @@
     $("#cliente").change(function()
     {
         CargarDatosClientes($(this).val());
-
+        CargarDatosEquipoByCliente($(this).val())
     });
 
     function CargarDatosClientes(id)

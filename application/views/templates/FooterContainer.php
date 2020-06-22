@@ -10,6 +10,7 @@
 
 
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="<?php echo base_url();?>app-assets/vendors/js/ui/tether.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url();?>app-assets/js/core/libraries/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url();?>app-assets/vendors/js/ui/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>

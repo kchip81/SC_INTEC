@@ -173,6 +173,18 @@ class Equipo_Model extends CI_Model {
       return $this->db->update($this->table);
     }
 
+    public function ConsultarPlanEquipoPorCliente($IdCliente){
+        $this->db->select("MesInicio, TipoPeriodo, MesUltimoServicio, e.*");
+        $this->db->from($this->table." e");
+        $this->db->join("catalogoperiodos cp","cp.IdPeriodo = e.IdPeriodo");
+        $this->db->where("e.IdCliente",$IdCliente);
+
+        $result = $this->db->get();
+        return $result->result_array();
+
+    }
+
+
     public function ConsultarPlanAnualPorCliente($IdCliente,$Mes,$OpcionMes)
     {
       $this->db->select("MesInicio, TipoPeriodo, MesUltimoServicio, e.*");
