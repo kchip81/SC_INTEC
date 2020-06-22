@@ -242,10 +242,6 @@
       var OpcionMes = $('input:radio[name=OpcionMes]:checked').val();
       var IdCliente = $("#cliente").val();
 
-      alert(IdCliente);
-      alert(mes);
-      alert(OpcionMes);
-
         datos = {
                   "idCliente":IdCliente,
                   "MesConsulta":mes,
