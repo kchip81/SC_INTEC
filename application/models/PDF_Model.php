@@ -28,7 +28,7 @@ class PDF_Model extends CI_Model {
         $Clientes = $this->OrdenServicio_Model->ConsultarOrdenCliente($id);
         
         $i = 1;
-
+      $table2 = '';
         $head = '
         <!DOCTYPE html>
         <html lang="es">
@@ -206,7 +206,7 @@ class PDF_Model extends CI_Model {
                   </tr>
                     ';
                     $i++;
-                  }
+                }
             $table3 ='
                   
                 </tbody>
@@ -256,6 +256,7 @@ class PDF_Model extends CI_Model {
         $Registro = $this->EquipoOrden_Model->ConsultarPDF($id); 
         $Laboratorio = $this->Paquetes_Model->ConsultarPDF($id);
         
+        $table2 = '';
         $head = '
         <!DOCTYPE html>
         <html lang="es">
