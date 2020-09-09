@@ -315,36 +315,39 @@
 
     function CargarEquiposOrden()
     {
-        $.ajax
-        ({
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarEquiposSinPaquete_ajax',
+        var t = $('#tblEquiposOrdenPaquete').DataTable({
 
-            method: "POST",
-            success:function(resp)
-            {
+        "ajax":{
+            url:"<?php echo site_url();?>/Servicio_Controller/ConsultarEquiposSinPaquete_ajax",
+            dataSrc: ""
+        },
 
-                var Equipos = JSON.parse(resp);
-                $('#tblEquiposOrdenPaquete tbody tr').remove();
-                for (i=0;i<Equipos.length;i++)
+        "destroy":true,
+        "language": {
+            "lengthMenu": "Mostrando _MENU_ registros por pag.",
+            "zeroRecords": "Sin Datos - disculpa",
+            "info": "Motrando pag. _PAGE_ de _PAGES_",
+            "infoEmpty": "Sin registros disponibles",
+            "infoFiltered": "(filtrado de _MAX_ total)"
+        },
+
+        "columnDefs":[
                 {
+                    "targets":7, "data":"IdEquipoOrden", "render": function(data,type,row,meta)
+                    {
+                        return '<input type="checkbox" name="chkEquipoPaquete[]" id="Seleccionar" value ="'+data+'" checked>';
+                    }
+                }],
 
-                    $('#tblEquiposOrdenPaquete').append(
-                        '<tr id=rowEquipoOrden'+i+'>'+
-                        '<td>'+Equipos[i]['IdOrden']+'</td>'+
-                        '<td>'+Equipos[i]['NombreCompania']+'</td>'+
-                        '<td id="IdEquipoOrden">'+Equipos[i]['IdEquipoOrden']+'</td>'+
-                        '<td>'+Equipos[i]['Descripcion']+'</td>'+
-                        '<td>'+Equipos[i]['Modelo']+'</td>'+
-                        '<td >'+Equipos[i]['ClaveId']+'</td>'+
-                        '<td >'+Equipos[i]['NumService']+'</td>'+
-
-
-                        '<td><input type="checkbox" name="chkEquipoPaquete[]" id="Seleccionar" value ="'+Equipos[i]['IdEquipoOrden']+'" checked></td>'+
-                        '</tr>'
-                        );
-                }
-            }
+        "columns": [
+                {"data":"IdOrden"},
+                {"data":"NombreCompania"},
+                {"data":"IdEquipoOrden"},
+                {"data":"Descripcion"},
+                {"data":"Modelo"},
+                {"data":"ClaveId"},
+                {"data":"NumService"}
+            ]
         });
-
     }
 </script>
