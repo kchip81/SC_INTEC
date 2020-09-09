@@ -584,8 +584,6 @@ class Servicio_Controller extends CI_Controller {
         {
              echo json_encode(2);
         }
-
-
     }
 
 

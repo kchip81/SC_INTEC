@@ -103,7 +103,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="TelefonoCliente">Telefono:</label>
+                                                <label for="TelefonoCliente">Teléfono:</label>
                                                 <div class="position-relative has-icon-left">
                                                     <input type="text" id="TelefonoCliente" class="form-control" placeholder="Telefono" name="TelefonoCliente">
                                                     <div class="form-control-position">
@@ -255,21 +255,43 @@
         var direccion = $("#DireccionCliente").val();
         var telefono =  $("#TelefonoCliente").val();
         var email = $("#emailProveedor").val();
-
-        datos = {"nombre":nombre,"compania":compania,"direccion":direccion,"telefono":telefono,"email":email};
-
-        $.ajax
-        ({
-            type:'post',
-            url:'<?php echo site_url();?>/Cliente_Controller/InsertarCliente',
-            data:datos,
-            success:function(resp)
-            {
-                CargarClientes();
-                Limpiar()
-            }
+        
+        var data = ""
+        if(compania == "")
+            data = "Compañía";
+        else if(direccion == "")
+            data = "Dirección";
+        else if(telefono == "")
+            data = "Teléfono";
+        else if(email == "")
+            data = "Correo";
+        else if(nombre == "")
+            data = "Contacto";
+        swal({
+            title: "Complete los datos de " + data,
+            icon: "error",
         });
-        $('#modalCliente').modal('hide');
+
+        if(nombre != "" || compania != "" || direccion != "" || telefono != "" || email != ""){
+            datos = {"nombre":nombre,"compania":compania,"direccion":direccion,"telefono":telefono,"email":email};
+    
+            $.ajax
+            ({
+                type:'post',
+                url:'<?php echo site_url();?>/Cliente_Controller/InsertarCliente',
+                data:datos,
+                success:function(resp)
+                {
+                    swal({
+                        title: "Cliente agregado correctamente",
+                        icon: "success",
+                    });
+                    CargarClientes();
+                    Limpiar()
+                }
+            });
+            $('#modalCliente').modal('hide');
+        }
     });
 
     function Limpiar() {
