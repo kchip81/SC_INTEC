@@ -294,19 +294,25 @@
          processData: false,
         contentType: false,
        })
-       .success(function() {
-          swal({
-            title: "Archivo Guardado",
-            icon: "success",
+       .success(function(data) {
+          if(data == 1) 
+          {
+            swal({
+              title: "Archivo Guardado",
+              icon: "success",
+            });
+          } else{
+            swal({
+            title: "Error al guardar el archivo",
+            icon: "error",
           });
-         //alert('Archivo Guardado');
+          }      
        })
        .fail(function() {
           swal({
             title: "Error en guardar el archivo",
             icon: "error",
           });
-         //alert("error");
          console.log("error");
        });
 
@@ -760,12 +766,14 @@
         formData.append('IdEquipo', $("#CERT_IdEquipo"));
         formData.append('IdEquipoOrden',$("#CERT_IdEquipoOrden"));
 
-        $.ajax({
+        /*$.ajax({
           url: '<?=site_url()?>/Servicio_Controller/SubirCertificado_ajax',
           type: 'POST',
           data: formData
         })
-        .success(function() {
+        .success(function(dara) {
+
+          alert(data);
           swal({
             title: "Archivo Guardado",
             icon: "success",
@@ -778,7 +786,7 @@
             icon: "error",
           });
           console.log("error");
-        });
+        });*/
 
       }
     }

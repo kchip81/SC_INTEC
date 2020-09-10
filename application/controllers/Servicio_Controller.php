@@ -507,12 +507,11 @@ class Servicio_Controller extends CI_Controller {
         if (!is_dir($path.$IdCliente))
         {
             mkdir($path.$IdCliente);
-
         }
         $path.= $IdCliente.'/';
         if(!is_dir($path.$IdEquipo))
         {
-             mkdir($path.$IdEquipo);
+            mkdir($path.$IdEquipo);
 
         }
         $path.= $IdEquipo.'/';
