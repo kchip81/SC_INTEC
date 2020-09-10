@@ -232,7 +232,8 @@
                         data:datos, 
                         success:function(resp)
                         {
-                            swal("Usuario Eliminado", {
+                            swal({
+                                title:"Usuario Eliminado",
                                 icon: "success",
                             });
                             CargarUsuarios();
@@ -300,6 +301,10 @@
                 data:datos, 
                 success:function(resp)
                 {
+                    swal( {
+                        title: "Se agrego el usuario correctamente",
+                        icon: "success",
+                    });
                     CargarUsuarios();
                     Limpiar()
                 }
@@ -307,7 +312,7 @@
             $('#modalUsuario').modal('hide');  
         }else {
             swal( {
-                title: "Selecione el perfil del usuario"
+                title: "Selecione el perfil del usuario",
                 icon: "info",
             });
         }
@@ -341,6 +346,10 @@
                 data:datos, 
                 success:function(resp)
                 {
+                    swal( {
+                        title: "Se modifico el usuario correctamente",
+                        icon: "success",
+                    });
                     CargarUsuarios();
                     Limpiar()
                     $('#modalUsuario').modal('hide'); 
@@ -348,7 +357,7 @@
             });
         }else {
             swal({
-                title: "Selecione el perfil del usuario"
+                title: "Selecione el perfil del usuario",
                 icon: "info",
             });
         }

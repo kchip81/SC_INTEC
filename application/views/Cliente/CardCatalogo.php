@@ -259,20 +259,21 @@
         var data = ""
         if(compania == "")
             data = "Compañía";
-        else if(direccion == "")
+        if(direccion == "")
             data = "Dirección";
-        else if(telefono == "")
+        if(telefono == "")
             data = "Teléfono";
-        else if(email == "")
+        if(email == "")
             data = "Correo";
-        else if(nombre == "")
+        if(nombre == "")
             data = "Contacto";
-        swal({
-            title: "Complete los datos de " + data,
-            icon: "error",
-        });
 
-        if(nombre != "" || compania != "" || direccion != "" || telefono != "" || email != ""){
+        if(data != ""){
+            swal({
+                title: "Complete los datos de " + data,
+                icon: "error",
+            });
+        }else{
             datos = {"nombre":nombre,"compania":compania,"direccion":direccion,"telefono":telefono,"email":email};
     
             $.ajax

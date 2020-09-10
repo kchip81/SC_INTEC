@@ -222,6 +222,10 @@
                 data:datos, 
                 success:function(resp)
                 {
+                    swal({
+                        title:"Proveedor Actualizado",
+                        icon: "success",
+                    });
                     ConsultarPaquetesOrden();
                     Limpiar();
                     $('#modalLaboratorio').modal('hide'); 
@@ -279,7 +283,8 @@
                         data:datos, 
                         success:function(resp)
                         {
-                            swal("Proveedor Eliminado", {
+                            swal({
+                                title:"Proveedor Eliminado",
                                 icon: "success",
                             });
                             ConsultarPaquetesOrden();
