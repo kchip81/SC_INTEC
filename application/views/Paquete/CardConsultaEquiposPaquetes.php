@@ -235,6 +235,7 @@
           <input type="hidden" name="CERT_IdEquipoOrden" id="CERT_IdEquipoOrden">
           <input type="hidden" name="CERT_IdEquipo" id="CERT_IdEquipo">
           <input type="hidden" name="CERT_IdCliente" id="CERT_IdCliente">
+          <input type="hidden" name="CERT_Ant_Nombre" id="CERT_Ant_Nombre">
 
 
         </div>
@@ -301,6 +302,8 @@
               title: "Archivo Guardado",
               icon: "success",
             });
+
+            location.reload();
           } else{
             swal({
             title: "Error al guardar el archivo",
@@ -462,7 +465,7 @@
                     }
                     else {
                       var url = '<?php echo base_url();?>Certificados/'+row['IdCliente']+'/'+row['IdEquipo']+'/'+data;
-                      return '<a href="'+url+'" target="_blank"><i class="icon-file-pdf"></i></a>';
+                      return '<a href="'+url+'" target="_blank"><i class="icon-file-pdf"></i></a><br><a onclick=OpenModal_modificarCertificado('+row["IdCliente"]+','+row["IdEquipo"]+','+row["IdEquipoOrden"]+',"'+row["Certificado"]+'") target="_blank"><i class="far fa-edit"></i></a>';
                     }
                     return data;
                   }
@@ -747,8 +750,17 @@
       $("#CERT_IdEquipo").val(IdEquipo);
       $("#CERT_IdEquipoOrden").val(IdEquipoOrden);
       $("#CERT_IdCliente").val(IdCliente);
+      $("#CERT_Ant_Nombre").val(null);
       $('#modalSubirCertificado').modal('show');
 
+    }
+
+    function OpenModal_modificarCertificado(IdCliente,IdEquipo,IdEquipoOrden,data) {
+      $("#CERT_IdEquipo").val(IdEquipo);
+      $("#CERT_IdEquipoOrden").val(IdEquipoOrden);
+      $("#CERT_IdCliente").val(IdCliente);
+      $("#CERT_Ant_Nombre").val(data);
+      $('#modalSubirCertificado').modal('show');
     }
 
     function SubirCertificado()

@@ -476,6 +476,7 @@ class Servicio_Controller extends CI_Controller {
       $IdEquipoOrden = $this->input->post('CERT_IdEquipoOrden');
 
       $IdEquipo = $this->input->post('CERT_IdEquipo');
+      $ArchivoEliminar = $this->input->post('CERT_Ant_Nombre');
       $IdCliente = $this->input->post('CERT_IdCliente');
 
       log_message('debug',"SUBIR_CERTIFICADO=>".$IdEquipoOrden);
@@ -486,9 +487,14 @@ class Servicio_Controller extends CI_Controller {
       {
         log_message('debug'," Nombre Archivo=>".$ArchivoCertificado);
 
-
+ 
         $this->EquipoOrden_Model->GuardarCertificadoEquipo($IdEquipoOrden,$ArchivoCertificado);
 
+        if($ArchivoEliminar != null){
+            if(is_dir('./Certificados/'.$IdCliente.'/'.$IdEquipo.'/'))
+              unlink(getcwd().'/Certificados/'.$IdCliente.'/'.$IdEquipo.'/'.$ArchivoEliminar);
+        }
+        
         echo '1';
       }
       else {
@@ -506,12 +512,12 @@ class Servicio_Controller extends CI_Controller {
         $path = './Certificados/';
         if (!is_dir($path.$IdCliente))
         {
-            mkdir($path.$IdCliente);
+            mkdir($path.$IdCliente, 0777, true);
         }
         $path.= $IdCliente.'/';
         if(!is_dir($path.$IdEquipo))
         {
-            mkdir($path.$IdEquipo);
+            mkdir($path.$IdEquipo, 0777, true);
 
         }
         $path.= $IdEquipo.'/';
