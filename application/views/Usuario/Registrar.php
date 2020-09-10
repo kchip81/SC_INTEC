@@ -214,7 +214,36 @@
     
     function EliminarUsuario(id)
     {
-        var result = confirm("¿Desea eliminar al usuario? ");
+
+        swal({
+                title: "¿Desea Eliminar al Usuario?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    datos = {"IdUsuario":id};
+
+                    $.ajax
+                    ({            
+                        type:'post',
+                        url:'<?php echo site_url();?>/Registrar_Controller/EliminarUsuarioPorId',
+                        data:datos, 
+                        success:function(resp)
+                        {
+                            swal("Usuario Eliminado", {
+                                icon: "success",
+                            });
+                            CargarUsuarios();
+                        }
+                    });
+                   
+                }
+            });
+
+
+        /*var result = confirm("¿Desea eliminar al usuario? ");
 
         if(result)
         {
@@ -230,7 +259,7 @@
                     CargarUsuarios();
                 }
             });
-        }
+        }*/
     }
 
     $('#btnAgregarUsuario').click(function()
@@ -276,8 +305,13 @@
                 }
             });
             $('#modalUsuario').modal('hide');  
-        }else  
-            alert("Selecione el perfil del usuario");    
+        }else {
+            swal( {
+                title: "Selecione el perfil del usuario"
+                icon: "info",
+            });
+        }
+            //alert("Selecione el perfil del usuario");    
     });
 
     $('#ActualizarModalAgregar').click(function()
@@ -312,8 +346,13 @@
                     $('#modalUsuario').modal('hide'); 
                 }
             });
-        }else 
-            alert("Selecione el perfil del usuario");    
+        }else {
+            swal({
+                title: "Selecione el perfil del usuario"
+                icon: "info",
+            });
+        }
+            //alert("Selecione el perfil del usuario");    
     });
 
 

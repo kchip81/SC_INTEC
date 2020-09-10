@@ -69,6 +69,13 @@ class Laboratorio_Controller extends CI_Controller {
         $this->Laboratorio_Model->ActualizarLaboratorio($Descripcion_lab,$Domicilio,$Telefono,$diasServicios,$Id);
     }
 
+    public function ActualizarEstatusLaboratorio()
+    {
+        $Id = $this->input->post('IdLaboratorio');
+
+        $this->Laboratorio_Model->ActualizarEstatusLaboratorio($Id);
+    }
+
     public function InsertarLaboratorio()
     {
         $Descripcion_lab = $this->input->post('Descripcion');

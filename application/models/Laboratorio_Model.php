@@ -25,6 +25,7 @@ class Laboratorio_Model extends CI_Model {
     {
         $this->db->select($this->table.'.*');
         $this->db->from($this->table);
+        $this->db->where($this->table.'.activo',true);
         $this->db->order_by('Descripcion_lab','asc');
         $query = $this->db->get();
 
@@ -58,6 +59,13 @@ class Laboratorio_Model extends CI_Model {
         $this->db->set('Domicilio',$Domicilio);
         $this->db->set('Telefono',$Telefono);
         $this->db->set('diasServicios',$diasServicios);
+        $this->db->where($this->table.'.IdLaboratorio',$Id);
+        return $this->db->update($this->table);
+    }
+    
+    public function ActualizarEstatusLaboratorio($Id)
+    {
+        $this->db->set('activo',false);
         $this->db->where($this->table.'.IdLaboratorio',$Id);
         return $this->db->update($this->table);
     }

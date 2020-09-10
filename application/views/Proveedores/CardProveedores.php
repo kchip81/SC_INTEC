@@ -148,7 +148,8 @@
                     {
                         "targets":5, "data":"IdLaboratorio", "render": function(data,type,row,meta)
                         {       
-                            return '<a classs = "btn" onclick="OpenModal_ActualizarLaboratorio('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="EditarLaboratorio" title="Editar Laboratorio"> Editar</i></a>';
+                            return '<a classs = "btn" onclick="OpenModal_ActualizarLaboratorio('+data+')"><i class="icon-pencil2" data-toggle="tooltip" data-placement="top" id="EditarLaboratorio" title="Editar Laboratorio"> Editar</i></a>'+
+                            '<br><a classs = "btn" onclick="EliminarLaboratorio('+data+')"><i class="icon-trash" data-toggle="tooltip" data-placement="top" id="EliminarLaboratorio" title="Eliminar Laboratorio"> Eliminar</i></a>';
                         }
                     }],  
 
@@ -257,5 +258,34 @@
             $("#Domicilio").val("");
             $("#Telefono").val("");
             $("#diasServicios").val("");
+        }
+
+        function EliminarLaboratorio(id){
+            swal({
+                title: "¿Deseas Eliminar al Proveedor?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    datos = {"IdLaboratorio":id};
+
+                    $.ajax
+                    ({            
+                        type:'post',
+                        url:'<?php echo site_url();?>/Laboratorio_Controller/ActualizarEstatusLaboratorio',
+                        data:datos, 
+                        success:function(resp)
+                        {
+                            swal("Proveedor Eliminado", {
+                                icon: "success",
+                            });
+                            ConsultarPaquetesOrden();
+                        }
+                    });
+                }
+            });
         }
     </script>
