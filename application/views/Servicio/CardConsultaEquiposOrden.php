@@ -461,7 +461,10 @@
                 data:datos,
                 success:function(resp)
                 {
-                    //alert("naskndaksd");
+                    swal({
+                        title: "Equipo actualizado correctamente",
+                        icon: "success",
+                    });
                 }
 
             });

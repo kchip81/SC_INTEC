@@ -565,7 +565,7 @@
         };
 
         if($('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
-        {
+        {                    
             $.ajax
             ({
                 type:'post',
@@ -574,9 +574,15 @@
                 data:datos,
                 success:function(resp)
                 {
-                    //alert("naskndaksd");
+                  swal({
+                      title: "Equipo actualizado correctamente",
+                      icon: "success",
+                  });
                 }
-
+            });
+            swal({
+                title: "Equipo actualizado correctamente",
+                icon: "success",
             });
             cerrar();
         }
@@ -628,7 +634,7 @@
         $('#ModalEquipo').modal('hide');
         Limpiar();
     }
-
+  /****** */
     function Modal_AvanzarEstatus(IdEquipoOrden, DescripcionEstatus, IdEstatusActual)
     {
       var fecha = new Date();
@@ -719,7 +725,7 @@
           FechaEtiqueta:FechaEtiqueta
         }
       })
-      .done(function() {
+      .done(function() { 
         //ConsultarEquiposPaquete(id);
         location.reload();
       })
@@ -779,8 +785,18 @@
 
     function EliminarEquipo(IdEquipo,IdOrden){
 
-      $.ajax
-        ({
+/* */
+
+    swal({
+      title: "¿Desea Eliminar el Equipo de la Orden?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+          $.ajax
+          ({
             url:'<?php echo site_url();?>/Servicio_Controller/EliminarEquipoPorIdPaquete',
             data:{
               IdEquipo:IdEquipo,
@@ -789,29 +805,59 @@
             method: "POST",
             success:function(resp)
             {
+              swal({
+                title: "El equipo se elimino de la orde",
+                icon: "success",
+              });
               ConsultarEquiposOrden(IdOrden);
             }
-        });
+        }).fail(function() {
+            swal({
+              title: "Error al eliminar el equipo de la orde",
+              icon: "error",
+            });
+          });
+        }
+      });
     }
 
 
     function EliminarDelPaquete(IdEquipo,IdOrden){
 
 
-      $.ajax
-      ({
-          url:'<?php echo site_url();?>/Servicio_Controller/EliminarEquipodelPaquete',
-          data:{
-            IdEquipo:IdEquipo,
-            IdOrden:IdOrden
-          },
-          method: "POST",
-          success:function(resp)
-          {
-            ConsultarEquiposOrden(IdOrden);
-          }
-      });
-    }
+    swal({
+      title: "¿Desea Eliminar el Equipo del paquete?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+          $.ajax
+          ({
+            url:'<?php echo site_url();?>/Servicio_Controller/EliminarEquipodelPaquete',
+            data:{
+              IdEquipo:IdEquipo,
+              IdOrden:IdOrden
+            },
+            method: "POST",
+            success:function(resp)
+            {
+              swal({
+                title: "El equipo se elimino del paquete",
+                icon: "success",
+              });
+              ConsultarEquiposOrden(IdOrden);
+            }
+        }).fail(function() {
+          swal({
+            title: "Error al eliminar el equipo del paquete",
+            icon: "error",
+          });
+        });
+      }
+    });
+  }
 
 
 

@@ -241,6 +241,11 @@
             data:datos,
             success:function(resp)
             {
+                swal({
+                    title: "Cliente actualizado correctamente",
+                    icon: "success",
+                });
+                
                 CargarClientes();
                 Limpiar()
                 $('#modalCliente').modal('hide');

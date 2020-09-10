@@ -135,28 +135,39 @@
   }
 
   function AvanzarEstatusPaquete() {
+    swal({
+        title: "¿Desea Avanzar el Estatus?",
+        icon: "info",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
 
-    $.ajax({
-      url: '<?=site_url()?>/Paquetes_Controller/AvanzarEstatusEquiposPaquete_ajax',
-      type: 'POST',
-      data: {IdPaqueteEnvio: <?=$Paquete->IdPaqueteEnvio?>}
-    })
-    .done(function() {
-      swal({
-          title: "El estatus de los equipos ha sido actualizado",
-          icon: "success",
-      });
-      //alert('El estatus de los equipos ha sido actualizado');
-    })
-    .fail(function() {
-      swal({
-          title: "error AvanzarEstatusPaquete",
-          icon: "error",
-      });
-      //alert("error AvanzarEstatusPaquete()");
+          $.ajax({
+            url: '<?=site_url()?>/Paquetes_Controller/AvanzarEstatusEquiposPaquete_ajax',
+            type: 'POST',
+            data: {IdPaqueteEnvio: <?=$Paquete->IdPaqueteEnvio?>}
+          })
+          .done(function() {
+            swal({
+                title: "El estatus de los equipos ha sido actualizado",
+                icon: "success",
+            });
+            //alert('El estatus de los equipos ha sido actualizado');
+          })
+          .fail(function() {
+            swal({
+                title: "Error Avanzar EstatusPaquete",
+                icon: "error",
+            });
+            //alert("error AvanzarEstatusPaquete()");
+          });
+
+          ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
+            
+        }
     });
-
-    ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
 
   }
   </script>
