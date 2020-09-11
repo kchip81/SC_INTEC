@@ -14,9 +14,16 @@
                 </div>
                 <br>
 
-                <div class="col-md-3">
-                    <div class="form-group" style="margin-top:7px;">
-                        <button type="button" class="btn btn-primary" id="btnAgregarUsuario"><i class="icon-android-add"></i> Agregar Usuario</button>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" style="margin-top:7px;">
+                            <button type="button" class="btn btn-primary" id="btnAgregarUsuario"><i class="icon-android-add"></i> Agregar Usuario</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group" style="margin-top:7px;">
+                            <button type="button" class="btn btn-primary" id="btnAgregarClienteUsuario"><i class="icon-android-add"></i> Agregar Usuario Cliente</button>
+                        </div>
                     </div>
                 </div>
                 <br>
@@ -63,6 +70,14 @@
                                                     <option value="">perfil...</option>
                                                 </select>
                                             </div>
+                                        </div> 
+                                        <div class="col-md-6">
+                                            <div style="display:none" id="modalCliente" class="form-group">
+                                                <label for="cliente">Selecione Cliente</label>
+                                                <select name="cliente" id="cliente" class="form-control" onchange="">
+                                                    <option value="">Clientes...</option>
+                                                </select>
+                                            </div>
                                         </div>                                    
                                     </div>
                     
@@ -101,7 +116,7 @@
                                             <div class="form-group">
                                                 <label for="contrasena">Contraseña:</label>
                                                 <div class="position-relative has-icon-left">
-                                                    <input type="text" id="contrasena" class="form-control" placeholder="contrasena" name="contrasena">
+                                                    <input type="text" id="contrasena" class="form-control" placeholder="Contraseña" name="Contraseña">
                                                     <div class="form-control-position">
                                                         <i class="icon-lock"></i>
                                                     </div>
@@ -161,6 +176,7 @@
     {
         CargarPerfil();
         CargarUsuarios();
+        CargarClientes();
     });
 
     function CargarUsuarios()
@@ -196,6 +212,19 @@
                 { "data": "usuario" },
                 { "data": "DescripcionPerfil" }
             ]
+        });
+    }
+
+    function CargarClientes()
+    {
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',
+            success:function(resp)
+            {
+                $("#cliente").html(resp)
+            }
         });
     }
 
@@ -275,6 +304,19 @@
         chequear.setAttribute('checked','checked');
     });
 
+    $('#btnAgregarClienteUsuario').click(function()
+    {
+        $('#modalCliente').show ();
+        $('#AgregarModalAgregar').show ();
+        $('#ActualizarModalAgregar').hide();
+        $('#modalPerfil').show();
+        var c = "Agregar Usuario para Cliente";
+        $('#ModalLabel').html(c);
+        $('#modalUsuario').modal('show');     
+        var chequear=document.getElementById('Restablecer');
+        chequear.setAttribute('checked','checked');
+    });
+
 
     $('#AgregarModalAgregar').click(function()
     {
@@ -283,6 +325,8 @@
         var usuario = $("#usuario").val();
         var contrasena =  $("#contrasena").val();
         var select = $("#perfil").val();
+        var cliente = $("#cliente").val();
+        $("#cliente").val($("#cliente option:first").val());
 
         var restablecer = $('#Restablecer').prop('checked');
 
@@ -290,7 +334,7 @@
             restablecer = 1;
 
         datos = {"Nombre":Nombre,"ApellidosUsuario":ApellidosUsuario,"usuario":usuario,
-                "contrasena":contrasena,"tipo":select, "creacion":restablecer};
+                "contrasena":contrasena,"tipo":select, "creacion":restablecer, "cliente":cliente};
 
         if($("#perfil").val() != "")
         {
@@ -305,6 +349,7 @@
                         title: "Se agrego el usuario correctamente",
                         icon: "success",
                     });
+                    $('#modalCliente').hide();
                     CargarUsuarios();
                     Limpiar()
                 }
@@ -405,6 +450,7 @@
         $("#ApellidosUsuario").val("");
         $("#usuario").val("");
         $("#contrasena").val("");
+        $('#modalCliente').hide();
         var chequear=document.getElementById('Restablecer');
         chequear.removeAttribute('checked');
     }

@@ -86,10 +86,18 @@
             </ul>
 
             <ul class="nav navbar-nav float-xs-right">
-
+              <?php 
+                                              
+                if(is_dir('./FotoUsuario/'.$this->session->userdata('intec_IdUsuario').'/'))
+                  $fotoPerfil=base_url().'FotoUsuario/'.$this->session->userdata('intec_IdUsuario').'/'.$this->session->userdata('intec_IdUsuario').'.png';
+                else 
+                  $fotoPerfil= base_url().'FotoUsuario/default-avatar.png';
+ 
+              ?>
               <!--Navbar Usuario-->
-              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="<?php echo base_url();?>app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name"><?php echo $this->session->userdata('intec_NombreUsuario'); ?></span></a>
+              <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online"><img src="<?php echo $fotoPerfil?>"  alt="avatar"><i></i></span><span class="user-name"><?php echo $this->session->userdata('intec_NombreUsuario'); ?></span></a>
                 <div class="dropdown-menu dropdown-menu-right">
+                    <a href="<?php echo site_url(); ?>/Usuario/Config" class="dropdown-item"><i class="fas fa-users-cog"></i> User</a>
                     <a href="#" class="dropdown-item"><i class="icon-mail6"></i> My Inbox</a>
                     <a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Task</a>
                     <a href="#" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
@@ -159,6 +167,18 @@
                 <li><a href="'.site_url('Paquetes/ConsultarPaquetesAbiertos').'" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Paquetes Abiertos</a></li>
                 <li><a href="'.site_url('Servicio/ConsultarEquipoDemora').'" data-i18n="nav.cards.card_statistics" class="menu-item">Equipos con Demora</a></li>
                 <li><a href="'.site_url('Factura/ConsultarFacturas').'" data-i18n="nav.cards.card_statistics" class="menu-item">Facturas Servicios</a></li>
+              </ul>
+            </li>';
+          }
+
+          if($Perfil == 3)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="icon-wrench3"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Servicios</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Servicio_Cliente/NuevaOrden').'" data-i18n="nav.cards.card_statistics" class="menu-item">Crear Orden de Servicio</a>
+                </li>
+                <li><a href="'.site_url('Servicio_Cliente/ConsultarOrden').'" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Ordenes Abiertas</a>
+                </li>
               </ul>
             </li>';
           }

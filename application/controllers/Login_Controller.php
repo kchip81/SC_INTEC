@@ -84,7 +84,7 @@ class Login_Controller extends CI_Controller {
                             'intec_NombreUsuario'=>$Usuario->NombreUsuario.' '.$Usuario->ApellidosUsuario,
                             'intec_IdPerfil'=>$Usuario->IdPerfil,
                             'intec_DescripcionPerfil'=>$Usuario->DescripcionPerfil,
-                            
+                            'intec_IdUsuarioCliente'=>$Usuario->cliente,
                             'intec_logged_in'=>TRUE,
                             
                         );
@@ -150,7 +150,29 @@ class Login_Controller extends CI_Controller {
             
             $this->Cargar_Login(TRUE);
         }
-    }
-    
-    
-
+        
+        public function do_upload()
+        {
+            $idUsuario = $this->input->post('idUsuario');
+            $path = './FotoUsuario/';
+            if (!is_dir($path.$idUsuario))
+            {
+                mkdir($path.$idUsuario, 0777, true);
+            }
+            $path.= $idUsuario.'/';
+            
+            
+            if (($_FILES["file"]["type"] == "image/pjpeg")
+            || ($_FILES["file"]["type"] == "image/jpeg")
+            || ($_FILES["file"]["type"] == "image/png")
+            || ($_FILES["file"]["type"] == "image/gif")) {
+                if (move_uploaded_file($_FILES["file"]["tmp_name"], $path.$idUsuario.'.png')) {
+                    echo 'Imagen subida correctamente';
+                } else {
+                    echo 0;
+                }
+            } else {
+                echo 0;
+            }
+        }
+    } 

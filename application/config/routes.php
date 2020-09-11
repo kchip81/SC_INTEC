@@ -58,6 +58,7 @@ $route['Usuario/CerrarSesion'] = 'Login_Controller/CerrarSesion';
 
 //Registrar
 $route['Usuario/Registrar'] = 'Registrar_Controller/Load_Registrar';
+$route['Usuario/Config'] = 'Registrar_Controller/Load_ConfigPerfil';
 
 //Dashboard
 $route['Dashboard'] = 'Dashboard_Controller/Load_Dashboard';
@@ -72,6 +73,10 @@ $route['Servicio/ConsultarEquipoDemora']='Servicio_Controller/Load_EquipoDemora'
 
 $route['Servicio/ConsultarPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteServicio/$1';
 $route['Servicio/ConsultarOrdenPaquetes/(.+)']='Servicio_Controller/Load_ConsultarPaqueteOrdenServicio/$1';
+
+
+$route['Servicio_Cliente/NuevaOrden']='Servicio_Controller/Load_NuevaOrdenServcioCliente';
+$route['Servicio_Cliente/ConsultarOrden']='Servicio_Controller/Load_ConsultarOrdenServcioCliente';
 
 //PAQUETES
 $route['Paquetes/ConsultarPaquetesAbiertos']='Paquetes_Controller/Load_ConsultarPaquetesAbiertos';

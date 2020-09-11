@@ -69,10 +69,10 @@ class Usuario_Model extends CI_Model {
         return $query->row();  
     }
 
-    public function InsertarUsuario($Nombre,$ApellidosUsuario,$usuario,$contrasena,$tipo,$creacion)
+    public function InsertarUsuario($Nombre,$ApellidosUsuario,$usuario,$contrasena,$tipo,$creacion,$cliente)
     {
         $data = array('NombreUsuario' => $Nombre,'ApellidosUsuario' => $ApellidosUsuario,'usuario' => $usuario,'contrasena' => $contrasena
-        ,'IdPerfil' => $tipo,'creacion' => $creacion );
+        ,'IdPerfil' => $tipo,'creacion' => $creacion,'cliente' => $cliente );
 
         $this->db->insert($this->table,$data);  
         
@@ -94,6 +94,17 @@ class Usuario_Model extends CI_Model {
         $this->db->set('contrasena',$contrasena);
         $this->db->set('creacion',$creacion);
         //$this->db->set('fechaCaducidad','ADDDATE(fechaActualizado, INTERVAL 180 DAY)');
+        $this->db->where($this->table.'.IdUsuario', $IdUsuario);
+        
+        return $this->db->update($this->table);
+    }
+
+    public function ActualizarUsuarioPerfil($Nombre,$ApellidosUsuario,$contrasena,$IdUsuario,$creacion)
+    {
+        $this->db->set('NombreUsuario',$Nombre);
+        $this->db->set('ApellidosUsuario',$ApellidosUsuario);
+        $this->db->set('contrasena',$contrasena);
+        $this->db->set('creacion',$creacion);
         $this->db->where($this->table.'.IdUsuario', $IdUsuario);
         
         return $this->db->update($this->table);

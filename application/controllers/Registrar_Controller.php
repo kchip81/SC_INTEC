@@ -32,6 +32,16 @@ class Registrar_Controller extends CI_Controller {
         $this->load->view('templates/FooterContainer');
     }
 
+    public function Load_ConfigPerfil()
+    {
+        $data['title'] = 'Registrar Usuario';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Usuario/Perfil');
+        $this->load->view('templates/FormFooter',$data); 
+        $this->load->view('templates/FooterContainer');
+    }
+
     public function ConsultarUsuario()
     {
         $Usuarios = $this->Usuario_Model->ConsultarDataUsuarios();
@@ -54,10 +64,11 @@ class Registrar_Controller extends CI_Controller {
         $contrasena =  $this->input->post('contrasena');
         $tipo =  $this->input->post('tipo');
         $creacion =$this->input->post('creacion');
+        $cliente =$this->input->post('cliente');
         $contrasena = md5($contrasena);
 
         
-        $this->Usuario_Model->InsertarUsuario($Nombre,$ApellidosUsuario,$usuario,$contrasena,$tipo,$creacion);
+        $this->Usuario_Model->InsertarUsuario($Nombre,$ApellidosUsuario,$usuario,$contrasena,$tipo,$creacion,$cliente);
     }
 
     public function ActualizarUsuario()
@@ -73,6 +84,20 @@ class Registrar_Controller extends CI_Controller {
        
     
         $res = $this->Usuario_Model->ActualizarUsuario($Nombre,$ApellidosUsuario,$usuario,$contrasena,$tipo,$IdUsuario,$creacion);
+        $res = $this->Usuario_Model->caducidad($IdUsuario);
+    }
+
+    public function ActualizarUsuarioPerfil()
+    {
+        $Nombre =  $this->input->post('Nombre');
+        $ApellidosUsuario =  $this->input->post('ApellidosUsuario');
+        $contrasena =  $this->input->post('contrasena');
+        $contrasena = md5($contrasena);
+        $IdUsuario =$this->input->post('IdUsuario');
+        $creacion = 1;
+
+    
+        $res = $this->Usuario_Model->ActualizarUsuarioPerfil($Nombre,$ApellidosUsuario,$contrasena,$IdUsuario,$creacion);
         $res = $this->Usuario_Model->caducidad($IdUsuario);
     }
 

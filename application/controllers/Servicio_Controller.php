@@ -27,6 +27,7 @@ class Servicio_Controller extends CI_Controller {
         $this->load->model('OrdenServicio_Model');
         $this->load->model('Paquetes_Model');
         $this->load->model('PDF_Model');
+        $this->load->model('Usuario_Model');
     }
 
     public function Load_NuevaOrdenServcio()
@@ -43,6 +44,20 @@ class Servicio_Controller extends CI_Controller {
         //log_message('debug', 'NUEVA ORDEN-1-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
     }
 
+    public function Load_NuevaOrdenServcioCliente()
+    {
+        //log_message('debug', 'NUEVA ORDEN-0-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
+        $data['title'] = 'Registrar Nueva Orden de Servicio';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/FormNuevaOrdenServicio');
+        $this->load->view('Servicio_Cliente/CardOrdenServicio');
+        $this->load->view('templates/FormFooter',$data);
+        $this->load->view('templates/FooterContainer');
+
+        //log_message('debug', 'NUEVA ORDEN-1-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
+    }
+
     public function Load_ConsultarOrdenServcio()
     {
         //log_message('debug', 'CONSULTAR ORDEN-0-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
@@ -50,6 +65,18 @@ class Servicio_Controller extends CI_Controller {
         $this->load->view('templates/MainContainer',$data);
         $this->load->view('templates/HeaderContainer',$data);
         $this->load->view('Servicio/CardConsultaOrdenesAbiertas');
+
+        $this->load->view('templates/FooterContainer');
+        //log_message('debug', 'CONSULTAR ORDEN-1-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
+    }
+
+    public function Load_ConsultarOrdenServcioCliente()
+    {
+        //log_message('debug', 'CONSULTAR ORDEN-0-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
+        $data['title'] = 'Consultas de Ordenes de Servicio';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio_Cliente/CardConsultaOrdenesAbiertas');
 
         $this->load->view('templates/FooterContainer');
         //log_message('debug', 'CONSULTAR ORDEN-1-SESSION:['.$this->session->userdata('intec_IdUsuario').'|'.$this->session->userdata('intec_logged_in').'|'.$this->session->userdata('intec_NombreUsuario').']');
@@ -260,6 +287,17 @@ class Servicio_Controller extends CI_Controller {
       echo json_encode($Datos);
 
     }
+
+    public function ConsultarDatosOrdenesAbiertasCliente()
+    {
+        $cerradas = $this->input->post('Cerradas');
+        $clienteId = $this->input->post('clienteId');
+
+      $Datos = $this->OrdenServicio_Model->ConsultarDatosOrdenesAbiertasCliente($cerradas,$clienteId);
+      echo json_encode($Datos);
+
+    }
+
 
     public function ConsultarOrden()
     {
@@ -652,5 +690,14 @@ class Servicio_Controller extends CI_Controller {
         else
             echo 'no se borro';
 
+    }
+
+    public function ConsultarClienteUsuario(){
+
+        $Id =  $this->input->post('clienteid');
+
+        $result = $this->Usuario_Model->ConsultarClienteUsuario($Id);
+
+        echo $result;
     }
 }

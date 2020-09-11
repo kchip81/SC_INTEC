@@ -33,6 +33,7 @@ CREATE TABLE `usuarios` (
   `fechaCreacion` datetime DEFAULT CURRENT_TIMESTAMP,
   `fechaCaducidad` datetime DEFAULT NULL,
   `creacion` tinyint(1) NOT NULL DEFAULT '0',
+  `cliente` int NULL,
   PRIMARY KEY (`IdUsuario`),
   KEY `usuario_ibfk1` (`IdPerfil`),
   CONSTRAINT `usuario_ibfk1` FOREIGN KEY (`IdPerfil`) REFERENCES `perfil` (`IdPerfil`)
