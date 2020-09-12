@@ -247,17 +247,83 @@ class Paquetes_Controller extends CI_Controller {
 
     public function AvanzarEstatusEquiposPaquete_ajax()
     {
-      $IdPaquete = $this->input->post('IdPaqueteEnvio');
+      $IdPaqueteOrden = $this->input->post('IdPaqueteEnvio');
+      $IdEstatusPaquete = $this->input->post('IdEstatusPaquete');
+
       $this->load->helper('date');
 
       $FechaEstatus = mdate('%Y-%m-%d',now());
 
-      $result = $this->EquipoOrden_Model->AvanzarEstatusEquiposPorPaquete($IdPaquete,$FechaEstatus);
+      $resultado = $this->EquipoOrden_Model->AvanzarEstatusEquiposPorPaquete($IdPaqueteOrden,$FechaEstatus);
+      if($resultado)
+        $resul = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, $IdEstatusPaquete+1);
 
-      echo $result;
-      // code...
+        switch ($IdEstatusPaquete+1) {
+            case 1:
+                echo 'Creado';
+                break;
+            case 2:
+                echo 'Enviado a Laboratorio';
+                break;
+            case 3:
+                echo 'Recibido Laboratorio';
+                break;
+            case 4:
+                echo 'Calibración Terminada';
+                break;
+            case 5:
+                echo 'En Retorno';
+                break;
+            case 6:
+                echo 'Recibido Intec';
+                break;
+            case 7:
+                echo 'Terminado';
+                break;
+                
+            default:
+                echo'Terminado';
+                break;
+            
+      }
+
     }
 
+    /*public function ActualizarPaqueteStatus()
+    {
+      $IdPaqueteOrden = $this->input->post('IdPaqueteEnvio');
+      $IdEstatusPaquete = $this->input->post('IdEstatusPaquete');
+
+      switch ($IdEstatusPaquete) {
+        case 'Creado':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 1);
+            break;
+        case 'Enviado a Laboratorio':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 2);
+            break;
+        case 'Recibido Laboratorio':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 3);
+            break;
+        case 'Calibración Terminada':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 4);
+            break;
+        case 'En Retorno':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 5);
+            break;
+        case 'Recibido Intec':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 6);
+            break;
+        case 'Terminado':
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 7);
+            break;
+            
+        default:
+            $result = $this->Paquetes_Model->ActualizarPaqueteStatus($IdPaqueteOrden, 7);
+            break;
+      }
+
+      echo $result;
+    }*/
 
     //put your code here
 }

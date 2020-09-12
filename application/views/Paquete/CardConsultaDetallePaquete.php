@@ -101,6 +101,7 @@
       </div>
   </div>
   <script type="text/javascript">
+  var IdPaquetestatus = <?=$Paquete->IdEstatusPaquete?>;
   $(document).ready(function(){
     ConsultarEquiposPaquete(<?=$Paquete->IdPaqueteEnvio?>);
 
@@ -147,9 +148,13 @@
           $.ajax({
             url: '<?=site_url()?>/Paquetes_Controller/AvanzarEstatusEquiposPaquete_ajax',
             type: 'POST',
-            data: {IdPaqueteEnvio: <?=$Paquete->IdPaqueteEnvio?>}
+            data: {IdPaqueteEnvio: <?=$Paquete->IdPaqueteEnvio?>,IdEstatusPaquete:IdPaquetestatus}
           })
-          .done(function() {
+          .done(function(data) {
+            <?php $Paquete->IdEstatusPaquete = $Paquete->IdEstatusPaquete + 1?>
+            IdPaquetestatus=IdPaquetestatus+1;
+
+            $('#txtEstatusPaquete').val(data);
             swal({
                 title: "El estatus de los equipos ha sido actualizado",
                 icon: "success",

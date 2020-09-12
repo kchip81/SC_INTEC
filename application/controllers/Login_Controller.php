@@ -155,6 +155,11 @@ class Login_Controller extends CI_Controller {
         {
             $idUsuario = $this->input->post('idUsuario');
             $path = './FotoUsuario/';
+            if (!is_dir($path))
+            {
+                mkdir($path, 0777, true);
+            }
+
             if (!is_dir($path.$idUsuario))
             {
                 mkdir($path.$idUsuario, 0777, true);

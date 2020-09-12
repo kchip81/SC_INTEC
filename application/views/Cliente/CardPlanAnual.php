@@ -102,12 +102,16 @@
                               <div class="form-group">
                                 <label for="">Opción</label>
                                 <div class="form-check">
+                                  <input type="radio" class="form-check-input with-gap" id="Real" name="OpcionMes" value="2" checked>
+                                  <label class="form-check-label" for="Real">Todos</label>
+                                </div>
+                                <div class="form-check">
                                   <input type="radio" class="form-check-input with-gap" id="Plan" value ="0" name="OpcionMes">
                                   <label class="form-check-label" for="Plan">Plan</label>
                                 </div>
 
                                 <div class="form-check">
-                                  <input type="radio" class="form-check-input with-gap" id="Real" name="OpcionMes" value="1" checked>
+                                  <input type="radio" class="form-check-input with-gap" id="Real" name="OpcionMes" value="1">
                                   <label class="form-check-label" for="Real">Real</label>
                                 </div>
 
@@ -195,6 +199,7 @@
 
     $(document).ready(function()
     {
+        $("#btnConsultarPlan").attr("disabled", true);
         CargarClientes();
 
     });
@@ -259,6 +264,10 @@
 
     $("#cliente").change(function()
     {
+        if($('#cliente option:selected').text() != "Seleccione un cliente")
+            $("#btnConsultarPlan").attr("disabled", false);
+        else
+            $("#btnConsultarPlan").attr("disabled", true);
         CargarDatosClientes($(this).val());
         CargarDatosEquipoByCliente($(this).val())
     });

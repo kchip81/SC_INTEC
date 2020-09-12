@@ -135,7 +135,13 @@ class Paquetes_Model extends CI_Model {
       $query = $this->db->get();
 
       return $query->row();
-      // code...
+    }
+
+    public function ActualizarPaqueteStatus($IdPaqueteOrden, $IdEstatusPaquete)
+    {
+        $this->db->set('IdEstatusPaquete',$IdEstatusPaquete);
+        $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
+        $this->db->update($this->table);
     }
     //put your code here
 }
