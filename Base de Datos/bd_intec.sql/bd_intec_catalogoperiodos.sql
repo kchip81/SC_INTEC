@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `catalogoperiodos`;
 CREATE TABLE `catalogoperiodos` (
   `IdPeriodo` int NOT NULL AUTO_INCREMENT,
   `TipoPeriodo` varchar(20) NOT NULL,
+  ValorPeriodo int(11),
   PRIMARY KEY (`IdPeriodo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -35,7 +36,7 @@ CREATE TABLE `catalogoperiodos` (
 
 LOCK TABLES `catalogoperiodos` WRITE;
 /*!40000 ALTER TABLE `catalogoperiodos` DISABLE KEYS */;
-INSERT INTO `catalogoperiodos` VALUES (1,'Mensual'),(2,'Trimestral'),(3,'Semestral'),(4,'Anual');
+INSERT INTO `catalogoperiodos` VALUES (1,'Mensual',1),(2,'Trimestral',2),(3,'Semestral',3),(4,'Anual',4);
 /*!40000 ALTER TABLE `catalogoperiodos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
