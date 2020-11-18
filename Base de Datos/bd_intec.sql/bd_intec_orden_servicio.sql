@@ -30,6 +30,7 @@ CREATE TABLE `orden_servicio` (
   `FechaRecibo` date DEFAULT NULL,
   `Observaciones` varchar(200) DEFAULT NULL,
   `IdEstatusOrden` int DEFAULT NULL,
+  tipoServicio TINYINT,
   PRIMARY KEY (`IdOrden`),
   KEY `IdCliente` (`IdCliente`),
   KEY `orden_servicio_ibfk2` (`IdEstatusOrden`),

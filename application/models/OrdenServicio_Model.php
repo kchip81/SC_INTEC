@@ -47,10 +47,10 @@ class OrdenServicio_Model extends CI_Model {
 
     }
 
-    public function InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones)
+    public function InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones,$servicioMC)
     {
         $data = array('IdCliente' => $IdCliente,'Fecha' => $Fecha,"FechaEnvio" => $FechaEnvio,
-                "FechaRecibo" => $FechaRecibo,"Observaciones" => $Observaciones, "IdEstatusOrden"=>1);
+                "FechaRecibo" => $FechaRecibo,"Observaciones" => $Observaciones, "IdEstatusOrden"=>1 , "tipoServicio"=>$servicioMC);
 
         $this->db->insert($this->table,$data);
 
@@ -73,6 +73,30 @@ class OrdenServicio_Model extends CI_Model {
         }
         else {
           $this->db->where($this->table.'.IdEstatusOrden < 3');
+        }
+
+        $this->db->order_by($this->table.'.IdOrden', 'ASC');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+
+    public function ConsultarOrdenMantCalib($tipo)
+    {
+        $this->db->select($this->table.'.*');
+        $this->db->select('NombreCompania,NombreContacto, DescripcionEstatusOrden');
+        $this->db->from('cliente');
+        $this->db->join($this->table, $this->table.'.IdCliente = cliente.IdCliente','INNER');
+        $this->db->join('catalogoestatusorden', $this->table.'.IdEstatusOrden = catalogoestatusorden.IdEstatusOrden');
+
+        if ($tipo==='1')
+        {
+          $this->db->where($this->table.'.tipoServicio = 1');
+        }
+        else {
+          $this->db->where($this->table.'.tipoServicio = 0');
         }
 
         $this->db->order_by($this->table.'.IdOrden', 'ASC');
@@ -153,6 +177,26 @@ class OrdenServicio_Model extends CI_Model {
     {
         $this->db->where('IdOrden',$IdOrden);
         return $this->db->delete($this->table);
+    }
+
+    public function ConsultarTotalCalibra()
+    {
+        $this->db->select('count(*) as total');
+        $this->db->from($this->table);
+        $this->db->where(' tipoServicio = 0');
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
+    public function ConsultarTotalMant()
+    {
+        $this->db->select('count(*) as total');
+        $this->db->from($this->table);
+        $this->db->where(' tipoServicio = 1');
+        $query = $this->db->get();
+
+        return $query->row();
     }
 //put your code here
 }

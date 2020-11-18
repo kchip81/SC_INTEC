@@ -9,6 +9,7 @@ class Dashboard_Controller extends CI_Controller {
         $this->load->helper('url_helper');
         $this->load->model('Paquetes_Model');
         $this->load->model('EquipoOrden_Model');
+        $this->load->model('OrdenServicio_Model');
         
     }
 
@@ -21,6 +22,7 @@ class Dashboard_Controller extends CI_Controller {
         $this->load->view('Tablero/CardEquipoDemora');
         $this->load->view('Tablero/CardOrdenesAbiertas');
         $this->load->view('Tablero/CardPaquetesAbiertos');
+        $this->load->view('Tablero/CardManteCalib');
         
         $this->load->view('templates/FooterContainer');
     }   
@@ -40,6 +42,18 @@ class Dashboard_Controller extends CI_Controller {
     public function ConsultarTotalEquipoDemora()
     {
         $Total = $this->EquipoOrden_Model->ConsultarTotalEquipoDemora();
+        echo json_encode($Total);
+    }
+
+    public function ConsultarTotalCalibra()
+    {
+        $Total = $this->OrdenServicio_Model->ConsultarTotalCalibra();
+        echo json_encode($Total);
+    }
+
+    public function ConsultarTotalMant()
+    {
+        $Total = $this->OrdenServicio_Model->ConsultarTotalMant();
         echo json_encode($Total);
     }
     //put your code here

@@ -11,8 +11,8 @@ if($Perfil == 1 || $Perfil == 2){
                         <span>Total de Paquetes abiertos</span>
                     </div>
                     <div class="media-right media-middle">
-                        <i class="icon-briefcase red font-large-2 float-xs-right"></i>
-                    </div>
+                        <i class="fas fa-box-open red font-large-2 float-xs-right"></i>
+                    </div><br> 
                 </div>
             </div>
         </div>

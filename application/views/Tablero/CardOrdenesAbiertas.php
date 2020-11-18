@@ -12,7 +12,7 @@ if($Perfil == 1 || $Perfil == 2){
                     </div>
                     <div class="media-right media-middle">
                         <i class="icon-folder-open red font-large-2 float-xs-right"></i>
-                    </div>
+                    </div><br> 
                 </div>
             </div>
         </div>

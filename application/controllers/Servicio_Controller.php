@@ -112,6 +112,16 @@ class Servicio_Controller extends CI_Controller {
     *CARGAR CONSULTA DETALLE ORDEN
     */
 
+    
+    public function Load_CalibracionMantenimiento()
+    {
+        $data['title'] = 'Calibración vs Mantenimiento';
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardMantenimientoCalibracion');
+        $this->load->view('templates/FooterContainer');
+    }
+    
     public function Load_ConsultarDetalleOrden($IdOrden)
     {
       $data['title'] ='Orden';
@@ -231,8 +241,9 @@ class Servicio_Controller extends CI_Controller {
       $FechaEnvio = $this->input->post('FechaEnvio');
       $FechaRecibo = $this->input->post('FechaRecibo');
       $Observaciones = $this->input->post('Observaciones');
+      $servicioMC = $this->input->post('servicioMC');
 
-      $Clientes = $this->OrdenServicio_Model->InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones);
+      $Clientes = $this->OrdenServicio_Model->InsertarOrdenServicio($IdCliente,$Fecha,$FechaEnvio,$FechaRecibo,$Observaciones,$servicioMC);
 
       echo $Clientes;
     }
@@ -275,6 +286,15 @@ class Servicio_Controller extends CI_Controller {
 
     }
 /* ------------------------------------------------CardConsultaOrdenesServicio--------------------------------------------------------- */
+
+
+public function ConsultarDatosMantCalib()
+{
+  $tipo = $this->input->post('tipo');
+
+  $Datos = $this->OrdenServicio_Model->ConsultarOrdenMantCalib($tipo);
+  echo json_encode($Datos);
+}
 
 
 /* ------------------------------------------------CardConsultaOrdenesAbiertas-------------------------------------------------------- */

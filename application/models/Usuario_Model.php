@@ -71,6 +71,17 @@ class Usuario_Model extends CI_Model {
 
     public function InsertarUsuario($Nombre,$ApellidosUsuario,$usuario,$contrasena,$tipo,$creacion,$cliente)
     {
+
+        /*
+        if($cliente != null || $cliente != ''){
+            $data = array('NombreUsuario' => $Nombre,'ApellidosUsuario' => $ApellidosUsuario,'usuario' => $usuario,'contrasena' => $contrasena
+            ,'IdPerfil' => $tipo,'creacion' => $creacion,'cliente' => 0 )
+        }else{
+            $data = array('NombreUsuario' => $Nombre,'ApellidosUsuario' => $ApellidosUsuario,'usuario' => $usuario,'contrasena' => $contrasena
+            ,'IdPerfil' => $tipo,'creacion' => $creacion,'cliente' => $cliente );
+        }
+        */
+
         $data = array('NombreUsuario' => $Nombre,'ApellidosUsuario' => $ApellidosUsuario,'usuario' => $usuario,'contrasena' => $contrasena
         ,'IdPerfil' => $tipo,'creacion' => $creacion,'cliente' => $cliente );
 

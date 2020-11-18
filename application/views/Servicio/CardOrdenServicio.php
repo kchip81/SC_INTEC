@@ -124,7 +124,18 @@
 
                                 </div>
 
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="Servicio">Servicio</label>
+                                        <select name="servicio" id="servicioMC" class="form-control" onchange="">
+                                            <option value="0">Mantenimiento</option>
+                                            <option value="1">Calibración</option>
+                                        </select>
+                                    </div>
 
+                                </div>
+
+                                
 
                             </div>
                             <div class="row">
@@ -142,7 +153,7 @@
                                 </div>
                             </div>
 
-                            <h4 class="form-section"><i class="icon-drawer"></i> Productos</h4>
+                            <h4 class="form-section"><i class="icon-drawer"></i> Equipos</h4>
                             <div class="col-md-12">
                                 <div class="form-group" align="right">
                                     <button type="button" class="btn btn-primary" id="btnAgregarEquipo" disabled><i class="icon-android-add"></i> Agregar Equipo</button>
@@ -663,9 +674,10 @@
         var FechaRecibo =$("#FechaReciboLaboratorio").val();
         var Observaciones =$("#ObservacionesServicio").val();
         var TotalEquipos = $("#tabla tr").length;
+        var service = document.getElementById("servicioMC");
+        var servicioMC = service.value;
 
-
-        datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones};
+        datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones,"servicioMC":servicioMC};
 
         if(cliente != "")
         {
