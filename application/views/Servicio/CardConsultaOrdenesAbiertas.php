@@ -108,7 +108,7 @@
                                         </div>
 
                                         <h5>Equipos Sin Paquete</h5>
-                                        <table class="table table-responsive table-bordered table-striped" id="tblEquiposOrdenPaquete" style="width:100%">
+                                        <table class="table table-responsive table-bordered table-striped" data-page-length='-1' id="tblEquiposOrdenPaquete" style="width:100%">
                                             <thead>
                                                 <th>No. Orden</th>
                                                 <th>Cliente</th>

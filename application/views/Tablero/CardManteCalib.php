@@ -1,7 +1,8 @@
 <?php
 $Perfil = $this->session->userdata('intec_IdPerfil');
 if($Perfil == 1 || $Perfil == 2){
-    echo '<div href='.site_url('Servicio/CalibracionMantenimiento').' class="col-xl-6 col-lg-6 col-xs-12">
+    echo '<div class="col-xl-6 col-lg-6 col-xs-12">
+    <a href="'.site_url('Servicio/CalibracionMantenimiento').'">
         <div class="card">
             <div class="card-body">
                 <div class="card-block">
@@ -17,6 +18,7 @@ if($Perfil == 1 || $Perfil == 2){
                 </div>
             </div>
         </div>
+    </a>
     </div>';
 }
 ?>
