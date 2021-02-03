@@ -65,7 +65,7 @@
                       </div>
                       <div class="row">
                         <div class="col-md-2">
-                          <button type="button" class="btn btn-sm btn-primary"  name="button" onclick="window.open('<?=site_url('Servicio/NuevaOrdenPDF/')?><?=$Orden->IdOrden?>')">Ver PDF <i class="icon-file-pdf"></i></button>
+                          <button type="button" class="btn btn-sm btn-primary"  name="button" onclick="window.location.href='<?=site_url('Servicio/PDF/')?><?=$Orden->IdOrden?>'">Ver PDF <i class="icon-file-pdf"></i></button>
                         </div>
 
 

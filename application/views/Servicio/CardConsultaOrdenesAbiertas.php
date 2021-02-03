@@ -65,7 +65,7 @@
                                     </tbody>
                                 </table>
 
-                            <?php echo form_open('Servicio_Controller/CrearNuevoPaquete');?>
+                            <!--<?php echo form_open('Servicio_Controller/CrearNuevoPaquete');?>-->
                             <div class="modal fade" id="modalNuevoPaquete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                               <div class="modal-dialog modal-lg" role="document">
                                   <div class="modal-content">
@@ -117,8 +117,7 @@
                                                 <th>Modelo</th>
                                                 <th>Clave</th>
                                                 <th>Num. Serie</th>
-
-                                                <th>Seleccionar</th>
+                                                <th><input name="select_all" value="1" id="example-select-all" type="checkbox"></th>
                                             </thead>
                                             <tbody>
 
@@ -131,14 +130,14 @@
                                             <i class="icon-cross2"></i>Cerrar
                                         </button>
 
-                                        <button type="submit" class="btn btn-success mr-1" name="action" value="CrearPaquete" >
+                                        <button type="submit" class="btn btn-success mr-1" id="modalPaqueteAceptar" name="action" value="CrearPaquete" >
                                             <i class="icon-edit"></i>Crear Paquete
                                         </button>
                                     </div>
                                   </div>
                               </div>
                             </div>
-                        </form>
+                        <!--</form>-->
 
                         </div>
 
@@ -158,6 +157,61 @@
     $(document).ready(function()
     {
         CargarOrdenes(0);
+        $('#modalPaqueteAceptar').click(function() {
+            let table = $('#tblEquiposOrdenPaquete').DataTable();
+            
+            let arr= [];
+            let checkedvalues = table.$('input:checked').each(function () {
+                arr.push($(this).val())
+            });
+            
+            var DescripcionServicio = $("#DescripcionServicio").val();
+            var laboratorio = $("#laboratorio").val();
+
+            if(arr.length == 0){
+                swal({
+                    title: "Seleccione algun equipo",
+                    icon: "info",
+                });
+            }
+            else if(DescripcionServicio == ''){
+                swal({
+                    title: "Complete todos los campos",
+                    icon: "info",
+                });
+            }
+            else if(laboratorio == 0 || laboratorio == ''){
+                swal({
+                    title: "Seleccione un laboratorio",
+                    icon: "info",
+                });
+            }else if(laboratorio != 0 && arr.length != 0 && DescripcionServicio != ''){
+
+                datos={"DescripcionServicio":DescripcionServicio,"laboratorio":laboratorio,"idEquipos":JSON.stringify(arr)};
+                
+                $.ajax
+                ({
+                    type:'post',
+                    url:'<?php echo site_url();?>/Servicio_Controller/CrearNuevoPaquete',
+                    data:datos,
+                    success:function(resp)
+                    {
+                        if(resp != 'mal'){
+                            swal({
+                                title: "El paquete ha sido creado",
+                                icon: "success",
+                            });
+                            $('#modalNuevoPaquete').modal('hide');
+                        }else{
+                            swal({
+                                title: "El paquete no se ha podido crear",
+                                icon: "error",
+                            });
+                        }
+                    }
+                });
+            }              
+        });
     });
 
 
@@ -310,7 +364,6 @@
                 icon: "error",
             });
         }
-        //alert("La orden no se puede eliminar");
     }
 
     function CargarEquiposOrden()
@@ -333,12 +386,22 @@
 
         "columnDefs":[
                 {
-                    "targets":7, "data":"IdEquipoOrden", "render": function(data,type,row,meta)
-                    {
-                        return '<input type="checkbox" name="chkEquipoPaquete[]" id="Seleccionar" value ="'+data+'" checked>';
+                    'targets': 7,
+                    'searchable': false,
+                    'orderable': false,
+                    "data":"IdEquipoOrden",
+                    'className': 'dt-body-center',
+                    'render': function (data, type, full, meta){
+                        return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
                     }
-                }],
 
+
+
+                }],
+        'order': [[1, 'asc']],
+        'select': {
+            'style': 'multi'
+        },
         "columns": [
                 {"data":"IdOrden"},
                 {"data":"NombreCompania"},
@@ -348,6 +411,20 @@
                 {"data":"ClaveId"},
                 {"data":"NumService"}
             ]
+        });
+
+        $('#example-select-all').on('click', function(){
+            var rows = t.rows({ 'search': 'applied' }).nodes();
+            $('input[type="checkbox"]', rows).prop('checked', this.checked);
+        });
+
+        $('#tblEquiposOrdenPaquete tbody').on('change', 'input[type="checkbox"]', function(){
+            if(!this.checked){
+                var el = $('#example-select-all').get(0);
+                if(el && el.checked && ('indeterminate' in el)){
+                    el.indeterminate = true;
+                }
+            }
         });
     }
 </script>

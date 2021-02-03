@@ -275,7 +275,7 @@
 <script type="text/javascript">
 
     var idEquipoa = 0;
-
+    var idPaquete = <?php echo $this->uri->segment(3);?>;
     $(document).ready(function(){
 
       $("#form-modal-SubirCertificado").submit(function (event){
@@ -867,7 +867,9 @@
                 title: "El equipo se elimino del paquete",
                 icon: "success",
               });
-              ConsultarEquiposOrden(IdOrden);
+
+              //error equipo
+              ConsultarEquiposPaquete(idPaquete);
             }
         }).fail(function() {
           swal({

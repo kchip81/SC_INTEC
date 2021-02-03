@@ -74,11 +74,11 @@ $active_group = ENVIRONMENT;
 $query_builder = TRUE;
 
 $db['development'] = array(
-	'dsn'	=> '‘mysql:host=localhost;dbname=bd_intec’',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '1234',
-	'database' => 'bd_intec',
+	'dsn'	=> '‘mysql:host=remotemysql.com;dbname=sZdNtgQa3B',
+	'hostname' => 'remotemysql.com',
+	'username' => 'sZdNtgQa3B',
+	'password' => '5sx0Kvp26v',
+	'database' => 'sZdNtgQa3B',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

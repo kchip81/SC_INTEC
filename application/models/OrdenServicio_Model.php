@@ -198,5 +198,24 @@ class OrdenServicio_Model extends CI_Model {
 
         return $query->row();
     }
+
+    public function ConsutarTotaOrdenesAbiertos()
+    {
+        $this->db->select('count(*) as total');
+        $this->db->from($this->table);
+        $this->db->where('IdEstatusOrden > 1 and IdEstatusOrden < 3');
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
+    public function ConsutarFechasOrdenes()
+    {
+        $this->db->select('IdOrden, Fecha as FechaOrden, Observaciones as ObservacionesOrden');
+        $this->db->from($this->table);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 //put your code here
 }

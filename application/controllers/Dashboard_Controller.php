@@ -56,5 +56,11 @@ class Dashboard_Controller extends CI_Controller {
         $Total = $this->OrdenServicio_Model->ConsultarTotalMant();
         echo json_encode($Total);
     }
+
+    public function ConsutarTotaOrdenesAbiertos()
+    {
+        $Total = $this->OrdenServicio_Model->ConsutarTotaOrdenesAbiertos();
+        echo json_encode($Total);
+    }
     //put your code here
 }

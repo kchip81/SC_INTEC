@@ -282,7 +282,7 @@ class Servicio_Controller extends CI_Controller {
         $pdfFilePath = "reporte_".$hoy.".pdf";
 
         $this->m_pdf->pdf->WriteHTML($pdf);
-        $this->m_pdf->pdf->Output($pdfFilePath, "I");
+        $this->m_pdf->pdf->Output($pdfFilePath, "D");
 
     }
 /* ------------------------------------------------CardConsultaOrdenesServicio--------------------------------------------------------- */
@@ -350,7 +350,7 @@ public function ConsultarDatosMantCalib()
         echo json_encode($Equipos);
     }
 
-    public function CrearNuevoPaquete()
+    /*public function CrearNuevoPaquete()
     {
         try
         {
@@ -375,7 +375,7 @@ public function ConsultarDatosMantCalib()
 
                   $IdNuevoPaquete = $this->Paquetes_Model->CrearNuevoPaquete($NuevoPaquete);
 
-                  $EquiposSeleccionados = $this->input->post('chkEquipoPaquete');
+                  $EquiposSeleccionados = $this->input->post('id');
 
                   for ($i=0;$i<sizeof($EquiposSeleccionados);$i++)
                   {
@@ -406,6 +406,66 @@ public function ConsultarDatosMantCalib()
 
             log_message('error', $ex->getMessage());
             $this->db->trans_rollback();
+        }
+    }*/
+
+    public function CrearNuevoPaquete()
+    {
+        try
+        {
+            
+            $this->db->trans_start();
+
+
+            $Descripcion = $this->input->post('DescripcionServicio');
+            $IdLaboratorio = $this->input->post('laboratorio');
+            $EquiposSeleccionados = $this->input->post('idEquipos');
+
+            if($IdLaboratorio != 0 )
+            {
+                $NuevoPaquete = array(
+
+                    'Descripcion'=>$Descripcion,
+                    'IdLaboratorio'=> $IdLaboratorio,
+                    'IdEstatusPaquete'=>PQT_CREADO
+                );
+
+                $IdNuevoPaquete = $this->Paquetes_Model->CrearNuevoPaquete($NuevoPaquete);
+                
+                $data = json_decode($EquiposSeleccionados);
+
+
+                for ($i=0;$i< count($data);$i++)
+                {
+                    $IdEquipoOrden = $data[$i];
+                    $IdPaquete = $IdNuevoPaquete;
+
+                    $this->EquipoOrden_Model->AsignarPaqueteEquipo($IdPaquete, $IdEquipoOrden);
+                }
+
+                $transStatus = $this->db->trans_complete();
+
+                if ($transStatus == true)
+                {
+                    $this->db->trans_commit();
+                }
+                else
+                {
+                    $this->db->trans_rollback();
+                }
+                echo "Paquete Creado Exitosamente";
+                //redirect(site_url('Servicio/ConsultarOrden'));
+            }else{
+                echo 'Seleccione un laboratorio';
+                //redirect(site_url('Servicio/ConsultarOrden'));
+            }
+            
+        } catch (Exception $ex) {
+
+            log_message('error', $ex->getMessage());
+            $this->db->trans_rollback();
+            echo "mal";
+
         }
     }
 
@@ -661,7 +721,7 @@ public function ConsultarDatosMantCalib()
         $pdfFilePath = "reporte_".$hoy.".pdf";
 
         $this->m_pdf->pdf->WriteHTML($pdf);
-        $this->m_pdf->pdf->Output($pdfFilePath, "I");
+        $this->m_pdf->pdf->Output($pdfFilePath, "D");
 
     }
 
@@ -719,5 +779,44 @@ public function ConsultarDatosMantCalib()
         $result = $this->Usuario_Model->ConsultarClienteUsuario($Id);
 
         echo $result;
+    }
+
+
+    public function Load_PDF($IdOrden)
+    {
+        $data['title'] = 'Ordenes';
+
+        $data['Orden'] = $IdOrden;
+
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardPDFOrden',$data);
+        $this->load->view('templates/FormFooter',$data);
+        $this->load->view('templates/FooterContainer');
+
+    }
+
+    public function PDFMODEL(){
+        $IdOrden = $this->input->post('IdOrden');
+        echo $pdf = $this->PDF_Model->GenerarPDFModel($IdOrden);
+    }
+
+    public function Load_PDFLaboratorio($Id)
+    {
+        $data['title'] = 'Paquete';
+
+        $data['paquete'] = $Id;
+
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Servicio/CardPDFLaboratorio',$data);
+        $this->load->view('templates/FormFooter',$data);
+        $this->load->view('templates/FooterContainer');
+
+    }
+
+    public function PDFLaboratoripMODEL(){
+        $ID = $this->input->post('id');
+        echo $pdf = $this->PDF_Model->GenerarPDFLaboratorioMODEL($ID);
     }
 }

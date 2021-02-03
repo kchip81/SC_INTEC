@@ -100,7 +100,7 @@
                     <a href="<?php echo site_url(); ?>/Usuario/Config" class="dropdown-item"><i class="fas fa-users-cog"></i> User</a>
                     <a href="#" class="dropdown-item"><i class="icon-mail6"></i> My Inbox</a>
                     <a href="#" class="dropdown-item"><i class="icon-clipboard2"></i> Task</a>
-                    <a href="#" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
+                    <a href="<?php echo site_url();?>/Calendario" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
                   <div class="dropdown-divider"></div><a href="<?php echo site_url(); ?>/Usuario/CerrarSesion" class="dropdown-item"><i class="icon-power3"></i>Cerrar Sesión</a>
                 </div>
               </li>
@@ -168,6 +168,17 @@
                 <li><a href="'.site_url('Servicio/ConsultarEquipoDemora').'" data-i18n="nav.cards.card_statistics" class="menu-item">Equipos con Demora</a></li>
                 <li><a href="'.site_url('Factura/ConsultarFacturas').'" data-i18n="nav.cards.card_statistics" class="menu-item">Facturas Servicios</a></li>
                 <li><a href="'.site_url('Servicio/CalibracionMantenimiento').'" data-i18n="nav.cards.card_statistics" class="menu-item">Calibracion VS Mantenimiento</a></li>
+              </ul>
+            </li>';
+          }
+
+          
+          if($Perfil == 1 || $Perfil == 2)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="fas fa-cogs"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Automatización</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Automatizacion/Servicios').'" data-i18n="nav.cards.card_statistics" class="menu-item">Servicios</a>
+                </li>
               </ul>
             </li>';
           }

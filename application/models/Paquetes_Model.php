@@ -143,5 +143,28 @@ class Paquetes_Model extends CI_Model {
         $this->db->where('IdPaqueteEnvio',$IdPaqueteOrden);
         $this->db->update($this->table);
     }
+
+    public function ConsultarTodosPaquetes()
+    {
+      $this->db->select($this->table.'.*, Descripcion_lab');
+      $this->db->from($this->table);
+      $this->db->join('laboratorio l', $this->table.'.IdLaboratorio = l.IdLaboratorio');
+      $this->db->join('catalogoestatuspaquetes c', $this->table.'.IdEstatusPaquete = c.IdEstatusPaquete');
+
+      $query = $this->db->get();
+
+      return $query->row();
+    }
+
+    public function ConsultarFechaPaquetes()
+    {
+        $this->db->select('IdPaqueteEnvio,FechaEnv,Descripcion,FechaRecLab');
+        $this->db->from($this->table);
+        $this->db->where('FechaEnv IS NOT NULL');
+
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     //put your code here
 }

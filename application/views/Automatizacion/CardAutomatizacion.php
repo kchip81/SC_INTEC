@@ -1,3 +1,187 @@
+
+<style>
+body{
+  background: rgba(0,0,0,0.9);
+}
+form{
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  margin-top: -100px;
+  width: 90%;
+  height: 210px;
+  border: 4px dashed #96989A;
+}
+form p{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 170px;
+  color: black;
+  font-family: Arial;
+}
+form input{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+}
+form button{
+  margin: 0;
+  color: #fff;
+  background: #16a085;
+  border: none;
+  width: 100%;
+  height: 35px;
+  margin-top: -20px;
+  margin-left: -4px;
+  border-radius: 4px;
+  border-bottom: 4px solid #117A60;
+  transition: all .2s ease;
+  outline: none;
+}
+form button:hover{
+  background: #149174;
+	color: #0C5645;
+}
+form button:active{
+  border:0;
+}
+
+.dragdrop{
+  height: 250px;
+}
+
+
+.alert{
+    text-align: center;
+}
+.modal-alert .alert #loading {
+  
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+
+</style>
+
+<script>
+$(document).ready(function(){
+  $('form input').change(function () {
+    if(this.files.length != 0)
+        $('form p').text(this.files[0].name);
+    else
+        $('form p').text('Arrastre el archivo aquí o haga clic en esta área.');
+    });
+
+    $("#formuploadajax").on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url();?>/Automatizacio_Controller/CargarDatosExcel',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+
+                $('.modal').removeClass("modal").addClass("modal-alert");
+                /*swal({
+                    allowOutsideClick: false,
+                    imageUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ibg.com.pe%2Fcomunicacion%2Fgaleria&psig=AOvVaw0Q_GO8_3C4iaqAS-UtyDbQ&ust=1609134293254000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLi-7sq67e0CFQAAAAAdAAAAABAI'
+                    text:'Espere por favor...'
+                });*/
+
+            },
+            success: function(response){ //console.log(response);
+                //alert(response);
+
+                $('.modal-alert').removeClass("modal-alert").addClass("modal");
+
+            }
+        });
+    });
+});
+</script>
+
+
+<div class="row match-height">
+    <div class="col-md-12">
+        <div class="card">
+            <!--CARD HEADER-->
+            <div class="card-header">
+                <h4 class="card-title" id="basic-layout-form">Cargar datos</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                        </ul>
+                </div>
+            </div>
+
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <!--FORM BODY-->
+                    <div class="form-body">  
+
+                    <div class="modal">
+                        <div class="alert alert-success" role="alert">
+                            <p style="text-align: center;">Espere por favor...</p>
+                            <div id="loading"></div>
+                        </div>
+                        <br><br><br><br><br><br>
+                    </div>
+                        
+
+
+                        <div class="dragdrop">
+
+                            <form action="" enctype="multipart/form-data" id="formuploadajax">
+                                <input id="file" name="file" type="file" accept=".xl*" required>
+                                <p>Arrastre el archivo aquí o haga clic aqui.</p>
+                                <button type="submit">Cargar orden</button>
+                            </form>                        
+                        </div>
+
+                                                                                                   
+                    </div> 
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="row match-height">
         <div class="col-md-12">
             <div class="card">
@@ -21,18 +205,8 @@
                     <div class="card-block">
                         <!--FORM BODY-->
                         <div class="form-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="Clientes">Cliente</label>
-                                        <select name="cliente" id="cliente" class="form-control" onchange="">
-                                            <option value="">Clientes...</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
+                            
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -154,129 +328,8 @@
                             </div>
 
                             <h4 class="form-section"><i class="icon-drawer"></i> Equipos</h4>
-                            <div class="col-md-12">
-                                <div class="form-group" align="right">
-                                    <button type="button" class="btn btn-primary" id="btnAgregarEquipo" disabled><i class="icon-android-add"></i> Agregar Equipo</button>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="ClaveSubProducto">Clavé de Identificación:</label>
-                                        <div class="position-relative">
-                                            <input type="text" id="ClaveSubProducto" class="form-control" placeholder="Clavé de Identificación" name="ClaveSubProducto" onchange="ClaveSubProducto()">
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="DescripcionSubProducto">Numero de serie:</label>
-                                        <div class="position-relative">
-                                            <input type="text" id="NumSerieSubProducto" class="form-control" placeholder="Numero de serie" name="NumSerieSubProducto">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="LoteSubProducto">Modelo:</label>
-                                        <input type="text" id="ModeloSubProducto" class="form-control" placeholder="Modelo" name="ModeloSubProducto">
-
-                                    </div>
-                                </div>
-
-                                <div class="col-md-3" align="right">
-                                <br>
-                                    <div class="form-group" style="margin-top:7px;">
-                                        <button type="button" class="btn btn-primary" id="btnBuscarSubProducto"><i class="icon-android-search"></i> Buscar</button>
-                                    </div>
-
-                                </div>
-                                </div>
-
-
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="CodigoSubProducto">Marca:</label>
-                                        <div class="position-relative has-icon-left">
-                                            <input type="text" id="MarcaSubProducto" class="form-control" placeholder="Marca" name="MarcaSubProducto" onchange="CargarSubProducto()">
-                                            <div class="form-control-position">
-                                            <i class="icon-barcode"></i>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="DescripcionSubProducto">Descripción del Equipo:</label>
-                                        <div class="position-relative has-icon-left">
-                                            <input type="text" id="DescripcionSubProducto" class="form-control" placeholder="Descripción" name="DescripcionSubProducto">
-                                            <div class="form-control-position">
-                                            <i class="icon-box"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="LoteSubProducto">Alcance de Medicion:</label>
-                                        <input type="text" id="AlcanceSubProducto" class="form-control" placeholder="Alcance de Medicion" name="AlcanceSubProducto">
-
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="row  ">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="CantidadSubProducto">División Minima:</label>
-                                            <input type="text" id="DivisionSubProducto" class="form-control" placeholder="División Minima" name="DivisionSubProducto"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="Periodos">Periodo:</label>
-                                            <select name="PeriodoSubProducto" id="PeriodoSubProducto" class="form-control" onchange="">
-                                                <option value="">Periodos...</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="MesInicio">Mes de Inicio</label>                                            
-                                            <select name="MesInicioSubProducto" id="MesInicioSubProducto" class="form-control" onchange="">
-                                                <option value="1">Enero</option>
-                                                <option value="2">Febrero</option>
-                                                <option value="3">Marzo</option>
-                                                <option value="4">Abril</option>
-                                                <option value="5">Mayo</option>
-                                                <option value="6">Junio</option>
-                                                <option value="7">Julio</option>
-                                                <option value="8">Agosto</option>
-                                                <option value="9">Septiembre</option>
-                                                <option value="10">Octubre</option>
-                                                <option value="11">Noviembre</option>
-                                                <option value="12">Diciembre</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="IdSubProducto" class="form-control square" placeholder="ID Producto" readonly aria-label="ID Producto" name="IDSubProducto">
-                                    <br>
-
-                                    <div class="col-md-3">
-                                        <div class="form-group" align="right">
-                                            <button id="ActualizarEquipo" type="button" class="btn btn-primary" style="display:none"><i class="icon-refresh"> </i>Actualizar</button>
-                                            <button type="button" class="btn btn-primary" id="btnAgregarSubProducto"><i class="icon-android-add"> </i>Agregar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br><br>
-
+                            
+                            
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
                                         <th>ID Producto</th>
@@ -304,7 +357,7 @@
                                 <i class="icon-cross2"></i> Cancelar
                             </button>
                             <button type="submit" class="btn btn-primary mr-1" id="GuardarEntrada" name="action" value='GuardarEntrada'>
-                                <i class="icon-check2"></i>Guardar Entrada
+                                <i class="icon-check2"></i> Guardar Entrada
                             </button>
                         </div>
 
@@ -437,26 +490,9 @@
 <script type="text/javascript">
 
     $(document).ready(function()
-    {
-        CargarClientes();
-        FechaActual();
+    {        
         CargarDatosPeriodos();
     });
-
-    function FechaActual()
-    {
-        var fecha = new Date();
-        var mes = fecha.getMonth()+1;
-        var dia = fecha.getDate();
-        var ano = fecha.getFullYear();
-        $('#MesInicioModal').val(mes);
-        $('#MesInicioSubProducto').val(mes);
-        if(dia<10)
-            dia='0'+dia;
-        if(mes<10)
-            mes='0'+mes
-        document.getElementById('FechaReciboIntec').value=ano+"-"+mes+"-"+dia;
-    }
 
     function CargarDatosPeriodos()
     {
@@ -759,7 +795,7 @@
             icon: "success",
         });
         //alert("La orden de servicio ha sido creada");
-        window.open("<?php echo site_url();?>/Servicio/PDF/"+idOrden);
+        window.open("<?php echo site_url();?>/Servicio/NuevaOrdenPDF/"+idOrden);
     }
 
     function remover()
@@ -772,19 +808,6 @@
         editar(id);
         $(this).parents("tr").remove();
         $('#ActualizarEquipo').show();
-    }
-
-    function CargarClientes()
-    {
-        $.ajax
-        ({
-            type:'post',
-            url:'<?php echo site_url();?>/Servicio_Controller/ConsultarClientes_ajax',
-            success:function(resp)
-            {
-                $("#cliente").html(resp)
-            }
-        });
     }
 
     function CargarTabla()

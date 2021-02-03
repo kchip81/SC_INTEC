@@ -27,7 +27,7 @@ if($Perfil == 1 || $Perfil == 2){
 $(document).ready(function(){
     
     $.ajax({
-        url:"<?php echo site_url();?>/Dashboard_Controller/ConsultarTotalEquipoOrden",
+        url:"<?php echo site_url();?>/Dashboard_Controller/ConsutarTotaPaquetesAbiertos",
 
         method:"POST",
         success: function(data)
