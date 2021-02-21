@@ -19,6 +19,7 @@ class PDF_Model extends CI_Model {
         $this->load->model('EquipoOrden_Model');
         $this->load->model('Paquetes_Model');
         $this->load->model('Servicio_Model');
+        $this->load->model('Equipo_Servicio_Model');
     }
     
     public function GenerarPDF($IdOrden)
@@ -421,10 +422,6 @@ class PDF_Model extends CI_Model {
                             <tr>
                           </thead>
                           <tbody>
-                            <tr>
-                            <td style="width:150px">Contacto</td>
-                            <td colspan="3">'.$cliente['NombreContacto'].'</td>
-                          <tr>
                           <tr>
                             <td style="width:150px">Compañia</td>
                             <td colspan="3">'.$cliente['NombreCompania'].'</td>
@@ -433,10 +430,6 @@ class PDF_Model extends CI_Model {
                             <td style="width:150px">Domicilio del Informe</td>
                             <td colspan="3">'.$cliente['Domicilio'].'</td>
                           <tr>
-                          <tr>
-                            <td style="width:150px">Correo Contacto</td>
-                            <td colspan="3">'.$cliente['Correo'].'</td>
-                            <tr>
                           </tbody>
                         </table>
                         <br>
@@ -860,10 +853,6 @@ class PDF_Model extends CI_Model {
                             <tr>
                           </thead>
                           <tbody>
-                            <tr>
-                            <td style="width:150px">Contacto</td>
-                            <td colspan="3">'.$cliente['NombreContacto'].'</td>
-                          <tr>
                           <tr>
                             <td style="width:150px">Compañia</td>
                             <td colspan="3">'.$cliente['NombreCompania'].'</td>
@@ -872,10 +861,6 @@ class PDF_Model extends CI_Model {
                             <td style="width:150px">Domicilio del Informe</td>
                             <td colspan="3">'.$cliente['Domicilio'].'</td>
                           <tr>
-                          <tr>
-                            <td style="width:150px">Correo Contacto</td>
-                            <td colspan="3">'.$cliente['Correo'].'</td>
-                            <tr>
                           </tbody>
                         </table>
                         <br>
@@ -964,8 +949,61 @@ class PDF_Model extends CI_Model {
     public function GenerarPDFMantenimientoModel($Id)
     {                
         $ServicioInfo = $this->Servicio_Model->ConsultarServicioId($Id); 
-        //$Clientes = $this->OrdenServicio_Model->ConsultarOrdenCliente($id);
-        
+        $ServicioEquipos = $this->Equipo_Servicio_Model->ConsultarServicioEquipoId($Id); 
+        $completo1 =0;
+        $completo2 =0;
+        $completo3 =0;
+        $equipo = '<td colspan="" >
+                <table><tbody>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Marca:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Modelo:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Alcance:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 70px;font-size: 10px;font-size: 10px;">
+                      Div. Min:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      N/S:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                    <tr>
+                      <td style="width: 50px;font-size: 10px;">
+                        Daño:
+                      </td>
+                      <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                         
+                      </td>
+                    </tr>
+                  </tr>
+                </tbody></table></td>';
         $i = 1;
       $table2 = '';
       $table = '';
@@ -1105,233 +1143,190 @@ class PDF_Model extends CI_Model {
                   ';
             }
             $table2 = '
-            <div class="table-responsive">    
               <table class="table" cellspacing="0">
               <tbody colspan="6">
-              <tr>
-                <td colspan="" >
-                  
-                  
+              <tr>';
+              $count =0;
+              foreach($ServicioEquipos as $servicioequipo)
+              {
+                $count++;
+                $table2=$table2.'<td colspan="" >                 
 
                 <table><tbody>
                   <tr>
-                    <td style="width: 50px;">
+                    <td style="width: 50px;font-size: 10px;">
                       Marca:
                     </td>
-                    <td style="border-bottom: 1px solid #000;">
-                      
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Marca'].'
                     </td>
                   </tr>
                   <tr>
-                    <td style="width: 50px;">
+                    <td style="width: 50px;font-size: 10px;">
                       Modelo:
                     </td>
-                    <td style="border-bottom: 1px solid #000;">
-                      
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Modelo'].'
                     </td>
                   </tr>
                   <tr>
-                    <td style="width: 50px;">
+                    <td style="width: 50px;font-size: 10px;">
                       Alcance:
                     </td>
-                    <td style="border-bottom: 1px solid #000;">
-                      
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['AlcanceMedicion'].'
                     </td>
                   </tr>
                   <tr>
-                    <td style="width: 70px;">
+                    <td style="width: 70px;font-size: 10px;font-size: 10px;">
                       Div. Min:
                     </td>
-                    <td style="border-bottom: 1px solid #000;">
-                      
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['DivisionMedicion'].'
                     </td>
                   </tr>
                   <tr>
-                    <td style="width: 50px;">
+                    <td style="width: 50px;font-size: 10px;">
                       N/S:
                     </td>
-                    <td style="border-bottom: 1px solid #000;">
-                      
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Ns'].'
                     </td>
                     <tr>
-                      <td style="width: 50px;">
+                      <td style="width: 50px;font-size: 10px;">
                         Daño:
                       </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
+                      <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                        '.$servicioequipo['Dano'].' 
                       </td>
                     </tr>
                   </tr>
                 </tbody></table>
 
-                </td>
-                <td colspan="">
-                  
-                  <table><tbody>
-                    <tr>
-                      <td style="width: 50px;">
-                        Marca:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 50px;">
-                        Modelo:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 50px;">
-                        Alcance:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 70px;">
-                        Div. Min:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 50px;">
-                        N/S:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                      <tr>
-                        <td style="width: 50px;">
-                          Daño:
-                        </td>
-                        <td style="border-bottom: 1px solid #000;">
-                          
-                        </td>
-                      </tr>
-                    </tr>
-                  </tbody></table>
+                </td>';
 
-                </td>
-                <td colspan="">
-                  
-                  <table><tbody>
-                    <tr>
-                      <td style="width: 50px;">
-                        Marca:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 50px;">
-                        Modelo:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 50px;">
-                        Alcance:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 70px;">
-                        Div. Min:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="width: 50px;">
-                        N/S:
-                      </td>
-                      <td style="border-bottom: 1px solid #000;">
-                        
-                      </td>
-                      <tr>
-                        <td style="width: 50px;">
-                          Daño:
-                        </td>
-                        <td style="border-bottom: 1px solid #000;">
-                          
-                        </td>
-                      </tr>
-                    </tr>
-                  </tbody></table>
+                if($count == 1)
+                  $completo1=$servicioequipo['Completo'];
+                else if($count == 2)
+                  $completo2=$servicioequipo['Completo'];
+                else if($count == 1)
+                  $completo3=$servicioequipo['Completo'];
+              }
 
-                </td>
+              if($count == 0)
+              $table2=$table2.$equipo.$equipo.$equipo;
+              else if($count == 1)
+              $table2=$table2.$equipo.$equipo;
+              else if($count == 2)
+              $table2=$table2.$equipo;
+
+
+                $table2.'
               </tr>
               </tbody>
-            </table>
+            </table>';
 
             
-    <table cellspacing="0" colspan="6">
-    <thead>
-      <tr>
-        <th style="background: #F5F5F5;" colspan="6">GENERALES DEL EQUIPO</th> 
-      <tr>
-    </thead>
-    <tbody>
-      
-      <tr>
-        
-        <td colspan="" >
-          <table><tbody>
-           <tr>
-             <td style="width: 50px;text-align: center;">
-              Completo?
-             </td>
-             <td>
-              <input type="checkbox" id="Completo" name="Completo" value="1">Si
-              <input type="checkbox" id="Completo" name="Completo" value="2">No
-             </td>
-           </tr>
-          </tbody></table>
-         </td>
-
-
-         <td colspan="" >
-          <table><tbody>
-           <tr>
-             <td style="width: 50px;text-align: center;">
-              Completo?
-             </td>
-             <td>
-              <input type="checkbox" id="Completo" name="Completo" value="1">Si
-              <input type="checkbox" id="Completo" name="Completo" value="2">No
-             </td>
-           </tr>
-          </tbody></table>
-         </td>
-
-
-      
-         <td colspan="" >
-          <table><tbody>
-           <tr>
-             <td style="width: 50px; text-align: center;">
-               Completo?
-             </td>
-             <td>
-              <input type="checkbox" id="Completo" name="Completo" value="1">Si
-              <input type="checkbox" id="Completo" name="Completo" value="2">No
-             </td>
-           </tr>
-          </tbody></table>
-         </td>
+            $table3 ='        
+            <table cellspacing="0" colspan="6">
+            <thead>
+              <tr>
+                <th style="background: #F5F5F5;" colspan="6">GENERALES DEL EQUIPO</th> 
+              <tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                
+                <td colspan="" >
+                  <table style="margin-bottom: 0px;"><tbody>
+                   <tr>
+                     <td style="width: 50px;text-align: center;">
+                      Completo?
+                     </td>
+                     <td>';
+                     
+                     if($completo1 == 1){
+                     $table3.='
+                     <input type="checkbox" checked="checked" id="Completo" name="Completo" value="1">Si
+            
+                      <input type="checkbox" id="Completo" name="Completo" value="2">No
+                      ';
+                     }
+                     else{
+                      $table3.='
+                        <input type="checkbox"  id="Completo" name="Completo" value="1">Si
+             
+                       <input type="checkbox"checked="checked" id="Completo" name="Completo" value="2">No
+                       ';
+                      
+                     }
+            
+                     $table3.='</td>
+                   </tr>
+                  </tbody></table>
+                 </td>
+            
+            
+                 <td colspan="" >
+                  <table style="margin-bottom: 0px;"><tbody>
+                   <tr>
+                     <td style="width: 50px;text-align: center;">
+                      Completo?
+                     </td>
+                     <td>';
+                     
+                     if($completo2 == 1){
+                     $table3.='
+                     <input type="checkbox" checked="checked" id="Completo" name="Completo" value="1">Si
+            
+                      <input type="checkbox" id="Completo" name="Completo" value="2">No
+                      ';
+                     }
+                     else{
+                      $table3.='
+                        <input type="checkbox"  id="Completo" name="Completo" value="1">Si
+             
+                       <input type="checkbox"checked="checked" id="Completo" name="Completo" value="2">No
+                       ';
+                      
+                     }
+            
+                     $table3.='</td>
+                   </tr>
+                  </tbody></table>
+                 </td>
+            
+            
+              
+                 <td colspan="" >
+                  <table style="margin-bottom: 0px;"><tbody>
+                   <tr>
+                     <td style="width: 50px; text-align: center;">
+                       Completo?
+                     </td>
+                     <td>';
+                     
+                     if($completo3 == 1){
+                     $table3.='
+                     <input type="checkbox" checked="checked" id="Completo" name="Completo" value="1">Si
+            
+                      <input type="checkbox" id="Completo" name="Completo" value="2">No
+                      ';
+                     }
+                     else{
+                      $table3.='
+                        <input type="checkbox"  id="Completo" name="Completo" value="1">Si
+             
+                       <input type="checkbox"checked="checked" id="Completo" name="Completo" value="2">No
+                       ';
+                      
+                     }
+            
+                     $table3.='</td>
+                   </tr>
+                  </tbody></table>
+                 </td>
          
       </tr>
     </tbody>
@@ -1451,7 +1446,7 @@ class PDF_Model extends CI_Model {
 
 
             </div>';
-        $pdf = $head.$table.$table2;
+        $pdf = $head.$table.$table2.$table3;
 
         return $pdf;
     }
@@ -1459,10 +1454,64 @@ class PDF_Model extends CI_Model {
 
     public function GenerarPDFMantenimiento($Id)
     {                
-        $ServicioInfo = $this->Servicio_Model->ConsultarServicioId($Id); 
-        //$Clientes = $this->OrdenServicio_Model->ConsultarOrdenCliente($id);
-        
-        $i = 1;
+      $ServicioInfo = $this->Servicio_Model->ConsultarServicioId($Id); 
+      $ServicioEquipos = $this->Equipo_Servicio_Model->ConsultarServicioEquipoId($Id); 
+            
+      $completo1 =0;
+      $completo2 =0;
+      $completo3 =0;
+      $equipo = '<td colspan="" >
+                <table><tbody>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Marca:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Modelo:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Alcance:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 70px;font-size: 10px;font-size: 10px;">
+                      Div. Min:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      N/S:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      
+                    </td>
+                    <tr>
+                      <td style="width: 50px;font-size: 10px;">
+                        Daño:
+                      </td>
+                      <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                         
+                      </td>
+                    </tr>
+                  </tr>
+                </tbody></table></td>';
+      
       $table2 = '';
       $table = '';
 
@@ -1594,20 +1643,23 @@ class PDF_Model extends CI_Model {
     
             <tr>
               <td style="background: #FFFFFF;text-align: center;width:100px" colspan="1">Priodidad:</td>
-              <td style="background: #FFFFFF;;font-size: 12px;text-align: center;padding-right: 0px;padding-left: 0px;" colspan="1" >
-                <input type="checkbox" id="Priodidad" name="Priodidad" value="1"'; 
-                if($servicio['Prioridad'] == 0)
-                  $table.='checked="checked"';
-                
-                $table.='> Ordinario 3-5 días<br>
-              </td>
-              <td style="background: #FFFFFF;text-align: center; ;font-size: 12px;" colspan="1" >
-                <input type="checkbox" id="Priodidad" name="Priodidad" value="2"'; 
-                if($servicio['Prioridad'] == 1)
-                  $table.='checked="checked"';
-                
-                $table.='> Urgente 1-2 días<br>
-              </td>
+              <td style="background: #FFFFFF;;font-size: 12px;text-align: center;padding-right: 0px;padding-left: 0px;" colspan="1" >';
+
+              if($servicio['Prioridad'] == 0)
+                $table.='<input type="checkbox" id="Priodidad" name="Priodidad" checked="checked" > Ordinario 3-5 días<br>';
+              else
+                $table.='<input type="checkbox" id="Priodidad" name="Priodidad" > Ordinario 3-5 días<br>';
+
+              $table.='</td>
+
+              <td style="background: #FFFFFF;text-align: center; ;font-size: 12px;" colspan="1" >';
+
+              if($servicio['Prioridad'] == 1)
+                $table.='<input type="checkbox" id="Priodidad" name="Priodidad" checked="checked" > Urgente 1-2 días<br>';
+              else
+                $table.='<input type="checkbox" id="Priodidad" name="Priodidad" > Urgente 1-2 días<br>';
+
+              $table.='</td>
     
               <td style="background: #FFFFFF;text-align: right;" colspan="1">
                 <label>Requerimientos especiales:</label><br>
@@ -1625,179 +1677,95 @@ class PDF_Model extends CI_Model {
       </table>
               ';
         }
-        $table2 = '
-          <table class="table" cellspacing="0">
-          <tbody colspan="6">
-          <tr>
-            <td colspan="" >
-              
-              
 
-            <table><tbody>
-              <tr>
-                <td style="width: 50px;font-size: 10px;">
-                  Marca:
-                </td>
-                <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                  
-                </td>
-              </tr>
-              <tr>
-                <td style="width: 50px;font-size: 10px;">
-                  Modelo:
-                </td>
-                <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                  
-                </td>
-              </tr>
-              <tr>
-                <td style="width: 50px;font-size: 10px;">
-                  Alcance:
-                </td>
-                <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                  
-                </td>
-              </tr>
-              <tr>
-                <td style="width: 70px;font-size: 10px;font-size: 10px;">
-                  Div. Min:
-                </td>
-                <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                  
-                </td>
-              </tr>
-              <tr>
-                <td style="width: 50px;font-size: 10px;">
-                  N/S:
-                </td>
-                <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                  
-                </td>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Daño:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-              </tr>
-            </tbody></table>
-
-            </td>
-            <td colspan="">
-              
-              <table><tbody>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Marca:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Modelo:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Alcance:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 70px;font-size: 10px;">
-                    Div. Min:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    N/S:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                  <tr>
-                    <td style="width: 50px;font-size: 10px;">
-                      Daño:
-                    </td>
-                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                      
-                    </td>
-                  </tr>
-                </tr>
-              </tbody></table>
-
-            </td>
-            <td colspan="">
-              
-              <table><tbody>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Marca:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Modelo:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    Alcance:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 70px;font-size: 10px;">
-                    Div. Min:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                </tr>
-                <tr>
-                  <td style="width: 50px;font-size: 10px;">
-                    N/S:
-                  </td>
-                  <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                    
-                  </td>
-                  <tr>
-                    <td style="width: 50px;font-size: 10px;">
-                      Daño:
-                    </td>
-                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
-                      
-                    </td>
-                  </tr>
-                </tr>
-              </tbody></table>
-
-            </td>
-          </tr>
-          </tbody>
-        </table>
 
         
+        $table2 .= '
+              <table class="table" cellspacing="0">
+              <tbody colspan="6">
+              <tr>';
+              $count =0;
+              foreach($ServicioEquipos as $servicioequipo)
+              {
+                $count++;
+                $table2.='<td colspan="" >                 
+
+                <table><tbody>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Marca:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Marca'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Modelo:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Modelo'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Alcance:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['AlcanceMedicion'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 70px;font-size: 10px;font-size: 10px;">
+                      Div. Min:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['DivisionMedicion'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      N/S:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Ns'].'
+                    </td>
+                    <tr>
+                      <td style="width: 50px;font-size: 10px;">
+                        Daño:
+                      </td>
+                      <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                        '.$servicioequipo['Dano'].' 
+                      </td>
+                    </tr>
+                  </tr>
+                </tbody></table>
+
+                </td>';
+
+                if($count == 1)
+                  $completo1=$servicioequipo['Completo'];
+                else if($count == 2)
+                  $completo2=$servicioequipo['Completo'];
+                else if($count == 1)
+                  $completo3=$servicioequipo['Completo'];
+              }
+
+              if($count == 0)
+              $table2=$table2.$equipo.$equipo.$equipo;
+              else if($count == 1)
+              $table2=$table2.$equipo.$equipo;
+              else if($count == 2)
+              $table2=$table2.$equipo;
+
+
+                $table2.='
+              </tr>
+              </tbody>
+            </table>';
+
+            
+$table3 ='        
 <table cellspacing="0" colspan="6">
 <thead>
   <tr>
@@ -1814,10 +1782,25 @@ class PDF_Model extends CI_Model {
          <td style="width: 50px;text-align: center;">
           Completo?
          </td>
-         <td>
-          <input type="checkbox" id="Completo" name="Completo" value="1">Si
-          <input type="checkbox" id="Completo" name="Completo" value="2">No
-         </td>
+         <td>';
+         
+         if($completo1 == 1){
+         $table3.='
+         <input type="checkbox" checked="checked" id="Completo" name="Completo">Si
+
+          <input type="checkbox" id="Completo" name="Completo" >No
+          ';
+         }
+         else{
+          $table3.='
+            <input type="checkbox"  id="Completo" name="Completo">Si
+ 
+           <input type="checkbox" checked="checked" id="Completo" name="Completo">No
+           ';
+          
+         }
+
+         $table3.='</td>
        </tr>
       </tbody></table>
      </td>
@@ -1829,10 +1812,25 @@ class PDF_Model extends CI_Model {
          <td style="width: 50px;text-align: center;">
           Completo?
          </td>
-         <td>
-          <input type="checkbox" id="Completo" name="Completo" value="1">Si
-          <input type="checkbox" id="Completo" name="Completo" value="2">No
-         </td>
+         <td>';
+         
+         if($completo2 == 1){
+         $table3.='
+         <input type="checkbox" checked="checked" id="Completo" name="Completo">Si
+
+          <input type="checkbox" id="Completo" name="Completo">No
+          ';
+         }
+         else{
+          $table3.='
+            <input type="checkbox"  id="Completo" name="Completo">Si
+ 
+           <input type="checkbox" checked="checked" id="Completo" name="Completo">No
+           ';
+          
+         }
+
+         $table3.='</td>
        </tr>
       </tbody></table>
      </td>
@@ -1845,10 +1843,25 @@ class PDF_Model extends CI_Model {
          <td style="width: 50px; text-align: center;">
            Completo?
          </td>
-         <td>
-          <input type="checkbox" id="Completo" name="Completo" value="1">Si
-          <input type="checkbox" id="Completo" name="Completo" value="2">No
-         </td>
+         <td>';
+         
+         if($completo3 == 1){
+         $table3.='
+         <input type="checkbox" checked="checked" id="Completo" name="Completo">Si
+
+          <input type="checkbox" id="Completo" name="Completo">No
+          ';
+         }
+         else{
+          $table3.='
+            <input type="checkbox"  id="Completo" name="Completo">Si
+ 
+           <input type="checkbox" checked="checked" id="Completo" name="Completo">No
+           ';
+          
+         }
+
+         $table3.='</td>
        </tr>
       </tbody></table>
      </td>
@@ -1980,7 +1993,7 @@ class PDF_Model extends CI_Model {
           </body>
         </html>
         ';
-        $pdf = $head.$table.$table2;
+        $pdf = $head.$table.$table2.$table3;
 
         return $pdf;
     }

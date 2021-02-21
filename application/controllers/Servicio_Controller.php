@@ -185,8 +185,9 @@ class Servicio_Controller extends CI_Controller {
         $DivisionMedicion = $this->input->post('DivisionMedicion');
         $Periodo = $this->input->post('Periodo');
         $MesInicio = $this->input->post('MesInicio');
+        $tipoServicio = $this->input->post('tipoServicio');
 
-        $Clientes = $this->Equipo_Model->InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente,$MesInicio,$Periodo);
+        $Clientes = $this->Equipo_Model->InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente,$MesInicio,$Periodo,$tipoServicio);
 
         $resultado = $this->Equipo_Model->ConsultarEquipoID($Clientes);
 
@@ -224,7 +225,7 @@ class Servicio_Controller extends CI_Controller {
     {
         $Equipo = $this->Equipo_Model->ConsultarDatosPeriodos();
 
-        $output ='<option value="">Seleccione un Periodo</option>';
+        $output ='<option value="" disabled selected>Seleccione un Periodo</option>';
 
         foreach ($Equipo as $equipo)
         {
@@ -261,7 +262,7 @@ class Servicio_Controller extends CI_Controller {
         $Clientes = $this->Clientes_Model->ConsultarClientes();
 
 
-        $output ='<option value="">Seleccione un cliente</option>';
+        $output ='<option disabled selected value="">Seleccione un cliente</option>';
 
         foreach ($Clientes as $cliente)
         {
@@ -332,11 +333,11 @@ public function ConsultarDatosMantCalib()
     {
         $Laboratorios = $this->Laboratorio_Model->ConsultarLaboratorio();
 
-        $output ='<option value="">Seleccione un laboratorio</option>';
+        $output ='<option disabled value="">Seleccione un laboratorio</option>';
 
         foreach ($Laboratorios as $laboratorios)
         {
-           $output .='<option value="'.$laboratorios['IdLaboratorio'].'">'.$laboratorios['Descripcion_lab'].'</option>';
+           $output .='<option selected value="'.$laboratorios['IdLaboratorio'].'">'.$laboratorios['Descripcion_lab'].'</option>';
         }
         echo $output;
     }

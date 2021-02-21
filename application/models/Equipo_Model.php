@@ -63,11 +63,11 @@ class Equipo_Model extends CI_Model {
         return $query->result_array();
     }
 
-    public function InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente,$MesInicio,$Periodo)
+    public function InsertarProducto($Descripcion,$Marca,$Modelo,$NumService, $DivisionMedicion,$AlcanceMedicion,$ClaveId,$IdCliente,$MesInicio,$Periodo,$tipoServicio)
     {
         $data = array('Descripcion' => $Descripcion,'Marca' => $Marca,'Modelo' => $Modelo,'NumService' => $NumService
         ,'ClaveId' => $ClaveId,'AlcanceMedicion' => $AlcanceMedicion,'DivisionMedicion' => $DivisionMedicion,'IdCliente' => $IdCliente
-        ,'MesInicio' => $MesInicio,'IdPeriodo' => $Periodo);
+        ,'MesInicio' => $MesInicio,'IdPeriodo' => $Periodo,'tipoServicio' => $tipoServicio);
 
         $this->db->insert($this->table,$data);
 
@@ -238,5 +238,17 @@ class Equipo_Model extends CI_Model {
       return $result->result_array();
 
     }
+
+    public function ConsultarEquiposbyCliente($IdCliente)
+    {
+        $this->db->select('IdEquipo,Descripcion,NumService');
+        $this->db->from($this->table);
+        $this->db->where('IdCliente',$IdCliente);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     //put your code here
 }

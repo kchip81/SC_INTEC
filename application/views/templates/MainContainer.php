@@ -197,9 +197,9 @@
 
           if($Perfil == 1 || $Perfil == 2)
           {
-            echo '<li class=" nav-item"><a href="#"><i class="icon-ios-speedometer"></i><span data-i18n="nav.expediente.main" class="menu-title">Proveedores</span></a>
+            echo '<li class=" nav-item"><a href="#"><i class="icon-ios-speedometer"></i><span data-i18n="nav.expediente.main" class="menu-title">Laboratorios</span></a>
               <ul class="menu-content">
-                <li><a href="'.site_url('Proveedores/CatalogoProveedor').'" data-i18n="nav.expediente.main" class="menu-item">Catalogo de Proveedores</a>
+                <li><a href="'.site_url('Proveedores/CatalogoProveedor').'" data-i18n="nav.expediente.main" class="menu-item">Catalogo de laboratorios</a>
                 </li>
               </ul>
             </li>';

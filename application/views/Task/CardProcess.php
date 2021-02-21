@@ -19,6 +19,19 @@
                 <div class="card-block">
                     <!--FORM BODY-->
                     <div class="form-body">  
+
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="Equipos">Equipos</label>
+                            <select name="equipos" id="Equiposselect" class="form-control" onchange="">
+                                <option value="">Equipos...</option>
+
+                            </select>
+                            
+                        </div>
+                      </div>
+                    </div>
                     
                       <div class="row">
                         <div class="col-md-6">
@@ -76,7 +89,58 @@
                           </div>
 
                         </div>
-                    </div>                                                                              
+                      </div> 
+                      <br>  
+                      <hr>
+                      <div class="conteudo">
+
+                        <center>
+                          <div class="cronometro">
+                          <div id="screen">00 : 00 : 00 : 00</div>
+                          </div>
+                          <br>
+                          <button class="tiempo" id="botao-iniciar"  onclick="start()" type="submit">Iniciar</button>
+                          <button class="tiempo" id="botao-parar" onclick="stop()" type="submit">Detener</button>
+                          <button class="tiempo" id="registro" onclick="resume()"  type="submit">Continuar</button>
+                          <button class="tiempo" id="botao-apagar" onclick="reset()" type="submit">Finalizar</button>
+                        </center>
+
+                      </div>
+
+                      <hr>
+                      <br>
+                      <table class="table table-responsive table-bordered table-striped">
+                        <thead>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Tiempo</th>
+                        </thead>
+                        <tbody id="tabla">
+
+                        </tbody>
+                      </table>  
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="insumos">Refacciones e insumos utilizados:</label>
+                            <textarea class="form-control" id="insumos" rows="3"></textarea>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <hr><br>
+                      <div class="form-actions">
+                        <button type="submit" class="btn btn-warning " id="CancelarEntrada" name="action" value="cancelar">
+                            <i class="icon-cross2"></i> Cancelar
+                        </button>
+                        <button type="submit" class="btn btn-primary " id="GuardarEntrada" name="action" value='GuardarEntrada'>
+                            <i class="icon-check2"></i>Guardar
+                        </button>
+                      </div>
+
+                                                                                                
                   </div> 
               </div>
           </div>
@@ -85,123 +149,6 @@
         </div>
     </div>
 </div>
-    
-    
-<div class="row match-height">
-        <div class="col-md-12">
-            <div class="card">
-                <!--CARD HEADER-->
-                <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">Cronometro</h4>
-                    <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                    <div class="heading-elements">
-                            <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-                                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
-                            </ul>
-                    </div>
-                </div>
-
-                <div class="card-body collapse in">
-                    <div class="card-block">
-                        <!--FORM BODY-->
-                        <div class="form-body">  
-                        
-                          <div class="conteudo">
-
-                            <center>
-                              <div class="cronometro">
-                                <span id="horas">00</span> :
-                                <span id="minutos">00</span> :
-                                <span id="segundos">00</span> :
-                                <span id="milissegundos">00</span>
-                              </div>
-                              <br>
-                              <button id="botao-iniciar" type="submit">Iniciar</button>
-                              <button id="botao-parar" type="submit">Detener</button>
-                              <button id="registro"  type="submit">Registrar</button>
-                              <button id="botao-apagar" type="submit">Finalizar</button>
-                            </center>
-
-                          </div>                                                                                                          
-                        </div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-    <div class="row match-height">
-        <div class="col-md-12">
-            <div class="card">
-                <!--CARD HEADER-->
-                <div class="card-header">
-                    <h4 class="card-title" id="basic-layout-form">Registro</h4>
-                    <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                    <div class="heading-elements">
-                            <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
-                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
-                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
-                                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
-                            </ul>
-                    </div>
-                </div>
-
-                <div class="card-body collapse in">
-                    <div class="card-block">
-                        <!--FORM BODY-->
-                        <div class="form-body">  
-                        
-                          <table class="table table-responsive table-bordered table-striped">
-                            <thead>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                                <th>Tiempo</th>
-                            </thead>
-                            <tbody id="tabla">
-
-                            </tbody>
-                          </table>  
-
-                          <div class="row">
-                            <div class="col-md-12">
-                              <div class="form-group">
-                                <label for="insumos">Refacciones e insumos utilizados:</label>
-                                <textarea class="form-control" id="insumos" rows="3"></textarea>
-                              </div>
-
-                            </div>
-                          </div>                                                                                                           
-                        </div> 
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -232,7 +179,7 @@ h1{
 }
 
 
-button{
+.tiempo{
   width: 150px; 
   height: 55px; 
   background: #FFF; 
@@ -249,7 +196,7 @@ button{
 }
 
 
-button:hover{
+.tiempo:hover{
   color: #FFF;
   background: #B0E7C6; 
 }
@@ -287,15 +234,118 @@ button:hover{
 
 <script>
 
- // após a página ser carregada 
  window.onload = function() {
   FechaActual();
   digiClock();
   digiClockFinal();
-  //setInterval('digiClock()', 1000);
+  dataServicio();
+  pantalla = document.getElementById("screen");
   setInterval('digiClockFinal()', 1000);  
+ }
+  var inicioConteoFecha = "";
+  var inicioConteoHora = "";
+  var isMarch = false; 
+  var acumularTime = 0; 
+  function start () {
+    if (isMarch == false) { 
+      timeInicial = new Date();
+      control = setInterval(cronometro,10);
+      isMarch = true;
+      var f = new Date();
+      var mes = f.getMonth()+1;
+      var dia = f.getDate();
+      var ano = f.getFullYear();
+      h = f.getHours(),
+      m = f.getMinutes();
+      s = f.getSeconds();
+      if(h < 10) h = '0' + h; 
+      if(m < 10) m = '0' + m; 
 
-  var inicio = false;
+      if(dia<10)
+          dia='0'+dia;
+      if(mes<10)
+          mes='0'+mes
+
+      inicioConteoFecha = ano+"-"+mes+"-"+dia;
+      inicioConteoHora = h + ':' + m + ':' + s;
+    }
+  }
+  function cronometro () { 
+    timeActual = new Date();
+    acumularTime = timeActual - timeInicial;
+    acumularTime2 = new Date();
+    acumularTime2.setTime(acumularTime); 
+    cc = Math.round(acumularTime2.getMilliseconds()/10);
+    ss = acumularTime2.getSeconds();
+    mm = acumularTime2.getMinutes();
+    hh = acumularTime2.getHours()-18;
+    if (cc < 10) {cc = "0"+cc;}
+    if (ss < 10) {ss = "0"+ss;} 
+    if (mm < 10) {mm = "0"+mm;}
+    if (hh < 10) {hh = "0"+hh;}
+    pantalla.innerHTML = hh+" : "+mm+" : "+ss+" : "+cc;
+  }
+
+  function stop () { 
+    if (isMarch == true) {
+      clearInterval(control);
+      isMarch = false;
+      let tiempo = document.getElementById("screen").innerHTML;
+  
+  
+      $("#tabla").append(
+        '<tr>'+
+        '<td>'+inicioConteoFecha+'</td>'+
+        '<td>'+inicioConteoHora+'</td>'+
+        '<td>'+tiempo+'</td>'+
+        '</tr>'
+      );
+      
+    }     
+  }      
+
+  function resume () {
+    if (isMarch == false) {
+      timeActu2 = new Date();
+      timeActu2 = timeActu2.getTime();
+      acumularResume = timeActu2-acumularTime;
+      
+      timeInicial.setTime(acumularResume);
+      control = setInterval(cronometro,10);
+      isMarch = true;
+      let tiempo = document.getElementById("screen").innerHTML;
+  
+  
+      $("#tabla").append(
+        '<tr>'+
+        '<td>'+inicioConteoFecha+'</td>'+
+        '<td>'+inicioConteoHora+'</td>'+
+        '<td>'+tiempo+'</td>'+
+        '</tr>'
+      );
+    }     
+  }
+
+  function reset () {
+    if (isMarch == true) {
+      clearInterval(control);
+      isMarch = false;
+    }
+    let tiempo = document.getElementById("screen").innerHTML;
+  
+      $('#botao-inicia').attr("disabled", true);
+      $("#tabla").append(
+        '<tr>'+
+        '<td>'+inicioConteoFecha+'</td>'+
+        '<td>'+inicioConteoHora+'</td>'+
+        '<td>'+tiempo+'</td>'+
+        '</tr>'
+      );
+    acumularTime = 0;
+    pantalla.innerHTML = "00 : 00 : 00 : 00";
+  }
+
+  /*var inicio = false;
 
   // declarar variável horas e atribuir ligação ao tempo definido em html 
   var horas = 00; 
@@ -539,7 +589,7 @@ button:hover{
   }
 
 
-}
+}*/
 
 window.onbeforeunload = function (e) {
     var e = e || window.event;
@@ -604,6 +654,27 @@ function digiClockFinal(){
   $('#Horafinal').each(function(){ 
     $(this).attr({'value': h + ':' + m});
   });
+}
+
+
+function dataServicio(){
+
+
+  datos = {"Id":<?php echo $this->uri->segment(3);?>};
+    $.ajax
+    ({
+        type:'post',
+        url:'<?php echo site_url();?>/Automatizacio_Controller/ConsultarDatosEquiposByServicio',
+        data:datos,
+        success:function(resp)
+        {
+            $("#Equiposselect").html(resp);
+        },
+        error:function(resp)
+        {
+            $("#Equiposselect").html(resp.responseText);
+        }
+    });
 }
 
 </script>

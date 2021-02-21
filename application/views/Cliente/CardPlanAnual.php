@@ -1,3 +1,51 @@
+<!--<div class="row match-height">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" id="basic-layout-form">Plan Anual de Equipo del Mes</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                        <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="card-body collapse in">
+                <div class="card-block">
+                    <div class="form-body">
+
+                    <table class="table table-responsive table-bordered table-striped" id="tblEquiposOrdenDelMes"  style="width: 100%">
+                        <thead>
+                            <th>Mes Plan</th>
+                            <th>No. Orden</th>
+                            <th>Mes Ult. Servicio</th>
+                            <th>No. Equipo</th>
+                            <th>Descripcion</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Num. Serie</th>
+                            <th>Clave</th>
+                            <th>Acciónes</th>
+                        </thead>
+                        <tbody >
+
+                        </tbody>
+                    </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
 <div class="row match-height">
     <div class="col-md-12">
         <div class="card">
@@ -110,10 +158,10 @@
                                   <label class="form-check-label" for="Plan">Plan</label>
                                 </div>
 
-                                <div class="form-check">
+                                <!--<div class="form-check">
                                   <input type="radio" class="form-check-input with-gap" id="Real" name="OpcionMes" value="1">
                                   <label class="form-check-label" for="Real">Real</label>
-                                </div>
+                                </div>-->
 
                               </div>
                             </div>

@@ -48,6 +48,12 @@
     </div>
 <script type="text/javascript" src="<?php echo base_url();?>app-assets/Calendario/evo-calendar/js/evo-calendar.js"></script>
 
+<style>
+a{
+    /*font-size: 12px*/;
+}
+</style>
+
 <script>
 $(document).ready(function()
 {
@@ -62,9 +68,9 @@ $(document).ready(function()
             let fechas = JSON.parse(resp);
             for(let i = 0; i < fechas.length; i++){
                 
-                
+                let urls = '<?php echo site_url();?>'+'/index.php/Servicio/ConsultarDetalleServicio/'+ fechas[i].IdOrden;
                 let id = 0+fechas[i].IdOrden;
-                let name = 'N. Orden: ' + fechas[i].IdOrden; 
+                let name = "<a href='"+urls+"'>N. " + fechas[i].IdOrden+ " </a>"; 
                 let description = fechas[i].ObservacionesOrden;
                 let date = fechas[i].FechaOrden;
                 let color = "#99CCCC";
@@ -84,9 +90,10 @@ $(document).ready(function()
             let fechas = JSON.parse(resp);
             for(let i = 0; i < fechas.length; i++){
                 
-                
+                let urls = '<?php echo site_url();?>'+'/index.php/Paquete/ConsultarDetalle/'+ fechas[i].IdPaqueteEnvio;
+
                 let id = '00'+fechas[i].IdPaqueteEnvio;
-                let name = 'N. Paquete: ' + fechas[i].IdPaqueteEnvio; 
+                let name = "<a href='"+urls+"'> N. " + fechas[i].IdPaqueteEnvio+" </a>"
                 let description = fechas[i].Descripcion;
                 let date = fechas[i].FechaEnv;
                 let color = "#3F51B5";

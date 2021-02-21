@@ -411,6 +411,16 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="MesInicio">Tipo de servicio</label>
+<br>
+                                        <input type="radio" id="mt" checked name="tiposervice" value="0">
+                                        <label for="mt">Mantenimiento</label><br>
+                                        <input type="radio" id="cal" name="tiposervice" value="1">
+                                        <label for="cal">Calibración</label><br>  
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -579,7 +589,8 @@
             AlcanceMedicion: $("#AlcanceModalProducto").val(),
             DivisionMedicion: $('#DivisionModalProducto').val(),
             Periodo: $('#PeriodoModal').val(),
-            MesInicio: $('#MesInicioModal').val()
+            MesInicio: $('#MesInicioModal').val(),
+            tipoServicio: $('input:radio[name=tiposervice]:checked').val()
         };
 
         if( $('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")

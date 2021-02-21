@@ -65,7 +65,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="Clientes">Cliente</label>
+                    <label for="Clientes">Clientes</label>
                     <select name="cliente" id="cliente" class="form-control">
                         <option value="">Clientes...</option>
                     </select>
@@ -178,11 +178,44 @@
     </div>
 
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="ModalEquipo" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button  data-dismiss="modal" type="button" class="close" id="CancelarModal">&times;</button>
+            <h5 class="modal-title" id="ModalLabel">Agragar equipo</h5>
+        </div>
+        <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="hidden" id="hiddenServicio" name="Servicio" value="">
+
+                    <label for="">Equipos</label>
+                    <select name="" id="Equiposselect" class="form-control">
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+
+        </div>
+        <div class="modal-footer">
+            <button id="ConfirmarModal" onclick="InsertarServicio()" type="button" class="btn btn-primary">Agregar</button>
+            <button id="CancelarModal" onclick="cerrarEquipo()"  data-dismiss="modal" type="button" class="btn btn-primary">Cancelar</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
 
 
 <script>
 
     var idClientes =0;
+    var idServicio =0;
     $(document).ready(function()
     {
         CargarServicios();
@@ -239,11 +272,6 @@
             }
         });
     }
-    
-    /*$('#btnAgregarServicio').click(function()
-    {
-        $('#ModalServicio').show ();
-    });*/
 
     $("#cliente").change(function()
     {
@@ -276,6 +304,36 @@
         });
     }
 
+    function InsertarServicio()
+    {
+        var IdServicio = $("#hiddenServicio").val();
+        
+        var idEquipo = $("#Equiposselect option:selected").val();
+        datos = {"IdEquipo":idEquipo,"IdServicio":IdServicio};
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Automatizacio_Controller/InsertarServicio',
+            dataType: 'json',
+            data:datos,
+            success:function(resp)
+            {
+                if(resp != '0'){
+                    swal({
+                        title: "Equipo agregado correctamente",
+                        icon: "success",
+                    });
+                }else{
+                    swal({
+                        title: "No se puede agregar mas equipos",
+                        icon: "error",
+                    });
+                }
+                
+            }
+        });
+    }
+
     function FechaActual()
     {
         var fecha = new Date();
@@ -304,6 +362,28 @@
         });
     }
 
+    function dataServicio(data,idClientes,idServicio){
+        idServicio = data;
+
+        $("#hiddenServicio").val(idServicio);
+        
+        datos = {"IdCliente":idClientes};
+        $.ajax
+        ({
+            type:'post',
+            url:'<?php echo site_url();?>/Automatizacio_Controller/ConsultarDatosEquipos',
+            data:datos,
+            success:function(resp)
+            {
+                $("#Equiposselect").html(resp);
+            },
+            error:function(resp)
+            {
+                $("#Equiposselect").html(resp.responseText);
+            }
+        });
+    }
+
     function CargarServicios()
     {
         var t = $('#tblServicio').DataTable({
@@ -327,8 +407,11 @@
                     "targets":9, "data":"IdServicio", "render": function(data,type,row,meta)
                     {
                         var url = '<?php echo site_url();?>/Automatizacion/VerPDF/'+data;
+                        var urlService = '<?php echo site_url();?>/Servicio/Process/'+data;
 
-                        return '<a classs = "btn" href="'+url+'"><i class="icon-eye4" data-toggle="tooltip" data-placement="top" id="Detalle" title="Visualizar servicio"> Detalles</i></a>';
+                        return '<a classs = "btn" href="'+url+'"><i class="icon-eye4" data-toggle="tooltip" data-placement="top" id="Detalle" title="Visualizar servicio"> Detalles</i></a><br>'+
+                        '<a data-toggle="modal" data-target="#ModalEquipo" onclick="dataServicio('+data+','+row['IdCliente']+','+row['IdServicio']+')" classs = "btn" href="#"><i class="icon-android-add" data-toggle="tooltip" data-placement="top" id="AgregarEquipo" title="Agregar Equipo"> Agregar</i></a><br>'+
+                        '<a classs = "btn" href="'+urlService+'"><i class="icon-wrench3" data-toggle="tooltip" data-placement="top" id="Servicio" title="Servicio"> Servicio</i></a>';
                     }
                 }],
 

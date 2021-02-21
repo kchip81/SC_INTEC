@@ -109,7 +109,7 @@ class Registrar_Controller extends CI_Controller {
 
         foreach ($Perfil as $perfil)
         {
-           $output .='<option value="'.$perfil['IdPerfil'].'">'.$perfil['DescripcionPerfil'].'</option>';
+           $output .='<option disabled selected value="'.$perfil['IdPerfil'].'">'.$perfil['DescripcionPerfil'].'</option>';
         }
         echo $output;
     }
