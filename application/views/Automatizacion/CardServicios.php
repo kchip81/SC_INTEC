@@ -318,17 +318,17 @@
             data:datos,
             success:function(resp)
             {
-                if(resp != '0'){
+                //if(resp != '0'){
                     swal({
                         title: "Equipo agregado correctamente",
                         icon: "success",
                     });
-                }else{
+                /*}else{
                     swal({
                         title: "No se puede agregar mas equipos",
                         icon: "error",
                     });
-                }
+                }*/
                 
             }
         });

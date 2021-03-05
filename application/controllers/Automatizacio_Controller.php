@@ -147,7 +147,7 @@ class Automatizacio_Controller extends CI_Controller {
             }</style>";
         
 
-        $pdf = $this->PDF_Model->GenerarPDFMantenimiento($IdOrden);
+         $pdf = $this->PDF_Model->GenerarPDFMantenimiento($IdOrden);
 
         $pdfFilePath = "reporte_".$hoy.".pdf";
 
@@ -230,14 +230,30 @@ class Automatizacio_Controller extends CI_Controller {
         
         $IdServicio = $this->input->post('IdServicio');
         $IdEquipo = $this->input->post('IdEquipo');
-        $CountEquipos = $this->Equipo_Servicio_Model->ConsultarNumEquipos($IdServicio);
+        //$CountEquipos = $this->Equipo_Servicio_Model->ConsultarNumEquipos($IdServicio);
 
-        if($CountEquipos->NumEquipos <3){
+//        if($CountEquipos->NumEquipos <3){
 
             echo $this->Equipo_Servicio_Model->InsertarServicio($IdServicio,$IdEquipo);
-        }else{
-            echo 0;
-        }
+//        }else{
+//            echo 0;
+//        }
+    }
+
+    public function InsertarInformacion()
+    {
+        
+        $FechaIni = $this->input->post('fecIni');
+        $IdEquipo = $this->input->post('idEquipo');
+        $IdServicio = $this->input->post('IdServicio');
+        $HoraIni = $this->input->post('horaIni');
+        $FechaOut = $this->input->post('fecOut');
+        $HoraOut = $this->input->post('horaOut');
+        $Observaciones = $this->input->post('Observaciones');
+        $Insumo = $this->input->post('insumo');
+
+        echo $this->Equipo_Servicio_Model->ActualizarInfo($IdServicio, $IdEquipo,$FechaIni,$FechaOut,$Observaciones,$Insumo,$HoraIni,$HoraOut);
+
     }
 
     public function ConsultarServicios(){

@@ -101,7 +101,8 @@
                           <br>
                           <button class="tiempo" id="botao-iniciar"  onclick="start()" type="submit">Iniciar</button>
                           <button class="tiempo" id="botao-parar" onclick="stop()" type="submit">Detener</button>
-                          <button class="tiempo" id="registro" onclick="resume()"  type="submit">Continuar</button>
+                          <!--<button class="tiempo" id="registro" onclick="resume()"  type="submit">Continuar</button>
+                          -->
                           <button class="tiempo" id="botao-apagar" onclick="reset()" type="submit">Finalizar</button>
                         </center>
 
@@ -295,9 +296,9 @@ h1{
   
       $("#tabla").append(
         '<tr>'+
-        '<td>'+inicioConteoFecha+'</td>'+
-        '<td>'+inicioConteoHora+'</td>'+
-        '<td>'+tiempo+'</td>'+
+        '<td class="inicioConteoFecha">'+inicioConteoFecha+'</td>'+
+        '<td class="inicioConteoHora">'+inicioConteoHora+'</td>'+
+        '<td class="tiempo">'+tiempo+'</td>'+
         '</tr>'
       );
       
@@ -314,15 +315,6 @@ h1{
       control = setInterval(cronometro,10);
       isMarch = true;
       let tiempo = document.getElementById("screen").innerHTML;
-  
-  
-      $("#tabla").append(
-        '<tr>'+
-        '<td>'+inicioConteoFecha+'</td>'+
-        '<td>'+inicioConteoHora+'</td>'+
-        '<td>'+tiempo+'</td>'+
-        '</tr>'
-      );
     }     
   }
 
@@ -330,266 +322,20 @@ h1{
     if (isMarch == true) {
       clearInterval(control);
       isMarch = false;
-    }
-    let tiempo = document.getElementById("screen").innerHTML;
-  
-      $('#botao-inicia').attr("disabled", true);
+      let tiempo = document.getElementById("screen").innerHTML;
       $("#tabla").append(
         '<tr>'+
-        '<td>'+inicioConteoFecha+'</td>'+
-        '<td>'+inicioConteoHora+'</td>'+
-        '<td>'+tiempo+'</td>'+
+        '<td class="inicioConteoFecha">'+inicioConteoFecha+'</td>'+
+        '<td class="inicioConteoHora">'+inicioConteoHora+'</td>'+
+        '<td class="tiempo">'+tiempo+'</td>'+
         '</tr>'
       );
+    }
+    $('#botao-iniciar').attr("disabled", true);
+    $('#botao-parar').attr("disabled", true);
     acumularTime = 0;
     pantalla.innerHTML = "00 : 00 : 00 : 00";
   }
-
-  /*var inicio = false;
-
-  // declarar variável horas e atribuir ligação ao tempo definido em html 
-  var horas = 00; 
-
-  // declarar variável minutos e atribuir ligação ao tempo definido em html       
-  var minutos = 00;
-
-  // declarar variável segundos e atribuir ligação ao tempo definido em html
-  var segundos = 00; 
-
-  // declarar variável milissegundos e atribuir ligação ao tempo defindo em html
-  var milissegundos = 00;   
-
-
-  // declarar variável para anexar horas e atribuir ligação ao elemento id definido em html 
-  var anexarHoras = document.getElementById("horas");
-
-  // declarar variável para anexar minutos e atribuir ligação ao elemento id definido em html 
-  var anexarMinutos = document.getElementById("minutos");
-
-  // declarar variável para anexar segundos e atribuir ligação ao elemento id definido em html 
-  var anexarSegundos = document.getElementById("segundos");
-
-  // declarar variável para anexar milissegundos e atribuir ligação ao elemento id defindo em html 
-  var anexarMilissegundos = document.getElementById("milissegundos");
-
-
-  // declarar variável para iniciar contagem e atrbuir ligação ao elemento id definido em html
-  var botaoIniciar = document.getElementById('botao-iniciar'); 
-
-  // declarar variável para parar contagem e atribuir ligação ao elemento id definido em html 
-  var botaoParar = document.getElementById('botao-parar');
-
-  // declarar variável para apagar contagem e atribuir ligação ao elemento id definido em html 
-  var botaoApagar = document.getElementById('botao-apagar');
-
-  // declarar variável para determinar a duração da contagem 
-  var intervalo;
-
-
-  var btnregistro = document.getElementById('registro');
-
-
-  var inicioConteoFecha = "";
-  var inicioConteoHora = "";
-  // após se clicar no botão iniciar
-  botaoIniciar.onclick = function() {         
-
-    inicio = true;
-
-    // atribuir ligação entre a duração da contagem e o intervalo em milissegundos. 1 segundo é igual a 1000 milissegundos 
-    intervalo = setInterval(duracaoContagem, 10);
-    var f = new Date();
-    var mes = f.getMonth()+1;
-    var dia = f.getDate();
-    var ano = f.getFullYear();
-    h = f.getHours(),
-    m = f.getMinutes();
-    s = f.getSeconds();
-    if(h < 10) h = '0' + h; 
-    if(m < 10) m = '0' + m; 
-
-    if(dia<10)
-        dia='0'+dia;
-    if(mes<10)
-        mes='0'+mes
-
-    inicioConteoFecha = ano+"-"+mes+"-"+dia;
-    inicioConteoHora = h + ':' + m + ':' + s;
-    
-  }
-
-  // limpar o intervalo definido em setInterval  
-    clearInterval(intervalo);
-
-
-  btnregistro.onclick = function() {
-
-    if(inicio){
-      inicio = false
-      let tiempo = document.getElementById("horas").innerHTML + ':' + document.getElementById("minutos").innerHTML + ':' +  document.getElementById("segundos").innerHTML + ':' + document.getElementById("milissegundos").innerHTML;
-  
-  
-      $("#tabla").append(
-        '<tr>'+
-        '<td>'+inicioConteoFecha+'</td>'+
-        '<td>'+inicioConteoHora+'</td>'+
-        '<td>'+tiempo+'</td>'+
-        '</tr>'
-      );
-      clearInterval(intervalo);
-
-      // atribuir ligação entre horas e o tempo definido em html 
-      horas = "00"; 
-
-      // atribuir ligação entre minutos e o tempo definido em html  
-      minutos = "00";
-
-      // atribuir ligação entre segundos e o tempo definido em html
-      segundos = "00";
-
-      // atribuir ligação entre milissegundos e o tempo definido em html  
-      milissegundos = "00";
-
-
-      // aparecer no ecrã horas, minutos, segundos e milissegundos a zero   
-      anexarHoras.innerHTML = horas; 
-      anexarMinutos.innerHTML = minutos; 
-      anexarSegundos.innerHTML = segundos; 
-      anexarMilissegundos.innerHTML = milissegundos;
-    }
-
-  }
-
-  function registro(){
-    if(inicio){
-      inicio = false;
-      if(inicioConteoHora != ""){
-        let tiempo = document.getElementById("horas").innerHTML + ':' + document.getElementById("minutos").innerHTML + ':' +  document.getElementById("segundos").innerHTML + ':' + document.getElementById("milissegundos").innerHTML;
-    
-    
-        $("#tabla").append(
-          '<tr>'+
-          '<td>'+inicioConteoFecha+'</td>'+
-          '<td>'+inicioConteoHora+'</td>'+
-          '<td>'+tiempo+'</td>'+
-          '</tr>'
-        );
-      }
-    }
-  }
-
-
-
-  // após se clicar no botão parar 
-  botaoParar.onclick = function() {
-    registro();
-    // limpar intervalo 
-    clearInterval(intervalo);
-  }
-
-
-
-  // após se clicar no botão apagar   
-  botaoApagar.onclick = function() {
-    registro();
-    // limpar intervalo 
-    clearInterval(intervalo);
-
-    // atribuir ligação entre horas e o tempo definido em html 
-    horas = "00"; 
-
-    // atribuir ligação entre minutos e o tempo definido em html  
-    minutos = "00";
-
-    // atribuir ligação entre segundos e o tempo definido em html
-    segundos = "00";
-
-    // atribuir ligação entre milissegundos e o tempo definido em html  
-    milissegundos = "00";
-  
-
-    // aparecer no ecrã horas, minutos, segundos e milissegundos a zero   
-    anexarHoras.innerHTML = horas; 
-    anexarMinutos.innerHTML = minutos; 
-    anexarSegundos.innerHTML = segundos; 
-    anexarMilissegundos.innerHTML = milissegundos;
-  }
-
-
-
-  // definir como vai ser a contagem   
-  function duracaoContagem() {
-  
-  // começar contagem dos milissegundos
-  milissegundos++; 
-
-    // se for menor que 9 colocar um 0
-    if(milissegundos < 9){
-      anexarMilissegundos.innerHTML = "0" + milissegundos;
-    }
-  
-    if (milissegundos > 9){
-      anexarMilissegundos.innerHTML = milissegundos;      
-    } 
-  
-
-    // começar contagem dos segundos 
-    // se os milissegundos forem superiores a 99  
-    if (milissegundos > 99) {
-
-      // aparece no ecrã os segundos 
-        console.log("segundos");
-        
-        segundos++;           
-        anexarSegundos.innerHTML = "0" + segundos;
-        milissegundos = 0;
-        anexarMilissegundos.innerHTML = "0" + 0;
-      }
-
-  
-    if (segundos > 9){
-      anexarSegundos.innerHTML = segundos;
-    }
-
-    // começar contagem dos minutos 
-    // se os segundos forem superiores a 59
-    if (segundos > 59){
-      
-      // aparece no ecrã os minutos
-      console.log("minutos"); 
-      minutos++; 
-      anexarMinutos.innerHTML = "0" + minutos; 
-      segundos = 0; 
-      anexarSegundos.innerHTML = "0" + 0; 
-    }
-
-
-    if (minutos > 9){
-      anexarMinutos.innerHTML = minutos;
-    }
-
-    // começar contagem das horas 
-    // se os minutos forem superiores a 59
-    if (minutos > 59){
-
-      // aparece no ecrã as horas 
-      console.log("horas"); 
-      horas++; 
-      anexarHoras.innerHTML = "0" + horas; 
-      minutos = 0; 
-      anexarMinutos.innerHTML = "0" + 0; 
-    }
-
-
-    if (horas > 9){
-      anexarHoras.innerHTML = horas;
-    }
-
-
-  }
-
-
-}*/
 
 window.onbeforeunload = function (e) {
     var e = e || window.event;
@@ -675,6 +421,67 @@ function dataServicio(){
             $("#Equiposselect").html(resp.responseText);
         }
     });
+}
+
+$('#CancelarEntrada').click(function()
+{
+    //Limpiar();
+});
+
+$('#GuardarEntrada').click(function()
+{
+    Guardar();
+});
+
+function Guardar(){
+
+  let idEquipo = $("#Equiposselect option:selected").val();;
+  let fecIni = $("#FechaInicio").val();
+  let horaIni = $("#HoraInicio").val();
+  let fecOut = $("#FechaFin").val();
+  let horaOut = $("#Horafinal").val();
+  let Observaciones = $("#Observaciones").val();
+  let insumo = $("#insumos").val();
+
+  data = {"idEquipo":idEquipo,"horaOut":horaOut,"fecIni":fecIni,"horaIni":horaIni,"fecOut":fecOut,
+    "Observaciones":Observaciones,"insumo":insumo,"IdServicio":<?php echo $this->uri->segment(3);?>};
+    if(idEquipo > 0){
+
+      $.ajax
+      ({
+        type:'post',
+        url:'<?php echo site_url();?>/Automatizacio_Controller/InsertarInformacion',
+        data:data,
+        success:function(resp)
+        {
+          $('#tabla tr').each(function() {
+            var inicioConteoFecha = $(this).find(".inicioConteoFecha").text();
+            var inicioConteoHora = $(this).find(".inicioConteoHora").text();
+            var tiempo = $(this).find(".tiempo").text();
+  
+            //alert(tiempo);
+            
+            /*datos = {"inicioConteoFecha":inicioConteoFecha,"inicioConteoHora":inicioConteoHora,'tiposervicio':tiposervicio};
+            $.ajax
+            ({
+                type:'post',
+                url:'<?php echo site_url();?>/Automatizacio_Controller/InsertarInformacion',
+                data:datos,
+                success:function(resp)
+                {
+  
+                }
+            });*/
+          });
+        }
+      });
+
+    }else{
+      swal({
+          title: "No ha seleccionado un equipo",
+          icon: "info",
+      });
+    }
 }
 
 </script>

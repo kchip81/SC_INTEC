@@ -28,6 +28,7 @@ class Servicio_Controller extends CI_Controller {
         $this->load->model('Paquetes_Model');
         $this->load->model('PDF_Model');
         $this->load->model('Usuario_Model');
+        $this->load->model('Equipo_Tipo_Servicio_Model');
     }
 
     public function Load_NuevaOrdenServcio()
@@ -253,8 +254,10 @@ class Servicio_Controller extends CI_Controller {
     {
       $IdEquipo = $this->input->post('idequipo');
       $IdOrden = $this->input->post('idOrden');
+      $tiposervicio = $this->input->post('tiposervicio');
 
       $Clientes = $this->EquipoOrden_Model->InsertarOrdenEquipo($IdEquipo,$IdOrden);
+      $Clientes = $this->Equipo_Tipo_Servicio_Model->InsertarServicioEquipo($IdEquipo,$IdOrden,$tiposervicio);
     }
 
     public function ConsultarClientes_ajax()

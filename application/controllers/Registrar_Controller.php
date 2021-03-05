@@ -105,11 +105,11 @@ class Registrar_Controller extends CI_Controller {
     {
         $Perfil = $this->Perfil_Model->ConsultarTipoUsuario();
 
-        $output ='<option value="">Seleccione tipo de Perfil</option>';
+        $output ='<option disabled value="">Seleccione tipo de Perfil</option>';
 
         foreach ($Perfil as $perfil)
         {
-           $output .='<option disabled selected value="'.$perfil['IdPerfil'].'">'.$perfil['DescripcionPerfil'].'</option>';
+           $output .='<option selected value="'.$perfil['IdPerfil'].'">'.$perfil['DescripcionPerfil'].'</option>';
         }
         echo $output;
     }

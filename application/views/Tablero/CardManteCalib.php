@@ -2,14 +2,14 @@
 $Perfil = $this->session->userdata('intec_IdPerfil');
 if($Perfil == 1 || $Perfil == 2){
     echo '<div class="col-xl-6 col-lg-6 col-xs-12">
-    <a href="'.site_url('Servicio/CalibracionMantenimiento').'">
+    <a>
         <div class="card">
             <div class="card-body">
                 <div class="card-block">
                     <div class="media">
                         <div class="media-body text-xs-left">
                         <h3 class="red"><label id="TotaCalibración"></label> - <label id="TotaMantenimiento"></label></h3>
-                        <span>Calibración vs Mantenimiento</span>
+                        <span>Equipos en Calibración y Mantenimiento</span>
                         </div>
                         <div class="media-right media-middle">
                             <i class="fas fa-tools red font-large-2 float-xs-right"></i>

@@ -124,7 +124,7 @@
 
                                 </div>
 
-                                <div class="col-md-3">
+                                <!--<div class="col-md-3">
                                     <div class="form-group">
                                         <label for="Servicio">Servicio</label>
                                         <select name="servicio" id="servicioMC" class="form-control" onchange="">
@@ -133,7 +133,7 @@
                                         </select>
                                     </div>
 
-                                </div>
+                                </div>-->
 
                                 
 
@@ -280,6 +280,7 @@
                                 <table class="table table-responsive table-bordered table-striped" id="tablaSubProductos">
                                     <thead>
                                         <th>ID Producto</th>
+                                        <th>Tipo de Servicio</th>
                                         <th>Descripcion del Equipo</th>
                                         <th>Marca</th>
                                         <th>Modelo</th>
@@ -411,7 +412,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <!--<div class="col-md-6">
                                     <div class="form-group">
                                         <label for="MesInicio">Tipo de servicio</label>
 <br>
@@ -421,7 +422,7 @@
                                         <label for="cal">Calibración</label><br>  
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
 
 
 
@@ -590,7 +591,8 @@
             DivisionMedicion: $('#DivisionModalProducto').val(),
             Periodo: $('#PeriodoModal').val(),
             MesInicio: $('#MesInicioModal').val(),
-            tipoServicio: $('input:radio[name=tiposervice]:checked').val()
+            //tipoServicio: $('input:radio[name=tiposervice]:checked').val()
+            tipoServicio: 0
         };
 
         if( $('#ClaveModalProducto').val() != "" || $("#NumSerieModalProducto").val() != "" || $("#ModeloModalProducto").val() != "")
@@ -685,8 +687,8 @@
         var FechaRecibo =$("#FechaReciboLaboratorio").val();
         var Observaciones =$("#ObservacionesServicio").val();
         var TotalEquipos = $("#tabla tr").length;
-        var service = document.getElementById("servicioMC");
-        var servicioMC = service.value;
+        //var service = document.getElementById("servicioMC");
+        var servicioMC = '1';
 
         datos = {"cliente":cliente,"fecha":fecha,"FechaEnvio":FechaEnvio,"FechaRecibo":FechaRecibo,"Observaciones":Observaciones,"servicioMC":servicioMC};
 
@@ -732,7 +734,24 @@
         $('#tabla tr').each(function() {
             var id = $(this).find(".id").text();
 
-            datos = {"idequipo":id,"idOrden":idOrden};
+            var count = 0;
+
+            var selected = $(this).find("td input[type='checkbox']").each(function(){
+                if (this.checked) {
+                    let valor = $(this).val();
+                    count += valor;
+                }
+            });
+
+            var tiposervicio = 0;
+            if(count == '01')  
+                tiposervicio = 1;
+            else if(count == '02')  
+                tiposervicio = 2;
+            if(count == '012')  
+                tiposervicio = 3;
+
+            datos = {"idequipo":id,"idOrden":idOrden,'tiposervicio':tiposervicio};
             $.ajax
             ({
                 type:'post',
@@ -818,6 +837,18 @@
             $("#tabla").append(
                 '<tr>'+
                 '<td class="id">'+id+'</td>'+
+                '<td class="service">'+
+                
+                '<div class="form-check form-switch">'+
+                    '<input class="form-check-input" value="1" name="tiposervice" type="checkbox" id="SWMantenimiento" checked />'+
+                    '<label class="form-check-label" for="">Mantenimiento</label>'+
+                '</div>'+
+                '<div class="form-check form-switch">'+
+                    '<input class="form-check-input" value="2" name="tiposervice" type="checkbox" id="SWCalibracion"/>'+
+                    '<label class="form-check-label" for="">Calibración</label>'+
+                '</div>'+
+
+                '</td>'+
                 '<td class="descripcion">'+descripcion+'</td>'+
                 '<td class="marca">'+marca+'</td>'+
                 '<td class="modelo">'+modelo+'</td>'+

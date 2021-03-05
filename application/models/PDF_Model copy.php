@@ -1065,8 +1065,6 @@ class PDF_Model extends CI_Model {
             </style>
             ';
 
-            
-            
             foreach($ServicioInfo as $servicio)
             {
               $table .= '
@@ -1084,7 +1082,7 @@ class PDF_Model extends CI_Model {
                       <img class="logo" src="'.base_url().'app-assets/images/logo/IntecLogoV.png" style="width: 70px" align="left">
                     </figure>
                   </td>
-                  <td style="background: #FFFFFF;text-align: left;font-size: 15px;width:100px" colspan="1">Razón social:</td>
+                  <td style="background: #FFFFFF;text-align: left;width:100px" colspan="1">Razón social:</td>
                   <td style="background: #FFFFFF;border-bottom: 1px solid #000;width:320px" colspan="2">'.$servicio['RazonSocial'].'</td>
                   <td style="background: #FFFFFF;text-align: center;width:50px" colspan="1">Fecha:</td>
                   <td style="background: #FFFFFF;border-bottom: 1px solid #000;width:80px;text-align: center;">'.$servicio['Fecha'].' </td>
@@ -1112,23 +1110,20 @@ class PDF_Model extends CI_Model {
         
                 <tr>
                   <td style="background: #FFFFFF;text-align: center;width:100px" colspan="1">Priodidad:</td>
-                  <td style="background: #FFFFFF;;font-size: 12px;text-align: center;padding-right: 0px;padding-left: 0px;" colspan="1" >';
-    
-                  if($servicio['Prioridad'] == 0)
-                    $table.='<input type="checkbox" id="Priodidad" name="Priodidad" checked="checked" > Ordinario 3-5 días<br>';
-                  else
-                    $table.='<input type="checkbox" id="Priodidad" name="Priodidad" > Ordinario 3-5 días<br>';
-    
-                  $table.='</td>
-    
-                  <td style="background: #FFFFFF;text-align: center; ;font-size: 12px;" colspan="1" >';
-    
-                  if($servicio['Prioridad'] == 1)
-                    $table.='<input type="checkbox" id="Priodidad" name="Priodidad" checked="checked" > Urgente 1-2 días<br>';
-                  else
-                    $table.='<input type="checkbox" id="Priodidad" name="Priodidad" > Urgente 1-2 días<br>';
-    
-                  $table.='</td>
+                  <td style="background: #FFFFFF;text-align: center;padding-right: 0px;padding-left: 0px;" colspan="1" >
+                    <input type="checkbox" id="Priodidad" name="Priodidad" value="1"'; 
+                    if($servicio['Prioridad'] == 0)
+                      $table.=' checked="checked"';
+                    
+                    $table.='> Ordinario 3-5 días<br>
+                  </td>
+                  <td style="background: #FFFFFF;text-align: center;" colspan="1" >
+                    <input type="checkbox" id="Priodidad" name="Priodidad" value="2"'; 
+                    if($servicio['Prioridad'] == 1)
+                      $table.=' checked="checked"';
+                    
+                    $table.='> Urgente 1-2 días<br>
+                  </td>
         
                   <td style="background: #FFFFFF;text-align: right;" colspan="1">
                     <label>Requerimientos especiales:</label><br>
@@ -1136,9 +1131,6 @@ class PDF_Model extends CI_Model {
         
                   <td style="border:1px solid #000;background: #FFFFFF;text-align: center;width: 300px" colspan="3" rowspan="3">'.$servicio['Requerimiento'].'</td>
                 </tr>
-                <br>
-                </div>
-    
                 <thead>
                   <tr>
                     <th style="background: #F5F5F5;" colspan="6">DATOS DEL EQUIPO</th> 
@@ -1147,72 +1139,314 @@ class PDF_Model extends CI_Model {
       
               </tbody>      
           </table>
-          
-          <table class="table" style="border-collapse: collapse;" cellspacing="0">
-            <thead>
-              <tr>
-                <th style="font-size: 12px; width:110px;">Marca</th>
-                <th style="font-size: 12px; width:110px;">Modelo</th>
-                <th style="font-size: 12px; width:110px;">Alcance de Medición</th>
-                <th style="font-size: 12px; width:110px;">Divicion Minima</th>
-                <th style="font-size: 12px; width:110px;">N/S</th>
-                <th style="font-size: 12px; width:110px;">Daño</th>
-                <th style="font-size: 12px; width:100px;">Completo</th>
-              </tr>
-            </thead>
-            <tbody>
+          </div> 
                   ';
             }
-    
-            foreach($ServicioEquipos as $servicioequipo)
-            {
+            $table2 = '
+              <table class="table" cellspacing="0">
+              <tbody colspan="6">
+              <tr>';
+              $count =0;
+              foreach($ServicioEquipos as $servicioequipo)
+              {
+                $count++;
+                $table2=$table2.'<td colspan="" >                 
+
+                <table><tbody>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Marca:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Marca'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Modelo:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Modelo'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Alcance:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['AlcanceMedicion'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 70px;font-size: 10px;font-size: 10px;">
+                      Div. Min:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['DivisionMedicion'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      N/S:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Ns'].'
+                    </td>
+                    <tr>
+                      <td style="width: 50px;font-size: 10px;">
+                        Daño:
+                      </td>
+                      <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                        '.$servicioequipo['Dano'].' 
+                      </td>
+                    </tr>
+                  </tr>
+                </tbody></table>
+
+                </td>';
+
+                if($count == 1)
+                  $completo1=$servicioequipo['Completo'];
+                else if($count == 2)
+                  $completo2=$servicioequipo['Completo'];
+                else if($count == 1)
+                  $completo3=$servicioequipo['Completo'];
+              }
+
+              if($count == 0)
+              $table2=$table2.$equipo.$equipo.$equipo;
+              else if($count == 1)
+              $table2=$table2.$equipo.$equipo;
+              else if($count == 2)
+              $table2=$table2.$equipo;
+
+
+                $table2.'
+              </tr>
+              </tbody>
+            </table>';
+
+            
+            $table3 ='        
+            <table cellspacing="0" colspan="6">
+            <thead>
+              <tr>
+                <th style="background: #F5F5F5;" colspan="6">GENERALES DEL EQUIPO</th> 
+              <tr>
+            </thead>
+            <tbody>
               
-              if($servicioequipo['Completo'] == 1)
-                $completo = 'Si';
-              else
-                $completo = 'No';
+              <tr>
+                
+                <td colspan="" >
+                  <table style="margin-bottom: 0px;"><tbody>
+                   <tr>
+                     <td style="width: 50px;text-align: center;">
+                      Completo?
+                     </td>
+                     <td>';
+                     
+                     if($completo1 == 1){
+                     $table3.='
+                     <input type="checkbox" checked="checked" id="Completo" name="Completo" value="1">Si
+            
+                      <input type="checkbox" id="Completo" name="Completo" value="2">No
+                      ';
+                     }
+                     else{
+                      $table3.='
+                        <input type="checkbox"  id="Completo" name="Completo" value="1">Si
+             
+                       <input type="checkbox"checked="checked" id="Completo" name="Completo" value="2">No
+                       ';
+                      
+                     }
+            
+                     $table3.='</td>
+                   </tr>
+                  </tbody></table>
+                 </td>
+            
+            
+                 <td colspan="" >
+                  <table style="margin-bottom: 0px;"><tbody>
+                   <tr>
+                     <td style="width: 50px;text-align: center;">
+                      Completo?
+                     </td>
+                     <td>';
+                     
+                     if($completo2 == 1){
+                     $table3.='
+                     <input type="checkbox" checked="checked" id="Completo" name="Completo" value="1">Si
+            
+                      <input type="checkbox" id="Completo" name="Completo" value="2">No
+                      ';
+                     }
+                     else{
+                      $table3.='
+                        <input type="checkbox"  id="Completo" name="Completo" value="1">Si
+             
+                       <input type="checkbox"checked="checked" id="Completo" name="Completo" value="2">No
+                       ';
+                      
+                     }
+            
+                     $table3.='</td>
+                   </tr>
+                  </tbody></table>
+                 </td>
+            
+            
               
-              
-              $table .='
-              <tr>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Marca'].'</td>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Modelo'].'</td>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['AlcanceMedicion'].'</td>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['DivisionMedicion'].'</td>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Ns'].'</td>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Dano'].'</td>
-                <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$completo.'</td>
-              </tr>
-              <thead>
-                  <tr>
-                    <th style="font-size: 9px;background: #F5F5F5;" colspan="8"></th> 
-                  <tr>
-              </thead>
-              <tr>
-                <td style="font-size: 12px;border: 1px solid black;"colspan="2">Fecha Ini: '.$servicioequipo['FechaIni'].' </td>
-                <td style="font-size: 12px;border: 1px solid black;"colspan="2">Hora Ini: '.$servicioequipo['HoraIni'].' </td>
-                <td style="font-size: 12px;border: 1px solid black;"colspan="2">Fecha Out: '.$servicioequipo['FechaOut'].' </td>
-                <td style="font-size: 12px;border: 1px solid black;"colspan="2">Hora Out: '.$servicioequipo['HoraOut'].' </td>
-              </tr>
-              <tr>
-                <td style="font-size: 12px;border: 1px solid black;"colspan="8">Observaciones: '.$servicioequipo['Observaciones'].' </td>
-              </tr>
-              <tr>
-                <td style="font-size: 12px;border: 1px solid black;"colspan="8">Reflacciones e insumo utilizado: '.$servicioequipo['Insumo'].' </td>
-              </tr>
-              <thead>
-                  <tr>
-                    <th style="background: #F5F5F5;" colspan="8"></th> 
-                  <tr>
-              </thead>
-                ';
-            }
-    
-            $table2 =' 
-                    </tbody>
-                  </table>   
+                 <td colspan="" >
+                  <table style="margin-bottom: 0px;"><tbody>
+                   <tr>
+                     <td style="width: 50px; text-align: center;">
+                       Completo?
+                     </td>
+                     <td>';
+                     
+                     if($completo3 == 1){
+                     $table3.='
+                     <input type="checkbox" checked="checked" id="Completo" name="Completo" value="1">Si
+            
+                      <input type="checkbox" id="Completo" name="Completo" value="2">No
+                      ';
+                     }
+                     else{
+                      $table3.='
+                        <input type="checkbox"  id="Completo" name="Completo" value="1">Si
+             
+                       <input type="checkbox"checked="checked" id="Completo" name="Completo" value="2">No
+                       ';
+                      
+                     }
+            
+                     $table3.='</td>
+                   </tr>
+                  </tbody></table>
+                 </td>
+         
+      </tr>
+    </tbody>
+  </table>
+
+  <table cellspacing="0" colspan="6">
+    <thead>
+      <tr>
+        <th style="background: #F5F5F5;" colspan="6">Observaciones del servicio</th> 
+      <tr>
+    </thead>
+    <tbody>
+    <td colspan="" >
+    <table><tbody>
+     <tr>
+       <td style="width: 70px; text-align: left;">
+         Fecha Ini:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td>
+     </tr>
+     <tr>
+      <td style="width: 70px; text-align: left;">
+        Hora Ini:
+      </td>
+      <td style="border-bottom: 1px solid #000;"></td >
+    </tr>
+    <tr>
+      <td style="width: 75px; text-align: left;">
+        Fecha Out:
+      </td>
+      <td style="border-bottom: 1px solid #000;"></td >
+    </tr>
+    <tr>
+      <td style="width: 70px; text-align: left;">
+        Hora Ini:
+      </td>
+      <td style="border-bottom: 1px solid #000;"></td >
+    </tr>
+
+    <tr>
+      <td style="text-align: left;">
+        Observaciones:
+      </td>
+    </tr>
+    </tbody></table>
+   </td>
+
+
+   <td colspan="" >
+    <table><tbody>
+      <tr>
+        <td style="width: 70px; text-align: left;">
+          Fecha Ini:
+        </td>
+        <td style="border-bottom: 1px solid #000;"></td>
+      </tr>
+      <tr>
+       <td style="width: 70px; text-align: left;">
+         Hora Ini:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td >
+     </tr>
+     <tr>
+       <td style="width: 75px; text-align: left;">
+         Fecha Out:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td >
+     </tr>
+     <tr>
+       <td style="width: 70px; text-align: left;">
+         Hora Ini:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td >
+     </tr>
+
+     <td style="text-align: left;">
+       Observaciones:
+     </td>
+    </tbody></table>
+   </td>
+
+   <td colspan="" >
+    <table><tbody>
+      <tr>
+        <td style="width: 70px; text-align: left;">
+          Fecha Ini:
+        </td>
+        <td style="border-bottom: 1px solid #000;"></td>
+      </tr>
+      <tr>
+       <td style="width: 70px; text-align: left;">
+         Hora Ini:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td >
+     </tr>
+     <tr>
+       <td style="width: 75px; text-align: left;">
+         Fecha Out:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td >
+     </tr>
+     <tr>
+       <td style="width: 70px; text-align: left;">
+         Hora Ini:
+       </td>
+       <td style="border-bottom: 1px solid #000;"></td >
+     </tr>
+
+     <td style="text-align: left;">
+      Observaciones:
+     </td>
+    </tbody></table>
+   </td>
+    </tbody>
+  </table>
+
+
+
             </div>';
-        $pdf = $head.$table.$table2;
+        $pdf = $head.$table.$table2.$table3;
 
         return $pdf;
     }
@@ -1280,10 +1514,8 @@ class PDF_Model extends CI_Model {
       
       $table2 = '';
       $table = '';
-      $table3 = '';
 
-
-      $head = '<!DOCTYPE html>
+        $head = '<!DOCTYPE html>
         <html lang="es">
           <head>
             <meta charset="utf-8">
@@ -1445,69 +1677,336 @@ class PDF_Model extends CI_Model {
   
           </tbody>      
       </table>
-      <table class="table" style="border-collapse: collapse;" cellspacing="0">
-        <thead>
-          <tr>
-            <th style="font-size: 12px; width:110px;">Marca</th>
-            <th style="font-size: 12px; width:110px;">Modelo</th>
-            <th style="font-size: 12px; width:110px;">Alcance de Medición</th>
-            <th style="font-size: 12px; width:110px;">Divicion Minima</th>
-            <th style="font-size: 12px; width:110px;">N/S</th>
-            <th style="font-size: 12px; width:110px;">Daño</th>
-            <th style="font-size: 12px; width:100px;">Completo</th>
-          </tr>
-        </thead>
-        <tbody>
               ';
         }
 
-        foreach($ServicioEquipos as $servicioequipo)
-        {
-          
-          if($servicioequipo['Completo'] == 1)
-            $completo = 'Si';
-          else
-            $completo = 'No';
-          
-          
-          $table .='
+        $table2 .= '<table>
+        <thead>
           <tr>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Marca'].'</td>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Modelo'].'</td>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['AlcanceMedicion'].'</td>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['DivisionMedicion'].'</td>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Ns'].'</td>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$servicioequipo['Dano'].'</td>
-            <td style="font-size: 12px;text-align: center;border: 1px solid black;">'.$completo.'</td>
-          </tr>
-          <thead>
-              <tr>
-                <th style="font-size: 9px;background: #F5F5F5;" colspan="8"></th> 
-              <tr>
-          </thead>
-          <tr>
-            <td style="font-size: 12px;border: 1px solid black;"colspan="2">Fecha Ini: '.$servicioequipo['FechaIni'].' </td>
-            <td style="font-size: 12px;border: 1px solid black;"colspan="2">Hora Ini: '.$servicioequipo['HoraIni'].' </td>
-            <td style="font-size: 12px;border: 1px solid black;"colspan="2">Fecha Out: '.$servicioequipo['FechaOut'].' </td>
-            <td style="font-size: 12px;border: 1px solid black;"colspan="2">Hora Out: '.$servicioequipo['HoraOut'].' </td>
-          </tr>
-          <tr>
-            <td style="font-size: 12px;border: 1px solid black;"colspan="8">Observaciones: '.$servicioequipo['Observaciones'].' </td>
-          </tr>
-          <tr>
-            <td style="font-size: 12px;border: 1px solid black;"colspan="8">Reflacciones e insumo utilizado: '.$servicioequipo['Insumo'].' </td>
-          </tr>
-          <thead>
-              <tr>
-                <th style="background: #F5F5F5;" colspan="8"></th> 
-              <tr>
-          </thead>
-            ';
-        }
+            <th style="font-size: 12px;">Marca</th>
+            <th style="font-size: 12px;">Modelo</th>
+            <th style="font-size: 12px;">Alcance de Medición</th>
+            <th style="font-size: 12px;">Divicion Minima</th>
+            <th style="font-size: 12px; width:100px;">N/S</th>
+            <th style="font-size: 12px; width:100px;">Daño</th>
+            <th style="font-size: 12px;">Completo</th>
 
-        $table2 =' 
-                </tbody>
-              </table>        
+          </tr>
+        </thead>
+        </table>';
+
+
+        /*$table2 .= '
+              <table class="table" cellspacing="0">
+              <tbody colspan="6">
+              <tr>';
+              $count =0;
+              foreach($ServicioEquipos as $servicioequipo)
+              {
+                $count++;
+                $table2.='<td colspan="" >                 
+
+                <table><tbody>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Marca:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Marca'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Modelo:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Modelo'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      Alcance:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['AlcanceMedicion'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 70px;font-size: 10px;font-size: 10px;">
+                      Div. Min:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['DivisionMedicion'].'
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width: 50px;font-size: 10px;">
+                      N/S:
+                    </td>
+                    <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                      '.$servicioequipo['Ns'].'
+                    </td>
+                    <tr>
+                      <td style="width: 50px;font-size: 10px;">
+                        Daño:
+                      </td>
+                      <td style="border-bottom: 1px solid #000;font-size: 10px;">
+                        '.$servicioequipo['Dano'].' 
+                      </td>
+                    </tr>
+                  </tr>
+                </tbody></table>
+
+                </td>';
+
+                if($count == 1)
+                  $completo1=$servicioequipo['Completo'];
+                else if($count == 2)
+                  $completo2=$servicioequipo['Completo'];
+                else if($count == 1)
+                  $completo3=$servicioequipo['Completo'];
+              }
+
+              if($count == 0)
+              $table2=$table2.$equipo.$equipo.$equipo;
+              else if($count == 1)
+              $table2=$table2.$equipo.$equipo;
+              else if($count == 2)
+              $table2=$table2.$equipo;
+
+
+                $table2.='
+              </tr>
+              </tbody>
+            </table>';
+
+            
+$table3 ='        
+<table cellspacing="0" colspan="6">
+<thead>
+  <tr>
+    <th style="background: #F5F5F5;" colspan="6">GENERALES DEL EQUIPO</th> 
+  <tr>
+</thead>
+<tbody>
+  
+  <tr>
+    
+    <td colspan="" >
+      <table style="margin-bottom: 0px;"><tbody>
+       <tr>
+         <td style="width: 50px;text-align: center;">
+          Completo?
+         </td>
+         <td>';
+         
+         if($completo1 == 1){
+         $table3.='
+         <input type="checkbox" checked="checked" id="Completo" name="Completo">Si
+
+          <input type="checkbox" id="Completo" name="Completo" >No
+          ';
+         }
+         else{
+          $table3.='
+            <input type="checkbox"  id="Completo" name="Completo">Si
+ 
+           <input type="checkbox" checked="checked" id="Completo" name="Completo">No
+           ';
+          
+         }
+
+         $table3.='</td>
+       </tr>
+      </tbody></table>
+     </td>
+
+
+     <td colspan="" >
+      <table style="margin-bottom: 0px;"><tbody>
+       <tr>
+         <td style="width: 50px;text-align: center;">
+          Completo?
+         </td>
+         <td>';
+         
+         if($completo2 == 1){
+         $table3.='
+         <input type="checkbox" checked="checked" id="Completo" name="Completo">Si
+
+          <input type="checkbox" id="Completo" name="Completo">No
+          ';
+         }
+         else{
+          $table3.='
+            <input type="checkbox"  id="Completo" name="Completo">Si
+ 
+           <input type="checkbox" checked="checked" id="Completo" name="Completo">No
+           ';
+          
+         }
+
+         $table3.='</td>
+       </tr>
+      </tbody></table>
+     </td>
+
+
+  
+     <td colspan="" >
+      <table style="margin-bottom: 0px;"><tbody>
+       <tr>
+         <td style="width: 50px; text-align: center;">
+           Completo?
+         </td>
+         <td>';
+         
+         if($completo3 == 1){
+         $table3.='
+         <input type="checkbox" checked="checked" id="Completo" name="Completo">Si
+
+          <input type="checkbox" id="Completo" name="Completo">No
+          ';
+         }
+         else{
+          $table3.='
+            <input type="checkbox"  id="Completo" name="Completo">Si
+ 
+           <input type="checkbox" checked="checked" id="Completo" name="Completo">No
+           ';
+          
+         }
+
+         $table3.='</td>
+       </tr>
+      </tbody></table>
+     </td>
+     
+  </tr>
+</tbody>
+</table>
+*/
+$table3.='
+<table cellspacing="0" colspan="6">
+<thead>
+  <tr>
+    <th style="background: #F5F5F5;" colspan="6">Observaciones del servicio</th> 
+  <tr>
+</thead>
+<tbody>
+<td colspan="" >
+<table><tbody>
+ <tr>
+   <td style="width: 70px; text-align: left;font-size: 10px;">
+     Fecha Ini:
+   </td>
+   <td style="border-bottom: 1px solid #000;font-size: 10px;"></td>
+ </tr>
+ <tr>
+  <td style="width: 70px; text-align: left;font-size: 10px;">
+    Hora Ini:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+<tr>
+  <td style="width: 75px; text-align: left;font-size: 10px;">
+    Fecha Out:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+<tr>
+  <td style="width: 70px; text-align: left;font-size: 10px;">
+    Hora Ini:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+
+<tr>
+  <td style="text-align: left;font-size: 10px;">
+    Observaciones:
+  </td>
+</tr>
+</tbody></table>
+</td>
+
+
+
+
+<td colspan="" >
+<table><tbody>
+ <tr>
+   <td style="width: 70px; text-align: left;font-size: 10px;">
+     Fecha Ini:
+   </td>
+   <td style="border-bottom: 1px solid #000;font-size: 10px;"></td>
+ </tr>
+ <tr>
+  <td style="width: 70px; text-align: left;font-size: 10px;">
+    Hora Ini:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+<tr>
+  <td style="width: 75px; text-align: left;font-size: 10px;">
+    Fecha Out:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+<tr>
+  <td style="width: 70px; text-align: left;font-size: 10px;">
+    Hora Ini:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+
+<tr>
+  <td style="text-align: left;font-size: 10px;">
+    Observaciones:
+  </td>
+</tr>
+</tbody></table>
+</td>
+
+
+<td colspan="" >
+<table><tbody>
+ <tr>
+   <td style="width: 70px; text-align: left;font-size: 10px;">
+     Fecha Ini:
+   </td>
+   <td style="border-bottom: 1px solid #000;font-size: 10px;"></td>
+ </tr>
+ <tr>
+  <td style="width: 70px; text-align: left;font-size: 10px;">
+    Hora Ini:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+<tr>
+  <td style="width: 75px; text-align: left;font-size: 10px;">
+    Fecha Out:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+<tr>
+  <td style="width: 70px; text-align: left;font-size: 10px;">
+    Hora Ini:
+  </td>
+  <td style="border-bottom: 1px solid #000;font-size: 10px;"></td >
+</tr>
+
+<tr>
+  <td style="text-align: left;font-size: 10px;">
+    Observaciones:
+  </td>
+</tr>
+</tbody></table>
+</td>
+
+</tbody>
+</table>
+        
+        
           </body>
         </html>
         ';

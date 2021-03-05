@@ -68,13 +68,13 @@ $(document).ready(function()
             let fechas = JSON.parse(resp);
             for(let i = 0; i < fechas.length; i++){
                 
-                let urls = '<?php echo site_url();?>'+'/index.php/Servicio/ConsultarDetalleServicio/'+ fechas[i].IdOrden;
+                let urls = '<?php echo site_url();?>/Servicio/ConsultarDetalleServicio/'+ fechas[i].IdOrden;
                 let id = 0+fechas[i].IdOrden;
-                let name = "<a href='"+urls+"'>N. " + fechas[i].IdOrden+ " </a>"; 
+                let name = "N. Orden: " + fechas[i].IdOrden; 
                 let description = fechas[i].ObservacionesOrden;
                 let date = fechas[i].FechaOrden;
                 let color = "#99CCCC";
-                asignarFecha(id,name,date,color,description);
+                asignarFecha(id,name,date,color,description,urls);
             }
         }
     });
@@ -90,14 +90,14 @@ $(document).ready(function()
             let fechas = JSON.parse(resp);
             for(let i = 0; i < fechas.length; i++){
                 
-                let urls = '<?php echo site_url();?>'+'/index.php/Paquete/ConsultarDetalle/'+ fechas[i].IdPaqueteEnvio;
+                let urls = '<?php echo site_url();?>/Paquete/ConsultarDetalle/'+ fechas[i].IdPaqueteEnvio;
 
                 let id = '00'+fechas[i].IdPaqueteEnvio;
-                let name = "<a href='"+urls+"'> N. " + fechas[i].IdPaqueteEnvio+" </a>"
+                let name = "N. Paquete: " + fechas[i].IdPaqueteEnvio;
                 let description = fechas[i].Descripcion;
                 let date = fechas[i].FechaEnv;
                 let color = "#3F51B5";
-                asignarFecha(id,name,date,color,description);
+                asignarFecha(id,name,date,color,description,urls);
 
             }
         }
@@ -116,12 +116,14 @@ $(document).ready(function()
 
 
 
-function asignarFecha(idC,nameC,dateC,colorC,descriptionC){
+function asignarFecha(idC,nameC,dateC,colorC,descriptionC,urlC){
     $("#calendar").evoCalendar('addCalendarEvent', [
     {
       id: idC,
       name: nameC,
-      description: descriptionC,
+      description: '<a href="'+urlC+'"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">'
+  +'<path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>'
++'</svg></a><a href="'+urlC+'">  '+descriptionC+'</a>',
       date: dateC,
       color: colorC,
       type: "event",
