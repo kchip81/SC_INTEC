@@ -25,7 +25,7 @@ class Automatizacio_Controller extends CI_Controller {
         $this->load->model('Servicio_Model');
         $this->load->model('Clientes_Model');
         $this->load->model('Equipo_Model');
-        $this->load->model('Equipo_Servicio_Model');
+        $this->load->model('Servicio_Process_Model');
     }
 
     public function Load_Automatizacion()
@@ -238,6 +238,18 @@ class Automatizacio_Controller extends CI_Controller {
 //        }else{
 //            echo 0;
 //        }
+    }
+
+    public function InsertarInformacionTime()
+    {
+        
+        $IdServicio = $this->input->post('IdServicio');
+        $inicioConteoFecha = $this->input->post('inicioConteoFecha');
+        $inicioConteoHora = $this->input->post('inicioConteoHora');
+        $tiempo = $this->input->post('tiempo');
+
+        echo $this->Servicio_Process_Model->InsertarInformacionTime($IdServicio,$inicioConteoFecha,$inicioConteoHora,$tiempo);
+
     }
 
     public function InsertarInformacion()

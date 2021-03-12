@@ -458,20 +458,24 @@ function Guardar(){
             var inicioConteoFecha = $(this).find(".inicioConteoFecha").text();
             var inicioConteoHora = $(this).find(".inicioConteoHora").text();
             var tiempo = $(this).find(".tiempo").text();
-  
-            //alert(tiempo);
+              
+            datos = {
+              "inicioConteoFecha":inicioConteoFecha,
+              "inicioConteoHora":inicioConteoHora,
+              'tiempo':tiempo,
+              "IdServicio":<?php echo $this->uri->segment(3);?>
+            };
             
-            /*datos = {"inicioConteoFecha":inicioConteoFecha,"inicioConteoHora":inicioConteoHora,'tiposervicio':tiposervicio};
             $.ajax
             ({
                 type:'post',
-                url:'<?php echo site_url();?>/Automatizacio_Controller/InsertarInformacion',
+                url:'<?php echo site_url();?>/Automatizacio_Controller/InsertarInformacionTime',
                 data:datos,
                 success:function(resp)
                 {
-  
+                  alert(resp)
                 }
-            });*/
+            });
           });
         }
       });

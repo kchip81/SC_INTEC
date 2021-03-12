@@ -183,7 +183,7 @@
         <div class="modal-content">
         <div class="modal-header">
             <button  data-dismiss="modal" type="button" class="close" id="CancelarModal">&times;</button>
-            <h5 class="modal-title" id="ModalLabel">Agragar equipo</h5>
+            <h5 class="modal-title" id="ModalLabel">Agregar equipo</h5>
         </div>
         <div class="modal-body">
 
