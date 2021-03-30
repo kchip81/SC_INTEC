@@ -67,7 +67,7 @@ class Equipo_Model extends CI_Model {
     {
         $data = array('Descripcion' => $Descripcion,'Marca' => $Marca,'Modelo' => $Modelo,'NumService' => $NumService
         ,'ClaveId' => $ClaveId,'AlcanceMedicion' => $AlcanceMedicion,'DivisionMedicion' => $DivisionMedicion,'IdCliente' => $IdCliente
-        ,'MesInicio' => $MesInicio,'IdPeriodo' => $Periodo,'tipoServicio' => $tipoServicio);
+        ,'MesInicio' => $MesInicio,'IdPeriodo' => $Periodo);
 
         $this->db->insert($this->table,$data);
 

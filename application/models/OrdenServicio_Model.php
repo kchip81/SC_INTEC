@@ -182,8 +182,8 @@ class OrdenServicio_Model extends CI_Model {
     public function ConsultarTotalCalibra()
     {
         $this->db->select('count(*) as total');
-        $this->db->from($this->table);
-        $this->db->where(' tipoServicio = 0');
+        $this->db->from('equipo_tipo_servicio');
+        $this->db->where(' Servicio = 1 or Servicio = 3');
         $query = $this->db->get();
 
         return $query->row();
@@ -192,8 +192,8 @@ class OrdenServicio_Model extends CI_Model {
     public function ConsultarTotalMant()
     {
         $this->db->select('count(*) as total');
-        $this->db->from($this->table);
-        $this->db->where(' tipoServicio = 1');
+        $this->db->from('equipo_tipo_servicio');
+        $this->db->where(' Servicio = 2 or Servicio = 3');
         $query = $this->db->get();
 
         return $query->row();

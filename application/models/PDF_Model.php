@@ -189,13 +189,33 @@ class PDF_Model extends CI_Model {
                     <th>Clavé de identificacion</th>
                     <th>Alcance de Medición</th>
                     <th>Divicion Minima</th>
+                    <th>Calibración</th>
+                    <th>Mantenimiento</th>
                   </tr>
                 </thead>
                 <tbody>
                 ';
            }
+           
+           
                 foreach($Registro as $registro)
                 {
+                  $campo='';
+                  $campo2='';
+                  if($registro['servicio'] == 1){
+                    $campo.='<input type="checkbox"name="cal" disabled checked="checked" >';
+                    $campo2.='<input type="checkbox" name="Man" disabled >';
+                  }else if($registro['servicio'] == 2){
+                    $campo.='<input type="checkbox" name="cal" disabled >';
+                    $campo2.='<input type="checkbox" name="Man" checked="checked" disabled>';
+                  }else if($registro['servicio'] == 3){
+                    $campo.='<input type="checkbox" name="cal" disabled checked="checked" >';
+                    $campo2.='<input type="checkbox" name="Man" disabled checked="checked" >';
+                  }else{
+                    $campo.='<input type="checkbox" name="cal"  disabled>';
+                    $campo2.='<input type="checkbox" disabled  name="Man" >';
+                  }
+
                   $table2 .='
                   <tr>
                     <td>'.$i.'</td>
@@ -206,6 +226,8 @@ class PDF_Model extends CI_Model {
                     <td>'.$registro['ClaveId'].'</td>
                     <td>'.$registro['AlcanceMedicion'].'</td>
                     <td>'.$registro['DivisionMedicion'].'</td>
+                    <td>'.$campo.'</td>
+                    <td>'.$campo2.'</td>
                   </tr>
                     ';
                     $i++;
@@ -653,6 +675,8 @@ class PDF_Model extends CI_Model {
                     <th>Clavé de identificacion</th>
                     <th>Alcance de Medición</th>
                     <th>Divicion Minima</th>
+                    <th>Calibración</th>
+                    <th>Mantenimiento</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -660,6 +684,22 @@ class PDF_Model extends CI_Model {
            }
                 foreach($Registro as $registro)
                 {
+                  $campo='';
+                  $campo2='';
+                  if($registro['servicio'] == 1){
+                    $campo.='<input type="checkbox"name="cal" disabled checked="checked" >';
+                    $campo2.='<input type="checkbox" name="Man" disabled >';
+                  }else if($registro['servicio'] == 2){
+                    $campo.='<input type="checkbox" name="cal" disabled >';
+                    $campo2.='<input type="checkbox" name="Man" checked="checked" disabled>';
+                  }else if($registro['servicio'] == 3){
+                    $campo.='<input type="checkbox" name="cal" disabled checked="checked" >';
+                    $campo2.='<input type="checkbox" name="Man" disabled checked="checked" >';
+                  }else{
+                    $campo.='<input type="checkbox" name="cal"  disabled>';
+                    $campo2.='<input type="checkbox" disabled  name="Man" >';
+                  }
+
                   $table2 .='
                   <tr>
                     <td>'.$i.'</td>
@@ -670,6 +710,8 @@ class PDF_Model extends CI_Model {
                     <td>'.$registro['ClaveId'].'</td>
                     <td>'.$registro['AlcanceMedicion'].'</td>
                     <td>'.$registro['DivisionMedicion'].'</td>
+                    <td>'.$campo.'</td>
+                    <td>'.$campo2.'</td>
                   </tr>
                     ';
                     $i++;

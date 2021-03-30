@@ -703,7 +703,24 @@
         $('#tabla tr').each(function() {
             var id = $(this).find(".id").text();
 
-            datos = {"idequipo":id,"idOrden":idOrden};
+            var count = 0;
+
+            var selected = $(this).find("td input[type='checkbox']").each(function(){
+                if (this.checked) {
+                    let valor = $(this).val();
+                    count += valor;
+                }
+            });
+
+            var tiposervicio = 0;
+            if(count == '01')  
+                tiposervicio = 1;
+            else if(count == '02')  
+                tiposervicio = 2;
+            if(count == '012')  
+                tiposervicio = 3;
+
+            datos = {"idequipo":id,"idOrden":idOrden,'tiposervicio':tiposervicio};
             $.ajax
             ({
                 type:'post',
@@ -777,6 +794,18 @@
             $("#tabla").append(
                 '<tr>'+
                 '<td class="id">'+id+'</td>'+
+                '<td class="service">'+
+                
+                '<div class="form-check form-switch">'+
+                    '<input class="form-check-input" value="1" name="tiposervice" type="checkbox" id="SWMantenimiento" checked />'+
+                    '<label class="form-check-label" for="">Mantenimiento</label>'+
+                '</div>'+
+                '<div class="form-check form-switch">'+
+                    '<input class="form-check-input" value="2" name="tiposervice" type="checkbox" id="SWCalibracion"/>'+
+                    '<label class="form-check-label" for="">Calibración</label>'+
+                '</div>'+
+
+                '</td>'+
                 '<td class="descripcion">'+descripcion+'</td>'+
                 '<td class="marca">'+marca+'</td>'+
                 '<td class="modelo">'+modelo+'</td>'+

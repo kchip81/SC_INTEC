@@ -167,13 +167,13 @@
                 <li><a href="'.site_url('Paquetes/ConsultarPaquetesAbiertos').'" data-i18n="nav.cards.card_statistics" class="menu-item">Consultar Paquetes Abiertos</a></li>
                 <li><a href="'.site_url('Servicio/ConsultarEquipoDemora').'" data-i18n="nav.cards.card_statistics" class="menu-item">Equipos con Demora</a></li>
                 <li><a href="'.site_url('Factura/ConsultarFacturas').'" data-i18n="nav.cards.card_statistics" class="menu-item">Facturas Servicios</a></li>
-                <li><a href="'.site_url('Servicio/CalibracionMantenimiento').'" data-i18n="nav.cards.card_statistics" class="menu-item">Calibracion VS Mantenimiento</a></li>
+                <!--<li><a href="'.site_url('Servicio/CalibracionMantenimiento').'" data-i18n="nav.cards.card_statistics" class="menu-item">Calibracion VS Mantenimiento</a></li>-->
               </ul>
             </li>';
           }
 
           
-          if($Perfil == 1 || $Perfil == 2)
+          if($Perfil == 1 || $Perfil == 4)
           {
             echo '<li class=" nav-item"><a href="#"><i class="fas fa-cogs"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Automatización</span></a>
               <ul class="menu-content">

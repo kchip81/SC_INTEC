@@ -90,7 +90,7 @@ class EquipoOrden_Model extends CI_Model{
 
     public function ConsultarOrden($id)
     {
-        $this->db->select('*');
+        $this->db->select('*,(select Servicio from equipo_tipo_servicio where IdOrden = '.$id.' and equipo_tipo_servicio.IdEquipo = equipo.IdEquipo) AS servicio ');
         $this->db->from('equipo');
         $this->db->join($this->table, $this->table.'.IdEquipo = equipo.IdEquipo','INNER');
         $this->db->where($this->table.'.IdOrden',$id);
