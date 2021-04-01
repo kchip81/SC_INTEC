@@ -217,5 +217,20 @@ class OrdenServicio_Model extends CI_Model {
 
         return $query->result_array();
     }
+    
+
+    public function ConsultarEquiposOrdenesCalibracion($Idcliente)
+    {
+        $this->db->select('equipo_orden.IdOrden,equipo_orden.IdEquipo,equipo.Descripcion,equipo.Marca,equipo.Modelo,equipo.NumService,equipo.ClaveId');
+        $this->db->from ($this->table);
+        $this->db->join('equipo_orden',$this->table.'.IdOrden = equipo_orden.IdOrden');
+        $this->db->join('equipo','equipo_orden.IdEquipo = equipo.IdEquipo');
+        $this->db->where('orden_servicio.IdCliente',$Idcliente);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+
+    }
 //put your code here
 }

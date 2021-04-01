@@ -173,11 +173,31 @@
           }
 
           
-          if($Perfil == 1 || $Perfil == 4)
+          if($Perfil == 4)
           {
             echo '<li class=" nav-item"><a href="#"><i class="fas fa-cogs"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Automatización</span></a>
               <ul class="menu-content">
                 <li><a href="'.site_url('Automatizacion/Servicios').'" data-i18n="nav.cards.card_statistics" class="menu-item">Servicios</a>
+                </li>
+              </ul>
+            </li>';
+          }
+          if($Perfil == 3)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="fas fa-cogs"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Automatización</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Automatizacion/Calibracion').'" data-i18n="nav.cards.card_statistics" class="menu-item">Servicios</a>
+                </li>
+              </ul>
+            </li>';
+          }
+          if($Perfil == 1 ||$Perfil == 2)
+          {
+            echo '<li class=" nav-item"><a href="#"><i class="fas fa-cogs"></i><span data-i18n="nav.advance_cards.main" class="menu-title">Automatización</span></a>
+              <ul class="menu-content">
+                <li><a href="'.site_url('Automatizacion/Servicios').'" data-i18n="nav.cards.card_statistics" class="menu-item">Servicios</a>
+                </li>
+                <li><a href="'.site_url('Automatizacion/Calibracion').'" data-i18n="nav.cards.card_statistics" class="menu-item">Calibración</a>
                 </li>
               </ul>
             </li>';

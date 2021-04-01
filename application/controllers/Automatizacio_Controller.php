@@ -26,6 +26,7 @@ class Automatizacio_Controller extends CI_Controller {
         $this->load->model('Clientes_Model');
         $this->load->model('Equipo_Model');
         $this->load->model('Servicio_Process_Model');
+        $this->load->model('OrdenServicio_Model');
     }
 
     public function Load_Automatizacion()
@@ -40,7 +41,7 @@ class Automatizacio_Controller extends CI_Controller {
     
     public function CargarDatosExcel()
     {
-        $this->load->library('Excel');
+    //    $this->load->library('Excel');
 
         $ruta = 'upload/';
         $uploadStatus = 1; 
@@ -59,7 +60,7 @@ class Automatizacio_Controller extends CI_Controller {
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){ 
                 $uploadedFile = $name_file; 
 
-                $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
+        /*        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader('Xlsx');
                 $spreadsheet = $reader->load($ruta.$name_file);
                 $sheet = $spreadsheet->getSheet(0);
 
@@ -77,8 +78,8 @@ class Automatizacio_Controller extends CI_Controller {
                 }
                 unlink($targetFilePath);                
                 echo json_encode($arr_data_produts);
-
-
+*/
+echo 'si se subio';
             }else{ 
                 $uploadStatus = 0; 
             } 
@@ -109,7 +110,19 @@ class Automatizacio_Controller extends CI_Controller {
         $ID = $this->input->post('id');
         echo $pdf = $this->PDF_Model->GenerarPDFMantenimientoModel($ID);
     }
+    
+    public function Load_CatalogoServicioCalibracion()
+    {
 
+        $data['title'] = 'Servicio';
+
+        $this->load->view('templates/MainContainer',$data);
+        $this->load->view('templates/HeaderContainer',$data);
+        $this->load->view('Automatizacion/CardServiciosCalibracion',$data);
+        $this->load->view('templates/FormFooter',$data);
+        $this->load->view('templates/FooterContainer');
+    }
+    
     public function Load_CatalogoServicio()
     {
 
@@ -276,4 +289,13 @@ class Automatizacio_Controller extends CI_Controller {
     public function phpinfo(){
         echo phpinfo();
     }
+
+    
+    public function ConsultarEquiposOrdenesCalibracion()
+    {
+        $IdCliente = $this->input->post('IdCliente');
+        $Data = $this->OrdenServicio_Model->ConsultarEquiposOrdenesCalibracion($IdCliente);
+        echo json_encode($Data);
+    }
+
 }
